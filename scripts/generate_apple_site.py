@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+import os
+
+html_code = '''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -1973,7 +1975,7 @@
       const total = updateStudioTotal();
       const addons = [];
       document.querySelectorAll('.apple-addon-check:checked').forEach(c => {
-        const label = c.closest('label')?.innerText.replace(/\n/g, ' ') || '';
+        const label = c.closest('label')?.innerText.replace(/\\n/g, ' ') || '';
         addons.push(label.trim());
       });
 
@@ -1981,7 +1983,7 @@
       setTimeout(() => {
         const msg = document.getElementById('contactMessage');
         if (msg) {
-          msg.value = `Selected Studio Spec: ${currentBaseTier.name} (Base: K${currentBaseTier.price.toLocaleString()} ZMW)\nAdd-Ons:\n- ${addons.length > 0 ? addons.join('\n- ') : 'None'}\n\nEstimated Spec Total: K${total.toLocaleString()} ZMW.\nPlease initiate formal review and schedule our kickoff consultation.`;
+          msg.value = `Selected Studio Spec: ${currentBaseTier.name} (Base: K${currentBaseTier.price.toLocaleString()} ZMW)\\nAdd-Ons:\\n- ${addons.length > 0 ? addons.join('\\n- ') : 'None'}\\n\\nEstimated Spec Total: K${total.toLocaleString()} ZMW.\\nPlease initiate formal review and schedule our kickoff consultation.`;
         }
       }, 150);
     }
@@ -2198,10 +2200,16 @@
       const service = document.getElementById('contactServiceSelect')?.value || 'General Inquiry';
       const msg = document.getElementById('contactMessage')?.value || '';
 
-      const text = `*NEW STUDIO INQUIRY - VIGORISH MEDIA*\n\n*Name:* ${name}\n*Company:* ${company}\n*Phone:* ${phone}\n*Service:* ${service}\n\n*Brief:*\n${msg}`;
+      const text = `*NEW STUDIO INQUIRY - VIGORISH MEDIA*\\n\\n*Name:* ${name}\\n*Company:* ${company}\\n*Phone:* ${phone}\\n*Service:* ${service}\\n\\n*Brief:*\\n${msg}`;
       const url = `https://wa.me/260979894567?text=${encodeURIComponent(text)}`;
       window.open(url, '_blank');
     }
   </script>
 </body>
 </html>
+'''
+
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(html_code)
+
+print("index.html updated with complete Vigorish Media information and stock imagery!")
