@@ -1,0 +1,3379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vigorish Media | Building Brands That Add Value</title>
+  <meta name="description" content="Vigorish Media is a creative media and digital marketing company based in Zambia helping businesses build stronger brands through design, branding, social media, photography, videography and web solutions." />
+  <meta property="og:title" content="Vigorish Media | Building Brands That Add Value" />
+  <meta property="og:description" content="Vigorish Media is a creative media and digital marketing company helping businesses build stronger brands through design, branding, social media, digital marketing, photography, videography and web solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="src/logo/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vigorish Media | Building Brands That Add Value" />
+  <meta name="twitter:description" content="Creative media, branding and digital marketing solutions designed to help businesses stand out, connect with customers and grow." />
+  <link rel="icon" type="image/png" href="src/logo/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Vigorish Media",
+    "slogan": "Building Brands That Add Value",
+    "url": "https://vigorishmedia.com",
+    "logo": "src/logo/logo.png",
+    "telephone": "+260979894567",
+    "email": "mediavigorish@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lusaka",
+      "addressCountry": "Zambia"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61581378732463",
+      "https://www.instagram.com/vigorishmedia/",
+      "https://www.tiktok.com/@vigorishmedia?_r=1&_t=ZS-99mPbaFsuFF",
+      "https://www.youtube.com/channel/UCK-x3NGjBrmN8WJt89kGnDA"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --brand-blue: #052f55;
+      --brand-blue-hover: #084379;
+      --brand-blue-light: #eaf1f8;
+      --brand-blue-subtle: rgba(5, 47, 85, 0.06);
+      --bg-white: #ffffff;
+      --bg-offwhite: #f8f9fa;
+      --bg-canvas: #f2f4f7;
+      --text-black: #0b0f15;
+      --text-charcoal: #232934;
+      --text-muted: #5e697a;
+      --border-subtle: #e2e6eb;
+      --border-dark: #cbd3dc;
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ruler-color: rgba(5, 47, 85, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-white);
+      color: var(--text-black);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.6;
+      background: var(--bg-white);
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--brand-blue);
+      color: #ffffff;
+    }
+
+    /* Creative Software Canvas / Ruler Details */
+    .software-header-bar {
+      background: #08111a;
+      color: #8fa0b5;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #162436;
+      font-family: var(--font-display);
+      z-index: 101;
+      position: relative;
+    }
+    .software-header-bar span.live-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      margin-right: 6px;
+      animation: pulseDot 2s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Custom Brush Cursor */
+    .cursor-brush {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), height 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.04s linear;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cursor-brush-circle {
+      width: 24px;
+      height: 24px;
+      border: 1.5px solid var(--brand-blue);
+      border-radius: 50%;
+      background: rgba(5, 47, 85, 0.04);
+      position: absolute;
+      transition: all 0.2s ease;
+    }
+    .cursor-brush-point {
+      width: 4px;
+      height: 4px;
+      background: var(--brand-blue);
+      border-radius: 50%;
+      position: absolute;
+    }
+    .cursor-brush.hovered .cursor-brush-circle {
+      width: 44px;
+      height: 44px;
+      background: rgba(5, 47, 85, 0.12);
+      border-color: var(--brand-blue);
+      border-width: 2px;
+    }
+    .cursor-brush.clicking .cursor-brush-circle {
+      transform: scale(0.8);
+      background: rgba(5, 47, 85, 0.25);
+    }
+    @media (hover: none) or (pointer: coarse) {
+      .cursor-brush { display: none !important; }
+    }
+
+    /* Header & Navigation */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 3px;
+      display: block;
+    }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-logo-brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: -0.02em;
+      color: var(--brand-blue);
+      line-height: 1.1;
+    }
+    .nav-logo-tagline {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-link {
+      color: var(--text-charcoal);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      padding: 6px 4px;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--brand-blue);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--brand-blue);
+      transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background-color: var(--brand-blue);
+      color: #ffffff;
+      border-color: var(--brand-blue);
+    }
+    .btn-primary:hover {
+      background-color: var(--brand-blue-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(5, 47, 85, 0.22);
+    }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--brand-blue);
+      border-color: var(--brand-blue);
+    }
+    .btn-secondary:hover {
+      background-color: var(--brand-blue-subtle);
+      transform: translateY(-1px);
+    }
+    .btn-donate {
+      background-color: #ffffff;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+      box-shadow: 0 1px 3px rgba(185, 28, 28, 0.08);
+    }
+    .btn-donate:hover {
+      background-color: #fef2f2;
+      border-color: #f87171;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile Hamburger */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--text-black);
+    }
+
+    /* View Container (Client-Side Routing) */
+    .view-page {
+      display: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: calc(100vh - 120px);
+    }
+    .view-page.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+    }
+
+    /* Common Typography & Editorial Layout */
+    .section-wrapper {
+      padding: 96px 24px;
+      position: relative;
+    }
+    .section-wrapper.bg-offwhite {
+      background-color: var(--bg-offwhite);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .section-wrapper.bg-navy {
+      background-color: var(--brand-blue);
+      color: #ffffff;
+    }
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .container-narrow {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .eyebrow-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-display);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand-blue);
+      margin-bottom: 16px;
+    }
+    .section-wrapper.bg-navy .eyebrow-tag {
+      color: #93c5fd;
+    }
+    .eyebrow-tag::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 2px;
+      background: currentColor;
+    }
+    .display-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.06;
+      color: var(--text-black);
+      margin-bottom: 24px;
+    }
+    .display-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4.2vw, 46px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--text-black);
+      margin-bottom: 20px;
+    }
+    .display-h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .section-wrapper.bg-navy .display-h1,
+    .section-wrapper.bg-navy .display-h2,
+    .section-wrapper.bg-navy .display-h3 {
+      color: #ffffff;
+    }
+    .lead-text {
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 36px;
+    }
+    .section-wrapper.bg-navy .lead-text {
+      color: #cbd5e1;
+    }
+
+    /* Creative Software Frame Styling */
+    .artboard-canvas {
+      background: #ffffff;
+      border: 1px solid var(--border-dark);
+      box-shadow: 0 12px 40px rgba(5, 47, 85, 0.07);
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .artboard-topbar {
+      height: 32px;
+      background: #f1f4f8;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .artboard-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .artboard-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 64px 24px 80px;
+      background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+      position: relative;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand-blue-subtle);
+      border: 1px solid rgba(5, 47, 85, 0.14);
+      padding: 6px 14px;
+      border-radius: 3px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--brand-blue);
+      margin-bottom: 24px;
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    /* Interactive Creative Workspace Hero Canvas */
+    .workspace-preview {
+      position: relative;
+      background: #09121c;
+      border: 1px solid #1a2c3f;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(5, 47, 85, 0.18);
+    }
+    .workspace-topbar {
+      background: #0e1b29;
+      border-bottom: 1px solid #1f344d;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94a3b8;
+      font-family: var(--font-display);
+      font-size: 11px;
+    }
+    .workspace-canvas-area {
+      padding: 24px;
+      background: radial-gradient(#1e293b 1px, transparent 1px);
+      background-size: 16px 16px;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .workspace-artboard {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      border-radius: 3px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+    .workspace-artboard img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    .workspace-artboard-caption {
+      padding: 16px;
+      background: #ffffff;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .workspace-tools-panel {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(14, 27, 41, 0.94);
+      border: 1px solid #233954;
+      border-radius: 5px;
+      padding: 8px 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 10;
+    }
+    .tool-icon-btn {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tool-icon-btn:hover, .tool-icon-btn.active {
+      background: var(--brand-blue);
+      color: #ffffff;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .service-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 32px 28px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .service-card:hover {
+      border-color: var(--brand-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(5, 47, 85, 0.08);
+    }
+    .service-index {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--brand-blue);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .service-icon-box {
+      width: 44px;
+      height: 44px;
+      background: var(--brand-blue-subtle);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-blue);
+      margin-bottom: 20px;
+    }
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .service-link {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand-blue);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s ease;
+    }
+    .service-link:hover {
+      gap: 10px;
+    }
+
+    /* Portfolio Editorial Masonry Grid */
+    .portfolio-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+      padding: 6px;
+      background: var(--bg-offwhite);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      width: fit-content;
+    }
+    .filter-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 16px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text-charcoal);
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.18s ease;
+    }
+    .filter-btn:hover {
+      color: var(--brand-blue);
+    }
+    .filter-btn.active {
+      background: var(--brand-blue);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(5, 47, 85, 0.18);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 28px;
+    }
+    .portfolio-item {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .portfolio-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(5, 47, 85, 0.12);
+      border-color: var(--brand-blue);
+    }
+    .portfolio-item.col-6 { grid-column: span 6; }
+    .portfolio-item.col-4 { grid-column: span 4; }
+    .portfolio-item.col-12 { grid-column: span 12; }
+    .portfolio-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      background: #0d1a29;
+    }
+    .portfolio-item.col-6 .portfolio-img-wrapper {
+      aspect-ratio: 16/11;
+    }
+    .portfolio-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .portfolio-item:hover .portfolio-img {
+      transform: scale(1.04);
+    }
+    .portfolio-meta {
+      padding: 22px 24px;
+      background: #ffffff;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .portfolio-category-tag {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-blue);
+      margin-bottom: 6px;
+    }
+    .portfolio-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .portfolio-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Pricing Section */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .pricing-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 36px 28px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+    .pricing-card:hover {
+      border-color: var(--brand-blue);
+      box-shadow: 0 12px 32px rgba(5, 47, 85, 0.07);
+    }
+    .pricing-card.featured {
+      border: 2px solid var(--brand-blue);
+      background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--brand-blue);
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 3px;
+    }
+    .pricing-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 12px;
+    }
+    .pricing-price {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--brand-blue);
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+    .pricing-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      min-height: 38px;
+    }
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-feature-item {
+      font-size: 13.5px;
+      color: var(--text-charcoal);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .pricing-feature-item svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--brand-blue);
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+    .team-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .team-card:hover {
+      border-color: var(--brand-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(5, 47, 85, 0.08);
+    }
+    .team-img-wrapper {
+      position: relative;
+      aspect-ratio: 4/5;
+      background: #0e1c2b;
+      overflow: hidden;
+    }
+    .team-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .team-info {
+      padding: 20px;
+    }
+    .team-role {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--brand-blue);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .team-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin-bottom: 8px;
+    }
+    .team-bio {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Insights / Blog Cards */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .insight-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .insight-card:hover {
+      border-color: var(--brand-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(5, 47, 85, 0.08);
+    }
+    .insight-img-wrapper {
+      aspect-ratio: 16/9;
+      background: #0f1c2b;
+      overflow: hidden;
+    }
+    .insight-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .insight-card:hover .insight-img {
+      transform: scale(1.03);
+    }
+    .insight-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .insight-tag {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--brand-blue);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .insight-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--text-black);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .insight-excerpt {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .insight-action {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--brand-blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Forms */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-charcoal);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      color: var(--text-black);
+      background: #ffffff;
+      border: 1px solid var(--border-dark);
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--brand-blue);
+      box-shadow: 0 0 0 3px rgba(5, 47, 85, 0.12);
+    }
+    .form-textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    /* Modal dialogs (Articles / Projects) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 17, 26, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-card {
+      background: #ffffff;
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+      position: relative;
+      padding: 40px;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #f1f5f9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-black);
+    }
+
+    /* Global Footer */
+    .site-footer {
+      background: #05192c;
+      color: #94a3b8;
+      border-top: 1px solid #112a45;
+      padding: 80px 24px 32px;
+      font-size: 14px;
+    }
+    .footer-grid {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+    .footer-brand-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .footer-brand-tagline {
+      font-size: 15px;
+      color: #cbd5e1;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-link {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-link:hover {
+      color: #ffffff;
+    }
+    .footer-social-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 4px;
+      background: #0a243e;
+      border: 1px solid #1c3c5d;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .social-btn:hover {
+      background: var(--brand-blue);
+      border-color: #60a5fa;
+      transform: translateY(-2px);
+    }
+    .footer-bottom {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid #0e2741;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12.5px;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 47, 85, 0.4);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: none;
+    }
+    .mobile-drawer-content {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 85%;
+      max-width: 360px;
+      height: 100%;
+      background: #ffffff;
+      z-index: 2001;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-drawer-overlay.open {
+      display: block;
+    }
+    .mobile-drawer-overlay.open .mobile-drawer-content {
+      transform: translateX(0);
+    }
+
+    /* Accessibility - Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .cursor-brush { display: none !important; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-item.col-6, .portfolio-item.col-4 { grid-column: span 12; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .software-header-bar { font-size: 9.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Precision Software Indicator -->
+  <div class="software-header-bar" id="softwareHeader">
+    <div style="display: flex; align-items: center;">
+      <span class="live-dot"></span>
+      <span>STUDIO STATUS: ACTIVE // LUSAKA, ZAMBIA</span>
+    </div>
+    <div style="display: flex; gap: 16px; font-variant-numeric: tabular-nums;">
+      <span id="canvasCoords">X: 1920 Y: 1080</span>
+      <span>CMYK 300DPI</span>
+      <span style="color: #60a5fa;">PROJECTS: BOOKING OPEN</span>
+    </div>
+  </div>
+
+  <!-- Custom Creative Brush Cursor -->
+  <div class="cursor-brush" id="cursorBrush">
+    <div class="cursor-brush-circle"></div>
+    <div class="cursor-brush-point"></div>
+  </div>
+
+  <!-- Global Sticky Navigation -->
+  <header class="site-nav">
+    <div class="nav-container">
+      <a href="#/" class="nav-logo-group" onclick="navigateTo('/'); return false;">
+        <img src="src/logo/logo.png" alt="Vigorish Media Logo" class="nav-logo-img" onerror="this.onerror=null; this.src='src/images/hero-placeholder.jpg';" />
+        <div class="nav-logo-text">
+          <span class="nav-logo-brand">VIGORISH MEDIA</span>
+          <span class="nav-logo-tagline">Building Brands That Add Value</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#/" class="nav-link" data-route="/" onclick="navigateTo('/'); return false;">Home</a></li>
+        <li><a href="#/about" class="nav-link" data-route="/about" onclick="navigateTo('/about'); return false;">About</a></li>
+        <li><a href="#/services" class="nav-link" data-route="/services" onclick="navigateTo('/services'); return false;">Services</a></li>
+        <li><a href="#/portfolio" class="nav-link" data-route="/portfolio" onclick="navigateTo('/portfolio'); return false;">Work</a></li>
+        <li><a href="#/case-studies" class="nav-link" data-route="/case-studies" onclick="navigateTo('/case-studies'); return false;">Case Studies</a></li>
+        <li><a href="#/pricing" class="nav-link" data-route="/pricing" onclick="navigateTo('/pricing'); return false;">Pricing</a></li>
+        <li><a href="#/team" class="nav-link" data-route="/team" onclick="navigateTo('/team'); return false;">Team</a></li>
+        <li><a href="#/insights" class="nav-link" data-route="/insights" onclick="navigateTo('/insights'); return false;">Insights</a></li>
+        <li><a href="#/contact" class="nav-link" data-route="/contact" onclick="navigateTo('/contact'); return false;">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#/donate" class="btn btn-donate" onclick="navigateTo('/donate'); return false;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          DONATE
+        </a>
+        <a href="#/contact" class="btn btn-primary" onclick="navigateTo('/contact'); return false;">START A PROJECT</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-drawer-overlay" id="mobileDrawer">
+    <div class="mobile-drawer-content">
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px;">
+          <div class="nav-logo-group">
+            <span class="nav-logo-brand">VIGORISH</span>
+          </div>
+          <button id="closeMobileDrawer" style="background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
+        </div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px;">
+          <li><a href="#/" class="nav-link" onclick="closeMobileMenu(); navigateTo('/'); return false;" style="font-size: 16px;">Home</a></li>
+          <li><a href="#/about" class="nav-link" onclick="closeMobileMenu(); navigateTo('/about'); return false;" style="font-size: 16px;">About</a></li>
+          <li><a href="#/services" class="nav-link" onclick="closeMobileMenu(); navigateTo('/services'); return false;" style="font-size: 16px;">Services</a></li>
+          <li><a href="#/portfolio" class="nav-link" onclick="closeMobileMenu(); navigateTo('/portfolio'); return false;" style="font-size: 16px;">Work</a></li>
+          <li><a href="#/case-studies" class="nav-link" onclick="closeMobileMenu(); navigateTo('/case-studies'); return false;" style="font-size: 16px;">Case Studies</a></li>
+          <li><a href="#/pricing" class="nav-link" onclick="closeMobileMenu(); navigateTo('/pricing'); return false;" style="font-size: 16px;">Pricing</a></li>
+          <li><a href="#/team" class="nav-link" onclick="closeMobileMenu(); navigateTo('/team'); return false;" style="font-size: 16px;">Team</a></li>
+          <li><a href="#/insights" class="nav-link" onclick="closeMobileMenu(); navigateTo('/insights'); return false;" style="font-size: 16px;">Insights</a></li>
+          <li><a href="#/contact" class="nav-link" onclick="closeMobileMenu(); navigateTo('/contact'); return false;" style="font-size: 16px;">Contact</a></li>
+        </ul>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+        <a href="#/donate" class="btn btn-donate" onclick="closeMobileMenu(); navigateTo('/donate'); return false;" style="width: 100%;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          DONATE
+        </a>
+        <a href="#/contact" class="btn btn-primary" onclick="closeMobileMenu(); navigateTo('/contact'); return false;" style="width: 100%;">START A PROJECT</a>
+        <div style="font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 8px;">
+          +260 97 989 4567 • mediavigorish@gmail.com
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Detail Modal -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeProjectModal">&times;</button>
+      <div id="projectModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Article Reader Modal -->
+  <div class="modal-overlay" id="articleModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeArticleModal">&times;</button>
+      <div id="articleModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Main Views Container -->
+  <main id="appContent">
+    <!-- PAGE VIEWS INSERTED HERE -->
+    <section id="view-home" class="view-page active">
+      <!-- HERO -->
+      <div class="hero-section">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-badge">
+              <span>CREATIVE MEDIA / DIGITAL MARKETING / BRANDING</span>
+            </div>
+            <h1 class="display-h1">
+              BUILDING BRANDS THAT ADD VALUE.
+            </h1>
+            <p class="lead-text">
+              Creative media, branding and digital marketing solutions designed to help businesses stand out, connect with customers and grow.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#/contact" class="btn btn-primary" onclick="navigateTo('/contact'); return false;">START A PROJECT</a>
+              <a href="#/portfolio" class="btn btn-secondary" onclick="navigateTo('/portfolio'); return false;">VIEW OUR WORK</a>
+            </div>
+            
+            <div style="margin-top: 48px; display: flex; gap: 32px; border-top: 1px solid var(--border-subtle); padding-top: 24px; font-family: var(--font-display);">
+              <div>
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;">LOCATION</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--text-black);">Lusaka, Zambia</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;">DISCIPLINES</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--text-black);">Media • Strategy • Web</div>
+              </div>
+              <div>
+                <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase;">IMPACT</div>
+                <div style="font-size: 14px; font-weight: 600; color: var(--brand-blue);">Tuli Bantu Baluse</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Creative Workspace Hero Mockup -->
+          <div>
+            <div class="workspace-preview">
+              <div class="workspace-topbar">
+                <span>ARTBOARD_01 [RGB/8] • 1920x1080 @ 100%</span>
+                <span style="color: #60a5fa;">● SELECTION TOOL</span>
+              </div>
+              <div class="workspace-canvas-area">
+                <div class="workspace-tools-panel">
+                  <div class="tool-icon-btn active" title="Move Tool">V</div>
+                  <div class="tool-icon-btn" title="Artboard Tool">A</div>
+                  <div class="tool-icon-btn" title="Brush Tool">B</div>
+                  <div class="tool-icon-btn" title="Pen Tool">P</div>
+                  <div class="tool-icon-btn" title="Type Tool">T</div>
+                  <div class="tool-icon-btn" title="Frame Tool">F</div>
+                </div>
+                <div class="workspace-artboard">
+                  <!-- Replaceable Hero Image Asset -->
+                  <img src="src/images/hero-placeholder.jpg" alt="Vigorish Media Creative Showcase" onerror="this.onerror=null; this.src='src/logo/logo.png';" />
+                  <div class="workspace-artboard-caption">
+                    <div style="font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: var(--brand-blue); text-transform: uppercase;">
+                      CASE STUDY PREVIEW // 2026
+                    </div>
+                    <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text-black); margin-top: 4px;">
+                      MAKE YOUR BRAND IMPOSSIBLE TO IGNORE.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. INTRODUCTION -->
+      <div class="section-wrapper">
+        <div class="container">
+          <div class="container-narrow">
+            <div class="eyebrow-tag">INTRODUCTION</div>
+            <h2 class="display-h2">
+              YOUR VISION. OUR CREATIVITY. YOUR BRAND, ELEVATED.
+            </h2>
+            <p style="font-size: 18px; line-height: 1.7; color: var(--text-charcoal); margin-bottom: 24px;">
+              Great design doesn’t just make your business look good — it builds credibility, captures attention, tells your story, and makes your brand memorable.
+            </p>
+            <p style="font-size: 16px; line-height: 1.7; color: var(--text-muted); margin-bottom: 32px;">
+              At Vigorish Media, we turn ideas into powerful visuals and strategic marketing solutions that help businesses stand out. We bring discipline, cinematic vision, and relentless polish to every project we undertake.
+            </p>
+            <a href="#/about" class="btn btn-secondary" onclick="navigateTo('/about'); return false;">READ OUR STORY &amp; PHILOSOPHY</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. SERVICES PREVIEW -->
+      <div class="section-wrapper bg-offwhite">
+        <div class="container">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: gap; gap: 20px;">
+            <div>
+              <div class="eyebrow-tag">WHAT WE DO</div>
+              <h2 class="display-h2" style="margin-bottom: 8px;">STRATEGIC CREATIVE SERVICES</h2>
+              <p style="color: var(--text-muted); font-size: 16px;">End-to-end media and digital marketing solutions crafted for ambitious brands.</p>
+            </div>
+            <a href="#/services" class="btn btn-secondary" onclick="navigateTo('/services'); return false;">EXPLORE ALL SERVICES</a>
+          </div>
+
+          <div class="services-grid">
+            <!-- 1. Social Media Management -->
+            <div class="service-card">
+              <div>
+                <div class="service-index"><span>SERVICE 01</span><span>SMM</span></div>
+                <div class="service-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </div>
+                <h3 class="display-h3">Social Media Management</h3>
+                <p>Professional content, posting consistency, captions, and active community growth for Facebook and Instagram.</p>
+              </div>
+              <a href="#/services" class="service-link" onclick="navigateTo('/services'); return false;">Learn more &rarr;</a>
+            </div>
+
+            <!-- 2. Digital Marketing -->
+            <div class="service-card">
+              <div>
+                <div class="service-index"><span>SERVICE 02</span><span>MKT</span></div>
+                <div class="service-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+                </div>
+                <h3 class="display-h3">Digital Marketing</h3>
+                <p>Results-driven multi-channel digital campaigns, audience segmentation, conversion funnels, and performance marketing.</p>
+              </div>
+              <a href="#/services" class="service-link" onclick="navigateTo('/services'); return false;">Learn more &rarr;</a>
+            </div>
+
+            <!-- 3. Branding & Corporate Identity -->
+            <div class="service-card">
+              <div>
+                <div class="service-index"><span>SERVICE 03</span><span>IDN</span></div>
+                <div class="service-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                </div>
+                <h3 class="display-h3">Branding &amp; Corporate Identity</h3>
+                <p>Distinctive logo suites, brand guideline books, visual systems, and cohesive stationery that commands authority.</p>
+              </div>
+              <a href="#/services" class="service-link" onclick="navigateTo('/services'); return false;">Learn more &rarr;</a>
+            </div>
+
+            <!-- 4. Graphic Design -->
+            <div class="service-card">
+              <div>
+                <div class="service-index"><span>SERVICE 04</span><span>DSG</span></div>
+                <div class="service-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                </div>
+                <h3 class="display-h3">Graphic Design &amp; Print</h3>
+                <p>Brochures, posters, packaging, A4 tri-fold presentation collateral, and print-ready production artwork.</p>
+              </div>
+              <a href="#/services" class="service-link" onclick="navigateTo('/services'); return false;">Learn more &rarr;</a>
+            </div>
+
+            <!-- 5. Videography & Photography -->
+            <div class="service-card">
+              <div>
+                <div class="service-index"><span>SERVICE 05</span><span>VID</span></div>
+                <div class="service-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>
+                </div>
+                <h3 class="display-h3">Videography &amp; Photography</h3>
+                <p>Cinematic corporate videos, short-form Reels, high-impact product photography, commercial shoots, and motion graphics.</p>
+              </div>
+              <a href="#/services" class="service-link" onclick="navigateTo('/services'); return false;">Learn more &rarr;</a>
+            </div>
+
+            <!-- 6. Website Design & Management -->
+            <div class="service-card">
+              <div>
+                <div class="service-index"><span>SERVICE 06</span><span>WEB</span></div>
+                <div class="service-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+                </div>
+                <h3 class="display-h3">Website Design &amp; Management</h3>
+                <p>High-conversion responsive websites, cloud hosting, 1-year free domain, maintenance, and seamless e-commerce.</p>
+              </div>
+              <a href="#/services" class="service-link" onclick="navigateTo('/services'); return false;">Learn more &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. FEATURED WORK PREVIEW -->
+      <div class="section-wrapper">
+        <div class="container">
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px;">
+            <div>
+              <div class="eyebrow-tag">CURATED PORTFOLIO</div>
+              <h2 class="display-h2" style="margin-bottom: 8px;">SELECTED WORK</h2>
+              <p style="color: var(--text-muted); font-size: 16px;">Every project is designed to build credibility and add lasting value.</p>
+            </div>
+            <a href="#/portfolio" class="btn btn-secondary" onclick="navigateTo('/portfolio'); return false;">VIEW FULL ARCHIVE</a>
+          </div>
+
+          <div class="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="portfolio-item col-6" onclick="openProjectModal('brand-refresh')">
+              <div class="portfolio-img-wrapper">
+                <!-- Replaceable image: src/images/portfolio-branding.jpg -->
+                <img src="src/images/portfolio-branding.jpg" alt="Brand Identity Refresh" class="portfolio-img" onerror="this.onerror=null; this.src='src/images/portfolio-01.jpg';" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">BRAND IDENTITY // 2026</div>
+                <div class="portfolio-title">Brand Identity &amp; Corporate Re-imagining</div>
+                <div class="portfolio-desc">Complete brand system, typography hierarchy, and corporate stationery design.</div>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="portfolio-item col-6" onclick="openProjectModal('social-growth')">
+              <div class="portfolio-img-wrapper">
+                <!-- Replaceable image: src/images/portfolio-social-media.jpg -->
+                <img src="src/images/portfolio-social-media.jpg" alt="Social Media Growth" class="portfolio-img" onerror="this.onerror=null; this.src='src/images/portfolio-02.jpg';" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">SOCIAL MEDIA // 2026</div>
+                <div class="portfolio-title">Social Media Strategic Campaign</div>
+                <div class="portfolio-desc">Multi-week narrative campaign with bespoke graphic design, reels, and paid boosting.</div>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="portfolio-item col-4" onclick="openProjectModal('product-launch')">
+              <div class="portfolio-img-wrapper">
+                <!-- Replaceable image: src/images/portfolio-03.jpg -->
+                <img src="src/images/portfolio-03.jpg" alt="Product Launch" class="portfolio-img" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">DIGITAL MARKETING // 2026</div>
+                <div class="portfolio-title">Product Launch Campaign</div>
+                <div class="portfolio-desc">Conversion-focused targeted ads across Facebook and Instagram.</div>
+              </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="portfolio-item col-4" onclick="openProjectModal('video-production')">
+              <div class="portfolio-img-wrapper">
+                <!-- Replaceable image: src/images/portfolio-video.jpg -->
+                <img src="src/images/portfolio-video.jpg" alt="Video Production" class="portfolio-img" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">VIDEOGRAPHY // 2026</div>
+                <div class="portfolio-title">Commercial Brand Video Production</div>
+                <div class="portfolio-desc">Cinematic 4K brand documentary showcasing corporate services.</div>
+              </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="portfolio-item col-4" onclick="openProjectModal('web-experience')">
+              <div class="portfolio-img-wrapper">
+                <!-- Replaceable image: src/images/portfolio-web.jpg -->
+                <img src="src/images/portfolio-web.jpg" alt="Website Design" class="portfolio-img" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">WEBSITE DESIGN // 2026</div>
+                <div class="portfolio-title">Modern Corporate Web Experience</div>
+                <div class="portfolio-desc">High performance responsive digital portal with integrated enquiries.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. WHY VIGORISH MEDIA -->
+      <div class="section-wrapper bg-offwhite">
+        <div class="container">
+          <div class="eyebrow-tag">THE VIGORISH DIFFERENCE</div>
+          <h2 class="display-h2" style="max-width: 800px; margin-bottom: 48px;">
+            WHY LEADING BUSINESSES TRUST VIGORISH MEDIA
+          </h2>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px;">
+            <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--brand-blue); margin-bottom: 8px;">✓ Creative Thinking</div>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Original concepts that break through monotonous advertising clutter and make your message stick.</p>
+            </div>
+
+            <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--brand-blue); margin-bottom: 8px;">✓ Professional Execution</div>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">High-standard typography, cinematic color grading, and meticulous attention to detail.</p>
+            </div>
+
+            <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--brand-blue); margin-bottom: 8px;">✓ Strategic Marketing</div>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Design that does not simply decorate, but drives commercial credibility and customer conversion.</p>
+            </div>
+
+            <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--brand-blue); margin-bottom: 8px;">✓ Results-Focused Campaigns</div>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Built to generate real enquiries, qualified leads, and measurable community engagement.</p>
+            </div>
+
+            <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--brand-blue); margin-bottom: 8px;">✓ Brand Consistency</div>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Unified appearance across Facebook, Instagram, YouTube, brochures, and your website.</p>
+            </div>
+
+            <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--brand-blue); margin-bottom: 8px;">✓ Affordable Solutions &amp; Personalised Care</div>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">Transparent Zambian Kwacha (ZMW) pricing packages with direct, responsive client partnership.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. CALL TO ACTION -->
+      <div class="section-wrapper bg-navy">
+        <div class="container" style="text-align: center;">
+          <div class="eyebrow-tag" style="justify-content: center;">READY TO STAND OUT?</div>
+          <h2 class="display-h1" style="max-width: 900px; margin: 0 auto 24px;">
+            MAKE YOUR BRAND IMPOSSIBLE TO IGNORE.
+          </h2>
+          <p class="lead-text" style="margin: 0 auto 36px;">
+            Whether you need consistent monthly social media management, a striking corporate brand identity, or a modern business website, we are ready to build it with you.
+          </p>
+          <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <a href="#/contact" class="btn" style="background: #ffffff; color: var(--brand-blue); font-weight: 700;" onclick="navigateTo('/contact'); return false;">
+              START A PROJECT
+            </a>
+            <a href="https://wa.me/260979894567" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="border-color: #ffffff; color: #ffffff;">
+              CHAT ON WHATSAPP (+260 979 894 567)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ABOUT PAGE -->
+    <section id="view-about" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div class="eyebrow-tag">ABOUT VIGORISH MEDIA</div>
+          <h1 class="display-h1" style="max-width: 960px;">
+            WE BUILD BRANDS THAT ADD VALUE.
+          </h1>
+          <p class="lead-text">
+            Vigorish Media is a Zambian creative media and digital marketing company helping ambitious businesses elevate their visibility, refine their communication, and dominate their digital spaces.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; margin: 56px 0;">
+            <div>
+              <div style="font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--brand-blue); margin-bottom: 20px;">
+                OUR STORY
+              </div>
+              <p style="font-size: 16px; line-height: 1.7; color: var(--text-charcoal); margin-bottom: 20px;">
+                Founded with a conviction that African businesses deserve world-class creative representation, Vigorish Media was established in Lusaka to bridge the gap between creative visual expression and strategic business growth.
+              </p>
+              <p style="font-size: 16px; line-height: 1.7; color: var(--text-muted); margin-bottom: 20px;">
+                Too many brands either look visually appealing without driving revenue, or execute marketing campaigns without creative soul. We combine the precision of digital marketing with the timeless craft of graphic design, video production, and editorial storytelling.
+              </p>
+              <div style="padding: 24px; background: var(--brand-blue-subtle); border-left: 3px solid var(--brand-blue); border-radius: 2px;">
+                <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--brand-blue); margin-bottom: 6px;">
+                  OUR PHILOSOPHY
+                </div>
+                <div style="font-size: 15.5px; font-style: italic; color: var(--text-charcoal); line-height: 1.6;">
+                  "Creative work should look good, communicate clearly, and serve a purpose."
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="artboard-canvas">
+                <div class="artboard-topbar">
+                  <div class="artboard-dots">
+                    <span class="artboard-dot"></span>
+                    <span class="artboard-dot"></span>
+                    <span class="artboard-dot"></span>
+                  </div>
+                  <span>EDITORIAL_PLATE_01 // LUSAKA</span>
+                </div>
+                <img src="src/images/case-study-01.jpg" alt="Vigorish Media Editorial" style="width: 100%; height: 320px; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='src/images/hero-placeholder.jpg';" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Approach & What We Believe -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; margin-top: 64px;">
+            <div style="padding: 32px; background: var(--bg-offwhite); border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--brand-blue); text-transform: uppercase; margin-bottom: 12px;">PILLAR 01</div>
+              <h3 class="display-h3">Our Approach</h3>
+              <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.65;">
+                We listen first, diagnose your brand position, and build custom creative assets rooted in your business objectives. No cookie-cutter templates, no generic stock regurgitations.
+              </p>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-offwhite); border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--brand-blue); text-transform: uppercase; margin-bottom: 12px;">PILLAR 02</div>
+              <h3 class="display-h3">What We Believe</h3>
+              <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.65;">
+                We believe brand consistency builds enterprise value. When your packaging, social media, videography, and website speak one cohesive aesthetic language, customer trust multiplies.
+              </p>
+            </div>
+
+            <div style="padding: 32px; background: var(--bg-offwhite); border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--brand-blue); text-transform: uppercase; margin-bottom: 12px;">PILLAR 03</div>
+              <h3 class="display-h3">Why Clients Work With Us</h3>
+              <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.65;">
+                Direct partner access, transparent Kwacha pricing, prompt delivery schedules, and creative work that genuinely moves the needle for customer acquisition.
+              </p>
+            </div>
+          </div>
+
+          <!-- Community Impact Callout -->
+          <div style="margin-top: 64px; padding: 40px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+            <div style="max-width: 650px;">
+              <div style="font-family: var(--font-display); font-size: 11px; font-weight: 700; color: #b91c1c; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">
+                COMMUNITY COMMITMENT // TULI BANTU BALUSE
+              </div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-black); margin-bottom: 8px;">
+                Creativity in Service of Human Kindness
+              </div>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+                At Vigorish Media, adding value extends into our community. We proudly champion Tuli Bantu Baluse, dedicated to supporting vulnerable children across Lusaka.
+              </p>
+            </div>
+            <a href="#/donate" class="btn btn-donate" onclick="navigateTo('/donate'); return false;">LEARN ABOUT THE INITIATIVE</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES PAGE -->
+    <section id="view-services" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div class="eyebrow-tag">FULL CAPABILITIES</div>
+          <h1 class="display-h1">OUR SERVICES</h1>
+          <p class="lead-text">
+            Comprehensive creative media, branding, video, and web solutions structured to help your business look the part and communicate with purpose.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 48px; margin-top: 48px;">
+            <!-- Service 1: Social Media Management -->
+            <div style="padding: 40px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                <div>
+                  <div class="service-index"><span>01 // SMM</span><span>FACEBOOK &amp; INSTAGRAM</span></div>
+                  <h2 class="display-h2" style="font-size: 28px;">SOCIAL MEDIA MANAGEMENT</h2>
+                  <p style="font-size: 15.5px; color: var(--text-charcoal); line-height: 1.65; margin-bottom: 20px;">
+                    We help businesses improve their Facebook &amp; Instagram presence by creating professional content and consistently managing their social channels.
+                  </p>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; color: var(--text-charcoal); margin-bottom: 28px;">
+                    <div>✓ Post designs &amp; captions</div>
+                    <div>✓ Social media strategy</div>
+                    <div>✓ Consistent posting</div>
+                    <div>✓ Community building</div>
+                    <div>✓ Facebook &amp; IG boosting</div>
+                    <div>✓ Photo editing &amp; Reels</div>
+                    <div>✓ Product showcases</div>
+                    <div>✓ Location showcases</div>
+                  </div>
+                  <a href="#/pricing" class="btn btn-primary" onclick="navigateTo('/pricing'); return false;">VIEW MONTHLY PACKAGES</a>
+                </div>
+                <div>
+                  <img src="src/images/portfolio-social-media.jpg" alt="Social Media Management" style="width: 100%; height: 320px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 2: Digital Marketing -->
+            <div style="padding: 40px; background: var(--bg-offwhite); border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                <div style="order: 2;">
+                  <div class="service-index"><span>02 // DIGITAL MARKETING</span><span>GROWTH &amp; PERFORMANCE</span></div>
+                  <h2 class="display-h2" style="font-size: 28px;">DIGITAL MARKETING</h2>
+                  <p style="font-size: 15.5px; color: var(--text-charcoal); line-height: 1.65; margin-bottom: 20px;">
+                    We help businesses grow through creative, professional and results-driven digital marketing.
+                  </p>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; color: var(--text-charcoal); margin-bottom: 28px;">
+                    <div>✓ SMM Strategy</div>
+                    <div>✓ Community Engagement</div>
+                    <div>✓ Social Design &amp; Posting</div>
+                    <div>✓ Paid FB &amp; IG Ads</div>
+                    <div>✓ Website Management</div>
+                    <div>✓ Marketing Campaigns</div>
+                    <div>✓ Funnel Strategy</div>
+                    <div>✓ Audience Targeting</div>
+                  </div>
+                  <a href="#/pricing" class="btn btn-secondary" onclick="navigateTo('/pricing'); return false;">EXPLORE MARKETING TIERS</a>
+                </div>
+                <div style="order: 1;">
+                  <img src="src/images/portfolio-03.jpg" alt="Digital Marketing" style="width: 100%; height: 320px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 3: Branding & Graphic Design -->
+            <div style="padding: 40px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                <div>
+                  <div class="service-index"><span>03 // BRANDING &amp; GRAPHIC DESIGN</span><span>CORPORATE IDENTITY</span></div>
+                  <h2 class="display-h2" style="font-size: 28px;">BRANDING &amp; GRAPHIC DESIGN</h2>
+                  <div style="padding: 16px; background: var(--brand-blue-subtle); border-left: 3px solid var(--brand-blue); margin-bottom: 20px;">
+                    <div style="font-family: var(--font-display); font-weight: 700; color: var(--brand-blue); font-size: 14px;">MAKE YOUR BRAND IMPOSSIBLE TO IGNORE.</div>
+                    <div style="font-size: 13.5px; color: var(--text-charcoal); margin-top: 4px; line-height: 1.5;">
+                      Your brochure is more than just a piece of paper — it’s an opportunity to introduce your brand, showcase your services, build credibility, and leave a lasting impression.
+                    </div>
+                  </div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; color: var(--text-charcoal); margin-bottom: 28px;">
+                    <div>✓ Brand &amp; Corporate Identity</div>
+                    <div>✓ Logo suite design</div>
+                    <div>✓ A4 Tri-Fold Brochure Design</div>
+                    <div>✓ Double-Sided Layouts</div>
+                    <div>✓ Custom Branded Flyers</div>
+                    <div>✓ Print-Ready Artwork</div>
+                    <div>✓ Marketing Collateral</div>
+                    <div>✓ Digital &amp; Web Graphics</div>
+                  </div>
+                  <a href="#/contact" class="btn btn-primary" onclick="navigateTo('/contact'); return false;">REQUEST DESIGN BRIEF</a>
+                </div>
+                <div>
+                  <img src="src/images/portfolio-branding.jpg" alt="Branding and Graphic Design" style="width: 100%; height: 320px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 4: Videography & Photography -->
+            <div style="padding: 40px; background: var(--bg-offwhite); border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                <div style="order: 2;">
+                  <div class="service-index"><span>04 // MEDIA PRODUCTION</span><span>CINEMATIC VISUALS</span></div>
+                  <h2 class="display-h2" style="font-size: 28px;">VIDEOGRAPHY &amp; PHOTOGRAPHY</h2>
+                  <p style="font-size: 15.5px; color: var(--text-charcoal); line-height: 1.65; margin-bottom: 20px;">
+                    High-definition video production and commercial photography that present your products, team, and corporate narrative with cinematic polish.
+                  </p>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; color: var(--text-charcoal); margin-bottom: 28px;">
+                    <div>✓ Promotional videos</div>
+                    <div>✓ Social media Reels</div>
+                    <div>✓ Product photography</div>
+                    <div>✓ Corporate headshots</div>
+                    <div>✓ Location showcases</div>
+                    <div>✓ Video editing &amp; color grade</div>
+                    <div>✓ Motion graphics</div>
+                    <div>✓ Commercial spots</div>
+                  </div>
+                  <a href="#/contact" class="btn btn-secondary" onclick="navigateTo('/contact'); return false;">BOOK A SHOOT</a>
+                </div>
+                <div style="order: 1;">
+                  <img src="src/images/portfolio-video.jpg" alt="Videography and Photography" style="width: 100%; height: 320px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 5: Website Design & Management -->
+            <div style="padding: 40px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                <div>
+                  <div class="service-index"><span>05 // WEB ENGINEERING</span><span>DIGITAL HUBS</span></div>
+                  <h2 class="display-h2" style="font-size: 28px;">WEBSITE DESIGN &amp; MANAGEMENT</h2>
+                  <p style="font-size: 15.5px; color: var(--text-charcoal); line-height: 1.65; margin-bottom: 20px;">
+                    Your website is often the first impression customers have of your business. Make it count. Whether you're a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract customers and grow online.
+                  </p>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px; color: var(--text-charcoal); margin-bottom: 28px;">
+                    <div>✓ Free Domain for 1 Year</div>
+                    <div>✓ Professional Design</div>
+                    <div>✓ Cloud Hosting</div>
+                    <div>✓ Integrated Marketing Tools</div>
+                    <div>✓ eCommerce &amp; Online Payments</div>
+                    <div>✓ Mobile-Optimised Layouts</div>
+                    <div>✓ Ongoing Maintenance</div>
+                    <div>✓ Scalable Architecture</div>
+                  </div>
+                  <a href="#/pricing" class="btn btn-primary" onclick="navigateTo('/pricing'); return false;">VIEW WEBSITE PACKAGES</a>
+                </div>
+                <div>
+                  <img src="src/images/portfolio-web.jpg" alt="Website Design and Management" style="width: 100%; height: 320px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Services: Advertising, Event Coverage, PR -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px;">
+              <div style="padding: 32px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+                <div class="service-index"><span>06 // ADS</span><span>MEDIA BUYING</span></div>
+                <h3 class="display-h3">Advertising &amp; Media Buying</h3>
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                  Facebook and Instagram advertising, custom audience targeting, promotional campaigns, monitoring, and creative optimization.
+                </p>
+                <div style="font-size: 13px; color: var(--text-charcoal); line-height: 1.8;">
+                  • Campaign setup &amp; testing<br/>• Budget efficiency &amp; scaling<br/>• Audience segmentation
+                </div>
+              </div>
+
+              <div style="padding: 32px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+                <div class="service-index"><span>07 // EVENTS</span><span>LIVE COVERAGE</span></div>
+                <h3 class="display-h3">Event Coverage &amp; Live Streaming</h3>
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                  High-profile event photography, corporate videography, event highlight reels, live streaming feeds, and real-time social coverage.
+                </p>
+                <div style="font-size: 13px; color: var(--text-charcoal); line-height: 1.8;">
+                  • Multi-camera setups<br/>• Social live streaming<br/>• Fast turnaround recap reels
+                </div>
+              </div>
+
+              <div style="padding: 32px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px;">
+                <div class="service-index"><span>08 // PR</span><span>STRATEGY</span></div>
+                <h3 class="display-h3">PR &amp; Marketing Strategy</h3>
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                  Brand communication, promotional rollout planning, press relations, audience engagement, and long-term marketing roadmaps.
+                </p>
+                <div style="font-size: 13px; color: var(--text-charcoal); line-height: 1.8;">
+                  • Communications blueprint<br/>• Media releases &amp; kits<br/>• Reputational alignment
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- PORTFOLIO / WORK PAGE -->
+    <section id="view-portfolio" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div class="eyebrow-tag">PORTFOLIO ARCHIVE</div>
+          <h1 class="display-h1">SELECTED WORK</h1>
+          <p class="lead-text">
+            Explore our featured client engagements across brand identity, social campaigns, corporate videos, and digital experiences. Click any project for full details.
+          </p>
+
+          <!-- Filter Pills -->
+          <div class="filter-pills" id="portfolioFilterBar">
+            <button class="filter-pill active" onclick="filterPortfolio('all', this)">ALL WORK</button>
+            <button class="filter-pill" onclick="filterPortfolio('branding', this)">BRANDING</button>
+            <button class="filter-pill" onclick="filterPortfolio('social', this)">SOCIAL MEDIA</button>
+            <button class="filter-pill" onclick="filterPortfolio('video', this)">VIDEOGRAPHY</button>
+            <button class="filter-pill" onclick="filterPortfolio('web', this)">WEB DESIGN</button>
+            <button class="filter-pill" onclick="filterPortfolio('campaigns', this)">MARKETING CAMPAIGNS</button>
+          </div>
+
+          <div class="portfolio-grid" id="portfolioGallery">
+            <!-- Item 1: Branding -->
+            <div class="portfolio-item col-6" data-category="branding" onclick="openProjectModal('brand-refresh')">
+              <div class="portfolio-img-wrapper">
+                <img src="src/images/portfolio-branding.jpg" alt="Brand Identity Refresh" class="portfolio-img" onerror="this.onerror=null; this.src='src/images/portfolio-01.jpg';" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">BRAND IDENTITY // 2026</div>
+                <div class="portfolio-title">Brand Identity &amp; Corporate Re-imagining</div>
+                <div class="portfolio-desc">Complete visual overhaul, mark system, color hierarchy, stationery, and corporate brand guidelines book.</div>
+              </div>
+            </div>
+
+            <!-- Item 2: Social Media -->
+            <div class="portfolio-item col-6" data-category="social" onclick="openProjectModal('social-growth')">
+              <div class="portfolio-img-wrapper">
+                <img src="src/images/portfolio-social-media.jpg" alt="Social Media Growth" class="portfolio-img" onerror="this.onerror=null; this.src='src/images/portfolio-02.jpg';" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">SOCIAL MEDIA // 2026</div>
+                <div class="portfolio-title">Social Media Strategic Campaign</div>
+                <div class="portfolio-desc">Multi-week narrative campaign with bespoke graphic design, reels, and paid boosting generating 140% reach growth.</div>
+              </div>
+            </div>
+
+            <!-- Item 3: Marketing Campaigns -->
+            <div class="portfolio-item col-4" data-category="campaigns" onclick="openProjectModal('product-launch')">
+              <div class="portfolio-img-wrapper">
+                <img src="src/images/portfolio-03.jpg" alt="Product Launch Campaign" class="portfolio-img" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">MARKETING CAMPAIGN // 2026</div>
+                <div class="portfolio-title">Commercial Product Launch Campaign</div>
+                <div class="portfolio-desc">Conversion-oriented paid advertising with audience targeting and creative split testing.</div>
+              </div>
+            </div>
+
+            <!-- Item 4: Videography -->
+            <div class="portfolio-item col-4" data-category="video" onclick="openProjectModal('video-production')">
+              <div class="portfolio-img-wrapper">
+                <img src="src/images/portfolio-video.jpg" alt="Commercial Video Production" class="portfolio-img" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">VIDEOGRAPHY // 2026</div>
+                <div class="portfolio-title">Commercial Brand Video Production</div>
+                <div class="portfolio-desc">Cinematic 4K corporate video production and micro-reels highlighting service excellence.</div>
+              </div>
+            </div>
+
+            <!-- Item 5: Web Design -->
+            <div class="portfolio-item col-4" data-category="web" onclick="openProjectModal('web-experience')">
+              <div class="portfolio-img-wrapper">
+                <img src="src/images/portfolio-web.jpg" alt="Modern Corporate Web Experience" class="portfolio-img" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">WEBSITE DESIGN // 2026</div>
+                <div class="portfolio-title">Modern Corporate Web Experience</div>
+                <div class="portfolio-desc">Fast, responsive business portal with domain configuration, cloud hosting, and lead capture.</div>
+              </div>
+            </div>
+
+            <!-- Item 6: Print & Collateral -->
+            <div class="portfolio-item col-6" data-category="branding" onclick="openProjectModal('brochure-collateral')">
+              <div class="portfolio-img-wrapper">
+                <img src="src/images/portfolio-04.jpg" alt="A4 Tri-Fold Brochure Design" class="portfolio-img" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">PRINT &amp; COLLATERAL // 2026</div>
+                <div class="portfolio-title">A4 Tri-Fold Corporate Brochure Suite</div>
+                <div class="portfolio-desc">Double-sided, print-ready, high-resolution sales and marketing collateral designed to build immediate credibility.</div>
+              </div>
+            </div>
+
+            <!-- Item 7: Event Media -->
+            <div class="portfolio-item col-6" data-category="video" onclick="openProjectModal('event-coverage')">
+              <div class="portfolio-img-wrapper">
+                <img src="src/images/portfolio-05.jpg" alt="High-Profile Event Coverage" class="portfolio-img" />
+              </div>
+              <div class="portfolio-meta">
+                <div class="portfolio-category-tag">EVENT COVERAGE // 2026</div>
+                <div class="portfolio-title">Corporate Summit Media Coverage &amp; Reels</div>
+                <div class="portfolio-desc">Same-day highlight editing, live social media coverage, and photographic documentation for a commercial summit.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES PAGE -->
+    <section id="view-case-studies" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div class="eyebrow-tag">DEEP DIVES</div>
+          <h1 class="display-h1">CASE STUDIES</h1>
+          <p class="lead-text">
+            Explore how our methodical approach to creative media and digital marketing drives tangible commercial transformation for our clients.
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 56px; margin-top: 48px;">
+            <!-- Case Study 1 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden;">
+              <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; padding: 48px; align-items: center;">
+                <div>
+                  <div class="service-index"><span>CASE STUDY 01</span><span>CORPORATE BRANDING</span></div>
+                  <h2 class="display-h2" style="font-size: 28px; margin-bottom: 16px;">
+                    REBUILDING IDENTITY: FROM COMMODITY TO MARKET LEADER
+                  </h2>
+                  <p style="font-size: 15px; color: var(--text-charcoal); line-height: 1.65; margin-bottom: 20px;">
+                    <strong>The Challenge:</strong> An established logistics and trade enterprise had outgrown its legacy visual image. Inconsistent collateral and an outdated logo were causing lost opportunities with multinational partners.
+                  </p>
+                  <p style="font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px;">
+                    <strong>The Solution:</strong> Vigorish Media engineered a modern visual system: high-contrast geometric monogram, unified typography, bespoke corporate stationary, A4 tri-fold presentation brochures, and commercial photography.
+                  </p>
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; background: var(--bg-offwhite); padding: 16px; border-radius: 4px;">
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">+210%</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Partner Inquiries</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">100%</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Brand Consistency</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">300DPI</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Print Ready Suite</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" onclick="openProjectModal('brand-refresh')">READ FULL CASE BRIEF</button>
+                </div>
+                <div>
+                  <img src="src/images/case-study-01.jpg" alt="Brand Identity Case Study" style="width: 100%; height: 380px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden;">
+              <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; padding: 48px; align-items: center;">
+                <div>
+                  <img src="src/images/case-study-02.jpg" alt="Social Media Campaign Case Study" style="width: 100%; height: 380px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);" />
+                </div>
+                <div>
+                  <div class="service-index"><span>CASE STUDY 02</span><span>SOCIAL DOMINANCE</span></div>
+                  <h2 class="display-h2" style="font-size: 28px; margin-bottom: 16px;">
+                    SCALING COMMUNITY &amp; INQUIRIES VIA TARGETED SOCIAL MEDIA
+                  </h2>
+                  <p style="font-size: 15px; color: var(--text-charcoal); line-height: 1.65; margin-bottom: 20px;">
+                    <strong>The Challenge:</strong> A premier retail hospitality brand had erratic posting, low engagement rates below 0.8%, and zero direct WhatsApp lead attribution.
+                  </p>
+                  <p style="font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px;">
+                    <strong>The Solution:</strong> Implemented our Professional Social Media Tier: 20 bespoke graphics monthly, 4 high-definition Reels, targeted Facebook and Instagram boost allocation, and dedicated caption copywriting with direct WhatsApp click-to-chat triggers.
+                  </p>
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; background: var(--bg-offwhite); padding: 16px; border-radius: 4px;">
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">3.8x</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Reach Velocity</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">450+</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Qualified Messages</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">28 Days</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">To First Milestone</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" onclick="openProjectModal('social-growth')">READ FULL CASE BRIEF</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Case Study 3 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden;">
+              <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; padding: 48px; align-items: center;">
+                <div>
+                  <div class="service-index"><span>CASE STUDY 03</span><span>WEB CONVERSION</span></div>
+                  <h2 class="display-h2" style="font-size: 28px; margin-bottom: 16px;">
+                    WEB PORTAL &amp; DIGITAL PRESENCE ARCHITECTURE
+                  </h2>
+                  <p style="font-size: 15px; color: var(--text-charcoal); line-height: 1.65; margin-bottom: 20px;">
+                    <strong>The Challenge:</strong> A consulting firm was losing corporate clients to competitors because they lacked an official digital footprint with their own domain name.
+                  </p>
+                  <p style="font-size: 15px; color: var(--text-muted); line-height: 1.65; margin-bottom: 24px;">
+                    <strong>The Solution:</strong> Delivered a high-performance, mobile-first responsive web portal with custom brand photography, 1-year included domain, SSL security, cloud hosting, and integrated quotation request forms.
+                  </p>
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; background: var(--bg-offwhite); padding: 16px; border-radius: 4px;">
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">&lt; 1.2s</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Page Load Time</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">100%</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Mobile Adaptive</div>
+                    </div>
+                    <div>
+                      <div style="font-size: 22px; font-weight: 700; color: var(--brand-blue); font-family: var(--font-display);">SSL</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Enterprise Security</div>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" onclick="openProjectModal('web-experience')">READ FULL CASE BRIEF</button>
+                </div>
+                <div>
+                  <img src="src/images/portfolio-web.jpg" alt="Web Portal Case Study" style="width: 100%; height: 380px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- PRICING & PACKAGES PAGE -->
+    <section id="view-pricing" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div class="eyebrow-tag">TRANSPARENT PACKAGES</div>
+          <h1 class="display-h1">PLANS &amp; PRICING</h1>
+          <p class="lead-text">
+            Transparent investments tailored for ambitious businesses across Zambia. Clear deliverables, measurable outputs, and no hidden surprises.
+          </p>
+
+          <!-- Category 1: Social Media Management -->
+          <div style="margin-top: 48px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; border-bottom: 2px solid var(--text-black); padding-bottom: 12px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <span class="service-index">TIER 01</span>
+                <h2 class="display-h2" style="font-size: 26px; margin: 4px 0 0;">SOCIAL MEDIA MANAGEMENT PACKAGES</h2>
+              </div>
+              <span style="font-size: 13px; color: var(--text-muted); font-family: var(--font-display);">Billed Monthly in Zambian Kwacha (ZMW)</span>
+            </div>
+
+            <div class="pricing-grid">
+              <!-- Starter -->
+              <div class="pricing-card">
+                <div class="pricing-tier-name">STARTER TIER</div>
+                <div class="pricing-amount">K3,000</div>
+                <div class="pricing-period">per month</div>
+                <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;">
+                  Essential presence for small businesses looking to establish reliable branding and regular activity.
+                </p>
+                <ul class="pricing-features">
+                  <li><span>✓</span> 12 custom graphic posts per month</li>
+                  <li><span>✓</span> Facebook &amp; Instagram cross-posting</li>
+                  <li><span>✓</span> High-converting captions &amp; hashtags</li>
+                  <li><span>✓</span> Page management &amp; inbox monitoring</li>
+                  <li><span>✓</span> Basic audience growth tactics</li>
+                </ul>
+                <a href="#/contact" class="btn btn-secondary" onclick="selectPricingPlan('Social Media - Starter (K3,000/mo)'); return false;" style="width: 100%;">SELECT STARTER</a>
+              </div>
+
+              <!-- Growth (Featured) -->
+              <div class="pricing-card featured">
+                <div class="pricing-tier-name" style="color: var(--brand-blue);">GROWTH TIER (MOST POPULAR)</div>
+                <div class="pricing-amount">K5,000</div>
+                <div class="pricing-period">per month</div>
+                <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;">
+                  Aggressive engagement for growing brands looking to scale lead generation and community reach.
+                </p>
+                <ul class="pricing-features">
+                  <li><span>✓</span> 20 custom graphic posts per month</li>
+                  <li><span>✓</span> 4 short-form video Reels (vertical)</li>
+                  <li><span>✓</span> Facebook &amp; Instagram optimization</li>
+                  <li><span>✓</span> Sponsored ad management &amp; targeting</li>
+                  <li><span>✓</span> Monthly analytical performance report</li>
+                  <li><span>✓</span> WhatsApp click-to-chat integration</li>
+                </ul>
+                <a href="#/contact" class="btn btn-primary" onclick="selectPricingPlan('Social Media - Growth (K5,000/mo)'); return false;" style="width: 100%;">SELECT GROWTH</a>
+              </div>
+
+              <!-- Premium -->
+              <div class="pricing-card">
+                <div class="pricing-tier-name">PREMIUM TIER</div>
+                <div class="pricing-amount">K8,500</div>
+                <div class="pricing-period">per month</div>
+                <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;">
+                  Complete media domination for established businesses demanding market leadership.
+                </p>
+                <ul class="pricing-features">
+                  <li><span>✓</span> 30 custom graphic posts per month</li>
+                  <li><span>✓</span> 8 short-form video Reels / TikToks</li>
+                  <li><span>✓</span> On-site content creation (photos &amp; videos)</li>
+                  <li><span>✓</span> Paid ad campaign strategy &amp; scaling</li>
+                  <li><span>✓</span> Dedicated Senior Account Manager</li>
+                  <li><span>✓</span> Weekly strategy sync &amp; live dashboards</li>
+                </ul>
+                <a href="#/contact" class="btn btn-secondary" onclick="selectPricingPlan('Social Media - Premium (K8,500/mo)'); return false;" style="width: 100%;">SELECT PREMIUM</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Website Design & Development -->
+          <div style="margin-top: 64px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; border-bottom: 2px solid var(--text-black); padding-bottom: 12px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <span class="service-index">TIER 02</span>
+                <h2 class="display-h2" style="font-size: 26px; margin: 4px 0 0;">WEBSITE DESIGN &amp; DEVELOPMENT</h2>
+              </div>
+              <span style="font-size: 13px; color: var(--text-muted); font-family: var(--font-display);">One-time project fee • Includes 1 Year Free Domain</span>
+            </div>
+
+            <div class="pricing-grid">
+              <!-- Starter Website -->
+              <div class="pricing-card">
+                <div class="pricing-tier-name">STARTER WEBSITE</div>
+                <div class="pricing-amount">K4,500</div>
+                <div class="pricing-period">one-time investment</div>
+                <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;">
+                  A clean, professional digital footprint for small businesses and independent service providers.
+                </p>
+                <ul class="pricing-features">
+                  <li><span>✓</span> 3-5 beautifully designed pages</li>
+                  <li><span>✓</span> 100% mobile &amp; tablet responsive</li>
+                  <li><span>✓</span> Contact form &amp; Google Map integration</li>
+                  <li><span>✓</span> Social media &amp; WhatsApp direct link</li>
+                  <li><span>✓</span> Free custom domain registration (1 year)</li>
+                  <li><span>✓</span> Fast cloud hosting setup</li>
+                </ul>
+                <a href="#/contact" class="btn btn-secondary" onclick="selectPricingPlan('Website - Starter (K4,500)'); return false;" style="width: 100%;">START WEB BUILD</a>
+              </div>
+
+              <!-- Business Website (Featured) -->
+              <div class="pricing-card featured">
+                <div class="pricing-tier-name" style="color: var(--brand-blue);">BUSINESS WEBSITE (RECOMMENDED)</div>
+                <div class="pricing-amount">K7,500</div>
+                <div class="pricing-period">one-time investment</div>
+                <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;">
+                  Comprehensive corporate portal with search engine optimization and lead generation architecture.
+                </p>
+                <ul class="pricing-features">
+                  <li><span>✓</span> 5-10 bespoke corporate pages</li>
+                  <li><span>✓</span> Complete SEO configuration &amp; schema markup</li>
+                  <li><span>✓</span> Insights / News / Blog publishing engine</li>
+                  <li><span>✓</span> Interactive WhatsApp live chat integration</li>
+                  <li><span>✓</span> 1 Year premium cloud hosting included</li>
+                  <li><span>✓</span> Analytics &amp; search console setup</li>
+                </ul>
+                <a href="#/contact" class="btn btn-primary" onclick="selectPricingPlan('Website - Business (K7,500)'); return false;" style="width: 100%;">START WEB BUILD</a>
+              </div>
+
+              <!-- E-Commerce Website -->
+              <div class="pricing-card">
+                <div class="pricing-tier-name">E-COMMERCE SYSTEM</div>
+                <div class="pricing-amount">K12,000</div>
+                <div class="pricing-period">one-time investment</div>
+                <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.5;">
+                  Full online retail store with automated mobile money checkout and order management.
+                </p>
+                <ul class="pricing-features">
+                  <li><span>✓</span> Full online storefront &amp; product catalog</li>
+                  <li><span>✓</span> Payment gateway integration (Airtel, MTN, Zamtel, Cards)</li>
+                  <li><span>✓</span> Up to 50 initial products uploaded &amp; styled</li>
+                  <li><span>✓</span> Inventory &amp; stock alert dashboard</li>
+                  <li><span>✓</span> Customer user accounts &amp; order tracking</li>
+                  <li><span>✓</span> Admin staff training session</li>
+                </ul>
+                <a href="#/contact" class="btn btn-secondary" onclick="selectPricingPlan('Website - E-Commerce (K12,000)'); return false;" style="width: 100%;">START E-COMMERCE</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Branding & Graphic Design Menu -->
+          <div style="margin-top: 64px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; border-bottom: 2px solid var(--text-black); padding-bottom: 12px; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <span class="service-index">TIER 03</span>
+                <h2 class="display-h2" style="font-size: 26px; margin: 4px 0 0;">BRANDING &amp; GRAPHIC DESIGN MENU</h2>
+              </div>
+              <span style="font-size: 13px; color: var(--text-muted); font-family: var(--font-display);">À La Carte Creative Deliverables</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+              <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-black);">Logo Design &amp; Monogram</div>
+                  <div style="font-size: 13px; color: var(--text-muted);">Vector files, brand color palette, fonts</div>
+                </div>
+                <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--brand-blue); white-space: nowrap;">K1,200 – K2,500</div>
+              </div>
+
+              <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-black);">Brand Identity Pack</div>
+                  <div style="font-size: 13px; color: var(--text-muted);">Logo suite, stationery, brand book, social pack</div>
+                </div>
+                <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--brand-blue); white-space: nowrap;">K4,000</div>
+              </div>
+
+              <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-black);">A4 Tri-Fold Brochure Design</div>
+                  <div style="font-size: 13px; color: var(--text-muted);">Double-sided, custom layout, print-ready 300DPI</div>
+                </div>
+                <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--brand-blue); white-space: nowrap;">K800 – K1,500</div>
+              </div>
+
+              <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-black);">Corporate Company Profile</div>
+                  <div style="font-size: 13px; color: var(--text-muted);">Multi-page booklet, copywriting polish, PDF</div>
+                </div>
+                <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--brand-blue); white-space: nowrap;">K2,000 – K4,500</div>
+              </div>
+
+              <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-black);">Flyers &amp; Promotional Posters</div>
+                  <div style="font-size: 13px; color: var(--text-muted);">Single or double-sided event &amp; product ads</div>
+                </div>
+                <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--brand-blue); white-space: nowrap;">K350 – K600</div>
+              </div>
+
+              <div style="padding: 24px; background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--text-black);">Business Card Design</div>
+                  <div style="font-size: 13px; color: var(--text-muted);">Front and back executive layout with QR</div>
+                </div>
+                <div style="font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--brand-blue); white-space: nowrap;">K300</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Investment Calculator -->
+          <div style="margin-top: 64px; padding: 48px; background: var(--bg-offwhite); border: 1px solid var(--border-subtle); border-radius: 4px;">
+            <div class="eyebrow-tag">CUSTOM ESTIMATE</div>
+            <h2 class="display-h2" style="font-size: 26px; margin-bottom: 12px;">INTERACTIVE PROJECT ESTIMATOR</h2>
+            <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 32px;">
+              Select the creative services you need to calculate an instant estimated total in Zambian Kwacha (ZMW).
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;" id="calcOptions">
+              <label style="display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 16px; border: 1px solid var(--border-subtle); border-radius: 4px; cursor: pointer;">
+                <input type="checkbox" value="5000" class="calc-check" onchange="updateCalcTotal()" checked />
+                <div>
+                  <div style="font-weight: 600; font-size: 14px;">Growth Social Media (Monthly)</div>
+                  <div style="font-size: 12px; color: var(--brand-blue); font-weight: 700;">+ K5,000</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 16px; border: 1px solid var(--border-subtle); border-radius: 4px; cursor: pointer;">
+                <input type="checkbox" value="4000" class="calc-check" onchange="updateCalcTotal()" checked />
+                <div>
+                  <div style="font-weight: 600; font-size: 14px;">Brand Identity Pack</div>
+                  <div style="font-size: 12px; color: var(--brand-blue); font-weight: 700;">+ K4,000</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 16px; border: 1px solid var(--border-subtle); border-radius: 4px; cursor: pointer;">
+                <input type="checkbox" value="7500" class="calc-check" onchange="updateCalcTotal()" />
+                <div>
+                  <div style="font-weight: 600; font-size: 14px;">Business Corporate Website</div>
+                  <div style="font-size: 12px; color: var(--brand-blue); font-weight: 700;">+ K7,500</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 16px; border: 1px solid var(--border-subtle); border-radius: 4px; cursor: pointer;">
+                <input type="checkbox" value="1200" class="calc-check" onchange="updateCalcTotal()" />
+                <div>
+                  <div style="font-weight: 600; font-size: 14px;">A4 Tri-Fold Brochure Design</div>
+                  <div style="font-size: 12px; color: var(--brand-blue); font-weight: 700;">+ K1,200</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 16px; border: 1px solid var(--border-subtle); border-radius: 4px; cursor: pointer;">
+                <input type="checkbox" value="3500" class="calc-check" onchange="updateCalcTotal()" />
+                <div>
+                  <div style="font-weight: 600; font-size: 14px;">Commercial Video Shoot &amp; Reel</div>
+                  <div style="font-size: 12px; color: var(--brand-blue); font-weight: 700;">+ K3,500</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 12px; background: #ffffff; padding: 16px; border: 1px solid var(--border-subtle); border-radius: 4px; cursor: pointer;">
+                <input type="checkbox" value="2500" class="calc-check" onchange="updateCalcTotal()" />
+                <div>
+                  <div style="font-weight: 600; font-size: 14px;">Company Profile Booklet</div>
+                  <div style="font-size: 12px; color: var(--brand-blue); font-weight: 700;">+ K2,500</div>
+                </div>
+              </label>
+            </div>
+
+            <div style="margin-top: 32px; display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 24px 32px; border: 1px solid var(--border-subtle); border-radius: 4px; flex-wrap: wrap; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;">ESTIMATED TOTAL INVESTMENT</div>
+                <div style="font-family: var(--font-display); font-size: 36px; font-weight: 800; color: var(--brand-blue);" id="calcTotalDisplay">K9,000</div>
+              </div>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="sendCalculatedQuote()">REQUEST OFFICIAL PROPOSAL</button>
+                <a href="https://wa.me/260979894567" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">SEND VIA WHATSAPP</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM PAGE -->
+    <section id="view-team" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div class="eyebrow-tag">THE PEOPLE BEHIND VIGORISH</div>
+          <h1 class="display-h1">OUR CREATIVE TEAM</h1>
+          <p class="lead-text">
+            A multidisciplinary collective of visual storytellers, digital strategists, cinematographers, and engineers unified by one mission: helping businesses build stronger brands.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; margin-top: 48px;">
+            <!-- Member 1 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden;">
+              <img src="src/images/team-01.jpg" alt="Creative Director" style="width: 100%; height: 320px; object-fit: cover;" />
+              <div style="padding: 24px;">
+                <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--brand-blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
+                  CREATIVE LEADERSHIP
+                </div>
+                <h3 class="display-h3" style="font-size: 20px; margin-bottom: 6px;">Creative Director &amp; Founder</h3>
+                <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
+                  Guiding brand vision, visual systems, and corporate design standards with obsessive attention to craft and messaging clarity.
+                </p>
+              </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden;">
+              <img src="src/images/team-02.jpg" alt="Brand Strategist" style="width: 100%; height: 320px; object-fit: cover;" />
+              <div style="padding: 24px;">
+                <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--brand-blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
+                  BRAND STRATEGY
+                </div>
+                <h3 class="display-h3" style="font-size: 20px; margin-bottom: 6px;">Senior Brand Strategist</h3>
+                <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
+                  Translating business commercial targets into structured visual brand positioning, customer personas, and marketing collateral.
+                </p>
+              </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden;">
+              <img src="src/images/team-03.jpg" alt="Cinematographer & Motion Designer" style="width: 100%; height: 320px; object-fit: cover;" />
+              <div style="padding: 24px;">
+                <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--brand-blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
+                  MEDIA &amp; MOTION
+                </div>
+                <h3 class="display-h3" style="font-size: 20px; margin-bottom: 6px;">Lead Videographer &amp; Motion Artist</h3>
+                <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
+                  Directing 4K cinematic shoots, social media reels, promotional commercials, and rhythm-driven motion graphics.
+                </p>
+              </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden;">
+              <img src="src/images/team-04.jpg" alt="Web & Digital Growth Lead" style="width: 100%; height: 320px; object-fit: cover;" />
+              <div style="padding: 24px;">
+                <div style="font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--brand-blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
+                  WEB &amp; PERFORMANCE
+                </div>
+                <h3 class="display-h3" style="font-size: 20px; margin-bottom: 6px;">Lead Web Engineer &amp; Growth Specialist</h3>
+                <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6;">
+                  Building lightning-fast web experiences, search engine optimization architectures, and conversion-focused paid advertising funnels.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- INSIGHTS / BLOG PAGE -->
+    <section id="view-insights" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div class="eyebrow-tag">KNOWLEDGE &amp; PERSPECTIVE</div>
+          <h1 class="display-h1">STUDIO INSIGHTS</h1>
+          <p class="lead-text">
+            Practical strategies, creative perspectives, and digital marketing wisdom for growing businesses in Zambia and across the continent.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 48px;">
+            <!-- Article 1 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;" onclick="openArticleModal('branding-power')">
+              <div>
+                <img src="src/images/insights-01.jpg" alt="Why Brand Identity Matters" style="width: 100%; height: 240px; object-fit: cover;" />
+                <div style="padding: 24px;">
+                  <div style="display: flex; gap: 12px; font-size: 11px; font-weight: 700; color: var(--brand-blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">
+                    <span>BRANDING</span> • <span>5 MIN READ</span>
+                  </div>
+                  <h3 class="display-h3" style="font-size: 20px; line-height: 1.35; margin-bottom: 12px;">
+                    Why Cheap Design Costs Ambitious Businesses More in the Long Run
+                  </h3>
+                  <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+                    The true cost of amateur logos, mismatched fonts, and inconsistent social media isn't what you pay for them — it's the premium clients who quietly choose your competitor.
+                  </p>
+                </div>
+              </div>
+              <div style="padding: 0 24px 24px;">
+                <span class="service-link">Read Full Essay &rarr;</span>
+              </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;" onclick="openArticleModal('social-media-zambia')">
+              <div>
+                <img src="src/images/insights-02.jpg" alt="Social Media in Zambia" style="width: 100%; height: 240px; object-fit: cover;" />
+                <div style="padding: 24px;">
+                  <div style="display: flex; gap: 12px; font-size: 11px; font-weight: 700; color: var(--brand-blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">
+                    <span>DIGITAL MARKETING</span> • <span>4 MIN READ</span>
+                  </div>
+                  <h3 class="display-h3" style="font-size: 20px; line-height: 1.35; margin-bottom: 12px;">
+                    How Zambian Brands Can Turn Facebook &amp; Instagram Likes into Real Kwacha Revenue
+                  </h3>
+                  <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+                    Vanity metrics don't pay business overheads. Here is our exact framework for linking social media posts directly to WhatsApp sales funnels and paid conversions.
+                  </p>
+                </div>
+              </div>
+              <div style="padding: 0 24px 24px;">
+                <span class="service-link">Read Full Essay &rarr;</span>
+              </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;" onclick="openArticleModal('brochure-conversion')">
+              <div>
+                <img src="src/images/insights-03.jpg" alt="The Art of Print Collateral" style="width: 100%; height: 240px; object-fit: cover;" />
+                <div style="padding: 24px;">
+                  <div style="display: flex; gap: 12px; font-size: 11px; font-weight: 700; color: var(--brand-blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">
+                    <span>PRINT &amp; COLLATERAL</span> • <span>6 MIN READ</span>
+                  </div>
+                  <h3 class="display-h3" style="font-size: 20px; line-height: 1.35; margin-bottom: 12px;">
+                    Make Your Brand Impossible to Ignore: The Enduring Power of the Tri-Fold Brochure
+                  </h3>
+                  <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+                    In an all-digital noise landscape, a high-weight, beautifully formatted A4 brochure remains the most authoritative leave-behind in boardrooms and corporate meetings.
+                  </p>
+                </div>
+              </div>
+              <div style="padding: 0 24px 24px;">
+                <span class="service-link">Read Full Essay &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="view-contact" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div class="eyebrow-tag">LET'S COLLABORATE</div>
+          <h1 class="display-h1">START A PROJECT</h1>
+          <p class="lead-text">
+            Tell us about your brand, your goals, and your timeline. We reply promptly within 24 hours with ideas and strategic clarity.
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; margin-top: 48px; align-items: flex-start;">
+            <!-- Left Contact Info Box -->
+            <div>
+              <div style="background: var(--brand-blue); color: #ffffff; padding: 40px; border-radius: 4px; margin-bottom: 24px;">
+                <div style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 20px;">
+                  DIRECT STUDIO CONTACT
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 24px;">
+                  <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 4px;">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8;">PHONE CALLS</div>
+                      <a href="tel:+260979894567" style="color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 600;">+260 97 989 4567</a>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 4px;">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8;">WHATSAPP INSTANT CHAT</div>
+                      <a href="https://wa.me/260979894567" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 600;">+260 979 894 567</a>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 4px;">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8;">OFFICIAL EMAIL</div>
+                      <a href="mailto:mediavigorish@gmail.com" style="color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 600;">mediavigorish@gmail.com</a>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 10px; border-radius: 4px;">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8;">STUDIO LOCATION</div>
+                      <div style="font-size: 16px; font-weight: 600;">Lusaka, Zambia</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fast WhatsApp Action -->
+              <div style="padding: 24px; background: var(--bg-offwhite); border: 1px solid var(--border-subtle); border-radius: 4px; text-align: center;">
+                <div style="font-weight: 700; font-size: 14px; margin-bottom: 6px;">Need an urgent quotation?</div>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Chat directly with our creative director on WhatsApp for immediate feedback.</p>
+                <a href="https://wa.me/260979894567" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25D366; color: #ffffff; width: 100%;">
+                  CHAT ON WHATSAPP (+260 979 894 567)
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Interactive Form -->
+            <div style="background: #ffffff; padding: 40px; border: 1px solid var(--border-subtle); border-radius: 4px;">
+              <div style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 6px;">
+                PROJECT BRIEF FORM
+              </div>
+              <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 24px;">
+                Fill out the specifications below and we will prepare a tailored scope and investment estimate.
+              </p>
+
+              <form id="projectBriefForm" onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                  <label class="form-label">YOUR FULL NAME *</label>
+                  <input type="text" id="contactName" class="form-input" required placeholder="e.g. Kondwani Phiri" />
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                  <div class="form-group">
+                    <label class="form-label">EMAIL ADDRESS *</label>
+                    <input type="email" id="contactEmail" class="form-input" required placeholder="name@company.com" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">PHONE / WHATSAPP *</label>
+                    <input type="tel" id="contactPhone" class="form-input" required placeholder="+260 97..." />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">COMPANY / BRAND NAME</label>
+                  <input type="text" id="contactCompany" class="form-input" placeholder="e.g. Horizon Enterprises" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">SERVICE OF INTEREST *</label>
+                  <select id="contactService" class="form-input" required>
+                    <option value="Social Media Management">Social Media Management (Facebook &amp; Instagram)</option>
+                    <option value="Branding &amp; Corporate Identity">Branding &amp; Corporate Identity / Logo Design</option>
+                    <option value="Website Design &amp; Management">Website Design &amp; Management</option>
+                    <option value="Digital Marketing Campaigns">Digital Marketing &amp; Paid Campaigns</option>
+                    <option value="Videography &amp; Photography">Videography &amp; Commercial Photography</option>
+                    <option value="Brochure &amp; Print Design">A4 Tri-Fold Brochure &amp; Print Design</option>
+                    <option value="Other Comprehensive Creative Suite">Full Creative Suite (Multi-Service)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">ESTIMATED BUDGET RANGE (ZMW)</label>
+                  <select id="contactBudget" class="form-input">
+                    <option value="K3,000 - K5,000">K3,000 – K5,000</option>
+                    <option value="K5,000 - K10,000" selected>K5,000 – K10,000</option>
+                    <option value="K10,000 - K25,000">K10,000 – K25,000</option>
+                    <option value="K25,000+">K25,000+</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">PROJECT BRIEF &amp; OBJECTIVES *</label>
+                  <textarea id="contactMessage" class="form-textarea" rows="4" required placeholder="Briefly describe what your business does and what you're hoping to achieve..."></textarea>
+                </div>
+
+                <div id="contactFormStatus" style="margin-bottom: 16px; display: none;"></div>
+
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                  <button type="submit" class="btn btn-primary" style="flex: 1;">SUBMIT PROJECT BRIEF</button>
+                  <button type="button" class="btn btn-secondary" onclick="sendBriefViaWhatsApp()">SEND VIA WHATSAPP</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DONATE PAGE (Tuli Bantu Baluse) -->
+    <section id="view-donate" class="view-page">
+      <div class="section-wrapper" style="padding-top: 60px;">
+        <div class="container">
+          <div style="max-width: 860px; margin: 0 auto; text-align: center;">
+            <div class="eyebrow-tag" style="justify-content: center; color: #b91c1c;">COMMUNITY GIVING INITIATIVE</div>
+            <h1 class="display-h1">TULI BANTU BALUSE</h1>
+            <p class="lead-text" style="margin-left: auto; margin-right: auto;">
+              Extending creativity, compassion, and human dignity to vulnerable children in Lusaka, Zambia.
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; margin-top: 48px; align-items: center;">
+            <div>
+              <div style="font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--text-black); margin-bottom: 20px;">
+                Why We Give Back
+              </div>
+              <p style="font-size: 15.5px; line-height: 1.7; color: var(--text-charcoal); margin-bottom: 20px;">
+                At Vigorish Media, our motto is <em>"Building Brands That Add Value"</em> — but we firmly believe that true value must encompass the welfare of our surrounding communities.
+              </p>
+              <p style="font-size: 15.5px; line-height: 1.7; color: var(--text-muted); margin-bottom: 24px;">
+                <strong>Tuli Bantu Baluse</strong> (meaning "We are compassionate people") is our flagship corporate social initiative. Every quarter, a dedicated percentage of our studio profits, together with generous contributions from clients and supporters, goes directly toward feeding programs, school supplies, warm clothing, and creative workshops for children in underprivileged Lusaka townships.
+              </p>
+
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; background: var(--bg-offwhite); padding: 20px; border-radius: 4px; border: 1px solid var(--border-subtle);">
+                <div>
+                  <div style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #b91c1c;">100%</div>
+                  <div style="font-size: 12px; color: var(--text-muted);">Direct Field Allocation</div>
+                </div>
+                <div>
+                  <div style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text-black);">Lusaka</div>
+                  <div style="font-size: 12px; color: var(--text-muted);">Primary Target Area</div>
+                </div>
+                <div>
+                  <div style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--brand-blue);">Verified</div>
+                  <div style="font-size: 12px; color: var(--text-muted);">Flutterwave Gateway</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Donation Box -->
+            <div style="background: #ffffff; padding: 40px; border: 2px solid #fee2e2; border-radius: 4px; box-shadow: var(--shadow-subtle);">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#dc2626"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: #991b1b;">
+                  MAKE A CONTRIBUTION
+                </div>
+              </div>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;">
+                Your donation provides emergency nutrition, basic learning kits, and personal care for vulnerable youths. Every Kwacha makes an immediate difference.
+              </p>
+
+              <!-- Quick Tiers -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
+                <a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 14px; text-align: center; border-color: #fca5a5;">
+                  K150 (Nutrition Kit)
+                </a>
+                <a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 14px; text-align: center; border-color: #fca5a5;">
+                  K300 (School Pack)
+                </a>
+                <a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 14px; text-align: center; border-color: #fca5a5;">
+                  K500 (Full Care)
+                </a>
+                <a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 14px; text-align: center; border-color: #fca5a5;">
+                  K1,000 (Community)
+                </a>
+              </div>
+
+              <!-- Main Flutterwave Payment Link -->
+              <a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="btn btn-donate" style="width: 100%; text-align: center; justify-content: center; padding: 16px; font-size: 15px; margin-bottom: 16px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                DONATE VIA FLUTTERWAVE GATEWAY
+              </a>
+
+              <div style="font-size: 12px; color: var(--text-muted); text-align: center; line-height: 1.5;">
+                Secure 256-bit encrypted transaction through Flutterwave.<br/>
+                Supports Mobile Money (Airtel, MTN, Zamtel) &amp; Debit/Credit Cards.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="site-footer" id="globalFooter">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-title">VIGORISH MEDIA</div>
+        <div class="footer-brand-tagline">Building Brands That Add Value.</div>
+        <p style="line-height: 1.6; max-width: 320px; margin-bottom: 20px;">
+          Creative media, branding and digital marketing solutions designed to help businesses stand out, connect with customers and grow. Based in Lusaka, Zambia.
+        </p>
+        <div style="margin-bottom: 8px;">
+          <a href="tel:+260979894567" class="footer-link" style="font-weight: 600; color: #ffffff;">+260 97 989 4567</a>
+        </div>
+        <div>
+          <a href="mailto:mediavigorish@gmail.com" class="footer-link">mediavigorish@gmail.com</a>
+        </div>
+        <div class="footer-social-row">
+          <!-- WhatsApp -->
+          <a href="https://wa.me/260979894567" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp" title="Chat on WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/profile.php?id=61581378732463" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/vigorishmedia/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@vigorishmedia?_r=1&_t=ZS-99mPbaFsuFF" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok" title="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/channel/UCK-x3NGjBrmN8WJt89kGnDA" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube" title="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#/" class="footer-link" onclick="navigateTo('/'); return false;">Home</a></li>
+          <li><a href="#/about" class="footer-link" onclick="navigateTo('/about'); return false;">About Vigorish</a></li>
+          <li><a href="#/services" class="footer-link" onclick="navigateTo('/services'); return false;">Our Services</a></li>
+          <li><a href="#/portfolio" class="footer-link" onclick="navigateTo('/portfolio'); return false;">Selected Work</a></li>
+          <li><a href="#/case-studies" class="footer-link" onclick="navigateTo('/case-studies'); return false;">Case Studies</a></li>
+          <li><a href="#/pricing" class="footer-link" onclick="navigateTo('/pricing'); return false;">Pricing & Packages</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="#/team" class="footer-link" onclick="navigateTo('/team'); return false;">Our Team</a></li>
+          <li><a href="#/insights" class="footer-link" onclick="navigateTo('/insights'); return false;">Industry Insights</a></li>
+          <li><a href="#/contact" class="footer-link" onclick="navigateTo('/contact'); return false;">Contact & Brief</a></li>
+          <li><a href="#/donate" class="footer-link" onclick="navigateTo('/donate'); return false;" style="color: #f87171; font-weight: 600;">Donate: Tuli Bantu Baluse</a></li>
+          <li><a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="footer-link">Payment Gateway</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">Start A Project</div>
+        <p style="line-height: 1.55; margin-bottom: 20px;">
+          Ready to elevate your presence? Let's turn your idea into an undeniable market force.
+        </p>
+        <a href="#/contact" class="btn btn-primary" onclick="navigateTo('/contact'); return false;" style="width: 100%; margin-bottom: 12px;">START A PROJECT</a>
+        <a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="btn btn-donate" style="width: 100%;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          SUPPORT TULI BANTU BALUSE
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        © 2026 Vigorish Media. All rights reserved.
+      </div>
+      <div style="font-family: var(--font-display); letter-spacing: 0.05em; color: #94a3b8;">
+        Creative Media • Branding • Digital Marketing
+      </div>
+      <div>
+        Lusaka, Zambia
+      </div>
+    </div>
+  </footer>
+
+  <!-- Single File Routing & Cursor Controller -->
+  <script>
+    // Creative Studio Client-Side Router
+    function getRoute() {
+      const hash = window.location.hash.replace(/^#/, '');
+      if (hash) return hash;
+      const path = window.location.pathname;
+      if (path && path !== '/index.html' && path !== '') return path;
+      return '/';
+    }
+
+    function navigateTo(route) {
+      if (!route.startsWith('/')) route = '/' + route;
+      window.location.hash = '#' + route;
+      renderRoute(route);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderRoute(route) {
+      const clean = route.split('?')[0].replace(/\/$/, '') || '/';
+      const viewMap = {
+        '/': 'view-home',
+        '/about': 'view-about',
+        '/services': 'view-services',
+        '/portfolio': 'view-portfolio',
+        '/case-studies': 'view-case-studies',
+        '/pricing': 'view-pricing',
+        '/team': 'view-team',
+        '/insights': 'view-insights',
+        '/contact': 'view-contact',
+        '/donate': 'view-donate'
+      };
+
+      const targetId = viewMap[clean] || 'view-home';
+      document.querySelectorAll('.view-page').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      const activeEl = document.getElementById(targetId);
+      if (activeEl) {
+        activeEl.classList.add('active');
+      }
+
+      // Update active nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const linkRoute = link.getAttribute('data-route');
+        if (linkRoute === clean) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('hashchange', () => {
+      renderRoute(getRoute());
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderRoute(getRoute());
+      updateCalcTotal();
+    });
+
+    // Mobile Drawer Controls
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileDrawer = document.getElementById('closeMobileDrawer');
+
+    function openMobileMenu() {
+      if (mobileDrawer) mobileDrawer.classList.add('active');
+    }
+
+    function closeMobileMenu() {
+      if (mobileDrawer) mobileDrawer.classList.remove('active');
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+    if (closeMobileDrawer) closeMobileDrawer.addEventListener('click', closeMobileMenu);
+    if (mobileDrawer) {
+      mobileDrawer.addEventListener('click', (e) => {
+        if (e.target === mobileDrawer) closeMobileMenu();
+      });
+    }
+
+    // Portfolio Category Filtering
+    function filterPortfolio(category, buttonEl) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (buttonEl) buttonEl.classList.add('active');
+
+      const items = document.querySelectorAll('.portfolio-item');
+      items.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (category === 'all' || itemCategory === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Project Data & Modal Details
+    const projectData = {
+      'zambezi-brews': {
+        title: 'Zambezi Craft Breweries',
+        category: 'Branding & Visual Identity',
+        image: 'src/images/portfolio-brand.jpg',
+        client: 'Zambezi Craft Beverage Group',
+        year: '2025 - 2026',
+        services: 'Brand Identity, Packaging Design, Social Media Art Direction',
+        overview: 'Zambezi Craft Breweries needed a distinct visual system that paid homage to authentic Zambian botanicals and wilderness, while competing effortlessly on premium retail shelves and hotel lounges.',
+        deliverables: [
+          'Handcrafted logo mark and typography system',
+          'Bottle label packaging suite for 4 flagship craft beers',
+          'Custom social media launch campaign visual templates',
+          'A4 distributor presentation pitch deck'
+        ],
+        quote: 'Vigorish Media delivered an aesthetic that exceeded our highest aspirations. Our distributors loved the retail presence immediately.'
+      },
+      'horizon-capital': {
+        title: 'Horizon Capital Zambia',
+        category: 'Corporate Identity & Company Profile',
+        image: 'src/images/portfolio-corporate.jpg',
+        client: 'Horizon Investment Partners',
+        year: '2025',
+        services: 'Corporate Profile, Stationeries, Executive Annual Report',
+        overview: 'Horizon Capital required a 24-page high-stakes investor prospectus and corporate profile to present to institutional stakeholders across Southern Africa.',
+        deliverables: [
+          'Editorial typography formatting and chart styling',
+          'Full corporate stationery suite with embossed spot-UV finishes',
+          'Secure digital interactive PDF distribution version',
+          'Executive presentation slidedeck'
+        ],
+        quote: 'In the investment world, visual authority is currency. Vigorish ensured our collateral conveyed rock-solid reliability.'
+      },
+      'savannah-reels': {
+        title: 'Savannah Lifestyle Apparel',
+        category: 'Videography & Social Campaigns',
+        image: 'src/images/portfolio-video.jpg',
+        client: 'Savannah Urban Wear',
+        year: '2026',
+        services: '4K Commercial Shoot, Reels Series, TikTok Performance Ads',
+        overview: 'A high-energy Lusaka fashion shoot creating 12 viral-ready vertical video reels, drone city captures, and rhythm-synchronized motion cuts.',
+        deliverables: [
+          '12 edited Reels with kinetic captions and sound design',
+          '60-second cinema cut for brand launch',
+          'Photo lookbook for e-commerce website and Instagram grid',
+          'Meta Ads split-testing creative variations'
+        ],
+        quote: 'Our engagement exploded by 340% in week one. The cinematography quality was world-class.'
+      },
+      'copperbelt-logistics': {
+        title: 'Copperbelt Haulage Portal',
+        category: 'Web Engineering & Digital Architecture',
+        image: 'src/images/portfolio-web.jpg',
+        client: 'Copperbelt Haulage & Freight Ltd',
+        year: '2025',
+        services: 'Responsive Website, SEO Architecture, WhatsApp Live Booking',
+        overview: 'A robust corporate web portal built for high reliability, fast mobile load speeds across Zambia, and instant dispatch request channeling.',
+        deliverables: [
+          'Modern responsive multi-page web platform',
+          'Integrated freight quotation calculation system',
+          'Instant WhatsApp dispatch linking',
+          'Technical SEO ranking for mining and transport keywords'
+        ],
+        quote: 'We saw a 45% increase in online freight inquiries within 60 days of the site going live.'
+      },
+      'lush-cosmetics': {
+        title: 'Lush Botanicals Skincare',
+        category: 'Social Media Management & Packaging',
+        image: 'src/images/portfolio-social.jpg',
+        client: 'Lush Botanicals Zambia',
+        year: '2025 - 2026',
+        services: 'Monthly Social Management, Product Photography, Influencer Kits',
+        overview: 'Complete social media takeover managing daily graphic posts, community management, and customer support for a fast-growing beauty line.',
+        deliverables: [
+          '20 custom branded graphic carousels monthly',
+          'Coordinated studio lighting product photography',
+          'Direct-response Instagram and Facebook advertising',
+          'Influencer unboxing gift packaging design'
+        ],
+        quote: 'Working with Vigorish feels like having an internal Madison Avenue creative agency in our back pocket.'
+      },
+      'trifold-corporate': {
+        title: 'A4 Tri-Fold Corporate Collateral',
+        category: 'Graphic Design & Print Production',
+        image: 'src/images/portfolio-print.jpg',
+        client: 'Apex Medical Laboratories',
+        year: '2025',
+        services: 'Tri-Fold Layout, Infographics, Print Production Pre-Press',
+        overview: 'A crisp, medical-grade promotional brochure clarifying diagnostic services, corporate wellness screening, and branch network contact points.',
+        deliverables: [
+          'Double-sided 300 DPI high-resolution CMYK pre-press',
+          'Bespoke visual icons and laboratory service diagrams',
+          'Custom fold guides and bleed specifications',
+          'Digital responsive interactive flip-page version'
+        ],
+        quote: 'The print finish was crisp, professional, and gave our clinical sales team unmatched confidence.'
+      }
+    };
+
+    const projectModal = document.getElementById('projectModal');
+    const projectModalContent = document.getElementById('projectModalContent');
+    const closeProjectModalBtn = document.getElementById('closeProjectModal');
+
+    function openProjectModal(id) {
+      const data = projectData[id];
+      if (!data || !projectModal || !projectModalContent) return;
+
+      let deliverablesHtml = data.deliverables.map(d => `<li style="margin-bottom: 8px;">✓ ${d}</li>`).join('');
+
+      projectModalContent.innerHTML = `
+        <div style="margin-bottom: 20px;">
+          <div style="font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--brand-blue); letter-spacing: 0.08em; text-transform: uppercase;">
+            ${data.category}
+          </div>
+          <h2 class="display-h2" style="font-size: 26px; margin: 6px 0 16px;">${data.title}</h2>
+          <img src="${data.image}" alt="${data.title}" style="width: 100%; height: 320px; object-fit: cover; border-radius: 4px; margin-bottom: 24px;" />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; background: var(--bg-offwhite); padding: 16px 20px; border-radius: 4px; font-size: 13.5px;">
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">CLIENT</div>
+            <div style="font-weight: 600; color: var(--text-black);">${data.client}</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">YEAR & SCOPE</div>
+            <div style="font-weight: 600; color: var(--text-black);">${data.year}</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <h4 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 8px;">PROJECT OVERVIEW</h4>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">${data.overview}</p>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <h4 style="font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 8px;">KEY DELIVERABLES</h4>
+          <ul style="list-style: none; padding: 0; font-size: 14px; color: var(--text-charcoal);">
+            ${deliverablesHtml}
+          </ul>
+        </div>
+
+        <div style="border-left: 3px solid var(--brand-blue); padding-left: 16px; margin-bottom: 28px; font-style: italic; color: var(--text-charcoal); font-size: 14px;">
+          "${data.quote}"
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="#/contact" class="btn btn-primary" onclick="closeProjectModal(); navigateTo('/contact'); return false;" style="flex: 1; text-align: center;">START SIMILAR PROJECT</a>
+          <a href="https://wa.me/260979894567?text=Hi%20Vigorish%20Media,%20I%20am%20interested%20in%20a%20project%20like%20${encodeURIComponent(data.title)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">DISCUSS VIA WHATSAPP</a>
+        </div>
+      `;
+
+      projectModal.classList.add('active');
+    }
+
+    function closeProjectModal() {
+      if (projectModal) projectModal.classList.remove('active');
+    }
+
+    if (closeProjectModalBtn) closeProjectModalBtn.addEventListener('click', closeProjectModal);
+    if (projectModal) {
+      projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) closeProjectModal();
+      });
+    }
+
+    // Article Data & Modal Details
+    const articleData = {
+      'branding-power': {
+        title: 'Why Cheap Design Costs Ambitious Businesses More in the Long Run',
+        category: 'BRAND IDENTITY & POSITIONING',
+        readTime: '5 MIN READ',
+        image: 'src/images/insights-01.jpg',
+        author: 'Creative Director, Vigorish Media',
+        body: `
+          <p>When starting or scaling an enterprise in Zambia, every Kwacha counts. It is understandably tempting to hire a friend of a friend who knows Photoshop to design a logo for K200, or to download a generic template off Canva.</p>
+          <p>However, what inexperienced entrepreneurs fail to realize is that <strong>branding is not an art fee; it is your customer trust protocol.</strong></p>
+          <h4 style="font-family: var(--font-display); font-size: 18px; margin: 20px 0 8px;">The Hidden Tax of Inconsistent Branding</h4>
+          <p>When a prospective corporate buyer visits your Facebook page, looks at your quotation, or receives your company profile, they make an instantaneous subconscious judgment in under 3 seconds:</p>
+          <ul>
+            <li><em>"Is this an established firm capable of delivering on time?"</em></li>
+            <li><em>"Can I trust them with my corporate purchase order?"</em></li>
+            <li><em>"Are they charging premium prices for amateur work?"</em></li>
+          </ul>
+          <p>A mismatched logo, distorted typography, or low-resolution graphics sends a subtle distress signal: that the business cuts corners internally. The cost isn't the K1,000 you saved on design — it's the K150,000 corporate contract you were never even shortlisted for.</p>
+          <h4 style="font-family: var(--font-display); font-size: 18px; margin: 20px 0 8px;">Building Long-Term Brand Equity</h4>
+          <p>Investing in a cohesive corporate identity system gives your company instant market authority. From consistent color psychology to print-ready vectors and tone of voice guidelines, professional branding positions your firm as an industry benchmark from day one.</p>
+        `
+      },
+      'social-media-zambia': {
+        title: 'How Zambian Brands Can Turn Facebook & Instagram Likes into Real Kwacha Revenue',
+        category: 'DIGITAL MARKETING & PERFORMANCE',
+        readTime: '4 MIN READ',
+        image: 'src/images/insights-02.jpg',
+        author: 'Lead Digital Strategist, Vigorish Media',
+        body: `
+          <p>Too many businesses in Lusaka, Ndola, and Kitwe spend time chasing viral reactions, heart emojis, and comments saying "Price please?", only to discover at the end of the month that bank balances haven't moved.</p>
+          <p>The solution is not more random posting; it is establishing a disciplined <strong>Direct-to-WhatsApp Social Funnel.</strong></p>
+          <h4 style="font-family: var(--font-display); font-size: 18px; margin: 20px 0 8px;">The 3-Step Conversion Framework</h4>
+          <ol>
+            <li><strong>Hook with Local Pain Points:</strong> Avoid generic stock photography. Feature authentic Zambian environments, relatable challenges, and high-contrast headlines that stop the thumb scroll immediately.</li>
+            <li><strong>Clear Price Transparency or Value Anchor:</strong> Rather than forcing customers into cumbersome DM labyrinths, provide clear context or pricing ranges that qualify serious buyers and weed out casual window shoppers.</li>
+            <li><strong>Frictionless WhatsApp Direct Links:</strong> Integrate automated WhatsApp Business click-to-chat links with pre-filled greeting messages (e.g., <em>"Hello, I am interested in your K5,000 package"</em>). In Zambia, WhatsApp is the definitive closing table.</li>
+          </ol>
+          <p>When you align creative art direction with targeted Meta paid advertising, social media transforms from a passive vanity billboard into your company's most profitable sales representative.</p>
+        `
+      },
+      'brochure-conversion': {
+        title: 'Make Your Brand Impossible to Ignore: The Enduring Power of the Tri-Fold Brochure',
+        category: 'PRINT MEDIA & COLLATERAL',
+        readTime: '6 MIN READ',
+        image: 'src/images/insights-03.jpg',
+        author: 'Senior Print Designer, Vigorish Media',
+        body: `
+          <p>In an age dominated by email inboxes flooded with spam and fleeting social media feeds, high-quality physical print collateral holds an unexpected psychological superpower: <strong>tactile permanence.</strong></p>
+          <h4 style="font-family: var(--font-display); font-size: 18px; margin: 20px 0 8px;">The Psychology of the Executive Desk</h4>
+          <p>Emails get deleted with a single keystroke. A PDF attachment is easily buried in a Downloads folder. But a 300gsm matte-laminated A4 tri-fold brochure, with crisp typographic hierarchy and rich photography, sits squarely on the desk of managing directors, procurement heads, and decision-makers for weeks.</p>
+          <h4 style="font-family: var(--font-display); font-size: 18px; margin: 20px 0 8px;">Key Anatomy of an Unignorable Brochure</h4>
+          <ul>
+            <li><strong>The Cover Hook:</strong> Never lead with just your logo. Lead with the primary commercial benefit you bring to the client.</li>
+            <li><strong>Inside Left Panel (The Problem & Solution):</strong> Clearly state the industry challenge and how your unique methodology eliminates risk.</li>
+            <li><strong>Inside Spread (The Full Capability Spectrum):</strong> Visual icons, service matrices, and quantified proof points.</li>
+            <li><strong>The Back Panel (Action & Direct Contact):</strong> Direct phone numbers, verified WhatsApp links with QR codes, and corporate physical address.</li>
+          </ul>
+          <p>Make your collateral work overtime. Treat every brochure as an executive ambassador that continues selling when your sales reps leave the room.</p>
+        `
+      }
+    };
+
+    const articleModal = document.getElementById('articleModal');
+    const articleModalContent = document.getElementById('articleModalContent');
+    const closeArticleModalBtn = document.getElementById('closeArticleModal');
+
+    function openArticleModal(id) {
+      const art = articleData[id];
+      if (!art || !articleModal || !articleModalContent) return;
+
+      articleModalContent.innerHTML = `
+        <div style="margin-bottom: 24px;">
+          <div style="display: flex; gap: 12px; font-size: 11px; font-weight: 700; color: var(--brand-blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;">
+            <span>${art.category}</span> • <span>${art.readTime}</span>
+          </div>
+          <h1 class="display-h2" style="font-size: 26px; line-height: 1.35; margin-bottom: 12px;">${art.title}</h1>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">By ${art.author}</div>
+          <img src="${art.image}" alt="${art.title}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 4px; margin-bottom: 24px;" />
+        </div>
+
+        <div style="font-size: 15px; line-height: 1.7; color: var(--text-charcoal); margin-bottom: 32px;">
+          ${art.body}
+        </div>
+
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div style="font-family: var(--font-display); font-weight: 700; font-size: 14px;">Ready to implement this for your brand?</div>
+            <div style="font-size: 13px; color: var(--text-muted);">Consult with Vigorish Media's strategists today.</div>
+          </div>
+          <div style="display: flex; gap: 12px;">
+            <a href="#/contact" class="btn btn-primary" onclick="closeArticleModal(); navigateTo('/contact'); return false;">START A BRIEF</a>
+            <a href="https://wa.me/260979894567" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">CHAT WITH STRATEGIST</a>
+          </div>
+        </div>
+      `;
+
+      articleModal.classList.add('active');
+    }
+
+    function closeArticleModal() {
+      if (articleModal) articleModal.classList.remove('active');
+    }
+
+    if (closeArticleModalBtn) closeArticleModalBtn.addEventListener('click', closeArticleModal);
+    if (articleModal) {
+      articleModal.addEventListener('click', (e) => {
+        if (e.target === articleModal) closeArticleModal();
+      });
+    }
+
+    // Escape key modal close
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProjectModal();
+        closeArticleModal();
+        closeMobileMenu();
+      }
+    });
+
+    // Pricing Plan Auto-Select for Contact Form
+    function selectPricingPlan(planName) {
+      navigateTo('/contact');
+      setTimeout(() => {
+        const messageInput = document.getElementById('contactMessage');
+        const serviceSelect = document.getElementById('contactService');
+        if (messageInput) {
+          messageInput.value = `I am interested in selecting the "${planName}" package. Please provide full onboarding timelines and quotation.`;
+        }
+        if (serviceSelect) {
+          if (planName.includes('Social Media')) serviceSelect.value = 'Social Media Management';
+          else if (planName.includes('Website')) serviceSelect.value = 'Website Design & Management';
+          else if (planName.includes('Brand')) serviceSelect.value = 'Branding & Corporate Identity';
+        }
+      }, 100);
+    }
+
+    // Interactive Project Estimator
+    function updateCalcTotal() {
+      const checks = document.querySelectorAll('.calc-check:checked');
+      let total = 0;
+      checks.forEach(c => {
+        total += parseInt(c.value, 10) || 0;
+      });
+      const display = document.getElementById('calcTotalDisplay');
+      if (display) {
+        display.textContent = 'K' + total.toLocaleString();
+      }
+      return total;
+    }
+
+    function sendCalculatedQuote() {
+      const total = updateCalcTotal();
+      const checks = document.querySelectorAll('.calc-check:checked');
+      const selectedItems = [];
+      checks.forEach(c => {
+        const labelText = c.closest('label')?.innerText.replace(/\n/g, ' - ') || '';
+        selectedItems.push(labelText.trim());
+      });
+
+      navigateTo('/contact');
+      setTimeout(() => {
+        const msg = document.getElementById('contactMessage');
+        if (msg) {
+          msg.value = `Estimated Project Scope (Total: K${total.toLocaleString()} ZMW):\nSelected Items:\n- ${selectedItems.join('\n- ')}\n\nPlease send formal invoice / project initiation schedule.`;
+        }
+      }, 100);
+    }
+
+    // Contact Form Submissions
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName')?.value || '';
+      const email = document.getElementById('contactEmail')?.value || '';
+      const phone = document.getElementById('contactPhone')?.value || '';
+      const company = document.getElementById('contactCompany')?.value || 'N/A';
+      const service = document.getElementById('contactService')?.value || '';
+      const budget = document.getElementById('contactBudget')?.value || '';
+      const message = document.getElementById('contactMessage')?.value || '';
+
+      const statusEl = document.getElementById('contactFormStatus');
+      if (statusEl) {
+        statusEl.style.display = 'block';
+        statusEl.style.padding = '16px';
+        statusEl.style.borderRadius = '4px';
+        statusEl.style.background = '#ecfdf5';
+        statusEl.style.border = '1px solid #6ee7b7';
+        statusEl.style.color = '#065f46';
+        statusEl.innerHTML = `<strong>Thank you, ${name}!</strong> Your project brief has been received. Our creative director will review your specifications and contact you within 24 hours at <strong>${email}</strong> or <strong>${phone}</strong>.`;
+      }
+
+      // Reset form fields
+      const form = document.getElementById('projectBriefForm');
+      if (form) form.reset();
+    }
+
+    function sendBriefViaWhatsApp() {
+      const name = document.getElementById('contactName')?.value || 'Prospective Client';
+      const email = document.getElementById('contactEmail')?.value || '';
+      const phone = document.getElementById('contactPhone')?.value || '';
+      const company = document.getElementById('contactCompany')?.value || '';
+      const service = document.getElementById('contactService')?.value || '';
+      const budget = document.getElementById('contactBudget')?.value || '';
+      const message = document.getElementById('contactMessage')?.value || '';
+
+      const text = `*NEW PROJECT BRIEF - VIGORISH MEDIA*\n\n*Name:* ${name}\n*Company:* ${company}\n*Phone:* ${phone}\n*Email:* ${email}\n*Service:* ${service}\n*Budget:* ${budget}\n*Project Details:*\n${message}`;
+      const url = `https://wa.me/260979894567?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    // Custom Creative Brush Cursor
+    const cursor = document.getElementById('cursorBrush');
+    const coordsBadge = document.getElementById('canvasCoords');
+    if (cursor) {
+      window.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        if (coordsBadge) {
+          coordsBadge.textContent = `X: ${e.clientX} Y: ${e.clientY}`;
+        }
+      });
+
+      document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+      document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+
+      // Attach hover states to links and buttons
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, input, textarea, select, .interactive-card, .portfolio-card, .service-card, .pricing-card, [onclick]')) {
+          cursor.classList.add('hovered');
+        } else {
+          cursor.classList.remove('hovered');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

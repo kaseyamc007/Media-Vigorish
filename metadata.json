@@ -1,0 +1,6 @@
+{
+  "name": "Vigorish Media",
+  "description": "Vigorish Media is a creative media and digital marketing company helping businesses build stronger brands through design, branding, social media, digital marketing, photography, videography and web solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
