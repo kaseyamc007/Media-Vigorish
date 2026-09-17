@@ -1,0 +1,72 @@
+[
+  {
+    "conversationId": "CHAT-20260917-2076",
+    "customerName": "Mwamba Chileshe",
+    "customerContact": "+260977112233",
+    "pageUrl": "https://vigorishmedia.com/#/services",
+    "startedAt": "2026-09-17T18:50:54.234Z",
+    "lastActiveAt": "2026-09-17T18:51:01.971Z",
+    "status": "HUMAN_REQUESTED",
+    "messages": [
+      {
+        "id": "MSG-1789671054234-930",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "Hi Mwamba Chileshe 👋 Welcome! I’m your AI Support Assistant. How can I help you today?",
+        "timestamp": "2026-09-17T18:50:54.234Z"
+      },
+      {
+        "id": "MSG-1789671056753-367",
+        "sender": "customer",
+        "senderName": "Mwamba Chileshe",
+        "text": "What services do you offer for high-end corporate branding?",
+        "timestamp": "2026-09-17T18:50:56.753Z"
+      },
+      {
+        "id": "MSG-1789671056970-122",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.\n4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.\n5. **Graphic Design & Print Collateral**: Press-ready 300 DPI annual reports, packaging, and large-format expo banners.\n6. **Digital Ads & Performance**: Targeted campaigns across Meta and Google with conversion tracking.\n\nWhich of these would you like to explore for your brand?",
+        "timestamp": "2026-09-17T18:50:56.970Z",
+        "escalationTriggered": false
+      },
+      {
+        "id": "MSG-1789671061971-77",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "I’ve notified our support team now, Mwamba Chileshe. A creative lead is reviewing your conversation and someone will assist you shortly.",
+        "timestamp": "2026-09-17T18:51:01.971Z",
+        "escalationTriggered": true
+      }
+    ],
+    "escalated": true,
+    "outboundAlerts": [
+      {
+        "id": "ALERT-1789671056969-338",
+        "alertType": "NEW_CHAT",
+        "recipientPhone": "+260979894567",
+        "dispatchedAt": "2026-09-17T18:50:56.969Z",
+        "deliveredStatus": "SIMULATED_LOGGED",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nMwamba Chileshe\n📞 Contact: +260977112233\n\n🆔 Conversation:\nCHAT-20260917-2076\n\n🕒 Started:\n17 Sept 2026, 20:50 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/services)\n\n━━━━━━━━━━━━━━━━━━\n\n💬...",
+        "rawPayload": {
+          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nMwamba Chileshe\n📞 Contact: +260977112233\n\n🆔 Conversation:\nCHAT-20260917-2076\n\n🕒 Started:\n17 Sept 2026, 20:50 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/services)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CUSTOMER MESSAGE:\n\"What services do you offer for high-end corporate branding?\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
+        },
+        "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
+      },
+      {
+        "id": "ALERT-1789671061971-592",
+        "alertType": "ESCALATION",
+        "recipientPhone": "+260979894567",
+        "dispatchedAt": "2026-09-17T18:51:01.971Z",
+        "deliveredStatus": "SIMULATED_LOGGED",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nMwamba Chileshe\n📞 Client Contact: +260977112233\n\n🆔 Conversation ID:\nCHAT-20260917-2076\n\n🕒 Escalated:\n17 Sept 2026, 20:51 (CAT)\n\n⚠️ Trigger Reason:\nCustomer requested human representative\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST ME...",
+        "rawPayload": {
+          "body": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nMwamba Chileshe\n📞 Client Contact: +260977112233\n\n🆔 Conversation ID:\nCHAT-20260917-2076\n\n🕒 Escalated:\n17 Sept 2026, 20:51 (CAT)\n\n⚠️ Trigger Reason:\nCustomer requested human representative\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST MESSAGE:\n\"What services do you offer for high-end corporate branding?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📜 RECENT CONVERSATION TRAIL:\nAI (Vigorish AI Concierge):\n\"Hi Mwamba Chileshe 👋 Welcome! I’m your AI Support Assistant. How can I help you today?\"\n\nCUSTOMER (Mwamba Chileshe):\n\"What services do you offer for high-end corporate branding?\"\n\nAI (Vigorish AI Concierge):\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.\n4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.\n5. **Graphic Design & Print Collateral**: Press-ready 300 DPI annual reports, packaging, and large-format expo banners.\n6. **Digital Ads & Performance**: Targeted campaigns across Meta and Google with conversion tracking.\n\nWhich of these would you like to explore for your brand?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 ACTION REQUIRED:\nCustomer is waiting in live chat on the website.\nPlease review conversation or reply directly!\n━━━━━━━━━━━━━━━━━━"
+        },
+        "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
+      }
+    ],
+    "escalationReason": "Customer requested human representative",
+    "escalatedAt": "2026-09-17T18:51:01.970Z"
+  }
+]

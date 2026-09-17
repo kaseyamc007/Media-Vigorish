@@ -10,6 +10,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="src/logo/logo.png" />
   <link rel="icon" type="image/png" href="src/logo/logo.png" />
+  <!-- Futuristic AI Live Support System -->
+  <link rel="stylesheet" href="/chat/ai-support.css" />
 
   <style>
     :root {
@@ -1296,6 +1298,7 @@
         <li><a class="apple-nav-link" data-route="/team" onclick="navigateTo('/team'); return false;">Team</a></li>
         <li><a class="apple-nav-link" data-route="/insights" onclick="navigateTo('/insights'); return false;">Newsroom</a></li>
         <li><a class="apple-nav-link" data-route="/contact" onclick="navigateTo('/contact'); return false;">Contact</a></li>
+        <li><a class="apple-nav-link" onclick="if(window.VigorishAI){window.VigorishAI.open();} return false;" style="cursor: pointer; color: #2997ff; display: flex; align-items: center; gap: 5px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>AI Support</a></li>
       </ul>
 
       <button id="appleMobileMenuBtn" class="apple-mobile-menu-btn" aria-label="Toggle Navigation" onclick="toggleMobileMenu()">
@@ -1326,6 +1329,7 @@
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/team');">Team</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/insights');">Newsroom</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/contact');">Contact &amp; Brief</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); if(window.VigorishAI){window.VigorishAI.open();}" style="color: #2997ff; display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>✦ AI Live Support (Online)</a></li>
     </ul>
     <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 10px;">
       <a href="#/contact" class="btn-apple-pill" style="text-align: center; justify-content: center; padding: 12px 20px; font-size: 15px;" onclick="closeMobileMenu(); navigateTo('/contact');">Start a Project</a>
@@ -3447,5 +3451,8 @@
 
 
   </script>
+
+  <!-- Vigorish Media AI Live Customer Support Widget -->
+  <script src="/chat/ai-support.js" defer></script>
 </body>
 </html>
