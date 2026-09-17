@@ -218,6 +218,61 @@ html_code = '''<!DOCTYPE html>
       overflow: hidden;
     }
 
+        .hero-brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(41, 151, 255, 0.12);
+      border: 1px solid rgba(41, 151, 255, 0.38);
+      padding: 7px 20px;
+      border-radius: 980px;
+      box-shadow: 0 0 20px rgba(41, 151, 255, 0.2);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-brand-pill:hover {
+      background: rgba(41, 151, 255, 0.18);
+      border-color: rgba(41, 151, 255, 0.6);
+      box-shadow: 0 0 28px rgba(41, 151, 255, 0.35);
+    }
+    .hero-brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2997ff;
+      box-shadow: 0 0 8px #2997ff;
+      display: inline-block;
+    }
+    .brand-hero-bold {
+      font-weight: 800 !important;
+      font-size: 13.5px !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase !important;
+      color: #ffffff !important;
+      text-shadow: 0 0 12px rgba(41, 151, 255, 0.4);
+    }
+    .brand-nav-title {
+      font-weight: 800 !important;
+      font-size: 17.5px !important;
+      letter-spacing: -0.025em !important;
+      color: #ffffff !important;
+      text-shadow: 0 1px 12px rgba(255, 255, 255, 0.25);
+    }
+    .brand-footer-title {
+      font-weight: 800 !important;
+      font-size: 19px !important;
+      letter-spacing: -0.02em !important;
+      color: #ffffff !important;
+    }
+    .brand-name-bold {
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      letter-spacing: -0.01em;
+    }
+    .brand-name-accent {
+      font-weight: 800 !important;
+      color: #2997ff !important;
+      letter-spacing: -0.01em;
+    }
     .apple-hero-eyebrow {
       font-size: 13.5px;
       font-weight: 600;
@@ -743,7 +798,7 @@ html_code = '''<!DOCTYPE html>
           <polyline points="2 17 12 22 22 17"></polyline>
           <polyline points="2 12 12 17 22 12"></polyline>
         </svg>
-        <span>Vigorish Media</span>
+        <strong class="brand-nav-title">Vigorish Media</strong>
       </a>
 
       <ul class="apple-nav-links">
@@ -780,10 +835,15 @@ html_code = '''<!DOCTYPE html>
     <section id="view-home" class="view-page active">
       <!-- Apple Cinematic Hero -->
       <div class="apple-hero">
-        <div class="apple-hero-eyebrow">Vigorish Media Pro</div>
+        <div class="apple-hero-eyebrow">
+          <span class="hero-brand-pill">
+            <span class="hero-brand-dot"></span>
+            <strong class="brand-hero-bold">VIGORISH MEDIA</strong>
+          </span>
+        </div>
         <h1 class="apple-hero-headline">Building Brands That Add Value.</h1>
         <p class="apple-hero-subhead">
-          Bespoke brand marks. 4K cinema videography. High-converting social media. High-performance web architecture. Crafted in Lusaka, Zambia.
+          <strong class="brand-name-bold">Vigorish Media</strong> is a creative media and digital marketing company helping businesses build stronger brands through design, branding, social media, digital marketing, photography, videography and web solutions.
         </p>
 
         <div class="apple-hero-cta-group">
@@ -799,7 +859,7 @@ html_code = '''<!DOCTYPE html>
               <span class="apple-dot dot-yellow"></span>
               <span class="apple-dot dot-green"></span>
             </div>
-            <span>VIGORISH_STUDIO_SHOWCASE // 4K CINEMA MASTER // LUSAKA</span>
+            <span><strong class="brand-name-bold" style="color: #2997ff;">VIGORISH MEDIA</strong> // 4K CINEMA MASTER // LUSAKA &bull; ACTIVE PRODUCTION</span>
             <span style="color: #34d399;">● ACTIVE PRODUCTION</span>
           </div>
           <div class="apple-studio-screen">
@@ -1130,10 +1190,10 @@ html_code = '''<!DOCTYPE html>
       <div class="apple-section-dark" style="padding-top: 60px;">
         <div class="apple-container">
           <div class="apple-section-header left-aligned">
-            <div class="apple-section-eyebrow">About Vigorish Media</div>
+            <div class="apple-section-eyebrow">About <strong class="brand-name-accent">Vigorish Media</strong></div>
             <h1 class="apple-section-title">Building Brands<br>That Add Value.</h1>
             <p class="apple-section-desc">
-              Vigorish Media is a creative media and digital marketing company headquartered in Lusaka, Zambia. We exist to help businesses build stronger brands through design, branding, social media, digital marketing, photography, videography, and web solutions.
+              <strong class="brand-name-bold">Vigorish Media</strong> is a creative media and digital marketing company headquartered in Lusaka, Zambia. We exist to help businesses build stronger brands through design, branding, social media, digital marketing, photography, videography and web solutions.
             </p>
           </div>
 
@@ -1141,12 +1201,12 @@ html_code = '''<!DOCTYPE html>
             <div style="background: #161617; border-radius: 20px; padding: 36px; border: 1px solid rgba(255,255,255,0.08);">
               <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px;">Our Origin</h3>
               <p style="font-size: 15px; color: #a1a1a6; line-height: 1.65;">
-                Founded with an unwavering conviction that Zambian and African enterprises deserve world-standard creative execution, Vigorish Media blends aesthetic mastery with analytical business rigour. We don't just create visuals — we engineer strategic leverage.
+                Founded with an unwavering conviction that Zambian and African enterprises deserve world-standard creative execution, <strong class="brand-name-bold">Vigorish Media</strong> blends aesthetic mastery with analytical business rigour. We don't just create visuals — we engineer strategic leverage.
               </p>
             </div>
 
             <div style="background: #161617; border-radius: 20px; padding: 36px; border: 1px solid rgba(255,255,255,0.08);">
-              <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px;">The Name "Vigorish"</h3>
+              <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px;">The Name "<strong class="brand-name-bold" style="color: #2997ff;">Vigorish</strong>"</h3>
               <p style="font-size: 15px; color: #a1a1a6; line-height: 1.65;">
                 In finance and strategy, "vigorish" represents the built-in structural advantage that tilts outcomes toward success. For our clients, that advantage is uncompromising brand distinction, high perceived value, and measurable market authority.
               </p>
@@ -1588,7 +1648,7 @@ html_code = '''<!DOCTYPE html>
               <div style="background: #1d1d1f; padding: 20px 24px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
                 <div>
                   <div style="font-weight: 700; color: #fff; font-size: 16px;">Airtel Money</div>
-                  <div style="font-size: 13px; color: #86868b;">Name: Vigorish Media / Tuli Bantu Baluse</div>
+                  <div style="font-size: 13px; color: #86868b;">Account Name: <strong class="brand-name-bold">Vigorish Media</strong> / Tuli Bantu Baluse</div>
                 </div>
                 <div style="font-weight: 700; color: #34d399; font-size: 17px;">+260 97 989 4567</div>
               </div>
@@ -1596,7 +1656,7 @@ html_code = '''<!DOCTYPE html>
               <div style="background: #1d1d1f; padding: 20px 24px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
                 <div>
                   <div style="font-weight: 700; color: #fff; font-size: 16px;">MTN Mobile Money</div>
-                  <div style="font-size: 13px; color: #86868b;">Name: Vigorish Media / Tuli Bantu Baluse</div>
+                  <div style="font-size: 13px; color: #86868b;">Account Name: <strong class="brand-name-bold">Vigorish Media</strong> / Tuli Bantu Baluse</div>
                 </div>
                 <div style="font-weight: 700; color: #34d399; font-size: 17px;">+260 97 989 4567</div>
               </div>
@@ -1736,7 +1796,7 @@ html_code = '''<!DOCTYPE html>
         1. Engagement metrics and ROI figures are derived from verified client campaigns in Lusaka, Zambia across 2025 and 2026.<br>
         2. Web design packages include 12 months complimentary managed cloud infrastructure, SSL certificate, and domain renewal.<br>
         3. All images marked with stock badges are high-fidelity editorial stock assets curated for demonstration and can be replaced with your studio assets.<br>
-        4. Vigorish Media is an independent, 100% Zambian creative media and digital marketing studio headquartered in Lusaka, Zambia.
+        4. <strong class="brand-name-bold">Vigorish Media</strong> is an independent, 100% Zambian creative media and digital marketing company headquartered in Lusaka, Zambia.
       </div>
 
       <div class="apple-footer-grid">
@@ -1765,7 +1825,7 @@ html_code = '''<!DOCTYPE html>
         <div class="apple-footer-col">
           <h5>Agency</h5>
           <ul>
-            <li><a href="#/about" onclick="navigateTo('/about'); return false;">About Vigorish</a></li>
+            <li><a href="#/about" onclick="navigateTo('/about'); return false;">About <strong class="brand-name-bold" style="color: inherit;">Vigorish Media</strong></a></li>
             <li><a href="#/team" onclick="navigateTo('/team'); return false;">Leadership Team</a></li>
             <li><a href="#/donate" onclick="navigateTo('/donate'); return false;">Tuli Bantu Baluse</a></li>
             <li><a href="#/insights" onclick="navigateTo('/insights'); return false;">Studio Newsroom</a></li>
@@ -1795,7 +1855,7 @@ html_code = '''<!DOCTYPE html>
       </div>
 
       <div class="apple-footer-legal">
-        <div>Copyright &copy; 2026 Vigorish Media. All rights reserved. Building Brands That Add Value.</div>
+        <div>Copyright &copy; 2026 <strong class="brand-name-bold">Vigorish Media</strong>. All rights reserved. Building Brands That Add Value.</div>
         <div style="display: flex; gap: 18px;">
           <a href="#/about" onclick="navigateTo('/about'); return false;">Privacy Policy</a>
           <a href="#/about" onclick="navigateTo('/about'); return false;">Terms of Service</a>
@@ -2094,7 +2154,7 @@ html_code = '''<!DOCTYPE html>
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80',
         overview: 'Horizon Capital required a 24-page high-stakes investor prospectus and corporate profile to present to institutional stakeholders across Southern Africa.',
         deliverables: ['Editorial typography formatting', 'Full corporate stationery suite', 'Digital interactive PDF version', 'Presentation slidedeck'],
-        quote: 'Vigorish Media ensured our collateral conveyed rock-solid reliability to investors.'
+        quote: '<strong class="brand-name-bold">Vigorish Media</strong> ensured our collateral conveyed rock-solid reliability to investors.'
       },
       'savannah-reels': {
         title: 'Savannah Lifestyle Apparel',
@@ -2159,7 +2219,7 @@ html_code = '''<!DOCTYPE html>
           In emerging markets, businesses frequently underestimate visual presentation. Yet data repeatedly proves that customers judge business trustworthiness within the first 50 milliseconds of viewing a brand's collateral or website.
         </p>
         <p style="font-size: 15.5px; color: #444; line-height: 1.7; margin-bottom: 24px;">
-          At Vigorish Media, we treat brand identity as enterprise infrastructure — laying the groundwork for sustainable pricing power, consumer confidence, and regional brand equity.
+          At <strong class="brand-name-bold" style="color: #1d1d1f;">Vigorish Media</strong>, we treat brand identity as enterprise infrastructure — laying the groundwork for sustainable pricing power, consumer confidence, and regional brand equity.
         </p>
         <button class="btn-apple-pill" onclick="closeArticleModal(); navigateTo('/contact');">Discuss Your Brand Strategy</button>
       `;
