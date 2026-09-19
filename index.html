@@ -1298,7 +1298,7 @@
         <li><a class="apple-nav-link" data-route="/team" onclick="navigateTo('/team'); return false;">Team</a></li>
         <li><a class="apple-nav-link" data-route="/insights" onclick="navigateTo('/insights'); return false;">Newsroom</a></li>
         <li><a class="apple-nav-link" data-route="/contact" onclick="navigateTo('/contact'); return false;">Contact</a></li>
-        <li><a class="apple-nav-link" onclick="if(window.VigorishAI){window.VigorishAI.open();} return false;" style="cursor: pointer; color: #2997ff; display: flex; align-items: center; gap: 5px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>AI Support</a></li>
+        <li><a class="apple-nav-link" onclick="openLiveSupportChat(); return false;" style="cursor: pointer; color: #2997ff; display: flex; align-items: center; gap: 5px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>AI Support</a></li>
       </ul>
 
       <button id="appleMobileMenuBtn" class="apple-mobile-menu-btn" aria-label="Toggle Navigation" onclick="toggleMobileMenu()">
@@ -1329,19 +1329,12 @@
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/team');">Team</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/insights');">Newsroom</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/contact');">Contact &amp; Brief</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); if(window.VigorishAI){window.VigorishAI.open();}" style="color: #2997ff; display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>✦ AI Live Support (Online)</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); openLiveSupportChat();" style="color: #2997ff; display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>✦ AI Live Support (Online)</a></li>
     </ul>
     <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 10px;">
       <a href="#/contact" class="btn-apple-pill" style="text-align: center; justify-content: center; padding: 12px 20px; font-size: 15px;" onclick="closeMobileMenu(); navigateTo('/contact');">Start a Project</a>
       <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="btn-apple-secondary" style="text-align: center; justify-content: center; padding: 12px 20px; font-size: 14px;">WhatsApp: +260 97 989 4567</a>
     </div>
-  </div>
-
-
-  <!-- Apple Sub-ribbon Banner -->
-  <div class="apple-ribbon">
-    <span>★ Lusaka Studio Open: 2026 Brand Retainers &amp; 4K Productions.</span>
-    <a href="#/pricing" onclick="navigateTo('/pricing'); return false;">Configure your creative spec &rarr;</a>
   </div>
 
   <!-- Main View Container -->
@@ -1709,7 +1702,7 @@
             <div class="apple-section-eyebrow">About <strong class="brand-name-accent">Vigorish Media</strong></div>
             <h1 class="apple-section-title">Building Brands<br>That Add Value.</h1>
             <p class="apple-section-desc">
-              <strong class="brand-name-bold">Vigorish Media</strong> is a creative media and digital marketing company headquartered in Lusaka, Zambia. We exist to help businesses build stronger brands through design, branding, social media, digital marketing, photography, videography and web solutions.
+              <strong class="brand-name-bold">Vigorish Media</strong> is a creative media and digital marketing company headquartered at Chibuluma Road, New Kasama, Lusaka, Zambia. We exist to help businesses build stronger brands through design, branding, social media, digital marketing, photography, videography and web solutions.
             </p>
           </div>
 
@@ -1768,19 +1761,61 @@
 
           <div style="display: flex; flex-direction: column; gap: 32px;">
             <!-- Service 1 -->
-            <div class="apple-bento-card" style="min-height: auto; flex-direction: row; align-items: center; gap: 40px;">
+            <div class="apple-bento-card" style="min-height: auto; flex-direction: row; align-items: flex-start; gap: 40px; padding: 40px 36px;">
               <div style="flex: 1;">
-                <div class="apple-bento-eyebrow">CAPABILITY 01</div>
-                <h3 class="apple-bento-title">Social Media Management</h3>
-                <p class="apple-bento-text">
-                  Complete turnkey social presence: monthly content calendars, graphic design, caption copywriting, audience engagement, comment moderation, and performance reports across Facebook, Instagram, and TikTok.
+                <div class="apple-bento-eyebrow">CAPABILITY 01 // SOCIAL MEDIA</div>
+                <h3 class="apple-bento-title" style="margin-bottom: 12px;">Social Media Management</h3>
+                
+                <p style="font-size: 16.5px; font-weight: 600; color: var(--apple-text-dark); line-height: 1.5; margin-bottom: 12px;">
+                  Your Facebook &amp; Instagram should make your business look active, professional and credible not forgotten.
                 </p>
-                <div style="margin-bottom: 20px; font-size: 13.5px; color: #555;">
-                  <strong>Deliverables:</strong> 12–24 custom posts/mo, weekly short-form Reel scripts, custom highlight covers, monthly analytics review.
+                <p style="font-size: 15px; color: var(--apple-blue); font-weight: 700; margin-bottom: 16px;">
+                  Vigorish Media can manage it for you.
+                </p>
+
+                <div style="margin-bottom: 24px;">
+                  <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: #86868b; margin-bottom: 8px;">We handle:</div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 14px; color: #333;">
+                    <div>✓ Strategy &amp; consistent posting</div>
+                    <div>✓ Professional post designs &amp; captions</div>
+                    <div>✓ Community building</div>
+                    <div>✓ Facebook &amp; Instagram boosting</div>
+                    <div>✓ Photo editing &amp; Reels</div>
+                    <div>✓ Product &amp; location showcasing</div>
+                    <div style="grid-column: span 2;">✓ Branding &amp; website management</div>
+                  </div>
                 </div>
-                <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;">Inquire About Social Media</a>
+
+                <!-- SMM Pricing Boxes -->
+                <div style="background: #f5f5f7; border-radius: 14px; padding: 20px; border: 1px solid rgba(0,0,0,0.06); margin-bottom: 24px;">
+                  <div style="font-size: 12px; font-weight: 800; letter-spacing: 0.06em; color: var(--apple-text-dark); margin-bottom: 12px;">
+                    📱 SOCIAL MEDIA MANAGEMENT FROM K1,200/MONTH
+                  </div>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 10px;">
+                    <div style="background: #ffffff; padding: 14px 16px; border-radius: 10px; border: 1px solid #e5e5ea;">
+                      <div style="font-size: 13px; font-weight: 600; color: #666;">5 Posts</div>
+                      <div style="font-size: 18px; font-weight: 800; color: var(--apple-text-dark); margin-top: 2px;">K1,200<span style="font-size: 12px; font-weight: 500; color: #888;">/mo</span></div>
+                    </div>
+                    <div style="background: #ffffff; padding: 14px 16px; border-radius: 10px; border: 1px solid #e5e5ea;">
+                      <div style="font-size: 13px; font-weight: 600; color: #666;">10 Posts</div>
+                      <div style="font-size: 18px; font-weight: 800; color: var(--apple-text-dark); margin-top: 2px;">K2,500<span style="font-size: 12px; font-weight: 500; color: #888;">/mo</span></div>
+                    </div>
+                    <div style="background: #ffffff; padding: 14px 16px; border-radius: 10px; border: 1px solid #e5e5ea;">
+                      <div style="font-size: 13px; font-weight: 600; color: #666;">20 Posts</div>
+                      <div style="font-size: 18px; font-weight: 800; color: var(--apple-text-dark); margin-top: 2px;">K4,000<span style="font-size: 12px; font-weight: 500; color: #888;">/mo</span></div>
+                    </div>
+                  </div>
+                  <div style="font-size: 12.5px; color: #666; font-style: italic;">
+                    Every post includes a professional design + caption.
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                  <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;">Start Social Management</a>
+                  <button type="button" class="btn-apple-secondary" onclick="openLiveSupportChat();">Ask AI About Packages &gt;</button>
+                </div>
               </div>
-              <div style="width: 380px; height: 260px; border-radius: 16px; overflow: hidden; position: relative;">
+              <div style="width: 380px; height: 320px; border-radius: 16px; overflow: hidden; position: relative; flex-shrink: 0;">
                 <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-social-media.jpg';" 
                      style="width:100%; height:100%; object-fit:cover;" />
@@ -2131,7 +2166,7 @@
 
                   <div style="margin-bottom: 20px;">
                     <div style="font-size: 16px; font-weight: 700; letter-spacing: -0.01em;">Enterprise Client Tier</div>
-                    <div style="font-size: 11px; color: #86868b;">Lusaka Studio // 15.3875° S, 28.3228° E</div>
+                    <div style="font-size: 11px; color: #86868b;">New Kasama Studio // Chibuluma Road, Lusaka</div>
                   </div>
 
                   <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -2163,6 +2198,82 @@
             <div class="apple-section-eyebrow">Transparent Investment</div>
             <h1 class="apple-section-title">Priced for Value. Built for Growth.</h1>
             <p class="apple-section-desc">Clear, competitive Zambian Kwacha rates with guaranteed delivery schedules.</p>
+          </div>
+
+          <!-- Dedicated Social Media Management Plans -->
+          <div style="background: #ffffff; border-radius: 20px; padding: 36px 32px; border: 1px solid #d2d2d7; margin-bottom: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 24px;">
+              <div>
+                <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-blue);">MONTHLY RETAINER PLANS</span>
+                <h2 style="font-size: 26px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 8px;">Social Media Management</h2>
+                <p style="font-size: 15px; color: var(--apple-text-secondary); max-width: 650px; line-height: 1.5;">
+                  Your Facebook &amp; Instagram should make your business look active, professional and credible not forgotten. Vigorish Media can manage it for you.
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <button class="btn-apple-secondary" onclick="openLiveSupportChat();" style="font-size: 13.5px; padding: 10px 18px;">Ask AI Support</button>
+                <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;" style="font-size: 13.5px; padding: 10px 20px;">Book Plan</a>
+              </div>
+            </div>
+
+            <!-- Handled Features Grid -->
+            <div style="background: #fbfbfd; border-radius: 12px; padding: 16px 20px; border: 1px solid #f0f0f2; margin-bottom: 28px;">
+              <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #86868b; margin-bottom: 8px;">We handle:</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 13.5px; color: #333;">
+                <div>✓ Strategy &amp; consistent posting</div>
+                <div>✓ Professional post designs &amp; captions</div>
+                <div>✓ Community building</div>
+                <div>✓ Facebook &amp; Instagram boosting</div>
+                <div>✓ Photo editing &amp; Reels</div>
+                <div>✓ Product &amp; location showcasing</div>
+                <div style="grid-column: span 2;">✓ Branding &amp; website management</div>
+              </div>
+            </div>
+
+            <!-- The 3 SMM Tiers -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+              <div style="background: #f5f5f7; border-radius: 16px; padding: 24px 20px; border: 1px solid #e5e5ea; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div style="font-size: 12px; font-weight: 700; color: #86868b; text-transform: uppercase;">PLAN A</div>
+                  <h3 style="font-size: 20px; font-weight: 800; color: var(--apple-text-dark); margin: 6px 0 10px;">5 Posts / Month</h3>
+                  <div style="font-size: 28px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 12px;">K1,200 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW / mo</span></div>
+                  <p style="font-size: 13.5px; color: #555; line-height: 1.5; margin-bottom: 16px;">
+                    Essential baseline active presence. Every post includes a professional design + caption.
+                  </p>
+                </div>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 10px;" onclick="selectSmmTier('5 Posts', 1200);">Select 5 Posts (K1,200)</button>
+              </div>
+
+              <div style="background: #ffffff; border-radius: 16px; padding: 24px 20px; border: 2px solid var(--apple-blue); box-shadow: 0 4px 16px rgba(41,151,255,0.12); display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 12px; font-weight: 700; color: var(--apple-blue); text-transform: uppercase;">PLAN B // POPULAR</span>
+                  </div>
+                  <h3 style="font-size: 20px; font-weight: 800; color: var(--apple-text-dark); margin: 6px 0 10px;">10 Posts / Month</h3>
+                  <div style="font-size: 28px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 12px;">K2,500 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW / mo</span></div>
+                  <p style="font-size: 13.5px; color: #555; line-height: 1.5; margin-bottom: 16px;">
+                    Consistent weekly rhythm. Every post includes a professional design + caption + engagement support.
+                  </p>
+                </div>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 10px;" onclick="selectSmmTier('10 Posts', 2500);">Select 10 Posts (K2,500)</button>
+              </div>
+
+              <div style="background: #f5f5f7; border-radius: 16px; padding: 24px 20px; border: 1px solid #e5e5ea; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div style="font-size: 12px; font-weight: 700; color: #86868b; text-transform: uppercase;">PLAN C // GROWTH</div>
+                  <h3 style="font-size: 20px; font-weight: 800; color: var(--apple-text-dark); margin: 6px 0 10px;">20 Posts / Month</h3>
+                  <div style="font-size: 28px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 12px;">K4,000 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW / mo</span></div>
+                  <p style="font-size: 13.5px; color: #555; line-height: 1.5; margin-bottom: 16px;">
+                    Dominant brand authority. Every post includes a professional design + caption + boosting guidance.
+                  </p>
+                </div>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 10px;" onclick="selectSmmTier('20 Posts', 4000);">Select 20 Posts (K4,000)</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #86868b;">COMPREHENSIVE MULTI-PILLAR PACKAGES</span>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 50px;">
@@ -2384,23 +2495,36 @@
           </div>
 
           <!-- Quick Contact Cards -->
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 36px;">
-            <div class="apple-configurator-box" style="padding: 24px; text-align: center;">
-              <div style="font-size: 28px; margin-bottom: 8px;">📞</div>
-              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">Phone &amp; Call</div>
-              <a href="tel:+260979894567" style="color: var(--apple-blue); text-decoration: none; font-size: 14px; font-weight: 600;">+260 97 989 4567</a>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 36px;">
+            <div class="apple-configurator-box" style="padding: 22px 18px; text-align: center; cursor: pointer; border: 1.5px solid rgba(41, 151, 255, 0.4); background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%); transition: transform 0.2s ease, box-shadow 0.2s ease;" onclick="openLiveSupportChat();" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+              <div style="font-size: 26px; margin-bottom: 6px;">✨</div>
+              <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--apple-blue);">AI Live Support</div>
+              <div style="color: #555; font-size: 12px; line-height: 1.35; margin-bottom: 8px;">Instant 24/7 answers on SMM, specs &amp; pricing</div>
+              <span style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: #30d158;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>Chat Now &gt;</span>
             </div>
 
-            <div class="apple-configurator-box" style="padding: 24px; text-align: center;">
-              <div style="font-size: 28px; margin-bottom: 8px;">💬</div>
-              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">WhatsApp Direct</div>
-              <a href="https://wa.me/260979894567" target="_blank" style="color: #25D366; text-decoration: none; font-size: 14px; font-weight: 600;">+260 97 989 4567</a>
+            <div class="apple-configurator-box" style="padding: 22px 18px; text-align: center;">
+              <div style="font-size: 26px; margin-bottom: 6px;">📍</div>
+              <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px;">Studio Address</div>
+              <div style="color: var(--apple-text-dark); font-size: 12.5px; font-weight: 600; line-height: 1.35;">Chibuluma Road, New Kasama, Lusaka, Zambia</div>
             </div>
 
-            <div class="apple-configurator-box" style="padding: 24px; text-align: center;">
-              <div style="font-size: 28px; margin-bottom: 8px;">✉️</div>
-              <div style="font-weight: 700; font-size: 15px; margin-bottom: 4px;">Email Inquiries</div>
-              <a href="mailto:mediavigorish@gmail.com" style="color: var(--apple-blue); text-decoration: none; font-size: 13.5px; font-weight: 600;">mediavigorish@gmail.com</a>
+            <div class="apple-configurator-box" style="padding: 22px 18px; text-align: center;">
+              <div style="font-size: 26px; margin-bottom: 6px;">📞</div>
+              <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px;">Phone &amp; Call</div>
+              <a href="tel:+260979894567" style="color: var(--apple-blue); text-decoration: none; font-size: 13.5px; font-weight: 600;">+260 97 989 4567</a>
+            </div>
+
+            <div class="apple-configurator-box" style="padding: 22px 18px; text-align: center;">
+              <div style="font-size: 26px; margin-bottom: 6px;">💬</div>
+              <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px;">WhatsApp Direct</div>
+              <a href="https://wa.me/260979894567" target="_blank" style="color: #25D366; text-decoration: none; font-size: 13.5px; font-weight: 600;">+260 97 989 4567</a>
+            </div>
+
+            <div class="apple-configurator-box" style="padding: 22px 18px; text-align: center;">
+              <div style="font-size: 26px; margin-bottom: 6px;">✉️</div>
+              <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px;">Email Inquiries</div>
+              <a href="mailto:mediavigorish@gmail.com" style="color: var(--apple-blue); text-decoration: none; font-size: 12.5px; font-weight: 600;">mediavigorish@gmail.com</a>
             </div>
           </div>
 
@@ -2513,7 +2637,7 @@
         1. Engagement metrics and ROI figures are derived from verified client campaigns in Lusaka, Zambia across 2025 and 2026.<br>
         2. Web design packages include 12 months complimentary managed cloud infrastructure, SSL certificate, and domain renewal.<br>
         3. All images marked with stock badges are high-fidelity editorial stock assets curated for demonstration and can be replaced with your studio assets.<br>
-        4. <strong class="brand-name-bold">Vigorish Media</strong> is an independent, 100% Zambian creative media and digital marketing company headquartered in Lusaka, Zambia.
+        4. <strong class="brand-name-bold">Vigorish Media</strong> is an independent, 100% Zambian creative media and digital marketing company headquartered at Chibuluma Road, New Kasama, Lusaka, Zambia.
       </div>
 
       
@@ -2522,7 +2646,7 @@
           <img src="src/logo/logo.png" alt="Vigorish Media" style="height: 32px; width: auto; object-fit: contain; filter: brightness(1.2);" onerror="this.src='public/logo.png';" />
           <div>
             <strong class="brand-footer-title" style="font-size: 16px; color: #fff;">Vigorish Media</strong>
-            <div style="font-size: 11.5px; color: #86868b;">Building Brands That Add Value // Lusaka, Zambia</div>
+            <div style="font-size: 11.5px; color: #86868b;">Building Brands That Add Value // Chibuluma Road, New Kasama, Lusaka</div>
           </div>
         </div>
         <div style="display: flex; gap: 12px;">
@@ -2567,7 +2691,7 @@
         <div class="apple-footer-col">
           <h5>Contact &amp; Studio</h5>
           <ul>
-            <li>Lusaka, Zambia</li>
+            <li>Chibuluma Road, New Kasama, Lusaka, Zambia</li>
             <li>+260 97 989 4567</li>
             <li>mediavigorish@gmail.com</li>
             <li>Mon–Fri: 08:30 – 17:30 CAT</li>
@@ -2591,7 +2715,7 @@
         <div style="display: flex; gap: 18px;">
           <a href="#/about" onclick="navigateTo('/about'); return false;">Privacy Policy</a>
           <a href="#/about" onclick="navigateTo('/about'); return false;">Terms of Service</a>
-          <span>Lusaka, Zambia</span>
+          <span>Chibuluma Rd, New Kasama, Lusaka</span>
         </div>
       </div>
     </div>
@@ -2787,13 +2911,17 @@
     const serviceDetails = {
       'social-media': {
         title: 'Social Media Management',
-        category: 'GROWTH & COMMUNITY',
-        desc: 'Elevate your brand with daily consistency, scroll-stopping aesthetics, and active audience engagement on Facebook, Instagram, and TikTok.',
+        category: 'GROWTH & COMMUNITY // FROM K1,200/MO',
+        desc: 'Your Facebook & Instagram should make your business look active, professional and credible not forgotten. Vigorish Media can manage it for you.',
         points: [
-          'Full-month calendar mapped out with high-converting hooks and calls-to-action.',
-          'Custom branded static carousels, infographics, and motion graphics.',
-          'Proactive reply management to foster trust and turn commenters into customers.',
-          'Bi-weekly performance reporting with actionable growth metrics.'
+          'Strategy & consistent posting calibrated for your audience.',
+          'Professional post designs & captions (every post includes custom graphic design + conversion caption).',
+          'Community building and active audience engagement.',
+          'Facebook & Instagram boosting to accelerate local reach and lead generation.',
+          'Photo editing & high-energy video Reels.',
+          'Product & location showcasing capturing your brand ambiance.',
+          'Branding & website management synergy.',
+          'Plans available: 5 Posts (K1,200/mo), 10 Posts (K2,500/mo), 20 Posts (K4,000/mo).'
         ]
       },
       'videography': {
@@ -3049,16 +3177,18 @@
     const consoleServices = [
       {
         title: 'Social Media Management',
-        category: 'GROWTH & COMMUNITY',
-        desc: 'Comprehensive social media operations driving organic reach, brand prestige, and active buyer engagement across Facebook, Instagram, and TikTok.',
+        category: 'GROWTH & COMMUNITY // FROM K1,200/MO',
+        desc: 'Your Facebook & Instagram should make your business look active, professional and credible not forgotten. Vigorish Media can manage it for you.',
         deliverables: [
-          '16–24 high-retention graphic & short-video assets monthly',
-          'Viral-optimized Reel & TikTok storytelling scripts',
-          'Active daily audience engagement & response management',
-          'Bi-weekly conversion reports & audience demographic insights'
+          'Strategy & consistent posting across Facebook & Instagram',
+          'Professional post designs & captions (every post includes custom graphics + caption)',
+          'Community building, comments & active audience engagement',
+          'Facebook & Instagram boosting, photo editing, and high-impact Reels',
+          'Product & location showcasing with branding & website management synergy',
+          'Retainer tiers: 5 Posts (K1,200/mo) | 10 Posts (K2,500/mo) | 20 Posts (K4,000/mo)'
         ],
-        timeline: '72hr Initial Onboarding // Continuous Monthly Retainer',
-        advantage: 'Builds top-of-mind brand authority so customers choose you before competitors.',
+        timeline: 'Immediate 48hr Onboarding // Continuous Monthly Retainer',
+        advantage: 'Builds active authority so prospective buyers trust and choose your brand first.',
         image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop&q=80',
         serviceId: 'Social Media Management'
       },
@@ -3449,6 +3579,35 @@
       }, 600);
     }
 
+    function selectSmmTier(tierName, price) {
+      navigateTo('/contact');
+      setTimeout(() => {
+        const select = document.getElementById('contactServiceSelect');
+        if (select) select.value = 'Social Media Management';
+        const msg = document.getElementById('contactMessage');
+        if (msg) {
+          msg.value = `Selected Social Media Retainer: ${tierName} (K${price.toLocaleString()} ZMW/month)\nIncluded Deliverables:\n✓ Professional post designs & captions\n✓ Strategy & consistent posting\n✓ Community building & response management\n✓ Facebook & Instagram boosting guidance\n\nPlease send me the onboarding details and creative spec brief.`;
+        }
+      }, 150);
+    }
+
+    function openLiveSupportChat() {
+      if (window.VigorishAI && typeof window.VigorishAI.open === 'function') {
+        window.VigorishAI.open();
+        return;
+      }
+      const launcher = document.getElementById('aiSupportLauncher');
+      if (launcher) {
+        launcher.click();
+        return;
+      }
+      const chatWin = document.getElementById('aiChatWindow');
+      if (chatWin) {
+        chatWin.classList.add('ai-open');
+        chatWin.setAttribute('aria-hidden', 'false');
+      }
+    }
+    window.openLiveSupportChat = openLiveSupportChat;
 
   </script>
 

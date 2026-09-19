@@ -4,7 +4,7 @@ export const STUDIO_KNOWLEDGE_BASE = `
 ## 1. COMPANY IDENTITY
 - Name: Vigorish Media
 - Tagline: "Building Brands That Add Value."
-- Headquarters: Lusaka, Zambia (Southern Africa).
+- Headquarters & Physical Address: Chibuluma Road, New Kasama, Lusaka, Zambia.
 - Ownership: 100% independent Zambian creative media and digital architecture company.
 - Mission: Elevate businesses with world-class visual identity, 4K cinema storytelling, high-performing web platforms, and data-driven marketing.
 - Email: mediavigorish@gmail.com
@@ -14,14 +14,22 @@ export const STUDIO_KNOWLEDGE_BASE = `
 ## 2. CORE CAPABILITIES & DELIVERABLES
 
 ### Pillar 1: Social Media Management
-- What we do: Turnkey social media presence that converts viewers into loyal brand advocates.
+- Value Proposition: "Your Facebook & Instagram should make your business look active, professional and credible not forgotten. Vigorish Media can manage it for you."
 - Platforms: Facebook, Instagram, TikTok, LinkedIn.
-- Deliverables:
-  - 16 to 24 bespoke graphic & video assets per month
-  - Weekly viral-scripted short-form video concepts (Reels / TikToks)
-  - Dedicated daily comment moderation and customer inquiry response management
-  - Bi-weekly analytics & audience demographic performance reports
-- Production Timeline: 72-hour onboarding, ongoing monthly retainers.
+- What We Handle:
+  ✓ Strategy & consistent posting
+  ✓ Professional post designs & captions
+  ✓ Community building
+  ✓ Facebook & Instagram boosting
+  ✓ Photo editing & Reels
+  ✓ Product & location showcasing 
+  ✓ Branding & website management
+- 📱 SOCIAL MEDIA MANAGEMENT PRICING (FROM K1,200/MONTH):
+  - 5 Posts — K1,200/month
+  - 10 Posts — K2,500/month
+  - 20 Posts — K4,000/month
+  - Every post includes a professional design + caption.
+- Production Timeline: 48–72-hour onboarding, ongoing monthly management with monthly analytics.
 
 ### Pillar 2: 4K Videography & Photography
 - What we do: Cinema-grade commercial storytelling, documentary film, and commercial imagery.
@@ -80,7 +88,7 @@ export const STUDIO_KNOWLEDGE_BASE = `
 
 ## 4. FREQUENTLY ASKED QUESTIONS (FAQS)
 - Where are you located?
-  We are based in Lusaka, Zambia. We serve clients across Lusaka, the Copperbelt (Ndola, Kitwe), Livingstone, and regional international clients across Africa and beyond.
+  Our physical creative studio is located at Chibuluma Road, New Kasama, Lusaka, Zambia. We serve clients across Lusaka, the Copperbelt (Ndola, Kitwe), Livingstone, and regional international clients across Africa and beyond.
 - How do we get started?
   Clients can submit a project brief through our website, request a consultation, or contact our team directly at +260 97 989 4567 or mediavigorish@gmail.com.
 - Do you offer custom packages?

@@ -10,6 +10,9 @@ export const CHAT_CONFIG = {
   namePromptHeading: 'Before we get started, what should we call you?',
   namePromptSubtext: 'Connect to our live studio intelligence. We’ll personalize your session and notify our team if needed.',
   
+  // Physical Studio Address
+  studioAddress: 'Chibuluma Road, New Kasama, Lusaka, Zambia',
+  
   // WhatsApp Notification Target
   // Default support WhatsApp phone number as explicitly mandated by user
   supportWhatsAppNumber: process.env.WHATSAPP_RECIPIENT_PHONE || '+260979894567',

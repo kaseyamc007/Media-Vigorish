@@ -79,7 +79,7 @@ function localKnowledgeMatch(userText: string, customerName: string): { reply: s
   if (/services|capabilities|what do you do|what do you offer/i.test(q)) {
     return {
       reply: `At Vigorish Media, we offer six specialized creative pillars:
-1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.
+1. **Social Media Management (from K1,200/mo)**: Strategy, professional post designs + captions, community building, Facebook & Instagram boosting, photo editing & Reels, and location showcasing.
 2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.
 3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.
 4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.
@@ -92,16 +92,49 @@ Which of these would you like to explore for your brand?`,
     };
   }
 
+  // Social Media Management specific inquiry
+  if (/social media|facebook|instagram|tiktok|posts|reels|social management/i.test(q)) {
+    return {
+      reply: `Your Facebook & Instagram should make your business look active, professional and credible — not forgotten. Vigorish Media can manage it for you!
+
+**We handle:**
+✓ Strategy & consistent posting
+✓ Professional post designs & captions
+✓ Community building
+✓ Facebook & Instagram boosting
+✓ Photo editing & Reels
+✓ Product & location showcasing 
+✓ Branding & website management
+
+📱 **SOCIAL MEDIA MANAGEMENT PLANS:**
+• **5 Posts** — **K1,200/month**
+• **10 Posts** — **K2,500/month**
+• **20 Posts** — **K4,000/month**
+*Every post includes a professional design + caption.*
+
+Would you like to get started with one of these packages today, or shall I connect you with our creative lead on WhatsApp (+260 97 989 4567)?`,
+      escalate: false,
+      reason: ''
+    };
+  }
+
   // Pricing / Cost
   if (/price|pricing|cost|how much|quote|rates|packages/i.test(q)) {
     return {
-      reply: `Our solutions are tailored around your exact project deliverables and scale. We offer transparent starter tiers, comprehensive growth bundles, and custom corporate retainers. 
+      reply: `Our solutions are transparent and tailored around high return on value:
 
-For example:
-- **Social Media Retainers** include 16–24 custom visual assets/month, weekly scripted reels, and daily moderation.
-- **Custom Website Projects** include 12 months complimentary managed cloud hosting, SSL, and domain registration.
+📱 **Social Media Management Monthly Plans:**
+• **5 Posts**: K1,200/month
+• **10 Posts**: K2,500/month
+• **20 Posts**: K4,000/month
+*(Every post includes a professional design + caption)*
 
-Would you like me to connect you with our team to receive a tailored formal proposal for your scope?`,
+💼 **Studio Retainers & Custom Packages:**
+• **Starter Brand Spec**: K5,500 (Logo suite, 8 post designs, stationery, brand guide)
+• **Growth Accelerator**: K12,500 (Full social media management, 4K Reels, 5-page website with 1-yr free cloud hosting)
+• **Enterprise Suite**: K28,000 (Dedicated art director, videography, paid ad campaigns, priority dispatch)
+
+Would you like to book a package or receive a customized formal proposal for your business?`,
       escalate: false,
       reason: ''
     };
@@ -110,7 +143,7 @@ Would you like me to connect you with our team to receive a tailored formal prop
   // Location / Office / Zambia
   if (/where|location|office|located|lusaka|zambia|address/i.test(q)) {
     return {
-      reply: `Vigorish Media is an independent 100% Zambian creative media and digital marketing studio proudly headquartered in Lusaka, Zambia. We produce campaigns across Lusaka, the Copperbelt (Ndola, Kitwe), Livingstone, and serve corporate clients across Southern Africa and internationally.`,
+      reply: `Vigorish Media is an independent 100% Zambian creative media and digital marketing studio located at Chibuluma Road, New Kasama, Lusaka, Zambia. We produce campaigns across Lusaka, the Copperbelt (Ndola, Kitwe), Livingstone, and serve corporate clients across Southern Africa and internationally.`,
       escalate: false,
       reason: ''
     };
@@ -146,7 +179,7 @@ Would you like me to connect you with our team to receive a tailored formal prop
   // Contact info
   if (/contact|email|phone|call|whatsapp|reach/i.test(q)) {
     return {
-      reply: `You can reach our creative team directly via phone at +260 97 989 4567, email at mediavigorish@gmail.com, or right here in this live support interface. I can also notify a creative lead right now if you wish!`,
+      reply: `You can reach our creative team directly via phone at +260 97 989 4567, email at mediavigorish@gmail.com, or visit our physical studio at Chibuluma Road, New Kasama, Lusaka, Zambia. You can also chat right here in this live support interface, and I can notify a creative lead right now if you wish!`,
       escalate: false,
       reason: ''
     };
@@ -184,7 +217,7 @@ export async function generateAIResponse(
   if (aiClient) {
     try {
       const systemInstruction = `
-You are the official ${CHAT_CONFIG.aiAssistantName} for ${CHAT_CONFIG.brandName} — an elite creative media, digital marketing, 4K cinema videography, and web architecture company headquartered in Lusaka, Zambia.
+You are the official ${CHAT_CONFIG.aiAssistantName} for ${CHAT_CONFIG.brandName} — an elite creative media, digital marketing, 4K cinema videography, and web architecture company headquartered at Chibuluma Road, New Kasama, Lusaka, Zambia.
 
 CUSTOMER NAME: ${session.customerName}
 CUSTOMER CONTACT: ${session.customerContact || 'Not provided'}

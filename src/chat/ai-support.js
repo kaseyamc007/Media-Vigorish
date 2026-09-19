@@ -242,10 +242,10 @@
 
         <!-- Suggested Questions -->
         <div id="aiSuggestionsWrap" class="ai-suggestions-wrap">
-          <button class="ai-suggestion-chip" data-query="What services do you offer?">What services do you offer?</button>
-          <button class="ai-suggestion-chip" data-query="How much does a brand identity cost?">Brand identity pricing</button>
+          <button class="ai-suggestion-chip" data-query="Tell me about Social Media Management packages">📱 Social Media (from K1,200)</button>
+          <button class="ai-suggestion-chip" data-query="What creative services do you offer?">Services Overview</button>
           <button class="ai-suggestion-chip" data-query="Do you deliver 4K video productions?">4K Cinema Videography</button>
-          <button class="ai-suggestion-chip" data-query="Where is your studio located?">Studio location</button>
+          <button class="ai-suggestion-chip" data-query="Where is your studio located?">Studio Address</button>
           <button class="ai-suggestion-chip" data-query="Can I speak to someone from your team?" style="border-color: rgba(255, 159, 10, 0.4); color: #ffd60a;">Speak with Human Rep</button>
         </div>
 
@@ -371,18 +371,23 @@
       startBtn.innerHTML = '<span>Initializing AI Concierge...</span>';
 
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
+
         const res = await fetch('/api/chat/start', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          signal: controller.signal,
           body: JSON.stringify({
             customerName: nameVal,
             customerContact: contactVal,
             pageUrl: window.location.href
           })
         });
+        clearTimeout(timeoutId);
 
-        const data = await res.json();
-        if (data.success) {
+        const data = await res.json().catch(() => null);
+        if (res.ok && data && data.success) {
           state.conversationId = data.conversationId;
           state.customerName = data.customerName;
           state.customerContact = contactVal || null;
@@ -392,11 +397,25 @@
           renderActiveSession();
           playAudioChime('receive');
         } else {
-          alert(data.error || 'Failed to initialize chat session.');
+          // Seamless fallback so the user is NEVER blocked on published or static hosting
+          state.conversationId = `CHAT-${Date.now().toString().slice(-6)}`;
+          state.customerName = nameVal;
+          state.customerContact = contactVal || null;
+          state.status = 'AI_ACTIVE';
+          state.messages = [{
+            id: `MSG-${Date.now()}`,
+            sender: 'ai',
+            senderName: 'Vigorish AI Concierge',
+            text: `Hi ${nameVal} 👋 Welcome to Vigorish Media Live Support! How can I assist you today? Whether you're exploring our Social Media Management packages (starting at K1,200/mo), 4K videography, branding, or visiting our studio at Chibuluma Road in New Kasama, I'm here to help!`,
+            timestamp: new Date().toISOString()
+          }];
+          persistLocalSession();
+          renderActiveSession();
+          playAudioChime('receive');
         }
       } catch (err) {
-        console.error(err);
-        // Offline / dev fallback
+        console.warn('[AI Support] Running in resilient direct mode:', err);
+        // Resilient fallback entry
         state.conversationId = `CHAT-${Date.now().toString().slice(-6)}`;
         state.customerName = nameVal;
         state.customerContact = contactVal || null;
@@ -404,12 +423,13 @@
         state.messages = [{
           id: `MSG-${Date.now()}`,
           sender: 'ai',
-          senderName: 'Vigorish AI',
-          text: `Hi ${nameVal} 👋 Welcome! I’m your AI Support Assistant. How can I help you today?`,
+          senderName: 'Vigorish AI Concierge',
+          text: `Hi ${nameVal} 👋 Welcome to Vigorish Media Live Support! How can I assist you today? Whether you're exploring our Social Media Management packages (starting at K1,200/mo), 4K videography, branding, or visiting our studio at Chibuluma Road in New Kasama, I'm here to help!`,
           timestamp: new Date().toISOString()
         }];
         persistLocalSession();
         renderActiveSession();
+        playAudioChime('receive');
       } finally {
         startBtn.disabled = false;
         startBtn.innerHTML = `<span>Start Live Chat</span>
@@ -533,9 +553,22 @@
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
       .replace(/\n/g, '<br/>');
 
+    let whatsappActionHtml = '';
+    if (msg.whatsappLink) {
+      whatsappActionHtml = `
+        <div style="margin-top: 10px;">
+          <a href="${msg.whatsappLink}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #25D366; color: #ffffff; border-radius: 20px; font-size: 12.5px; font-weight: 600; text-decoration: none; box-shadow: 0 2px 8px rgba(37, 211, 102, 0.35);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.087-.177.182-.076.356.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.679.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+            <span>Chat on WhatsApp (+260 97 989 4567)</span>
+          </a>
+        </div>
+      `;
+    }
+
     row.innerHTML = `
       <div class="ai-msg-bubble">
         ${formattedText}
+        ${whatsappActionHtml}
       </div>
       <div class="ai-msg-meta">
         <span>${senderLabel}</span>
@@ -617,20 +650,25 @@
     sendBtn.disabled = true;
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 6000);
+
       const res = await fetch('/api/chat/message', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           conversationId: state.conversationId,
           message: text,
           pageUrl: window.location.href
         })
       });
+      clearTimeout(timeoutId);
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
       hideTypingIndicator();
 
-      if (data.success && data.message) {
+      if (res.ok && data && data.success && data.message) {
         state.status = data.status || state.status;
         state.messages.push(data.message);
         persistLocalSession();
@@ -642,30 +680,141 @@
           playAudioChime('receive');
         }, 120);
       } else {
-        appendMessageUI({
-          id: `ERR-${Date.now()}`,
-          sender: 'system',
-          text: data.error || 'Connection notice: Message could not be processed. Retrying...'
-        });
+        // Fall back seamlessly to studio knowledge base
+        const kb = getStudioKnowledgeResponse(text, state.customerName);
+        const fallbackMsg = {
+          id: `AI-KB-${Date.now()}`,
+          sender: 'ai',
+          senderName: 'Vigorish AI Concierge',
+          text: kb.text,
+          whatsappLink: kb.whatsappLink,
+          timestamp: new Date().toISOString(),
+          escalationTriggered: kb.escalate
+        };
+        if (kb.escalate) {
+          state.status = 'HUMAN_REQUESTED';
+          updateStatusUI();
+        }
+        state.messages.push(fallbackMsg);
+        persistLocalSession();
+        setTimeout(() => {
+          appendMessageUI(fallbackMsg);
+          playAudioChime('receive');
+        }, 120);
       }
     } catch (err) {
       hideTypingIndicator();
-      console.warn('[AI Message Dispatch Failure, using fallback]:', err);
-      // Fallback
-      const fallbackReply = {
-        id: `AI-FALLBACK-${Date.now()}`,
+      console.warn('[AI Support] Dispatch handled via local studio engine:', err);
+      // Fall back seamlessly to studio knowledge base
+      const kb = getStudioKnowledgeResponse(text, state.customerName);
+      const fallbackMsg = {
+        id: `AI-KB-${Date.now()}`,
         sender: 'ai',
-        senderName: 'Vigorish AI',
-        text: `Thank you for your message, ${state.customerName}. I've logged your request regarding "${text.slice(0, 40)}". Our support team has been notified.`,
-        timestamp: new Date().toISOString()
+        senderName: 'Vigorish AI Concierge',
+        text: kb.text,
+        whatsappLink: kb.whatsappLink,
+        timestamp: new Date().toISOString(),
+        escalationTriggered: kb.escalate
       };
-      state.messages.push(fallbackReply);
-      appendMessageUI(fallbackReply);
-      playAudioChime('receive');
+      if (kb.escalate) {
+        state.status = 'HUMAN_REQUESTED';
+        updateStatusUI();
+      }
+      state.messages.push(fallbackMsg);
+      persistLocalSession();
+      setTimeout(() => {
+        appendMessageUI(fallbackMsg);
+        playAudioChime('receive');
+      }, 120);
     } finally {
       sendBtn.disabled = false;
       textarea.focus();
     }
+  }
+
+  // Comprehensive in-browser studio knowledge engine (works 100% offline & on static hosting)
+  function getStudioKnowledgeResponse(query, name) {
+    const q = (query || '').toLowerCase().trim();
+
+    // Human escalation request
+    if (/\b(human|person|agent|representative|advisor|manager|call me|speak to someone|talk to someone)\b/i.test(q)) {
+      return {
+        text: `I’d like to make sure you get immediate direct assistance, ${name}. Our creative leads are on standby and can be reached directly via WhatsApp or phone at **+260 97 989 4567** or email at **mediavigorish@gmail.com**.\n\nClick below to connect with us instantly on WhatsApp:`,
+        escalate: true,
+        whatsappLink: `https://wa.me/260979894567?text=${encodeURIComponent('Hello Vigorish Media team, my name is ' + name + ' and I am inquiring about your creative services.')}`
+      };
+    }
+
+    // Social Media Management (exact user specification)
+    if (/social|facebook|instagram|tiktok|post|posts|reel|reels|social media/i.test(q)) {
+      return {
+        text: `Your Facebook & Instagram should make your business look active, professional and credible not forgotten.\nVigorish Media can manage it for you.\n\n**We handle:**\n✓ Strategy & consistent posting\n✓ Professional post designs & captions\n✓ Community building\n✓ Facebook & Instagram boosting\n✓ Photo editing & Reels\n✓ Product & location showcasing\n✓ Branding & website management\n\n📱 **SOCIAL MEDIA MANAGEMENT FROM K1,200/MONTH**\n• **5 Posts** — **K1,200/month**\n• **10 Posts** — **K2,500/month**\n• **20 Posts** — **K4,000/month**\n\n*Every post includes a professional design + caption.*\n\nWould you like to get started with one of these packages today?`,
+        escalate: false
+      };
+    }
+
+    // Pricing / Cost
+    if (/price|pricing|cost|how much|quote|rates|packages|plans/i.test(q)) {
+      return {
+        text: `Here is our transparent pricing guide in Zambian Kwacha (ZMW):\n\n📱 **Social Media Management Monthly Plans:**\n• **5 Posts**: K1,200/month\n• **10 Posts**: K2,500/month\n• **20 Posts**: K4,000/month\n*(Every post includes professional design + caption)*\n\n💼 **Comprehensive Brand Packages:**\n• **Starter Brand Spec**: K5,500 (Logo suite, 8 post designs, stationery, brand guide)\n• **Growth Accelerator**: K12,500 (Full social media, 4K video Reels, 5-page website with 1-yr free cloud hosting)\n• **Enterprise Suite**: K28,000 (Dedicated senior art director & videographer, ad campaigns)\n\nWhich package would you like to explore for your brand?`,
+        escalate: false
+      };
+    }
+
+    // Videography / Photography
+    if (/video|videography|photo|photography|film|camera|shoot|drone/i.test(q)) {
+      return {
+        text: `Our visual production department operates high-dynamic-range 4K cinema cameras, prime cinema lenses, wireless audio, and Hollywood-standard DaVinci Resolve color science. We produce brand commercials, documentary films, 9:16 vertical Reels for social feeds, executive leadership portraits, and multi-camera live corporate events. Commercial delivery is completed within 5–7 business days.`,
+        escalate: false
+      };
+    }
+
+    // Branding / Logo
+    if (/brand|branding|logo|identity|stationery/i.test(q)) {
+      return {
+        text: `Our Branding & Corporate Identity services establish lasting market authority with complete primary, secondary, and sub-mark vector logo suites, custom color palettes, typography systems, business stationery (cards, letterhead, invoice templates), and brand guidelines books. Delivery is 10–14 business days.`,
+        escalate: false
+      };
+    }
+
+    // Websites / Web design
+    if (/website|web|hosting|domain|developer|seo/i.test(q)) {
+      return {
+        text: `We engineer fast, mobile-responsive web platforms built for client conversion. Every new custom website package comes with **12 months complimentary managed cloud infrastructure, SSL certificate, and domain renewal**, plus on-page SEO tuned for Zambian and global search visibility.`,
+        escalate: false
+      };
+    }
+
+    // Location / Address / Lusaka
+    if (/where|location|office|address|located|lusaka|new kasama/i.test(q)) {
+      return {
+        text: `Vigorish Media is an independent 100% Zambian creative studio physically located at **Chibuluma Road, New Kasama, Lusaka, Zambia**. We welcome scheduled client visits and creative discovery meetings!`,
+        escalate: false
+      };
+    }
+
+    // Contact
+    if (/contact|email|phone|call|whatsapp|reach|number/i.test(q)) {
+      return {
+        text: `You can reach our creative team directly:\n• **Phone / WhatsApp**: +260 97 989 4567\n• **Email**: mediavigorish@gmail.com\n• **Studio Address**: Chibuluma Road, New Kasama, Lusaka, Zambia\n\nYou can also click the WhatsApp button below to start an instant direct chat:`,
+        escalate: false,
+        whatsappLink: `https://wa.me/260979894567?text=${encodeURIComponent('Hello Vigorish Media team, my name is ' + name + ' and I am reaching out from your website.')}`
+      };
+    }
+
+    // Greetings
+    if (/^(hi|hello|hey|good day|muli bwanji|greetings)/i.test(q)) {
+      return {
+        text: `Hello ${name}! 👋 How can I help you today? Whether you're exploring our new Social Media Management packages (starting at K1,200/mo), 4K videography, branding, or visiting our Lusaka studio, I'm here to assist!`,
+        escalate: false
+      };
+    }
+
+    // Default
+    return {
+      text: `Thank you for asking, ${name}. At Vigorish Media, we build brands that add value through Social Media Management (from K1,200/mo), 4K cinema videography, bespoke branding, and web design. Could you tell me a little more about your brand or what you would like to achieve?`,
+      escalate: false
+    };
   }
 
   // Trigger Human Support Escalation
@@ -687,24 +836,27 @@
         })
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
       hideTypingIndicator();
 
-      if (data.success && data.message) {
+      if (res.ok && data && data.success && data.message) {
         state.status = data.status || 'HUMAN_REQUESTED';
         state.messages.push(data.message);
         persistLocalSession();
         updateStatusUI();
         appendMessageUI(data.message);
         playAudioChime('receive');
+      } else {
+        throw new Error('Fallback escalate');
       }
     } catch (err) {
       hideTypingIndicator();
       const escMsg = {
         id: `ESC-${Date.now()}`,
         sender: 'ai',
-        senderName: 'Vigorish AI',
-        text: `I’ve notified our support team now, ${state.customerName}. A creative lead is reviewing your inquiry and someone will assist you shortly.`,
+        senderName: 'Vigorish AI Concierge',
+        text: `I’ve alerted our support team now, ${state.customerName}. A creative lead is reviewing your inquiry. You can also chat directly with us on WhatsApp at +260 97 989 4567:`,
+        whatsappLink: `https://wa.me/260979894567?text=${encodeURIComponent('Hello Vigorish Media team, my name is ' + state.customerName + ' and I am requesting human assistance.')}`,
         timestamp: new Date().toISOString(),
         escalationTriggered: true
       };
@@ -713,6 +865,7 @@
       persistLocalSession();
       updateStatusUI();
       appendMessageUI(escMsg);
+      playAudioChime('receive');
     }
   }
 
@@ -725,7 +878,8 @@
       try {
         const res = await fetch(`/api/chat/status?conversationId=${encodeURIComponent(state.conversationId)}`);
         if (!res.ok) return;
-        const data = await res.json();
+        const data = await res.json().catch(() => null);
+        if (!data) return;
 
         if (data.status && data.status !== state.status) {
           state.status = data.status;
@@ -750,7 +904,24 @@
   window.VigorishAI = {
     open: () => {
       const launcher = document.getElementById('aiSupportLauncher');
-      if (launcher) launcher.click();
+      const chatWindow = document.getElementById('aiChatWindow');
+      if (chatWindow) {
+        chatWindow.classList.add('ai-open');
+        chatWindow.setAttribute('aria-hidden', 'false');
+        if (launcher) launcher.classList.add('ai-active');
+        playAudioChime('receive');
+        setTimeout(() => {
+          const textarea = document.getElementById('aiMessageInput');
+          const nameInput = document.getElementById('aiCustomerNameInput');
+          if (textarea && textarea.offsetParent !== null) textarea.focus();
+          else if (nameInput && nameInput.offsetParent !== null) nameInput.focus();
+        }, 300);
+      } else {
+        injectSupportWidget();
+        setTimeout(() => {
+          if (window.VigorishAI && window.VigorishAI.open) window.VigorishAI.open();
+        }, 150);
+      }
     },
     close: () => {
       const closeBtn = document.getElementById('aiCloseBtn');
@@ -769,10 +940,20 @@
     escalate: () => triggerHumanEscalation('Triggered via developer action')
   };
 
-  // Auto-init on DOMContentLoaded or immediate if already ready
+  window.openLiveSupportChat = window.VigorishAI.open;
+
+  // Safe auto-init
+  function safeInit() {
+    if (document.body) {
+      injectSupportWidget();
+    } else {
+      document.addEventListener('DOMContentLoaded', injectSupportWidget);
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectSupportWidget);
+    document.addEventListener('DOMContentLoaded', safeInit);
   } else {
-    injectSupportWidget();
+    safeInit();
   }
 })();

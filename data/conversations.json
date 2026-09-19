@@ -68,5 +68,153 @@
     ],
     "escalationReason": "Customer requested human representative",
     "escalatedAt": "2026-09-17T18:51:01.970Z"
+  },
+  {
+    "conversationId": "CHAT-20260917-1217",
+    "customerName": "Kaseya",
+    "customerContact": "kaseyamc@gmail.com",
+    "pageUrl": "https://ais-dev-4hdshro4ibndnt23rtzrda-518377241942.europe-west2.run.app/#/",
+    "startedAt": "2026-09-17T18:56:08.918Z",
+    "lastActiveAt": "2026-09-17T18:56:30.253Z",
+    "status": "HUMAN_REQUESTED",
+    "messages": [
+      {
+        "id": "MSG-1789671368918-254",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "Hi Kaseya 👋 Welcome! I’m your AI Support Assistant. How can I help you today?",
+        "timestamp": "2026-09-17T18:56:08.918Z"
+      },
+      {
+        "id": "MSG-1789671374443-329",
+        "sender": "customer",
+        "senderName": "Kaseya",
+        "text": "Hi",
+        "timestamp": "2026-09-17T18:56:14.443Z"
+      },
+      {
+        "id": "MSG-1789671374664-545",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "Hello Kaseya! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.",
+        "timestamp": "2026-09-17T18:56:14.664Z",
+        "escalationTriggered": false
+      },
+      {
+        "id": "MSG-1789671382332-309",
+        "sender": "customer",
+        "senderName": "Kaseya",
+        "text": "What services do you offer?",
+        "timestamp": "2026-09-17T18:56:22.332Z"
+      },
+      {
+        "id": "MSG-1789671382469-709",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.\n4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.\n5. **Graphic Design & Print Collateral**: Press-ready 300 DPI annual reports, packaging, and large-format expo banners.\n6. **Digital Ads & Performance**: Targeted campaigns across Meta and Google with conversion tracking.\n\nWhich of these would you like to explore for your brand?",
+        "timestamp": "2026-09-17T18:56:22.469Z",
+        "escalationTriggered": false
+      },
+      {
+        "id": "MSG-1789671390253-299",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "I’ve notified our support team now, Kaseya. A creative lead is reviewing your conversation and someone will assist you shortly.",
+        "timestamp": "2026-09-17T18:56:30.253Z",
+        "escalationTriggered": true
+      }
+    ],
+    "escalated": true,
+    "outboundAlerts": [
+      {
+        "id": "ALERT-1789671374664-602",
+        "alertType": "NEW_CHAT",
+        "recipientPhone": "+260979894567",
+        "dispatchedAt": "2026-09-17T18:56:14.664Z",
+        "deliveredStatus": "SIMULATED_LOGGED",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Contact: kaseyamc@gmail.com\n\n🆔 Conversation:\nCHAT-20260917-1217\n\n🕒 Started:\n17 Sept 2026, 20:56 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://ais-dev-4hdshro4ibndnt23rtzrda-518377241942.europe-west2....",
+        "rawPayload": {
+          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Contact: kaseyamc@gmail.com\n\n🆔 Conversation:\nCHAT-20260917-1217\n\n🕒 Started:\n17 Sept 2026, 20:56 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://ais-dev-4hdshro4ibndnt23rtzrda-518377241942.europe-west2.run.app/#/)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CUSTOMER MESSAGE:\n\"Hi\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"Hello Kaseya! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
+        },
+        "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
+      },
+      {
+        "id": "ALERT-1789671390253-553",
+        "alertType": "ESCALATION",
+        "recipientPhone": "+260979894567",
+        "dispatchedAt": "2026-09-17T18:56:30.253Z",
+        "deliveredStatus": "SIMULATED_LOGGED",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Client Contact: kaseyamc@gmail.com\n\n🆔 Conversation ID:\nCHAT-20260917-1217\n\n🕒 Escalated:\n17 Sept 2026, 20:56 (CAT)\n\n⚠️ Trigger Reason:\nCustomer clicked Request Human Representative in chat footer\n\n━━━━━━━━━━━━━━━...",
+        "rawPayload": {
+          "body": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Client Contact: kaseyamc@gmail.com\n\n🆔 Conversation ID:\nCHAT-20260917-1217\n\n🕒 Escalated:\n17 Sept 2026, 20:56 (CAT)\n\n⚠️ Trigger Reason:\nCustomer clicked Request Human Representative in chat footer\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST MESSAGE:\n\"What services do you offer?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📜 RECENT CONVERSATION TRAIL:\nAI (Vigorish AI Concierge):\n\"Hi Kaseya 👋 Welcome! I’m your AI Support Assistant. How can I help you today?\"\n\nCUSTOMER (Kaseya):\n\"Hi\"\n\nAI (Vigorish AI Concierge):\n\"Hello Kaseya! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.\"\n\nCUSTOMER (Kaseya):\n\"What services do you offer?\"\n\nAI (Vigorish AI Concierge):\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.\n4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.\n5. **Graphic Design & Print Collateral**: Press-ready 300 DPI annual reports, packaging, and large-format expo banners.\n6. **Digital Ads & Performance**: Targeted campaigns across Meta and Google with conversion tracking.\n\nWhich of these would you like to explore for your brand?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 ACTION REQUIRED:\nCustomer is waiting in live chat on the website.\nPlease review conversation or reply directly!\n━━━━━━━━━━━━━━━━━━"
+        },
+        "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
+      }
+    ],
+    "escalationReason": "Customer clicked Request Human Representative in chat footer",
+    "escalatedAt": "2026-09-17T18:56:30.252Z"
+  },
+  {
+    "conversationId": "CHAT-20260917-7981",
+    "customerName": "Kaseya",
+    "customerContact": "+260971234567",
+    "pageUrl": "https://vigorishmedia.com/#/contact",
+    "startedAt": "2026-09-17T19:02:27.209Z",
+    "lastActiveAt": "2026-09-17T19:02:32.866Z",
+    "status": "AI_ACTIVE",
+    "messages": [
+      {
+        "id": "MSG-1789671747210-895",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "Hi Kaseya 👋 Welcome! I’m your AI Support Assistant. How can I help you today?",
+        "timestamp": "2026-09-17T19:02:27.210Z"
+      },
+      {
+        "id": "MSG-1789671747253-308",
+        "sender": "customer",
+        "senderName": "Kaseya",
+        "text": "Where is your physical office or studio located?",
+        "timestamp": "2026-09-17T19:02:27.253Z"
+      },
+      {
+        "id": "MSG-1789671747509-271",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "Vigorish Media is an independent 100% Zambian creative media and digital marketing studio located at Chibuluma Road, New Kasama, Lusaka, Zambia. We produce campaigns across Lusaka, the Copperbelt (Ndola, Kitwe), Livingstone, and serve corporate clients across Southern Africa and internationally.",
+        "timestamp": "2026-09-17T19:02:27.509Z",
+        "escalationTriggered": false
+      },
+      {
+        "id": "MSG-1789671752688-192",
+        "sender": "customer",
+        "senderName": "Kaseya",
+        "text": "How can I contact or visit you?",
+        "timestamp": "2026-09-17T19:02:32.688Z"
+      },
+      {
+        "id": "MSG-1789671752866-991",
+        "sender": "ai",
+        "senderName": "Vigorish AI Concierge",
+        "text": "You can reach our creative team directly via phone at +260 97 989 4567, email at mediavigorish@gmail.com, or visit our physical studio at Chibuluma Road, New Kasama, Lusaka, Zambia. You can also chat right here in this live support interface, and I can notify a creative lead right now if you wish!",
+        "timestamp": "2026-09-17T19:02:32.866Z",
+        "escalationTriggered": false
+      }
+    ],
+    "escalated": false,
+    "outboundAlerts": [
+      {
+        "id": "ALERT-1789671747508-697",
+        "alertType": "NEW_CHAT",
+        "recipientPhone": "+260979894567",
+        "dispatchedAt": "2026-09-17T19:02:27.508Z",
+        "deliveredStatus": "SIMULATED_LOGGED",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Contact: +260971234567\n\n🆔 Conversation:\nCHAT-20260917-7981\n\n🕒 Started:\n17 Sept 2026, 21:02 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/contact)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CUSTOMER ...",
+        "rawPayload": {
+          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Contact: +260971234567\n\n🆔 Conversation:\nCHAT-20260917-7981\n\n🕒 Started:\n17 Sept 2026, 21:02 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/contact)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CUSTOMER MESSAGE:\n\"Where is your physical office or studio located?\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"Vigorish Media is an independent 100% Zambian creative media and digital marketing studio located at Chibuluma Road, New Kasama, Lusaka, Zambia. We produce campaigns across Lusaka, the Copperbelt (Ndola, Kitwe), Livingstone, and serve corporate clients across Southern Africa and internationally.\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
+        },
+        "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
+      }
+    ]
   }
 ]
