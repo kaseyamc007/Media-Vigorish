@@ -552,19 +552,12 @@
       transform: scale(1.05);
     }
 
-    /* Replaceable Stock Badge */
+    /* Stock Badge - hidden completely per user specification */
     .stock-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(8px);
-      color: #fff;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 6px;
-      pointer-events: none;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     /* Apple Studio Configurator (Pricing) */
@@ -1376,7 +1369,6 @@
             <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1600&auto=format&fit=crop&q=80" 
                  onerror="this.onerror=null; this.src='src/images/hero-placeholder.jpg';" 
                  alt="Vigorish Media 4K Cinema Production" />
-            <span class="stock-badge">Stock Stock Asset #01</span>
             <div class="apple-studio-overlay-caption">
               <div>
                 <div style="font-size: 11px; font-weight: 600; color: #2997ff; letter-spacing: 0.08em; text-transform: uppercase;">FLAGSHIP REEL 2026</div>
@@ -1437,7 +1429,6 @@
                      alt="GROWTH &amp; COMMUNITY — Social Media Management"
                      referrerPolicy="no-referrer"
                      style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" />
-                <span class="stock-badge">Stock Stock #02</span>
               </div>
             </div>
 
@@ -1454,7 +1445,6 @@
                 <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-video.jpg';" 
                      alt="Videography Equipment" />
-                <span class="stock-badge">Stock Stock #03</span>
               </div>
             </div>
 
@@ -1471,7 +1461,6 @@
                 <img src="https://images.unsplash.com/photo-1542744094-3a3172720a42?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
                      alt="Brand Identity Workshop" />
-                <span class="stock-badge">Stock Stock #04</span>
               </div>
             </div>
 
@@ -1490,7 +1479,6 @@
                      alt="DIGITAL ARCHITECTURE — Website Design &amp; Management Packages"
                      referrerPolicy="no-referrer"
                      style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" />
-                <span class="stock-badge">Stock Stock #05</span>
               </div>
             </div>
 
@@ -1509,24 +1497,33 @@
                      alt="PRINT &amp; EDITORIAL — Graphic Design &amp; Print Collateral"
                      referrerPolicy="no-referrer"
                      style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" />
-                <span class="stock-badge">Stock Stock #06</span>
               </div>
             </div>
 
-            <!-- 6. Digital Marketing & Paid Advertising -->
+            <!-- 6. Paid Facebook & Instagram Advertising -->
             <div class="apple-bento-card" onclick="openServiceDetail('digital-marketing')">
               <div>
                 <div class="apple-bento-eyebrow">PERFORMANCE ADVERTISING</div>
-                <h3 class="apple-bento-title">Digital Marketing &amp; Ads.</h3>
+                <h3 class="apple-bento-title">Paid Facebook &amp; Instagram Advertising</h3>
                 <p class="apple-bento-text">
-                  Targeted Meta Ads (Facebook &amp; Instagram) and Google Search campaigns calibrated specifically for Zambian demographics, consumer intent, and verified ROAS.
+                  Put your brand in front of the right people. Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising. Campaigns from just K450.
                 </p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;">
+                  <span style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">🎯 Lead Gen</span>
+                  <span style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">👍 Page Likes</span>
+                  <span style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">▶️ Video Views</span>
+                  <span style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">💬 Engagement</span>
+                  <span style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">📢 Awareness</span>
+                  <span style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">🔗 Traffic</span>
+                </div>
+                <div style="font-weight: 700; font-size: 13.5px; color: var(--apple-blue); margin-top: 14px;">Campaigns from just K450 &gt;</div>
               </div>
               <div class="apple-bento-media">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80" 
+                <img src="/assets/digital-marketing-campaigns.jpg" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-04.jpg';" 
-                     alt="Digital Performance Marketing" />
-                <span class="stock-badge">Stock Stock #07</span>
+                     alt="Paid Facebook &amp; Instagram Advertising — Vigorish Media" 
+                     referrerPolicy="no-referrer"
+                     style="width:100%; height:100%; object-fit:cover;" />
               </div>
             </div>
           </div>
@@ -1550,7 +1547,6 @@
                 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
                      alt="Horizon Capital Zambia" />
-                <span class="stock-badge">Stock Stock #08</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">CORPORATE IDENTITY</div>
@@ -1565,7 +1561,6 @@
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-video.jpg';" 
                      alt="Savannah Lifestyle Apparel" />
-                <span class="stock-badge">Stock Stock #09</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">4K VIDEOGRAPHY &amp; REELS</div>
@@ -1580,7 +1575,6 @@
                 <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-web.jpg';" 
                      alt="Copperbelt Haulage" />
-                <span class="stock-badge">Stock Stock #10</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">WEB ARCHITECTURE</div>
@@ -1735,7 +1729,6 @@
                  onerror="this.onerror=null; this.src='src/images/hero-placeholder.jpg';" 
                  style="width:100%; height:100%; object-fit:cover;" 
                  alt="Vigorish Media Creative Collaboration" />
-            <span class="stock-badge">Stock Stock #11 — Studio Creative Floor</span>
           </div>
 
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
@@ -1828,7 +1821,6 @@
                      alt="Vigorish Media Social Media Management"
                      referrerPolicy="no-referrer"
                      style="width:100%; height:100%; object-fit:cover;" />
-                <span class="stock-badge">Stock Stock #12</span>
               </div>
             </div>
 
@@ -1849,7 +1841,6 @@
                 <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-video.jpg';" 
                      style="width:100%; height:100%; object-fit:cover;" />
-                <span class="stock-badge">Stock Stock #13</span>
               </div>
             </div>
 
@@ -1870,7 +1861,6 @@
                 <img src="https://images.unsplash.com/photo-1542744094-3a3172720a42?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
                      style="width:100%; height:100%; object-fit:cover;" />
-                <span class="stock-badge">Stock Stock #14</span>
               </div>
             </div>
 
@@ -1930,7 +1920,6 @@
                      alt="Vigorish Media Website Design &amp; Management Packages"
                      referrerPolicy="no-referrer"
                      style="width:100%; height:100%; object-fit:cover; display:block;" />
-                <span class="stock-badge">Stock Stock #15</span>
               </div>
             </div>
 
@@ -1966,28 +1955,39 @@
                      alt="PRINT &amp; EDITORIAL — Vigorish Media Graphic Design &amp; Print Collateral"
                      referrerPolicy="no-referrer"
                      style="width:100%; height:100%; object-fit:cover; display:block;" />
-                <span class="stock-badge">Stock Stock #16</span>
               </div>
             </div>
 
-            <!-- Service 6 -->
+            <!-- Service 6: Paid Facebook & Instagram Advertising -->
             <div class="apple-bento-card" style="min-height: auto; flex-direction: row; align-items: center; gap: 40px;">
               <div style="flex: 1;">
-                <div class="apple-bento-eyebrow">CAPABILITY 06</div>
-                <h3 class="apple-bento-title">Digital Marketing &amp; Paid Advertising</h3>
-                <p class="apple-bento-text">
-                  Hyper-targeted ad campaigns on Meta (Facebook &amp; Instagram Ads Manager) and Google Ads, tailored to capture high-intent buyers in Lusaka, the Copperbelt, and international markets.
+                <div class="apple-bento-eyebrow">PERFORMANCE ADVERTISING // FROM K450</div>
+                <h3 class="apple-bento-title">Paid Facebook &amp; Instagram Advertising</h3>
+                <p class="apple-bento-text" style="font-weight: 600; color: #1d1d1f; margin-bottom: 8px;">
+                  Put your brand in front of the right people.
                 </p>
-                <div style="margin-bottom: 20px; font-size: 13.5px; color: #555;">
-                  <strong>Deliverables:</strong> Ad creative variations, A/B copy testing, pixel setup, weekly budget management, transparent ROAS tracking.
+                <p class="apple-bento-text" style="margin-bottom: 12px;">
+                  Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media. Whether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px; margin-bottom: 16px;">
+                  <div style="font-size: 13px; color: #333;">🎯 <strong>Lead Generation</strong> – Reach potential customers and generate enquiries.</div>
+                  <div style="font-size: 13px; color: #333;">👍 <strong>Page Likes &amp; Followers</strong> – Build your social media audience.</div>
+                  <div style="font-size: 13px; color: #333;">▶️ <strong>Video Views</strong> – Get more people watching your brand videos.</div>
+                  <div style="font-size: 13px; color: #333;">💬 <strong>Post Engagement</strong> – Increase likes, comments, shares and interactions.</div>
+                  <div style="font-size: 13px; color: #333;">📢 <strong>Brand Awareness</strong> – Put your business in front of more potential customers.</div>
+                  <div style="font-size: 13px; color: #333;">🔗 <strong>Traffic Campaigns</strong> – Drive people to your website, WhatsApp or other destinations.</div>
                 </div>
-                <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;">Launch Campaigns</a>
+                <div style="margin-bottom: 20px; font-size: 13.5px; color: #444; background: rgba(0, 113, 227, 0.05); padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(0, 113, 227, 0.15);">
+                  From campaign setup and audience targeting to monitoring and optimisation, Vigorish Media helps you get more from your advertising budget. <strong>Starting from K450 per campaign.</strong>
+                </div>
+                <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;">Start Campaign from K450</a>
               </div>
-              <div style="width: 380px; height: 260px; border-radius: 16px; overflow: hidden; position: relative;">
-                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=80" 
+              <div style="width: 420px; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; position: relative; flex-shrink: 0; background: #0b0f19;">
+                <img src="/assets/digital-marketing-campaigns.jpg" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-04.jpg';" 
-                     style="width:100%; height:100%; object-fit:cover;" />
-                <span class="stock-badge">Stock Stock #17</span>
+                     alt="Paid Facebook &amp; Instagram Advertising — Vigorish Media"
+                     referrerPolicy="no-referrer"
+                     style="width:100%; height:100%; object-fit:cover; display:block;" />
               </div>
             </div>
           </div>
@@ -2011,7 +2011,6 @@
                 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
                      alt="Horizon Capital" />
-                <span class="stock-badge">Stock Stock #18</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">BRAND IDENTITY</div>
@@ -2026,7 +2025,6 @@
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-video.jpg';" 
                      alt="Savannah Apparel" />
-                <span class="stock-badge">Stock Stock #19</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">VIDEOGRAPHY</div>
@@ -2041,7 +2039,6 @@
                 <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-web.jpg';" 
                      alt="Copperbelt Logistics" />
-                <span class="stock-badge">Stock Stock #20</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">WEB DESIGN</div>
@@ -2056,7 +2053,6 @@
                 <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-social-media.jpg';" 
                      alt="Lush Botanicals" />
-                <span class="stock-badge">Stock Stock #21</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">SOCIAL MARKETING</div>
@@ -2405,7 +2401,6 @@
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/team-01.jpg';" 
                      style="width:100%; height:100%; object-fit:cover;" />
-                <span class="stock-badge">Stock Stock #22</span>
               </div>
               <div style="padding: 24px;">
                 <h4 style="font-size: 19px; font-weight: 700; color: #fff;">Chileshe Mwape</h4>
@@ -2419,7 +2414,6 @@
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/team-02.jpg';" 
                      style="width:100%; height:100%; object-fit:cover;" />
-                <span class="stock-badge">Stock Stock #23</span>
               </div>
               <div style="padding: 24px;">
                 <h4 style="font-size: 19px; font-weight: 700; color: #fff;">Mutale Bwalya</h4>
@@ -2433,7 +2427,6 @@
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/team-03.jpg';" 
                      style="width:100%; height:100%; object-fit:cover;" />
-                <span class="stock-badge">Stock Stock #24</span>
               </div>
               <div style="padding: 24px;">
                 <h4 style="font-size: 19px; font-weight: 700; color: #fff;">Kondwani Tembo</h4>
@@ -2461,7 +2454,6 @@
               <div class="apple-case-img-box">
                 <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/insights-01.jpg';" />
-                <span class="stock-badge">Stock Stock #25</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">STRATEGY</div>
@@ -2475,7 +2467,6 @@
               <div class="apple-case-img-box">
                 <img src="https://images.unsplash.com/photo-1579869847558-8686c00d4375?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/insights-02.jpg';" />
-                <span class="stock-badge">Stock Stock #26</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">VIDEO MARKETING</div>
@@ -2489,7 +2480,6 @@
               <div class="apple-case-img-box">
                 <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/insights-03.jpg';" />
-                <span class="stock-badge">Stock Stock #27</span>
               </div>
               <div class="apple-case-body">
                 <div class="apple-case-category">WEB ARCHITECTURE</div>
@@ -3043,15 +3033,20 @@
         ]
       },
       'digital-marketing': {
-        title: 'Digital Marketing & Paid Ads',
-        category: 'PERFORMANCE ADVERTISING',
-        desc: 'Scale customer acquisition with hyper-targeted paid campaigns across Meta and Google.',
+        title: 'Paid Facebook & Instagram Advertising',
+        category: 'PERFORMANCE ADVERTISING // CAMPAIGNS FROM K450',
+        image: '/assets/digital-marketing-campaigns.jpg',
+        desc: '<strong>Put your brand in front of the right people.</strong><br><br>Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media.<br><br>Whether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.<br><br><span style="color: var(--apple-blue); font-weight: 700; font-size: 16px;">Campaigns from just K450</span>',
         points: [
-          'Custom demographic and interest-based audience targeting across Zambia and abroad.',
-          'Continuous A/B testing of visual creatives, headlines, and calls to action.',
-          'Retargeting funnels to re-engage past website visitors and profile followers.',
-          'Bi-weekly conversion reports detailing cost per lead and return on ad spend.'
-        ]
+          '🎯 <strong>Lead Generation</strong> – Reach potential customers and generate enquiries.',
+          '👍 <strong>Page Likes &amp; Followers</strong> – Build your social media audience.',
+          '▶️ <strong>Video Views</strong> – Get more people watching your brand videos.',
+          '💬 <strong>Post Engagement</strong> – Increase likes, comments, shares and interactions.',
+          '📢 <strong>Brand Awareness</strong> – Put your business in front of more potential customers.',
+          '🔗 <strong>Traffic Campaigns</strong> – Drive people to your website, WhatsApp or other online destinations.',
+          '⚙️ <strong>Full Execution</strong> – From campaign setup and audience targeting to monitoring and optimisation, Vigorish Media helps you get more from your advertising budget.'
+        ],
+        footerNote: 'From campaign setup and audience targeting to monitoring and optimisation, Vigorish Media helps you get more from your advertising budget. Starting from K450 per campaign.'
       }
     };
 
@@ -3060,10 +3055,15 @@
       if (!data) return;
       const content = document.getElementById('serviceModalContent');
       content.innerHTML = `
+        ${data.image ? `
+          <div style="border-radius: 14px; overflow: hidden; margin-bottom: 20px; aspect-ratio: 16/9; max-height: 260px; background: #000;">
+            <img src="${data.image}" onerror="this.onerror=null; this.src='src/images/portfolio-04.jpg';" alt="${data.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+          </div>
+        ` : ''}
         <div style="font-size: 11.5px; font-weight: 700; color: var(--apple-blue); letter-spacing: 0.08em; text-transform: uppercase;">${data.category}</div>
-        <h2 style="font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 8px 0 16px;">${data.title}</h2>
-        <p style="font-size: 16px; color: var(--apple-text-secondary); line-height: 1.6; margin-bottom: 24px;">${data.desc}</p>
-        <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">What’s Included:</h4>
+        <h2 style="font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin: 8px 0 16px;">${data.title}</h2>
+        <div style="font-size: 15.5px; color: var(--apple-text-secondary); line-height: 1.6; margin-bottom: 24px;">${data.desc}</div>
+        <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">What’s Included &amp; Campaign Objectives:</h4>
         <ul style="margin-left: 20px; font-size: 14.5px; color: #444; line-height: 1.7; margin-bottom: 24px;">
           ${data.points.map(p => `<li>${p}</li>`).join('')}
         </ul>
@@ -3080,7 +3080,11 @@
             </div>
             ${data.footerNote ? `<div style="font-size: 12.5px; color: #666; margin-top: 12px; font-style: italic;">${data.footerNote}</div>` : ''}
           </div>
-        ` : ''}
+        ` : (data.footerNote ? `
+          <div style="background: rgba(0, 113, 227, 0.05); border: 1px solid rgba(0, 113, 227, 0.15); border-radius: 12px; padding: 14px 18px; margin-bottom: 24px; font-size: 13.5px; color: #1d1d1f; font-weight: 500;">
+            ${data.footerNote}
+          </div>
+        ` : '')}
         <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
           <a href="#/contact" class="btn-apple-pill" onclick="closeServiceModal(); navigateTo('/contact'); return false;">Book This Capability &gt;</a>
           <button class="btn-apple-secondary" style="color: #333; border-color: #d2d2d7;" onclick="closeServiceModal()">Close</button>
@@ -3140,7 +3144,6 @@
         <h2 style="font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin: 8px 0 20px;">${data.title}</h2>
         <div style="height: 320px; border-radius: 16px; overflow: hidden; margin-bottom: 24px; position: relative;">
           <img src="${data.image}" style="width:100%; height:100%; object-fit:cover;" />
-          <span class="stock-badge">Stock Stock Asset</span>
         </div>
         <p style="font-size: 16px; color: var(--apple-text-secondary); line-height: 1.6; margin-bottom: 20px;">${data.overview}</p>
         <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 10px;">Key Deliverables:</h4>
@@ -3344,19 +3347,22 @@
         serviceId: 'Graphic Design & Print'
       },
       {
-        title: 'Digital Marketing & Paid Advertising',
-        category: 'PERFORMANCE ACQUISITION',
-        desc: 'Precision targeted customer acquisition campaigns across Meta and Google that deliver measurable inquiries, phone calls, and sales pipeline.',
+        title: 'Paid Facebook & Instagram Advertising',
+        category: 'PERFORMANCE ADVERTISING // CAMPAIGNS FROM K450',
+        desc: 'Put your brand in front of the right people. Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media. Campaigns from just K450.',
         deliverables: [
-          'Custom demographic and interest targeting mapped to Zambia and Southern Africa',
-          'Iterative A/B split-testing of creative ad copy and visual headlines',
-          'Retargeting funnels to re-engage past website visitors and profile followers',
-          'Bi-weekly conversion reports detailing cost per lead and ROAS'
+          '🎯 Lead Generation – Reach potential customers and generate enquiries.',
+          '👍 Page Likes & Followers – Build your social media audience.',
+          '▶️ Video Views – Get more people watching your brand videos.',
+          '💬 Post Engagement – Increase likes, comments, shares and interactions.',
+          '📢 Brand Awareness – Put your business in front of more potential customers.',
+          '🔗 Traffic Campaigns – Drive people to your website, WhatsApp or other destinations.',
+          'From campaign setup and targeting to monitoring and optimisation from K450'
         ],
-        timeline: 'Continuous weekly optimization cycles with bi-weekly reporting',
-        advantage: 'Predictably feeds your sales team qualified inquiries month after month.',
-        image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80',
-        serviceId: 'Digital Marketing & Paid Ads'
+        timeline: 'Instant 24–48hr Deployment // Continuous Live Optimization',
+        advantage: 'Campaigns from just K450 designed to maximize return on advertising spend.',
+        image: '/assets/digital-marketing-campaigns.jpg',
+        serviceId: 'Paid Facebook & Instagram Advertising'
       }
     ];
 

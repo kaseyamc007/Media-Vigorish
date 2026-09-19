@@ -210,7 +210,7 @@
         <form id="aiNameForm" class="ai-gate-form">
           <div class="ai-input-group">
             <label class="ai-input-label" for="aiCustomerNameInput">Your Name *</label>
-            <input type="text" id="aiCustomerNameInput" class="ai-text-input" placeholder="e.g. Kaseya Banda" required autocomplete="name" />
+            <input type="text" id="aiCustomerNameInput" class="ai-text-input" placeholder="e.g., Peter Kalumba Chishala" required autocomplete="name" />
           </div>
           <div class="ai-input-group">
             <label class="ai-input-label" for="aiCustomerContactInput">Phone or Email (Optional)</label>
@@ -812,7 +812,15 @@
     // Pricing / Cost
     if (/price|pricing|cost|how much|quote|rates|packages|plans/i.test(q)) {
       return {
-        text: `Here is our transparent pricing guide in Zambian Kwacha (ZMW):\n\n🌐 **Website Design & Management Packages (Annual):**\n• **Starter Website**: **K6,500/Year**\n• **Professional Website**: **K8,500/Year**\n• **Business Website**: **K10,500/Year**\n• **Enterprise Website**: **K37,000/Year**\n*(Includes Free Domain for 1 Year, Cloud Hosting, Pro Design, Marketing Tools & SEO)*\n\n📱 **Social Media Management Monthly Plans:**\n• **5 Posts**: **K1,200/month**\n• **10 Posts**: **K2,500/month**\n• **20 Posts**: **K4,000/month**\n*(Every post includes professional design + caption + boosting)*\n\n💼 **Comprehensive Brand Packages:**\n• **Starter Brand Spec**: K5,500\n• **Growth Accelerator**: K12,500\n• **Enterprise Suite**: K28,000\n\nWhich service or package would you like to get started with?`,
+        text: `Here is our transparent pricing guide in Zambian Kwacha (ZMW):\n\n📢 **Paid Facebook & Instagram Advertising:**\n• **Campaigns from just K450** per campaign\n*(Setup, targeting, monitoring & optimisation: Lead Gen, Followers, Video Views, Engagement, Awareness, Traffic)*\n\n🌐 **Website Design & Management Packages (Annual):**\n• **Starter Website**: **K6,500/Year**\n• **Professional Website**: **K8,500/Year**\n• **Business Website**: **K10,500/Year**\n• **Enterprise Website**: **K37,000/Year**\n*(Includes Free Domain for 1 Year, Cloud Hosting, Pro Design, Marketing Tools & SEO)*\n\n📱 **Social Media Management Monthly Plans:**\n• **5 Posts**: **K1,200/month**\n• **10 Posts**: **K2,500/month**\n• **20 Posts**: **K4,000/month**\n*(Every post includes professional design + caption + boosting)*\n\n💼 **Comprehensive Brand Packages:**\n• **Starter Brand Spec**: K5,500\n• **Growth Accelerator**: K12,500\n• **Enterprise Suite**: K28,000\n\nWhich service or package would you like to get started with?`,
+        escalate: false
+      };
+    }
+
+    // Digital Marketing / Paid Ads / Performance Advertising
+    if (/ad|ads|advertising|digital marketing|paid ads|facebook ads|instagram ads|meta ads|boost|leads|lead generation|k450|campaign/i.test(q)) {
+      return {
+        text: `📢 **PAID FACEBOOK & INSTAGRAM ADVERTISING**\n\nPut your brand in front of the right people.\nReach more potential customers, grow your audience and generate meaningful results with targeted Facebook & Instagram advertising from Vigorish Media.\n\nWhether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.\n\n🔥 **Campaigns from just K450**\n\n🎯 **Lead Generation** – Reach potential customers and generate enquiries.\n👍 **Page Likes & Followers** – Build your social media audience.\n▶️ **Video Views** – Get more people watching your brand videos.\n💬 **Post Engagement** – Increase likes, comments, shares and interactions.\n📢 **Brand Awareness** – Put your business in front of more potential customers.\n🔗 **Traffic Campaigns** – Drive people to your website, WhatsApp or other online destinations.\n\nFrom campaign setup and audience targeting to monitoring and optimisation, Vigorish Media helps you get more from your advertising budget.\n\nWould you like to launch a targeted campaign starting from K450 today?`,
         escalate: false
       };
     }
