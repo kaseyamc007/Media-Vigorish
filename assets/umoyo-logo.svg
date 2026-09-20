@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <!-- Umoyo Brand Green Palette -->
+    <style>
+      .umoyo-green { fill: #2ba747; }
+      .umoyo-green-stroke { stroke: #2ba747; }
+      .umoyo-dark { fill: #111111; }
+      .umoyo-subtext { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-weight: 300; letter-spacing: 2.2px; font-size: 25px; fill: #111111; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="600" fill="#ffffff" />
+
+  <!-- Sun Rays Group -->
+  <g class="umoyo-green">
+    <!-- Center Sun Circle -->
+    <circle cx="320" cy="162" r="33" />
+
+    <!-- Radiating Sun Rays (Dynamic Organic Angles faithfully matching official emblem) -->
+    <!-- Ray Top Left 1 (Peak) -->
+    <polygon points="160,72 225,125 300,150 215,108" />
+    <polygon points="186,132 290,156 226,146" />
+    <polygon points="174,158 290,161 240,169" />
+    <polygon points="174,188 295,166 230,195" />
+    
+    <!-- Left Flank Stepped Rays -->
+    <polygon points="156,232 296,170 205,232" />
+    <polygon points="180,265 298,175 228,272" />
+    <polygon points="175,342 210,342 302,185 190,300" />
+    <polygon points="238,338 274,335 308,192 250,305" />
+
+    <!-- Bottom Downward Radiating Rays -->
+    <polygon points="292,336 325,342 318,198 300,285" />
+    <polygon points="345,348 375,350 327,196 338,280" />
+    <polygon points="395,350 430,342 334,192 375,275" />
+
+    <!-- Right Flank Rays -->
+    <polygon points="440,328 450,295 338,184 415,260" />
+    <polygon points="455,275 450,230 340,176 410,215" />
+    <polygon points="454,212 445,182 342,168 412,180" />
+    <polygon points="448,168 452,142 345,162 410,152" />
+    <polygon points="450,132 440,105 342,154 395,125" />
+    <polygon points="432,95 405,78 335,145 372,108" />
+
+    <!-- Top & Top Right Fan Rays -->
+    <polygon points="392,76 360,78 330,138 348,96" />
+    <polygon points="345,78 322,78 322,130 330,86" />
+    <polygon points="305,80 278,82 312,134 290,92" />
+    <polygon points="262,82 225,84 306,140 248,95" />
+  </g>
+
+  <!-- Typography: 'umoyo' -->
+  <!-- U -->
+  <path d="M 172 366 L 172 398 A 15 15 0 0 0 202 398 L 202 366" fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- M -->
+  <path d="M 224 402 L 224 376 A 12 12 0 0 1 248 376 L 248 402 M 248 376 A 12 12 0 0 1 272 376 L 272 402" fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- O (1) -->
+  <circle cx="312" cy="385" r="18" fill="none" stroke="#111111" stroke-width="7" />
+
+  <!-- Y -->
+  <path d="M 352 368 L 366 394 L 380 368 M 366 394 L 366 414" fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- O (2) with descending right stem that frames 'natural health' -->
+  <circle cx="420" cy="385" r="18" fill="none" stroke="#111111" stroke-width="7" />
+  <line x1="438" y1="367" x2="438" y2="435" stroke="#111111" stroke-width="7" stroke-linecap="round" />
+
+  <!-- Text: 'natural health' -->
+  <text x="172" y="432" class="umoyo-subtext">natural health</text>
+
+  <!-- Green Underline -->
+  <line x1="172" y1="445" x2="442" y2="445" stroke="#2ba747" stroke-width="4.5" stroke-linecap="round" />
+</svg>

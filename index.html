@@ -1647,10 +1647,8 @@
         <li><a class="apple-nav-link" data-route="/labs" onclick="navigateTo('/labs'); return false;">Vigorish Labs</a></li>
         <li><a class="apple-nav-link" data-route="/pricing" onclick="navigateTo('/pricing'); return false;">Service Packages</a></li>
         <li><a class="apple-nav-link" data-route="/about" onclick="navigateTo('/about'); return false;">About</a></li>
-        <li><a class="apple-nav-link" data-route="/team" onclick="navigateTo('/team'); return false;">Team</a></li>
         <li><a class="apple-nav-link" data-route="/insights" onclick="navigateTo('/insights'); return false;">Newsroom</a></li>
         <li><a class="apple-nav-link" data-route="/contact" onclick="navigateTo('/contact'); return false;">Contact</a></li>
-        <li><a class="apple-nav-link" onclick="openLiveSupportChat(); return false;" style="cursor: pointer; color: #2997ff; display: flex; align-items: center; gap: 5px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>AI Support</a></li>
       </ul>
 
       <button id="appleMobileMenuBtn" class="apple-mobile-menu-btn" aria-label="Toggle Navigation" onclick="toggleMobileMenu()">
@@ -1685,7 +1683,6 @@
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/labs');">Vigorish Labs</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/pricing');">Service Packages</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/about');">About Studio</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/team');">Team</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/insights');">Newsroom</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/contact');">Contact &amp; Brief</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); openLiveSupportChat();" style="color: #2997ff; display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>✦ AI Live Support (Online)</a></li>
@@ -1914,16 +1911,21 @@
           </div>
 
           <div class="apple-case-studies-strip">
-            <div class="apple-case-card" onclick="openProjectModal('horizon-capital')">
-              <div class="apple-case-img-box">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80" 
+            <div class="apple-case-card" onclick="openProjectModal('umoyo-natural-health')">
+              <div class="apple-case-img-box" style="background: #111; position: relative;">
+                <img src="assets/umoyo-natural-health.jpg" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
-                     alt="Horizon Capital Zambia" />
+                     style="width: 100%; height: 100%; object-fit: cover; object-position: center center;"
+                     alt="Umoyo Natural Health Brand Identity &amp; Retail Presence" />
+                <div style="position: absolute; bottom: 12px; left: 12px; background: #ffffff; border-radius: 10px; padding: 5px 12px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 18px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.95); z-index: 2;">
+                  <img src="assets/umoyo-logo.svg" alt="Umoyo Official Logo" style="height: 26px; width: auto; object-fit: contain; display: block;" />
+                  <span style="font-size: 11.5px; font-weight: 700; color: #111111; letter-spacing: -0.01em;">Umoyo Natural Health</span>
+                </div>
               </div>
               <div class="apple-case-body">
-                <div class="apple-case-category">CORPORATE IDENTITY</div>
-                <h4 class="apple-case-title">Horizon Capital Zambia</h4>
-                <p class="apple-case-desc">24-page investor prospectus and institutional brand system commanding cross-border authority.</p>
+                <div class="apple-case-category">CORPORATE IDENTITY &amp; BRAND COMMUNICATION</div>
+                <h4 class="apple-case-title">Umoyo Natural Health</h4>
+                <p class="apple-case-desc">Building a Brand That Lives Its Purpose — Shaping a consistent modern identity across retail, manufacturing &amp; wholesale.</p>
                 <span class="apple-link-cta">View case study &gt;</span>
               </div>
             </div>
@@ -2055,11 +2057,17 @@
           <div class="apple-values-hero">
             <div class="apple-section-eyebrow" style="color: #ff5f56;">COMMUNITY PHILANTHROPY</div>
             <h2 style="font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 16px;">Tuli Bantu Baluse.</h2>
-            <p style="font-size: 18px; color: #a1a1a6; max-width: 680px; margin: 0 auto 32px; line-height: 1.55;">
+            <p style="font-size: 17px; color: #f5f5f7; max-width: 720px; margin: 0 auto 20px; line-height: 1.6; font-style: italic;">
+              "Your donation to Tuli Bantu Baluse will go towards supporting a child in need somewhere in Lusaka, Zambia. Every contribution, big or small, can make a meaningful difference. Thank you for your kindness and generosity. ❤️"
+            </p>
+            <p style="font-size: 14px; color: #a1a1a6; max-width: 660px; margin: 0 auto 32px; line-height: 1.55;">
               "We Are People of Mercy." A commitment to leave Zambia better than we found it through youth creative workshops, camera gear access, pro-bono media for local non-profits, and educational empowerment.
             </p>
-            <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
-              <a href="#/donate" class="btn-apple-pill" onclick="navigateTo('/donate'); return false;">Support the Initiative</a>
+            <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; align-items: center;">
+              <a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="btn-apple-pill" style="background: #ff5f56; color: #fff; font-weight: 700; box-shadow: 0 4px 18px rgba(255,95,86,0.35); text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                <span>Donate via Flutterwave ❤️</span>
+              </a>
+              <a href="#/donate" class="btn-apple-secondary" onclick="navigateTo('/donate'); return false;">Learn More &amp; Mission</a>
               <a href="#/about" class="apple-link-cta" onclick="navigateTo('/about'); return false;">Discover Our Mission &gt;</a>
             </div>
           </div>
@@ -2409,24 +2417,32 @@
           </div>
 
           <div class="apple-case-studies-strip" style="grid-template-columns: repeat(2, 1fr); gap: 32px;">
-            <!-- Project 1 -->
-            <div class="apple-case-card" data-portfolio-tag="branding" onclick="openProjectModal('horizon-capital')" style="display: flex; flex-direction: column;">
-              <div class="apple-case-img-box" style="height: 280px; position: relative;">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80" 
+            <!-- Project 1: Umoyo Natural Health -->
+            <div class="apple-case-card" data-portfolio-tag="branding" onclick="openProjectModal('umoyo-natural-health')" style="display: flex; flex-direction: column;">
+              <div class="apple-case-img-box" style="height: 280px; position: relative; background: #111;">
+                <img src="assets/umoyo-natural-health.jpg" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
-                     alt="Horizon Capital" />
-                <div style="position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #30d158; border: 1px solid rgba(48,209,88,0.3);">
-                  RESULT: US$18.5M RAISED
+                     style="width: 100%; height: 100%; object-fit: cover; object-position: center center;"
+                     alt="Umoyo Natural Health" />
+                <div style="position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #30d158; border: 1px solid rgba(48,209,88,0.3);">
+                  DELIVERABLE: CORPORATE IDENTITY
+                </div>
+                <div style="position: absolute; bottom: 14px; left: 14px; background: #ffffff; border-radius: 10px; padding: 5px 12px; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 18px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.9); z-index: 2;">
+                  <img src="assets/umoyo-logo.svg" alt="Umoyo Official Logo" style="height: 26px; width: auto; object-fit: contain; display: block;" />
+                  <span style="font-size: 11.5px; font-weight: 700; color: #111111; letter-spacing: -0.01em;">Umoyo Natural Health</span>
                 </div>
               </div>
               <div class="apple-case-body" style="flex: 1; display: flex; flex-direction: column;">
-                <div class="apple-case-category">IDENTITY SYSTEMS &bull; PROSPECTUS</div>
-                <h4 class="apple-case-title">Horizon Capital Zambia</h4>
-                <div style="margin: 10px 0; font-size: 13px; color: #a1a1a6; line-height: 1.5; flex: 1;">
-                  <div style="margin-bottom: 6px;"><strong style="color: #fff;">Goal:</strong> Establish tier-1 institutional governance to secure regional PE backing.</div>
-                  <div><strong style="color: #2997ff;">Result:</strong> 100% investor approval, round closed oversubscribed.</div>
+                <div class="apple-case-category">CORPORATE IDENTITY &bull; BRAND COMMUNICATION</div>
+                <h4 class="apple-case-title">Umoyo Natural Health</h4>
+                <div style="font-size: 14px; font-weight: 600; color: #34d399; margin-top: -2px; margin-bottom: 8px;">Building a Brand That Lives Its Purpose</div>
+                <p style="font-size: 13px; color: #a1a1a6; line-height: 1.55; margin-bottom: 10px;">
+                  For Umoyo Natural Health, we help shape and communicate a brand built around wellness, accessibility and proudly Zambian-made products.
+                </p>
+                <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: #86868b; line-height: 1.5;">
+                  <div><strong style="color: #fff;">Focus:</strong> Brand Strategy &bull; Creative Direction &bull; Digital Content &bull; Corporate Communication</div>
                 </div>
-                <span class="apple-link-cta" style="margin-top: 10px;">Behind the Brand: View Goal, Strategy &amp; Results &gt;</span>
+                <span class="apple-link-cta" style="margin-top: 10px;">Behind the Brand: View Verified Case Study &gt;</span>
               </div>
             </div>
 
@@ -3452,66 +3468,6 @@
       </div>
     </section>
 
-    <!-- Legacy / Alternate Anchor for pricing -->
-    <section id="view-pricing" class="view-page" style="display: none;"></section>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. TEAM VIEW -->
-    <section id="view-team" class="view-page">
-      <div class="apple-section-dark">
-        <div class="apple-container">
-          <div class="apple-section-header">
-            <div class="apple-section-eyebrow">Leadership &amp; Talent</div>
-            <h1 class="apple-section-title">The Creative Minds.</h1>
-            <p class="apple-section-desc">Visual artists, brand strategists, and technologists dedicated to building brands that add value.</p>
-          </div>
-
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
-            <div style="background: #161617; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
-              <div style="height: 300px; overflow: hidden; position: relative;">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=80" 
-                     onerror="this.onerror=null; this.src='src/images/team-01.jpg';" 
-                     style="width:100%; height:100%; object-fit:cover;" />
-              </div>
-              <div style="padding: 24px;">
-                <h4 style="font-size: 19px; font-weight: 700; color: #fff;">Chileshe Mwape</h4>
-                <div style="font-size: 12.5px; color: var(--apple-blue); margin-bottom: 8px;">Founder &amp; Creative Director</div>
-                <p style="font-size: 13.5px; color: #86868b;">Leading visual systems, corporate branding strategy, and creative direction.</p>
-              </div>
-            </div>
-
-            <div style="background: #161617; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
-              <div style="height: 300px; overflow: hidden; position: relative;">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" 
-                     onerror="this.onerror=null; this.src='src/images/team-02.jpg';" 
-                     style="width:100%; height:100%; object-fit:cover;" />
-              </div>
-              <div style="padding: 24px;">
-                <h4 style="font-size: 19px; font-weight: 700; color: #fff;">Mutale Bwalya</h4>
-                <div style="font-size: 12.5px; color: var(--apple-blue); margin-bottom: 8px;">Head of Cinematography</div>
-                <p style="font-size: 13.5px; color: #86868b;">Directing commercial 4K video shoots, drone flights, and sound acoustics.</p>
-              </div>
-            </div>
-
-            <div style="background: #161617; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08);">
-              <div style="height: 300px; overflow: hidden; position: relative;">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80" 
-                     onerror="this.onerror=null; this.src='src/images/team-03.jpg';" 
-                     style="width:100%; height:100%; object-fit:cover;" />
-              </div>
-              <div style="padding: 24px;">
-                <h4 style="font-size: 19px; font-weight: 700; color: #fff;">Kondwani Tembo</h4>
-                <div style="font-size: 12.5px; color: var(--apple-blue); margin-bottom: 8px;">Lead Digital Strategist</div>
-                <p style="font-size: 13.5px; color: #86868b;">Architecting targeted paid social funnels, community engagement, and web systems.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 7. INSIGHTS / NEWSROOM VIEW -->
     <section id="view-insights" class="view-page">
       <div class="apple-section-light">
@@ -3576,34 +3532,24 @@
             <p class="apple-section-desc">Empowering young Zambian creative talent with equipment access, software workshops, and mentorship.</p>
           </div>
 
-          <div style="background: #161617; border-radius: var(--apple-card-radius); padding: 40px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 30px;">
-            <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px;">Direct Community Contribution Channels</h3>
-            <p style="color: #86868b; font-size: 14.5px; line-height: 1.6; margin-bottom: 24px;">100% of contributions go directly towards sponsoring digital creative lab equipment and workshops for underprivileged youth in Lusaka.</p>
-
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-              <div style="background: #1d1d1f; padding: 20px 24px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <div style="font-weight: 700; color: #fff; font-size: 16px;">Airtel Money</div>
-                  <div style="font-size: 13px; color: #86868b;">Account Name: <strong class="brand-name-bold">Vigorish Media</strong> / Tuli Bantu Baluse</div>
-                </div>
-                <div style="font-weight: 700; color: #34d399; font-size: 17px;">+260 97 989 4567</div>
-              </div>
-
-              <div style="background: #1d1d1f; padding: 20px 24px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <div style="font-weight: 700; color: #fff; font-size: 16px;">MTN Mobile Money</div>
-                  <div style="font-size: 13px; color: #86868b;">Account Name: <strong class="brand-name-bold">Vigorish Media</strong> / Tuli Bantu Baluse</div>
-                </div>
-                <div style="font-weight: 700; color: #34d399; font-size: 17px;">+260 97 989 4567</div>
-              </div>
-
-              <div style="background: #1d1d1f; padding: 20px 24px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <div style="font-weight: 700; color: #fff; font-size: 16px;">Direct Studio Inquiries</div>
-                  <div style="font-size: 13px; color: #86868b;">Corporate CSR sponsorships &amp; partnerships</div>
-                </div>
-                <div style="font-weight: 700; color: #2997ff; font-size: 15px;">mediavigorish@gmail.com</div>
-              </div>
+          <!-- Flutterwave Official Online Payment Gateway -->
+          <div style="background: linear-gradient(135deg, rgba(255, 95, 86, 0.14) 0%, rgba(255, 149, 0, 0.08) 100%); border-radius: var(--apple-card-radius); padding: 40px 36px; border: 1.5px solid rgba(255, 95, 86, 0.45); margin-bottom: 32px; text-align: center; box-shadow: 0 12px 36px rgba(255, 95, 86, 0.12);">
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 95, 86, 0.2); color: #ff7b72; font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 16px; border-radius: 980px; margin-bottom: 20px;">
+              <span>❤️</span> Official Flutterwave Payment Gateway
+            </div>
+            <p style="font-size: clamp(17px, 2.5vw, 20px); color: #ffffff; font-weight: 500; line-height: 1.6; max-width: 700px; margin: 0 auto 28px; font-style: italic;">
+              "Your donation to Tuli Bantu Baluse will go towards supporting a child in need somewhere in Lusaka, Zambia. Every contribution, big or small, can make a meaningful difference. Thank you for your kindness and generosity. ❤️"
+            </p>
+            <div style="margin-bottom: 20px;">
+              <a href="https://flutterwave.com/pay/wl8jk5f5oad0" target="_blank" rel="noopener noreferrer" class="btn-apple-pill" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #ff5f56; color: #ffffff; padding: 16px 40px; font-size: 17px; font-weight: 700; border-radius: 980px; text-decoration: none; box-shadow: 0 6px 24px rgba(255, 95, 86, 0.45); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                <span>Make a Donation via Flutterwave</span>
+                <span style="font-size: 20px;">&rarr;</span>
+              </a>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 12.5px; color: #a1a1a6; flex-wrap: wrap;">
+              <span>🔒 256-Bit Encrypted Checkout</span>
+              <span>•</span>
+              <span>💳 Visa / Mastercard</span>
             </div>
           </div>
         </div>
@@ -3808,7 +3754,7 @@
           <h5>Agency</h5>
           <ul>
             <li><a href="#/about" onclick="navigateTo('/about'); return false;">About <strong class="brand-name-bold" style="color: inherit;">Vigorish Media</strong></a></li>
-            <li><a href="#/team" onclick="navigateTo('/team'); return false;">Leadership Team</a></li>
+            <li><a href="#/services" onclick="navigateTo('/services'); return false;">Our Services</a></li>
             <li><a href="#/donate" onclick="navigateTo('/donate'); return false;">Tuli Bantu Baluse</a></li>
             <li><a href="#/insights" onclick="navigateTo('/insights'); return false;">Studio Newsroom</a></li>
           </ul>
@@ -3951,7 +3897,7 @@
       '/portfolio': 'view-portfolio',
       '/pricing': 'view-packages',
       '/packages': 'view-packages',
-      '/team': 'view-team',
+      '/team': 'view-about',
       '/insights': 'view-insights',
       '/donate': 'view-donate',
       '/contact': 'view-contact'
@@ -4630,26 +4576,90 @@
     // Goal, Strategy, Measurable Results
     // =====================================
     const projectsData = {
-      'horizon-capital': {
-        title: 'Horizon Capital Zambia',
+      'umoyo-natural-health': {
+        title: 'Umoyo Natural Health',
+        headline: 'Building a Brand That Lives Its Purpose',
         tag: 'branding',
-        category: 'Corporate Identity & Investor Prospectus',
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80',
-        goal: 'Secure US$15M+ in regional private equity commitments by presenting an unassailable standard of institutional governance and financial authority across SADC markets.',
-        strategy: 'Architected a comprehensive bespoke visual identity system: mathematical monogram logo, hot-stamped executive stationery, cryptographic digital investor prospectus PDF, and high-impact boardroom keynote deck.',
-        results: 'US$18.5M Capital Round Over-Subscribed; 100% Institutional Stakeholder Approval; Zero Governance Revisions.',
+        category: 'Corporate Identity & Brand Communication',
+        logo: 'assets/umoyo-logo.svg',
+        image: 'assets/umoyo-natural-health.jpg',
+        leadWriteup: `
+          <div style="background: rgba(48, 209, 88, 0.06); border: 1px solid rgba(48, 209, 88, 0.2); border-radius: 14px; padding: 20px 22px; margin-bottom: 22px;">
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid rgba(48, 209, 88, 0.18);">
+              <div style="width: 54px; height: 54px; background: #ffffff; border-radius: 10px; border: 1px solid rgba(0,0,0,0.08); padding: 4px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.04); flex-shrink: 0;">
+                <img src="assets/umoyo-logo.svg" alt="Umoyo Natural Health Official Logo" style="width: 100%; height: 100%; object-fit: contain;" />
+              </div>
+              <div>
+                <div style="font-size: 11px; text-transform: uppercase; font-weight: 800; color: #2ba747; letter-spacing: 0.08em;">Official Client Brand Mark</div>
+                <div style="font-size: 17px; font-weight: 800; color: #1d1d1f; letter-spacing: -0.015em;">Building a Brand That Lives Its Purpose</div>
+              </div>
+            </div>
+            <p style="font-size: 15px; color: #2c2c2e; line-height: 1.65; margin-bottom: 14px;">
+              For Umoyo Natural Health, we help shape and communicate a brand built around wellness, accessibility and proudly Zambian-made products.
+            </p>
+            <p style="font-size: 14.5px; color: #48484a; line-height: 1.65; margin-bottom: 16px;">
+              From corporate communication and marketing content to digital storytelling, our work supports Umoyo in presenting a consistent, modern identity across its growing retail, manufacturing and wholesale operations—helping the brand connect with clients while communicating its vision of helping people Live Their Best Life.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; background: #ffffff; padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.08);">
+              <div><strong style="color: #1d1d1f; font-size: 13px;">Deliverable:</strong> <span style="font-size: 13px; color: #1d1d1f; font-weight: 600;">Corporate Identity &amp; Brand Communication</span></div>
+              <div><strong style="color: #1d1d1f; font-size: 13px;">Focus:</strong> <span style="font-size: 13px; color: #0071e3; font-weight: 600;">Brand Strategy • Creative Direction • Digital Content • Corporate Communication</span></div>
+            </div>
+          </div>
+        `,
+        goal: 'For Umoyo Natural Health, we help shape and communicate a brand built around wellness, accessibility and proudly Zambian-made products.',
+        strategy: 'From corporate communication and marketing content to digital storytelling, our work supports Umoyo in presenting a consistent, modern identity across its growing retail, manufacturing and wholesale operations—helping the brand connect with clients while communicating its vision of helping people Live Their Best Life.',
+        results: 'Consistent, modern brand presence established across national retail locations and manufacturing distribution; elevated client resonance and nationwide brand equity.',
         resultsMetrics: [
-          { label: 'Capital Raised', value: 'US$18.5M' },
-          { label: 'Approval Rate', value: '100%' },
-          { label: 'Turnaround', value: '14 Days' }
+          { label: 'Deliverable', value: 'Corp. Identity' },
+          { label: 'Operations', value: 'Retail & Wholesale' },
+          { label: 'Brand Reach', value: 'Nationwide' }
         ],
         deliverables: [
-          'Master vector monogram & corporate seal (.AI, .EPS, .SVG)',
-          '24-page high-stakes investor prospectus & corporate profile',
-          'Executive corporate stationery suite (embossed cards, letterheads)',
-          'C-Suite boardroom keynote presentation slidedeck'
+          'Deliverable: Corporate Identity & Brand Communication',
+          'Focus: Brand Strategy • Creative Direction • Digital Content • Corporate Communication',
+          'Retail Storefront & Product Display Visual Guidelines',
+          'Digital Storytelling & Multi-Channel Marketing Content Architecture'
         ],
-        quote: 'Vigorish Media ensured our collateral conveyed the unshakeable institutional stature demanded by top-tier sovereign and private equity funds.'
+        quote: 'Helping people Live Their Best Life through wellness, accessibility, and proudly Zambian-made natural health products.'
+      },
+      'horizon-capital': {
+        title: 'Umoyo Natural Health',
+        headline: 'Building a Brand That Lives Its Purpose',
+        tag: 'branding',
+        category: 'Corporate Identity & Brand Communication',
+        image: 'assets/umoyo-natural-health.jpg',
+        leadWriteup: `
+          <div style="background: rgba(48, 209, 88, 0.06); border: 1px solid rgba(48, 209, 88, 0.2); border-radius: 14px; padding: 20px 22px; margin-bottom: 22px;">
+            <div style="font-size: 19px; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; letter-spacing: -0.015em;">
+              Building a Brand That Lives Its Purpose
+            </div>
+            <p style="font-size: 15px; color: #2c2c2e; line-height: 1.65; margin-bottom: 14px;">
+              For Umoyo Natural Health, we help shape and communicate a brand built around wellness, accessibility and proudly Zambian-made products.
+            </p>
+            <p style="font-size: 14.5px; color: #48484a; line-height: 1.65; margin-bottom: 16px;">
+              From corporate communication and marketing content to digital storytelling, our work supports Umoyo in presenting a consistent, modern identity across its growing retail, manufacturing and wholesale operations—helping the brand connect with clients while communicating its vision of helping people Live Their Best Life.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; background: #ffffff; padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.08);">
+              <div><strong style="color: #1d1d1f; font-size: 13px;">Deliverable:</strong> <span style="font-size: 13px; color: #1d1d1f; font-weight: 600;">Corporate Identity &amp; Brand Communication</span></div>
+              <div><strong style="color: #1d1d1f; font-size: 13px;">Focus:</strong> <span style="font-size: 13px; color: #0071e3; font-weight: 600;">Brand Strategy • Creative Direction • Digital Content • Corporate Communication</span></div>
+            </div>
+          </div>
+        `,
+        goal: 'For Umoyo Natural Health, we help shape and communicate a brand built around wellness, accessibility and proudly Zambian-made products.',
+        strategy: 'From corporate communication and marketing content to digital storytelling, our work supports Umoyo in presenting a consistent, modern identity across its growing retail, manufacturing and wholesale operations—helping the brand connect with clients while communicating its vision of helping people Live Their Best Life.',
+        results: 'Consistent, modern brand presence established across national retail locations and manufacturing distribution; elevated client resonance and nationwide brand equity.',
+        resultsMetrics: [
+          { label: 'Deliverable', value: 'Corp. Identity' },
+          { label: 'Operations', value: 'Retail & Wholesale' },
+          { label: 'Brand Reach', value: 'Nationwide' }
+        ],
+        deliverables: [
+          'Deliverable: Corporate Identity & Brand Communication',
+          'Focus: Brand Strategy • Creative Direction • Digital Content • Corporate Communication',
+          'Retail Storefront & Product Display Visual Guidelines',
+          'Digital Storytelling & Multi-Channel Marketing Content Architecture'
+        ],
+        quote: 'Helping people Live Their Best Life through wellness, accessibility, and proudly Zambian-made natural health products.'
       },
       'savannah-reels': {
         title: 'Savannah Lifestyle Apparel',
@@ -4738,11 +4748,31 @@
           </div>
           <span style="font-size: 11px; background: rgba(41, 151, 255, 0.1); color: #2997ff; padding: 4px 10px; border-radius: 12px; font-weight: 600;">Verified Case Study</span>
         </div>
-        <h2 style="font-size: clamp(26px, 3.5vw, 34px); font-weight: 800; letter-spacing: -0.025em; margin: 4px 0 18px; color: #1d1d1f;">${data.title}</h2>
-        
-        <div style="height: 300px; border-radius: 16px; overflow: hidden; margin-bottom: 24px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-          <img src="${data.image}" style="width:100%; height:100%; object-fit:cover;" alt="${data.title}" />
+        <h2 style="font-size: clamp(26px, 3.5vw, 34px); font-weight: 800; letter-spacing: -0.025em; margin: 4px 0 16px; color: #1d1d1f;">${data.title}</h2>
+
+        ${data.logo ? `
+        <div style="background: #ffffff; border: 1.5px solid #e5e5ea; border-radius: 14px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 58px; height: 58px; background: #ffffff; border-radius: 10px; border: 1px solid #f0f0f2; display: flex; align-items: center; justify-content: center; padding: 4px; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+              <img src="${data.logo}" alt="${data.title} Official Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+            </div>
+            <div>
+              <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #2ba747;">Client Brand Identity</div>
+              <div style="font-size: 17px; font-weight: 800; color: #1d1d1f; letter-spacing: -0.01em;">${data.title}</div>
+              <div style="font-size: 12px; color: #86868b;">Official Authentic Brand Mark</div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span style="display: inline-block; background: rgba(43, 167, 71, 0.1); color: #2ba747; font-weight: 700; font-size: 11.5px; padding: 4px 12px; border-radius: 980px;">Client Logo</span>
+          </div>
         </div>
+        ` : ''}
+        
+        <div style="height: 320px; border-radius: 16px; overflow: hidden; margin-bottom: 22px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #111;">
+          <img src="${data.image}" style="width:100%; height:100%; object-fit:cover; object-position: center center;" alt="${data.title}" />
+        </div>
+
+        ${data.leadWriteup ? data.leadWriteup : ''}
 
         <!-- 3-Pillar Strategic Blueprint -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px;">
