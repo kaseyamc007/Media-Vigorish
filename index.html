@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <title>Vigorish Media — Building Brands That Add Value</title>
   <meta name="description" content="Vigorish Media is a premier creative media, digital marketing, and web architecture studio in Lusaka, Zambia. Inspiring branding, 4K cinema videography, and growth marketing." />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
   <meta property="og:title" content="Vigorish Media — Building Brands That Add Value" />
   <meta property="og:description" content="Creative media, branding, 4K videography, and web architecture crafted to build authority and add tangible value." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="src/logo/logo.png" />
   <link rel="icon" type="image/png" href="src/logo/logo.png" />
+  <link rel="preload" as="image" href="public/logo.png" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
   <!-- Futuristic AI Live Support System -->
   <link rel="stylesheet" href="chat/ai-support.css" id="aiSupportCss" />
   <link rel="stylesheet" href="/chat/ai-support.css" />
@@ -830,10 +836,214 @@
       margin: 0 auto;
     }
 
-    /* Micro Hover Transitions on Buttons & Cards */
-    .btn-apple-pill, .btn-apple-secondary, .apple-option-card, .apple-case-card {
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background 0.2s ease, border-color 0.2s ease !important;
+    /* =========================================================
+       PREMIUM MOTION & PAGE TRANSITION SYSTEM
+       ========================================================= */
+
+    /* Top Global Page Progress Indicator */
+    #pageProgressBar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #2997ff, #30d158, #2997ff);
+      z-index: 10005;
+      transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
     }
+
+    /* Fast Brand Reveal Opening Sequence */
+    .brand-reveal-overlay {
+      position: fixed;
+      inset: 0;
+      background: #000000;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s;
+      cursor: pointer;
+    }
+    .brand-reveal-overlay.dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .brand-reveal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: revealIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .brand-reveal-logo-ring {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(41, 151, 255, 0.1);
+      border: 1px solid rgba(41, 151, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 0 35px rgba(41, 151, 255, 0.25);
+      position: relative;
+    }
+    .brand-reveal-logo-ring::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1px dashed rgba(41, 151, 255, 0.4);
+      animation: spinSlow 12s linear infinite;
+    }
+    @keyframes spinSlow {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes revealIn {
+      0% { opacity: 0; transform: scale(0.92); filter: blur(6px); }
+      100% { opacity: 1; transform: scale(1); filter: blur(0px); }
+    }
+    .brand-reveal-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .brand-reveal-subtitle {
+      font-size: 11.5px;
+      letter-spacing: 0.18em;
+      color: #2997ff;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .brand-reveal-bar {
+      width: 140px;
+      height: 2px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .brand-reveal-bar-inner {
+      width: 0%;
+      height: 100%;
+      background: #2997ff;
+      animation: barFill 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes barFill {
+      to { width: 100%; }
+    }
+
+    /* Enhanced Page Transition with Smooth Glide */
+    .view-page.active {
+      display: block;
+      animation: vmPageTransition 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes vmPageTransition {
+      0% { opacity: 0; transform: translateY(10px) scale(0.996); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Shared Element Expansion for Modals */
+    .apple-modal {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s;
+    }
+    .apple-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .apple-modal.open .apple-modal-content {
+      animation: modalSharedExpand 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes modalSharedExpand {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Tactile Buttons and Cards */
+    .btn-apple-pill, .btn-apple-secondary, .apple-option-card, .apple-case-card, .apple-bento-card, .playground-card {
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s ease, background-color 0.22s ease !important;
+    }
+    .btn-apple-pill:active, .btn-apple-secondary:active {
+      transform: scale(0.96) !important;
+    }
+    .apple-bento-card:hover, .apple-case-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.12);
+      border-color: rgba(41, 151, 255, 0.35);
+    }
+    .apple-bento-card:active, .apple-case-card:active {
+      transform: translateY(-2px) scale(0.99);
+    }
+
+    /* Vigorish Labs Futuristic Workspace Styling */
+    .labs-workspace-container {
+      background: #0e0e13;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 40px rgba(41, 151, 255, 0.05);
+      position: relative;
+    }
+    .labs-workspace-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 20px;
+      background: #14141b;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .labs-workspace-nav::-webkit-scrollbar { display: none; }
+    .labs-nav-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #8e8e93;
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .labs-nav-tab:hover {
+      color: #ffffff;
+      background: rgba(255,255,255,0.05);
+    }
+    .labs-nav-tab.active {
+      color: #ffffff;
+      background: rgba(41, 151, 255, 0.15);
+      border-color: rgba(41, 151, 255, 0.35);
+      box-shadow: 0 2px 12px rgba(41, 151, 255, 0.2);
+    }
+    .labs-tab-pane {
+      display: none;
+      padding: 36px 32px;
+    }
+    .labs-tab-pane.active {
+      display: block;
+      animation: labsPaneFade 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes labsPaneFade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Micro Hover Transitions on Buttons & Cards */
     .btn-apple-pill:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0, 113, 227, 0.35);
@@ -871,45 +1081,150 @@
       transform: translateY(-3.5px) rotate(-45deg);
     }
 
-    /* Mobile Drawer */
+    /* Mobile Drawer & Backdrop Overlay */
+    .apple-mobile-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 99998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-mobile-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
     .apple-mobile-drawer {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh;
-      background: rgba(10, 10, 12, 0.94);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      z-index: 9999;
+      height: 100dvh;
+      max-height: 100vh;
+      background: rgba(10, 10, 12, 0.96);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      z-index: 99999;
       display: flex;
       flex-direction: column;
-      padding: 90px 32px 40px;
+      padding: max(24px, env(safe-area-inset-top, 24px)) 24px max(24px, env(safe-area-inset-bottom, 24px));
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transform: translateY(-12px);
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      box-sizing: border-box;
     }
     .apple-mobile-drawer.open {
       opacity: 1;
       pointer-events: auto;
+      transform: translateY(0);
     }
     .apple-mobile-nav-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      margin-bottom: auto;
+      gap: 14px;
+      margin-bottom: 24px;
     }
     .apple-mobile-nav-link {
-      font-size: 24px;
+      font-size: 21px;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #f5f5f7;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.18s, transform 0.18s;
+      display: inline-block;
+      padding: 6px 0;
+      -webkit-tap-highlight-color: transparent;
     }
-    .apple-mobile-nav-link:hover {
+    .apple-mobile-nav-link:active,
+    .apple-mobile-nav-link.active {
       color: var(--apple-blue);
+      transform: translateX(4px);
+    }
+
+    /* Mobile Quick Action Dock (Visible on mobile screens) */
+    .mobile-quick-dock {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-quick-dock {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 8px)) 12px;
+        background: rgba(12, 12, 14, 0.94);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        z-index: 9990;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
+      }
+      .dock-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        color: #a1a1a6;
+        text-decoration: none;
+        background: transparent;
+        border: none;
+        font-family: inherit;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        cursor: pointer;
+        padding: 6px 8px;
+        min-width: 60px;
+        min-height: 44px;
+        border-radius: 10px;
+        transition: color 0.15s, background 0.15s, transform 0.12s;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .dock-item:active {
+        transform: scale(0.94);
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .dock-item.dock-highlight {
+        color: #2997ff;
+      }
+      .dock-item svg {
+        width: 20px;
+        height: 20px;
+      }
+      /* Prevent footer / page content from being clipped by the bottom dock on mobile */
+      #appContent, .apple-footer {
+        padding-bottom: 76px !important;
+      }
+      /* Eliminate iOS tap zoom and optimize mobile typography */
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+      .apple-hero {
+        padding: 84px 18px 42px;
+      }
+      .apple-hero-headline {
+        font-size: clamp(30px, 8.5vw, 52px) !important;
+        line-height: 1.12 !important;
+      }
+      .studio-display-title {
+        font-size: clamp(28px, 7.5vw, 46px) !important;
+        line-height: 1.15 !important;
+      }
+      .apple-bento-card {
+        padding: 24px 20px !important;
+      }
     }
 
     /* =========================================================
@@ -1089,15 +1404,26 @@
       cursor: pointer;
     }
 
-    /* Exp 2: Split-Screen Cinema LUT Matrix */
+    /* Exp 2: Split-Screen Cinema LUT Matrix (Responsive & Touch-Optimized) */
     .lut-split-container {
+      --lut-split: 50%;
       position: relative;
-      height: 220px;
-      border-radius: 12px;
+      height: 250px;
+      border-radius: 14px;
       overflow: hidden;
       margin: 16px 0;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+      cursor: ew-resize;
+      background: #000000;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+    @media (max-width: 640px) {
+      .lut-split-container {
+        height: 200px;
+      }
     }
     .lut-img-raw, .lut-img-graded {
       position: absolute;
@@ -1106,44 +1432,59 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      pointer-events: none;
     }
     .lut-img-raw {
-      filter: grayscale(80%) contrast(85%) brightness(95%);
+      filter: grayscale(85%) contrast(80%) brightness(105%);
     }
     .lut-graded-wrapper {
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
       height: 100%;
-      width: 50%;
-      overflow: hidden;
-      border-right: 2px solid #ffffff;
+      clip-path: inset(0 calc(100% - var(--lut-split, 50%)) 0 0);
+      -webkit-clip-path: inset(0 calc(100% - var(--lut-split, 50%)) 0 0);
+      pointer-events: none;
     }
     .lut-img-graded {
       width: 100%;
-      min-width: 440px;
       height: 100%;
-      filter: contrast(115%) saturate(135%);
-      transition: filter 0.3s ease;
+      filter: contrast(125%) saturate(140%) brightness(105%);
+      transition: filter 0.25s ease;
+    }
+    .lut-divider-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--lut-split, 50%);
+      width: 2px;
+      background: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 5;
     }
     .lut-slider-handle {
       position: absolute;
       top: 50%;
-      left: 50%;
+      left: var(--lut-split, 50%);
       transform: translate(-50%, -50%);
-      width: 32px;
-      height: 32px;
+      width: 38px;
+      height: 38px;
       background: #ffffff;
-      color: #000;
+      color: #111111;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.6), 0 0 0 3px rgba(255,255,255,0.3);
       cursor: ew-resize;
       z-index: 10;
       pointer-events: none;
+      touch-action: none;
     }
 
     /* Exp 3: Sound Design Synthesizer Pads */
@@ -1274,6 +1615,23 @@
 </head>
 <body>
 
+  <!-- Top Global Page Progress Indicator -->
+  <div id="pageProgressBar"></div>
+
+  <!-- Fast Premium Opening Sequence (Brand Reveal) -->
+  <div id="brandRevealOverlay" class="brand-reveal-overlay" onclick="dismissBrandReveal()" title="Click to skip">
+    <div class="brand-reveal-content">
+      <div class="brand-reveal-logo-ring">
+        <img src="src/logo/logo.png" alt="Vigorish Media" onerror="this.src='public/logo.png';" style="height: 38px; width: auto; object-fit: contain; filter: brightness(1.2);" />
+      </div>
+      <div class="brand-reveal-title">VIGORISH MEDIA</div>
+      <div class="brand-reveal-subtitle">Creative Studio &bull; Labs &bull; Lusaka</div>
+      <div class="brand-reveal-bar">
+        <div class="brand-reveal-bar-inner"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Apple Global Header Bar -->
   <header class="apple-nav">
     <div class="apple-nav-container">
@@ -1285,9 +1643,9 @@
       <ul class="apple-nav-links">
         <li><a class="apple-nav-link" data-route="/" onclick="navigateTo('/'); return false;">Overview</a></li>
         <li><a class="apple-nav-link" data-route="/services" onclick="navigateTo('/services'); return false;">Services</a></li>
-        <li><a class="apple-nav-link" data-route="/portfolio" onclick="navigateTo('/portfolio'); return false;">Work</a></li>
-        <li><a class="apple-nav-link" data-route="/playground" onclick="navigateTo('/playground'); return false;">Playground</a></li>
-        <li><a class="apple-nav-link" data-route="/pricing" onclick="navigateTo('/pricing'); return false;">Pricing</a></li>
+        <li><a class="apple-nav-link" data-route="/portfolio" onclick="navigateTo('/portfolio'); return false;">Behind the Brand</a></li>
+        <li><a class="apple-nav-link" data-route="/labs" onclick="navigateTo('/labs'); return false;">Vigorish Labs</a></li>
+        <li><a class="apple-nav-link" data-route="/pricing" onclick="navigateTo('/pricing'); return false;">Service Packages</a></li>
         <li><a class="apple-nav-link" data-route="/about" onclick="navigateTo('/about'); return false;">About</a></li>
         <li><a class="apple-nav-link" data-route="/team" onclick="navigateTo('/team'); return false;">Team</a></li>
         <li><a class="apple-nav-link" data-route="/insights" onclick="navigateTo('/insights'); return false;">Newsroom</a></li>
@@ -1307,26 +1665,33 @@
       </div>
     </div>
   </header>
+
+  <!-- Mobile Navigation Backdrop Overlay -->
+  <div id="mobileDrawerBackdrop" class="apple-mobile-backdrop" onclick="closeMobileMenu()" aria-hidden="true"></div>
+
   <!-- Mobile Navigation Drawer -->
-  <div id="mobileDrawer" class="apple-mobile-drawer">
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-      <img src="src/logo/logo.png" alt="Vigorish Media" style="height: 26px; width: auto; object-fit: contain;" onerror="this.src='public/logo.png';" />
-      <strong class="brand-nav-title" style="font-size: 17px;">Vigorish Media</strong>
+  <div id="mobileDrawer" class="apple-mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="src/logo/logo.png" alt="Vigorish Media" style="height: 26px; width: auto; object-fit: contain;" onerror="this.src='public/logo.png';" />
+        <strong class="brand-nav-title" style="font-size: 16px; color: #fff;">Vigorish Media</strong>
+      </div>
+      <button onclick="closeMobileMenu()" aria-label="Close navigation" style="background: rgba(255,255,255,0.12); border: none; color: #fff; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; -webkit-tap-highlight-color: transparent;">✕</button>
     </div>
     <ul class="apple-mobile-nav-list">
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/');">Overview</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/services');">Services</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/portfolio');">Work &amp; Specs</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/playground');">Playground / Lab</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/pricing');">Studio Pricing</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/portfolio');">Behind the Brand (Work)</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/labs');">Vigorish Labs</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/pricing');">Service Packages</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/about');">About Studio</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/team');">Team</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/insights');">Newsroom</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/contact');">Contact &amp; Brief</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); openLiveSupportChat();" style="color: #2997ff; display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>✦ AI Live Support (Online)</a></li>
     </ul>
-    <div style="padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 10px;">
-      <a href="#/contact" class="btn-apple-pill" style="text-align: center; justify-content: center; padding: 12px 20px; font-size: 15px;" onclick="closeMobileMenu(); navigateTo('/contact');">Start a Project</a>
+    <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
+      <a href="#/contact" class="btn-apple-pill" style="text-align: center; justify-content: center; padding: 13px 20px; font-size: 15px; font-weight: 600;" onclick="closeMobileMenu(); navigateTo('/contact');">Start a Project</a>
       <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="btn-apple-secondary" style="text-align: center; justify-content: center; padding: 12px 20px; font-size: 14px;">WhatsApp: +260 97 989 4567</a>
     </div>
   </div>
@@ -1362,7 +1727,7 @@
               <span class="apple-dot dot-yellow"></span>
               <span class="apple-dot dot-green"></span>
             </div>
-            <span><strong class="brand-name-bold" style="color: #2997ff;">VIGORISH MEDIA</strong> // 4K CINEMA MASTER // LUSAKA &bull; ACTIVE PRODUCTION</span>
+            <span><strong class="brand-name-bold" style="color: #2997ff;">VIGORISH MEDIA</strong> Showreel update</span>
             <span style="color: #34d399;">● ACTIVE PRODUCTION</span>
           </div>
           <div class="apple-studio-screen">
@@ -1454,13 +1819,20 @@
                 <div class="apple-bento-eyebrow">IDENTITY SYSTEMS</div>
                 <h3 class="apple-bento-title">Branding &amp; Corporate Identity.</h3>
                 <p class="apple-bento-text">
-                  Bespoke brand marks, brand styleguides, typography systems, and executive stationeries that command immediate respect from customers and investors.
+                  Build a brand that looks professional, consistent and recognisable. One Brand. Every Touchpoint — across digital and physical spaces.
                 </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; font-size: 11.5px; color: #555;">
+                  <span style="background: rgba(0,0,0,0.05); padding: 3px 8px; border-radius: 6px;">🎨 Logo Design</span>
+                  <span style="background: rgba(0,0,0,0.05); padding: 3px 8px; border-radius: 6px;">📘 Brand Guidelines</span>
+                  <span style="background: rgba(0,0,0,0.05); padding: 3px 8px; border-radius: 6px;">📄 Stationery</span>
+                  <span style="background: rgba(0,0,0,0.05); padding: 3px 8px; border-radius: 6px;">👕 Apparel &amp; Merch</span>
+                </div>
               </div>
               <div class="apple-bento-media">
-                <img src="https://images.unsplash.com/photo-1542744094-3a3172720a42?w=800&auto=format&fit=crop&q=80" 
+                <img src="/assets/corporate-identity-branding.jpg" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
-                     alt="Brand Identity Workshop" />
+                     alt="Vigorish Media Corporate Identity &amp; Branding Kit" 
+                     style="width: 100%; height: 100%; object-fit: cover;" />
               </div>
             </div>
 
@@ -1847,19 +2219,40 @@
             <!-- Service 3 -->
             <div class="apple-bento-card" style="min-height: auto; flex-direction: row; align-items: center; gap: 40px;">
               <div style="flex: 1;">
-                <div class="apple-bento-eyebrow">CAPABILITY 03</div>
+                <div class="apple-bento-eyebrow">IDENTITY SYSTEMS</div>
                 <h3 class="apple-bento-title">Branding &amp; Corporate Identity</h3>
-                <p class="apple-bento-text">
-                  Comprehensive brand design: bespoke logo marks, typography pairings, color systems, business cards, letterheads, email signatures, presentation decks, and comprehensive brand guideline books.
+                <p class="apple-bento-text" style="font-weight: 600; color: #1d1d1f; margin-bottom: 8px;">
+                  Build a brand that looks professional, consistent and recognisable.
                 </p>
-                <div style="margin-bottom: 20px; font-size: 13.5px; color: #555;">
-                  <strong>Deliverables:</strong> Master vector logos (.AI, .EPS, .SVG, .PNG), brand book PDF, print files, executive stationery suite.
+                <div style="font-size: 13.5px; font-weight: 700; color: var(--apple-blue); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.04em;">
+                  Our Services Include:
                 </div>
-                <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;">Request Brand Consultation</a>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; font-size: 13px; color: #333; margin-bottom: 16px;">
+                  <div>🎨 <strong>Logo Design &amp; Brand Identity</strong> — Distinctive visuals that represent your business.</div>
+                  <div>📘 <strong>Brand Guidelines</strong> — Logo usage, colours, typography and visual standards.</div>
+                  <div>📄 <strong>Corporate Stationery</strong> — Letterheads, invoices, quotations, reports &amp; documents.</div>
+                  <div>💳 <strong>Business Cards</strong> — Professional designs that make a lasting impression.</div>
+                  <div>👕 <strong>Branded Apparel</strong> — T-shirts, uniforms, jackets and promotional clothing.</div>
+                  <div>☕ <strong>Corporate Merchandise</strong> — Mugs, pens, notebooks, calendars &amp; promotional items.</div>
+                  <div>🛍️ <strong>Packaging &amp; Branded Bags</strong> — Bags, boxes, labels &amp; packaging.</div>
+                  <div>📱 <strong>Digital Brand Assets</strong> — Social graphics, presentations &amp; email signatures.</div>
+                  <div style="grid-column: span 2;">🏢 <strong>Corporate &amp; Environmental Branding</strong> — Signage, office branding, reception areas &amp; event branding.</div>
+                </div>
+                <div style="background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.06); border-radius: 10px; padding: 12px 14px; margin-bottom: 18px;">
+                  <strong style="color: #1d1d1f; font-size: 13.5px;">One Brand. Every Touchpoint.</strong>
+                  <p style="font-size: 12.5px; color: #555; margin: 4px 0 0; line-height: 1.5;">
+                    We help businesses build a professional, consistent and memorable identity that works across both digital and physical spaces.
+                  </p>
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                  <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;">Request Brand Consultation</a>
+                  <a href="#/labs" class="btn-apple-secondary" onclick="navigateTo('/labs'); return false;" style="font-size: 13px; padding: 8px 16px;">Quote in Vigorish Labs &gt;</a>
+                </div>
               </div>
-              <div style="width: 380px; height: 260px; border-radius: 16px; overflow: hidden; position: relative;">
-                <img src="https://images.unsplash.com/photo-1542744094-3a3172720a42?w=800&auto=format&fit=crop&q=80" 
+              <div style="width: 420px; height: 320px; border-radius: 16px; overflow: hidden; position: relative; flex-shrink: 0; box-shadow: 0 8px 24px rgba(0,0,0,0.08);">
+                <img src="/assets/corporate-identity-branding.jpg" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
+                     alt="Vigorish Media Corporate Identity &amp; Branding Kit" 
                      style="width:100%; height:100%; object-fit:cover;" />
               </div>
             </div>
@@ -1996,69 +2389,107 @@
     </section>
 
     <!-- 4. WORK / PORTFOLIO VIEW -->
+    <!-- 4. WORK / PORTFOLIO VIEW ("Behind the Brand") -->
     <section id="view-portfolio" class="view-page">
       <div class="apple-section-dark">
         <div class="apple-container">
           <div class="apple-section-header">
-            <div class="apple-section-eyebrow">Portfolio</div>
-            <h1 class="apple-section-title">Selected Works 2025–2026.</h1>
-            <p class="apple-section-desc">A curated archive of high-stakes visual projects created across Southern Africa.</p>
+            <div class="apple-section-eyebrow">EVIDENCE-BASED PORTFOLIO</div>
+            <h1 class="apple-section-title">Behind the Brand.</h1>
+            <p class="apple-section-desc">Every engagement is built around the client’s goal, our creative strategy, and verified measurable business results.</p>
+          </div>
+
+          <!-- Interactive Filter Tabs -->
+          <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 40px;">
+            <button class="portfolio-filter-pill active" data-filter="all" onclick="filterPortfolio('all')" style="padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(41, 151, 255, 0.15); color: #ffffff; border: 1px solid rgba(41, 151, 255, 0.4); transition: all 0.2s ease;">All Case Studies (4)</button>
+            <button class="portfolio-filter-pill" data-filter="branding" onclick="filterPortfolio('branding')" style="padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(255, 255, 255, 0.05); color: #86868b; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease;">Identity Systems</button>
+            <button class="portfolio-filter-pill" data-filter="video" onclick="filterPortfolio('video')" style="padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(255, 255, 255, 0.05); color: #86868b; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease;">4K Cinematography</button>
+            <button class="portfolio-filter-pill" data-filter="web" onclick="filterPortfolio('web')" style="padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(255, 255, 255, 0.05); color: #86868b; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease;">Web Architecture</button>
+            <button class="portfolio-filter-pill" data-filter="social" onclick="filterPortfolio('social')" style="padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; background: rgba(255, 255, 255, 0.05); color: #86868b; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease;">Social &amp; Ads Engine</button>
           </div>
 
           <div class="apple-case-studies-strip" style="grid-template-columns: repeat(2, 1fr); gap: 32px;">
-            <div class="apple-case-card" onclick="openProjectModal('horizon-capital')">
-              <div class="apple-case-img-box" style="height: 320px;">
+            <!-- Project 1 -->
+            <div class="apple-case-card" data-portfolio-tag="branding" onclick="openProjectModal('horizon-capital')" style="display: flex; flex-direction: column;">
+              <div class="apple-case-img-box" style="height: 280px; position: relative;">
                 <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-branding.jpg';" 
                      alt="Horizon Capital" />
+                <div style="position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #30d158; border: 1px solid rgba(48,209,88,0.3);">
+                  RESULT: US$18.5M RAISED
+                </div>
               </div>
-              <div class="apple-case-body">
-                <div class="apple-case-category">BRAND IDENTITY</div>
+              <div class="apple-case-body" style="flex: 1; display: flex; flex-direction: column;">
+                <div class="apple-case-category">IDENTITY SYSTEMS &bull; PROSPECTUS</div>
                 <h4 class="apple-case-title">Horizon Capital Zambia</h4>
-                <p class="apple-case-desc">Full investor prospectus, executive stationery, and brand identity system.</p>
-                <span class="apple-link-cta">Inspect project &gt;</span>
+                <div style="margin: 10px 0; font-size: 13px; color: #a1a1a6; line-height: 1.5; flex: 1;">
+                  <div style="margin-bottom: 6px;"><strong style="color: #fff;">Goal:</strong> Establish tier-1 institutional governance to secure regional PE backing.</div>
+                  <div><strong style="color: #2997ff;">Result:</strong> 100% investor approval, round closed oversubscribed.</div>
+                </div>
+                <span class="apple-link-cta" style="margin-top: 10px;">Behind the Brand: View Goal, Strategy &amp; Results &gt;</span>
               </div>
             </div>
 
-            <div class="apple-case-card" onclick="openProjectModal('savannah-reels')">
-              <div class="apple-case-img-box" style="height: 320px;">
+            <!-- Project 2 -->
+            <div class="apple-case-card" data-portfolio-tag="video" onclick="openProjectModal('savannah-reels')" style="display: flex; flex-direction: column;">
+              <div class="apple-case-img-box" style="height: 280px; position: relative;">
                 <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-video.jpg';" 
                      alt="Savannah Apparel" />
+                <div style="position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #30d158; border: 1px solid rgba(48,209,88,0.3);">
+                  RESULT: +340% ENGAGEMENT
+                </div>
               </div>
-              <div class="apple-case-body">
-                <div class="apple-case-category">VIDEOGRAPHY</div>
+              <div class="apple-case-body" style="flex: 1; display: flex; flex-direction: column;">
+                <div class="apple-case-category">CINEMATOGRAPHY &bull; VIRAL REELS</div>
                 <h4 class="apple-case-title">Savannah Lifestyle Apparel</h4>
-                <p class="apple-case-desc">Cinematic 4K brand commercial and social reels series in Lusaka.</p>
-                <span class="apple-link-cta">Inspect project &gt;</span>
+                <div style="margin: 10px 0; font-size: 13px; color: #a1a1a6; line-height: 1.5; flex: 1;">
+                  <div style="margin-bottom: 6px;"><strong style="color: #fff;">Goal:</strong> Modernize brand perception and ignite mobile retail foot traffic.</div>
+                  <div><strong style="color: #2997ff;">Result:</strong> 185K+ organic views, 4.2x in-store foot traffic surge.</div>
+                </div>
+                <span class="apple-link-cta" style="margin-top: 10px;">Behind the Brand: View Goal, Strategy &amp; Results &gt;</span>
               </div>
             </div>
 
-            <div class="apple-case-card" onclick="openProjectModal('copperbelt-logistics')">
-              <div class="apple-case-img-box" style="height: 320px;">
+            <!-- Project 3 -->
+            <div class="apple-case-card" data-portfolio-tag="web" onclick="openProjectModal('copperbelt-logistics')" style="display: flex; flex-direction: column;">
+              <div class="apple-case-img-box" style="height: 280px; position: relative;">
                 <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-web.jpg';" 
                      alt="Copperbelt Logistics" />
+                <div style="position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #30d158; border: 1px solid rgba(48,209,88,0.3);">
+                  RESULT: +45% INBOUND LEADS
+                </div>
               </div>
-              <div class="apple-case-body">
-                <div class="apple-case-category">WEB DESIGN</div>
+              <div class="apple-case-body" style="flex: 1; display: flex; flex-direction: column;">
+                <div class="apple-case-category">WEB ARCHITECTURE &bull; DISPATCH</div>
                 <h4 class="apple-case-title">Copperbelt Haulage Freight Portal</h4>
-                <p class="apple-case-desc">Modern responsive freight calculation web system with real-time dispatch.</p>
-                <span class="apple-link-cta">Inspect project &gt;</span>
+                <div style="margin: 10px 0; font-size: 13px; color: #a1a1a6; line-height: 1.5; flex: 1;">
+                  <div style="margin-bottom: 6px;"><strong style="color: #fff;">Goal:</strong> Remove manual booking bottlenecks across regional haulage routes.</div>
+                  <div><strong style="color: #2997ff;">Result:</strong> 62% faster quotation speed, instant WhatsApp freight dispatch.</div>
+                </div>
+                <span class="apple-link-cta" style="margin-top: 10px;">Behind the Brand: View Goal, Strategy &amp; Results &gt;</span>
               </div>
             </div>
 
-            <div class="apple-case-card" onclick="openProjectModal('lush-cosmetics')">
-              <div class="apple-case-img-box" style="height: 320px;">
+            <!-- Project 4 -->
+            <div class="apple-case-card" data-portfolio-tag="social" onclick="openProjectModal('lush-cosmetics')" style="display: flex; flex-direction: column;">
+              <div class="apple-case-img-box" style="height: 280px; position: relative;">
                 <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-social-media.jpg';" 
                      alt="Lush Botanicals" />
+                <div style="position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #30d158; border: 1px solid rgba(48,209,88,0.3);">
+                  RESULT: SOLD OUT IN 14 DAYS
+                </div>
               </div>
-              <div class="apple-case-body">
-                <div class="apple-case-category">SOCIAL MARKETING</div>
+              <div class="apple-case-body" style="flex: 1; display: flex; flex-direction: column;">
+                <div class="apple-case-category">SOCIAL MARKETING &bull; PACKAGING</div>
                 <h4 class="apple-case-title">Lush Botanicals Organic Skincare</h4>
-                <p class="apple-case-desc">Complete social media management, influencer campaign, and packaging design.</p>
-                <span class="apple-link-cta">Inspect project &gt;</span>
+                <div style="margin: 10px 0; font-size: 13px; color: #a1a1a6; line-height: 1.5; flex: 1;">
+                  <div style="margin-bottom: 6px;"><strong style="color: #fff;">Goal:</strong> Position local Zambian cosmetics against imported luxury brands.</div>
+                  <div><strong style="color: #2997ff;">Result:</strong> 600% follower growth, 100% initial sellout, 3 retail pharmacy deals.</div>
+                </div>
+                <span class="apple-link-cta" style="margin-top: 10px;">Behind the Brand: View Goal, Strategy &amp; Results &gt;</span>
               </div>
             </div>
           </div>
@@ -2068,20 +2499,478 @@
 
     <!-- 5. PRICING VIEW -->
     
-    <!-- CREATIVE PLAYGROUND / R&D LABS (Dedicated View & Home Showcase) -->
-    <section id="view-playground" class="view-page">
+    <!-- 5. VIGORISH LABS (Interactive Quote Builder, Brand Intelligence Scan, Creative Process, R&D) -->
+    <section id="view-labs" class="view-page">
       <div class="apple-section-dark ambient-glow-bg">
         <div class="apple-container">
           <div class="apple-section-header">
-            <div class="apple-section-eyebrow">STUDIO LABS &amp; R&amp;D</div>
-            <h1 class="studio-display-title">Creative Playground.</h1>
+            <div class="apple-section-eyebrow">VIGORISH LABS // NEXT-GEN WORKSPACE</div>
+            <h1 class="studio-display-title">Vigorish Labs.</h1>
             <p class="studio-lead-text">
-              Real-time experiments in kinetic typography, cinema color grading, procedural sound design, and 3D physical interactions developed inside the <strong class="brand-name-bold">Vigorish Media</strong> studio.
+              An interactive studio workspace where brand strategy meets computational craft. Estimate project scopes in real-time, audit brand maturity with intelligence diagnostics, and explore our disciplined creative engineering methodology.
             </p>
           </div>
 
-          <!-- 4 Interactive Experiments -->
-          <div class="playground-grid">
+          <!-- Futuristic Workspace Container -->
+          <div class="labs-workspace-container">
+            <!-- Workspace Navigation Bar -->
+            <div class="labs-workspace-nav">
+              <button class="labs-nav-tab active" id="labsTabBtn-quote" onclick="switchLabsTab('quote')">
+                <span>⚡</span>
+                <span>Interactive Quote Builder</span>
+              </button>
+              <button class="labs-nav-tab" id="labsTabBtn-brand-scan" onclick="switchLabsTab('brand-scan')">
+                <span>🎯</span>
+                <span>Brand Intelligence Scan</span>
+              </button>
+              <button class="labs-nav-tab" id="labsTabBtn-creative-process" onclick="switchLabsTab('creative-process')">
+                <span>🔄</span>
+                <span>Creative Process Section</span>
+              </button>
+              <button class="labs-nav-tab" id="labsTabBtn-rd-experiments" onclick="switchLabsTab('rd-experiments')">
+                <span>🧪</span>
+                <span>R&amp;D Experiments</span>
+              </button>
+            </div>
+
+            <!-- TAB 1: INTERACTIVE QUOTE BUILDER -->
+            <div id="labsPane-quote" class="labs-tab-pane active">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 30px;">
+                <div>
+                  <span style="font-size: 11px; font-weight: 700; color: var(--apple-blue); letter-spacing: 0.08em; text-transform: uppercase;">REAL-TIME SPECIFICATION ENGINE</span>
+                  <h2 style="font-size: clamp(22px, 3vw, 28px); font-weight: 800; color: #fff; margin: 4px 0 6px;">Interactive Project Quote Builder</h2>
+                  <p style="font-size: 14.5px; color: #8e8e93; max-width: 680px; line-height: 1.5;">
+                    Configure required studio deliverables. Adjust volume, shoot duration, and turnaround priority to calculate instant investment estimates in Zambian Kwacha (ZMW).
+                  </p>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                  <button class="btn-apple-secondary" onclick="resetQuoteBuilder()" style="font-size: 12.5px; padding: 8px 16px;">Reset Scope</button>
+                  <button class="btn-apple-pill" onclick="applyQuoteToContact()" style="font-size: 12.5px; padding: 8px 18px;">Transmit Quote to Brief &gt;</button>
+                </div>
+              </div>
+
+              <!-- 2-Column Configurator Grid -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px;">
+                <!-- Left: Capabilities & Controls -->
+                <div>
+                  <div style="font-size: 12px; font-weight: 700; color: #a1a1a6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px;">
+                    1. Select Required Capabilities:
+                  </div>
+
+                  <!-- Capabilities Selection List -->
+                  <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+                    <!-- Cap 1: Branding -->
+                    <label style="display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: all 0.2s ease;">
+                      <input type="checkbox" id="quoteCapBranding" checked onchange="calculateQuote()" style="margin-top: 4px; accent-color: var(--apple-blue); width: 18px; height: 18px;" />
+                      <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                          <strong style="color: #fff; font-size: 14.5px;">Branding &amp; Corporate Identity</strong>
+                          <span style="font-size: 13px; font-weight: 700; color: #30d158;">+K5,500</span>
+                        </div>
+                        <p style="font-size: 12.5px; color: #8e8e93; margin: 4px 0 0; line-height: 1.4;">
+                          Vector logo suite, typography standards, business cards, corporate stationery, and visual brand guidelines.
+                        </p>
+                      </div>
+                    </label>
+
+                    <!-- Cap 2: 4K Cinematography -->
+                    <label style="display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: all 0.2s ease;">
+                      <input type="checkbox" id="quoteCapVideo" onchange="calculateQuote()" style="margin-top: 4px; accent-color: var(--apple-blue); width: 18px; height: 18px;" />
+                      <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                          <strong style="color: #fff; font-size: 14.5px;">4K Cinema Video Production &amp; Reels</strong>
+                          <span style="font-size: 13px; font-weight: 700; color: #30d158;">+K6,000</span>
+                        </div>
+                        <p style="font-size: 12.5px; color: #8e8e93; margin: 4px 0 0; line-height: 1.4;">
+                          Commercial shoot with Sony Cinema line, drone aerials, sound design, and 4 vertical reels for TikTok/IG.
+                        </p>
+                      </div>
+                    </label>
+
+                    <!-- Cap 3: Web Platform -->
+                    <label style="display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: all 0.2s ease;">
+                      <input type="checkbox" id="quoteCapWeb" onchange="calculateQuote()" style="margin-top: 4px; accent-color: var(--apple-blue); width: 18px; height: 18px;" />
+                      <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                          <strong style="color: #fff; font-size: 14.5px;">Website Architecture &amp; Hosting</strong>
+                          <span style="font-size: 13px; font-weight: 700; color: #30d158;">+K6,500</span>
+                        </div>
+                        <p style="font-size: 12.5px; color: #8e8e93; margin: 4px 0 0; line-height: 1.4;">
+                          Modern mobile-first website, 1-year managed cloud hosting, free .com domain, SSL certificate &amp; WhatsApp integration.
+                        </p>
+                      </div>
+                    </label>
+
+                    <!-- Cap 4: Social Media Retainer -->
+                    <label style="display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: all 0.2s ease;">
+                      <input type="checkbox" id="quoteCapSocial" checked onchange="calculateQuote()" style="margin-top: 4px; accent-color: var(--apple-blue); width: 18px; height: 18px;" />
+                      <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                          <strong style="color: #fff; font-size: 14.5px;">Monthly Social Media Management Retainer</strong>
+                          <span style="font-size: 13px; font-weight: 700; color: #30d158;">+K2,500/mo</span>
+                        </div>
+                        <p style="font-size: 12.5px; color: #8e8e93; margin: 4px 0 0; line-height: 1.4;">
+                          Strategic posting schedule, custom graphics, engagement response, and caption engineering for FB &amp; IG.
+                        </p>
+                      </div>
+                    </label>
+
+                    <!-- Cap 5: Paid Ads -->
+                    <label style="display: flex; align-items: flex-start; gap: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 14px 16px; border-radius: 12px; cursor: pointer; transition: all 0.2s ease;">
+                      <input type="checkbox" id="quoteCapAds" onchange="calculateQuote()" style="margin-top: 4px; accent-color: var(--apple-blue); width: 18px; height: 18px;" />
+                      <div style="flex: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                          <strong style="color: #fff; font-size: 14.5px;">Paid Meta &amp; Google Ads Setup</strong>
+                          <span style="font-size: 13px; font-weight: 700; color: #30d158;">+K1,200</span>
+                        </div>
+                        <p style="font-size: 12.5px; color: #8e8e93; margin: 4px 0 0; line-height: 1.4;">
+                          Audience segmentation, pixel tracking, and campaign launch (ad spend campaigns managed starting from K450).
+                        </p>
+                      </div>
+                    </label>
+                  </div>
+
+                  <!-- Multiplier Options -->
+                  <div style="font-size: 12px; font-weight: 700; color: #a1a1a6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 14px;">
+                    2. Fine-Tune Volume &amp; Turnaround:
+                  </div>
+                  
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+                    <div>
+                      <label style="font-size: 12.5px; color: #ccc; display: block; margin-bottom: 6px;">Social Posts Volume:</label>
+                      <select id="quoteSelectSocialPosts" onchange="calculateQuote()" style="width: 100%; background: #1a1a24; color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 10px; font-size: 13px; outline: none;">
+                        <option value="5">5 Posts/Mo (Plan A)</option>
+                        <option value="10" selected>10 Posts/Mo (Plan B — Standard)</option>
+                        <option value="20">20 Posts/Mo (Plan C — Authority)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label style="font-size: 12.5px; color: #ccc; display: block; margin-bottom: 6px;">Website Complexity:</label>
+                      <select id="quoteSelectWebTier" onchange="calculateQuote()" style="width: 100%; background: #1a1a24; color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 10px; font-size: 13px; outline: none;">
+                        <option value="starter">Starter Landing (K6,500)</option>
+                        <option value="professional" selected>5-Page Corporate (K8,500)</option>
+                        <option value="business">Business Dispatch (K10,500)</option>
+                        <option value="enterprise">Custom Enterprise (K37,000)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div>
+                      <label style="font-size: 12.5px; color: #ccc; display: block; margin-bottom: 6px;">Video Shoot Duration:</label>
+                      <select id="quoteSelectShootDays" onchange="calculateQuote()" style="width: 100%; background: #1a1a24; color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 10px; font-size: 13px; outline: none;">
+                        <option value="1" selected>1 Day Studio/Location (Base)</option>
+                        <option value="2">2 Days Multi-Location (+K4,000)</option>
+                        <option value="3">3 Days Full Commercial (+K7,500)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label style="font-size: 12.5px; color: #ccc; display: block; margin-bottom: 6px;">Turnaround Schedule:</label>
+                      <select id="quoteSelectUrgency" onchange="calculateQuote()" style="width: 100%; background: #1a1a24; color: #fff; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 10px; font-size: 13px; outline: none;">
+                        <option value="standard" selected>Standard Production (10–14 Days)</option>
+                        <option value="express">Priority Rush (5–7 Days, +20%)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right: Real-time Calculation Readout -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                      <span style="font-size: 11px; font-weight: 700; color: #8e8e93; text-transform: uppercase;">ESTIMATED SCOPE INVESTMENT</span>
+                      <span style="font-size: 11px; background: rgba(48,209,88,0.15); color: #30d158; padding: 3px 8px; border-radius: 6px; font-weight: 700;">LIVE QUOTE</span>
+                    </div>
+
+                    <!-- Dynamic Price Display -->
+                    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px;">
+                      <div id="quoteTotalDisplay" style="font-size: clamp(34px, 4vw, 44px); font-weight: 800; color: #ffffff; letter-spacing: -0.02em;">
+                        K8,000
+                      </div>
+                      <span style="font-size: 15px; color: #8e8e93; font-weight: 600;">ZMW</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px;">
+                      <span style="font-size: 12.5px; color: #a1a1a6;">Estimated Delivery SLA:</span>
+                      <strong id="quoteTimelineDisplay" style="font-size: 12.5px; color: #2997ff;">10–14 Business Days</strong>
+                    </div>
+
+                    <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px; margin-bottom: 18px;">
+                      <div style="font-size: 12px; font-weight: 700; color: #fff; text-transform: uppercase; margin-bottom: 10px;">Included Deliverables:</div>
+                      <ul id="quoteDeliverablesList" style="list-style: none; font-size: 13px; color: #a1a1a6; display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0;">
+                        <li>✓ Complete Vector Logo Suite (.AI, .EPS, .SVG, .PNG)</li>
+                        <li>✓ Full Corporate Stationery &amp; Brand Guidelines</li>
+                        <li>✓ 10 Custom Branded Social Posts &amp; Captions / Month</li>
+                        <li>✓ Direct Creative Director Point of Contact</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Actions -->
+                  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+                    <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 14px; padding: 12px;" onclick="applyQuoteToContact()">
+                      Transmit Quote to Studio Brief &gt;
+                    </button>
+                    <button class="btn-apple-secondary" style="width: 100%; justify-content: center; font-size: 13px; padding: 10px; background: rgba(37,211,102,0.12); color: #25D366; border: 1px solid rgba(37,211,102,0.3);" onclick="sendQuoteViaWhatsApp()">
+                      <span>💬 Chat This Exact Scope on WhatsApp</span>
+                    </button>
+                    <button class="btn-apple-secondary" style="width: 100%; justify-content: center; font-size: 12.5px; padding: 8px;" onclick="copyQuoteToClipboard(this)">
+                      <span>📋 Copy Quote Specs to Clipboard</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: BRAND INTELLIGENCE SCAN -->
+            <div id="labsPane-brand-scan" class="labs-tab-pane">
+              <div style="margin-bottom: 28px;">
+                <span style="font-size: 11px; font-weight: 700; color: #ff3b30; letter-spacing: 0.08em; text-transform: uppercase;">AUTOMATED DIAGNOSTIC TERMINAL</span>
+                <h2 style="font-size: clamp(22px, 3vw, 28px); font-weight: 800; color: #fff; margin: 4px 0 6px;">Brand Intelligence Scan</h2>
+                <p style="font-size: 14.5px; color: #8e8e93; max-width: 680px; line-height: 1.5;">
+                  Evaluate your organization's visual authority, digital conversion readiness, and competitive stature in Lusaka and across Southern Africa.
+                </p>
+              </div>
+
+              <!-- Input Diagnostics Form -->
+              <div id="brandScanForm" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px; margin-bottom: 24px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 20px;">
+                  <div>
+                    <label style="display: block; font-size: 12.5px; font-weight: 600; color: #ccc; margin-bottom: 6px;">Brand or Company Name *</label>
+                    <input type="text" id="scanBrandName" placeholder="e.g. Copperstone Minerals / Savannah Boutique" style="width: 100%; background: #14141b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; padding: 10px 14px; font-size: 13.5px; outline: none;" />
+                  </div>
+
+                  <div>
+                    <label style="display: block; font-size: 12.5px; font-weight: 600; color: #ccc; margin-bottom: 6px;">Industry Sector *</label>
+                    <select id="scanIndustry" style="width: 100%; background: #14141b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; padding: 10px 14px; font-size: 13.5px; outline: none;">
+                      <option value="corporate">Corporate, Banking &amp; Financial Services</option>
+                      <option value="logistics">Mining, Freight Haulage &amp; Logistics</option>
+                      <option value="retail">Retail, Lifestyle Apparel &amp; E-Commerce</option>
+                      <option value="hospitality">Hospitality, Dining &amp; Tourism</option>
+                      <option value="healthcare">Healthcare, Cosmetics &amp; Wellness</option>
+                      <option value="professional">Legal, Architecture &amp; Consultancy</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style="display: block; font-size: 12.5px; font-weight: 600; color: #ccc; margin-bottom: 6px;">Primary Business Objective *</label>
+                    <select id="scanObjective" style="width: 100%; background: #14141b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; padding: 10px 14px; font-size: 13.5px; outline: none;">
+                      <option value="investors">Attract High-Stakes Investors &amp; Stakeholders</option>
+                      <option value="traffic">Scale Customer Foot Traffic &amp; Online Orders</option>
+                      <option value="rebrand">Modernize Stagnant / Outdated Brand Identity</option>
+                      <option value="expansion">Expand into Regional SADC Markets</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 22px;">
+                  <label style="display: block; font-size: 12.5px; font-weight: 600; color: #ccc; margin-bottom: 8px;">Current Digital &amp; Visual Touchpoints (Check all that currently apply):</label>
+                  <div style="display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: #a1a1a6;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                      <input type="checkbox" id="scanHasLogo" checked style="accent-color: var(--apple-blue);" /> Established Logo &amp; Stationery
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                      <input type="checkbox" id="scanHasSocial" checked style="accent-color: var(--apple-blue);" /> Active Facebook &amp; Instagram
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                      <input type="checkbox" id="scanHasWeb" style="accent-color: var(--apple-blue);" /> Responsive Corporate Website
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                      <input type="checkbox" id="scanHasVideo" style="accent-color: var(--apple-blue);" /> 4K Commercial Reel / Video
+                    </label>
+                  </div>
+                </div>
+
+                <button class="btn-apple-pill" style="padding: 12px 28px; font-size: 14.5px;" onclick="runBrandScan()">
+                  Initiate Intelligence Diagnostic Scan &gt;
+                </button>
+              </div>
+
+              <!-- Diagnostic Progress Animation Box -->
+              <div id="scanProgressBox" style="display: none; background: rgba(0,0,0,0.5); border: 1px solid rgba(41,151,255,0.25); border-radius: 14px; padding: 24px; margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px; color: #2997ff; font-weight: 700; margin-bottom: 8px;">
+                  <span id="scanStatusText">Connecting to Lusaka Intelligence Node...</span>
+                  <span id="scanPercentText">24%</span>
+                </div>
+                <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                  <div id="scanProgressBar" style="height: 100%; width: 24%; background: linear-gradient(90deg, #2997ff, #30d158); transition: width 0.3s ease;"></div>
+                </div>
+              </div>
+
+              <!-- Diagnostic Results Container -->
+              <div id="scanResultsBox" style="display: none; background: #121218; border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 32px 28px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px; margin-bottom: 24px;">
+                  <div>
+                    <span style="font-size: 11px; font-weight: 700; color: #30d158; text-transform: uppercase;">SCAN COMPLETE &bull; VERIFIED REPORT</span>
+                    <h3 id="scanResultBrandTitle" style="font-size: 26px; font-weight: 800; color: #fff; margin: 4px 0;">Horizon Logistics Intelligence Report</h3>
+                    <p id="scanResultSummary" style="font-size: 14px; color: #8e8e93; margin: 0;">Diagnostics indicate high market opportunity with immediate leverage available in video Reels and mobile freight dispatch.</p>
+                  </div>
+                  
+                  <!-- Overall Score Badge -->
+                  <div style="background: rgba(41,151,255,0.12); border: 1px solid rgba(41,151,255,0.3); border-radius: 14px; padding: 14px 20px; text-align: center;">
+                    <div id="scanOverallScore" style="font-size: 34px; font-weight: 800; color: #2997ff; letter-spacing: -0.02em;">78<span style="font-size: 18px; color: #8e8e93;">/100</span></div>
+                    <div style="font-size: 11px; font-weight: 700; color: #fff; text-transform: uppercase;">Brand Stature Index</div>
+                  </div>
+                </div>
+
+                <!-- 4 Diagnostic Metric Bars -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 28px;">
+                  <div style="background: rgba(255,255,255,0.02); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
+                      <span style="color: #ccc;">Visual Authority:</span>
+                      <strong id="metricVisual" style="color: #30d158;">72%</strong>
+                    </div>
+                    <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                      <div id="barVisual" style="height: 100%; width: 72%; background: #30d158; border-radius: 2px;"></div>
+                    </div>
+                  </div>
+
+                  <div style="background: rgba(255,255,255,0.02); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
+                      <span style="color: #ccc;">Digital Footprint:</span>
+                      <strong id="metricDigital" style="color: #2997ff;">65%</strong>
+                    </div>
+                    <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                      <div id="barDigital" style="height: 100%; width: 65%; background: #2997ff; border-radius: 2px;"></div>
+                    </div>
+                  </div>
+
+                  <div style="background: rgba(255,255,255,0.02); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
+                      <span style="color: #ccc;">Social Velocity:</span>
+                      <strong id="metricSocial" style="color: #ffd60a;">58%</strong>
+                    </div>
+                    <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                      <div id="barSocial" style="height: 100%; width: 58%; background: #ffd60a; border-radius: 2px;"></div>
+                    </div>
+                  </div>
+
+                  <div style="background: rgba(255,255,255,0.02); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
+                      <span style="color: #ccc;">Conversion Readiness:</span>
+                      <strong id="metricConversion" style="color: #30d158;">84%</strong>
+                    </div>
+                    <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                      <div id="barConversion" style="height: 100%; width: 84%; background: #30d158; border-radius: 2px;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Strategic Recommendations & Direct Solution -->
+                <div style="background: rgba(41,151,255,0.06); border: 1px solid rgba(41,151,255,0.2); border-radius: 14px; padding: 20px 24px; margin-bottom: 24px;">
+                  <h4 style="font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 8px;">Recommended Studio Strategic Roadmap:</h4>
+                  <ul id="scanRecommendationsList" style="margin-left: 18px; font-size: 13.5px; color: #ccc; line-height: 1.6; margin-bottom: 16px;">
+                    <li>Deploy 4K vertical video commercial reels to increase social engagement by 300%+.</li>
+                    <li>Launch high-speed freight quotation calculator with 1-click WhatsApp dispatch link.</li>
+                    <li>Establish uniform corporate identity standards across stationery, proposals, and uniforms.</li>
+                  </ul>
+                  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                    <button class="btn-apple-pill" onclick="applyScanToQuoteBuilder()" style="font-size: 13px; padding: 8px 18px;">Load Recommended Scope into Quote Builder &gt;</button>
+                    <a href="#/contact" class="btn-apple-secondary" onclick="navigateTo('/contact'); return false;" style="font-size: 13px; padding: 8px 18px;">Discuss with Creative Director</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: CREATIVE PROCESS SECTION ("THE VIGORISH METHOD") -->
+            <div id="labsPane-creative-process" class="labs-tab-pane">
+              <div style="margin-bottom: 32px;">
+                <span style="font-size: 11px; font-weight: 700; color: var(--apple-blue); letter-spacing: 0.08em; text-transform: uppercase;">THE VIGORISH METHOD</span>
+                <h2 style="font-size: clamp(22px, 3vw, 28px); font-weight: 800; color: #fff; margin: 4px 0 6px;">Our 4-Phase Creative Engineering Process</h2>
+                <p style="font-size: 14.5px; color: #8e8e93; max-width: 680px; line-height: 1.5;">
+                  We eliminate subjective guesswork by adhering to a disciplined engineering workflow. From initial brand archaeology to live market acceleration.
+                </p>
+              </div>
+
+              <!-- Interactive Phase Step-Through -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 36px;">
+                <!-- Phase 1 -->
+                <div class="process-phase-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px 20px; position: relative;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--apple-blue); letter-spacing: 0.08em; margin-bottom: 6px;">PHASE 01 // DAYS 1–3</div>
+                  <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px;">Brand Archaeology &amp; Discovery</h3>
+                  <p style="font-size: 13px; color: #8e8e93; line-height: 1.5; margin-bottom: 14px;">
+                    We interrogate your market position in Zambia, target customer psychology, competitor blind spots, and institutional objectives.
+                  </p>
+                  <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; font-size: 12px; color: #ccc;">
+                    <strong style="color: #fff;">Milestones:</strong>
+                    <div style="margin-top: 4px;">• Strategic Direction Memo</div>
+                    <div>• Competitive Whitespace Matrix</div>
+                    <div>• Visual Moodboard &amp; Archetypes</div>
+                  </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="process-phase-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px 20px; position: relative;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--apple-blue); letter-spacing: 0.08em; margin-bottom: 6px;">PHASE 02 // DAYS 4–7</div>
+                  <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px;">Design Architecture &amp; Prototype</h3>
+                  <p style="font-size: 13px; color: #8e8e93; line-height: 1.5; margin-bottom: 14px;">
+                    Translating strategy into mathematical vector systems, optical kerning, bespoke color harmonies, and responsive UI wireframes.
+                  </p>
+                  <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; font-size: 12px; color: #ccc;">
+                    <strong style="color: #fff;">Milestones:</strong>
+                    <div style="margin-top: 4px;">• Master Vector Monogram Suite</div>
+                    <div>• Typography Hierarchy System</div>
+                    <div>• Interactive Figma Prototype</div>
+                  </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="process-phase-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px 20px; position: relative;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--apple-blue); letter-spacing: 0.08em; margin-bottom: 6px;">PHASE 03 // DAYS 8–12</div>
+                  <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px;">Cinematography &amp; Production Craft</h3>
+                  <p style="font-size: 13px; color: #8e8e93; line-height: 1.5; margin-bottom: 14px;">
+                    Sony Cinema 4K location shoots, DaVinci Resolve color grading, sound design, responsive coding, and print collateral proofing.
+                  </p>
+                  <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; font-size: 12px; color: #ccc;">
+                    <strong style="color: #fff;">Milestones:</strong>
+                    <div style="margin-top: 4px;">• 4K Video Commercial Exports</div>
+                    <div>• Sub-Second Responsive Web Code</div>
+                    <div>• Print-Ready Stationery &amp; Packaging</div>
+                  </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="process-phase-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px 20px; position: relative;">
+                  <div style="font-size: 11px; font-weight: 800; color: var(--apple-blue); letter-spacing: 0.08em; margin-bottom: 6px;">PHASE 04 // DAYS 13+</div>
+                  <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px;">Deployment &amp; Growth Steering</h3>
+                  <p style="font-size: 13px; color: #8e8e93; line-height: 1.5; margin-bottom: 14px;">
+                    Deploying your new presence into active market channels with targeted Meta/Google ads (from K450) and monthly performance monitoring.
+                  </p>
+                  <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; font-size: 12px; color: #ccc;">
+                    <strong style="color: #fff;">Milestones:</strong>
+                    <div style="margin-top: 4px;">• Live Production Deployment</div>
+                    <div>• Brand Asset Guideline Archive</div>
+                    <div>• Ongoing Monthly Retainer Support</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quality Guarantee Banner -->
+              <div style="background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(41,151,255,0.06)); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 24px 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                  <div style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">Guaranteed Turnarounds &amp; Strict Confidentiality</div>
+                  <p style="font-size: 13.5px; color: #8e8e93; margin: 0; max-width: 600px;">
+                    Every client engagement is protected under our standard Mutual NDA. Deliverables undergo three rigorous QA checkpoints before sign-off.
+                  </p>
+                </div>
+                <button class="btn-apple-pill" onclick="switchLabsTab('quote');" style="font-size: 13.5px; padding: 10px 22px;">Configure Your Scope in Quote Builder &gt;</button>
+              </div>
+            </div>
+
+            <!-- TAB 4: R&D EXPERIMENTS -->
+            <div id="labsPane-rd-experiments" class="labs-tab-pane">
+              <div style="margin-bottom: 28px;">
+                <span style="font-size: 11px; font-weight: 700; color: #ffd60a; letter-spacing: 0.08em; text-transform: uppercase;">STUDIO EXPERIMENTAL WORKBENCH</span>
+                <h2 style="font-size: clamp(22px, 3vw, 28px); font-weight: 800; color: #fff; margin: 4px 0 6px;">Creative R&amp;D Experiments</h2>
+                <p style="font-size: 14.5px; color: #8e8e93; max-width: 680px; line-height: 1.5;">
+                  Live interactive sandboxes exploring kinetic typography, cinema color LUT profiles, real-time synthesized acoustic UI cues, and 3D device physics.
+                </p>
+              </div>
+
+              <!-- 4 Interactive Experiments -->
+              <div class="playground-grid">
             
             <!-- Exp 1: Kinetic Typography Reactor -->
             <div class="playground-card">
@@ -2137,29 +3026,30 @@
               <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px;">4K Cinema LUT Matrix</h3>
               <p style="font-size: 13.5px; color: #86868b; line-height: 1.5;">Drag the comparison divider to examine RAW flat cinema capture versus studio color-graded mastery.</p>
 
-              <div class="lut-split-container" id="lutSplitContainer" onmousemove="handleLutDrag(event)" ontouchmove="handleLutTouch(event)">
-                <img class="lut-img-raw" src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&auto=format&fit=crop&q=80" alt="RAW Log Cinema" />
+              <div class="lut-split-container" id="lutSplitContainer" onmousemove="handleLutDrag(event)" ontouchmove="handleLutTouch(event)" ontouchstart="handleLutTouch(event)">
+                <img class="lut-img-raw" src="assets/lusaka-cinema-night-skyline-mobile.jpg" srcset="assets/lusaka-cinema-night-skyline-mobile.jpg 800w, assets/lusaka-cinema-night-skyline-opt.jpg 1600w" sizes="(max-width: 768px) 100vw, 800px" alt="RAW Log Cinema Capture (Lusaka Skyline)" />
                 <div class="lut-graded-wrapper" id="lutGradedWrapper">
-                  <img class="lut-img-graded" id="lutGradedImg" src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&auto=format&fit=crop&q=80" alt="Graded Cinema" />
+                  <img class="lut-img-graded" id="lutGradedImg" src="assets/lusaka-cinema-night-skyline-mobile.jpg" srcset="assets/lusaka-cinema-night-skyline-mobile.jpg 800w, assets/lusaka-cinema-night-skyline-opt.jpg 1600w" sizes="(max-width: 768px) 100vw, 800px" alt="Studio Color Graded (Lusaka Skyline)" />
                 </div>
-                <div class="lut-slider-handle" id="lutSliderHandle">&#8644;</div>
+                <div class="lut-divider-line" id="lutDividerLine"></div>
+                <div class="lut-slider-handle" id="lutSliderHandle" aria-label="Drag comparison divider">&#8644;</div>
               </div>
 
               <div style="display: flex; justify-content: space-between; font-size: 12px; color: #86868b; margin-bottom: 12px;">
-                <span>&#9664; Studio Graded</span>
-                <span>RAW Cinema Log &#9654;</span>
+                <span style="display: flex; align-items: center; gap: 4px;"><strong style="color: #30d158;">&#9664; Studio Graded</strong> (Lusaka Dusk)</span>
+                <span style="display: flex; align-items: center; gap: 4px;">RAW Cinema Log (Flat S-Log) &#9654;</span>
               </div>
 
               <div class="playground-control-label" style="margin-bottom: 6px;">
                 <span>Active LUT Color Profile:</span>
-                <span id="activeLutName" style="color: var(--apple-blue); font-weight: 700;">Obsidian Noir</span>
+                <span id="activeLutName" style="color: var(--apple-blue); font-weight: 700;">Lusaka Twilight 4K</span>
               </div>
 
               <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                <button class="service-tab-btn active" id="lutBtn0" style="padding: 4px 10px; font-size: 11px;" onclick="applyLutProfile('noir', 0)">Obsidian Noir</button>
-                <button class="service-tab-btn" id="lutBtn1" style="padding: 4px 10px; font-size: 11px;" onclick="applyLutProfile('sunset', 1)">Zambezi Warmth</button>
-                <button class="service-tab-btn" id="lutBtn2" style="padding: 4px 10px; font-size: 11px;" onclick="applyLutProfile('gold', 2)">Cine Gold 800</button>
-                <button class="service-tab-btn" id="lutBtn3" style="padding: 4px 10px; font-size: 11px;" onclick="applyLutProfile('highkey', 3)">Clean Editorial</button>
+                <button class="service-tab-btn active" id="lutBtn0" style="padding: 6px 12px; font-size: 11.5px; border-radius: 980px;" onclick="applyLutProfile('twilight', 0)">Lusaka Twilight 4K</button>
+                <button class="service-tab-btn" id="lutBtn1" style="padding: 6px 12px; font-size: 11.5px; border-radius: 980px;" onclick="applyLutProfile('noir', 1)">Obsidian Noir</button>
+                <button class="service-tab-btn" id="lutBtn2" style="padding: 6px 12px; font-size: 11.5px; border-radius: 980px;" onclick="applyLutProfile('sunset', 2)">Zambezi Warmth</button>
+                <button class="service-tab-btn" id="lutBtn3" style="padding: 6px 12px; font-size: 11.5px; border-radius: 980px;" onclick="applyLutProfile('gold', 3)">Cine Gold 800</button>
               </div>
             </div>
 
@@ -2238,149 +3128,332 @@
                 </div>
               </div>
 
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span id="passAngleReadout" style="font-size: 11px; color: #86868b; font-family: monospace;">Tilt: 0.0° X | 0.0° Y</span>
-                <span style="font-size: 11px; color: var(--apple-blue);">Interactive Gyroscope Active</span>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Legacy / Alternate Anchor for playground -->
+    <section id="view-playground" class="view-page" style="display: none;"></section>
 
-    <section id="view-pricing" class="view-page">
+    <!-- 6. SERVICE PACKAGES VIEW (Tiers, Clear Deliverables & Request a Quote) -->
+    <section id="view-packages" class="view-page">
       <div class="apple-section-light">
         <div class="apple-container">
           <div class="apple-section-header">
-            <div class="apple-section-eyebrow">Transparent Investment</div>
-            <h1 class="apple-section-title">Priced for Value. Built for Growth.</h1>
-            <p class="apple-section-desc">Clear, competitive Zambian Kwacha rates with guaranteed delivery schedules.</p>
+            <div class="apple-section-eyebrow">SERVICE PACKAGES // TRANSPARENT INVESTMENT</div>
+            <h1 class="apple-section-title">Service Packages.</h1>
+            <p class="apple-section-desc">Priced for value. Built for measurable growth. Fixed Zambian Kwacha rates with guaranteed deliverables, production SLAs, and instant quotation actions.</p>
           </div>
 
-          <!-- Dedicated Social Media Management Plans -->
-          <div style="background: #ffffff; border-radius: 20px; padding: 36px 32px; border: 1px solid #d2d2d7; margin-bottom: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 24px;">
+          <!-- Service Category Quick Switcher -->
+          <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 40px;">
+            <button class="service-tab-btn active" id="pkgFilterAll" onclick="filterPackages('all', this)">All Packages</button>
+            <button class="service-tab-btn" id="pkgFilterGrowth" onclick="filterPackages('growth', this)">★ Multi-Pillar Growth</button>
+            <button class="service-tab-btn" id="pkgFilterSmm" onclick="filterPackages('smm', this)">Social Media Retainers</button>
+            <button class="service-tab-btn" id="pkgFilterBrand" onclick="filterPackages('brand', this)">Branding &amp; Identity</button>
+            <button class="service-tab-btn" id="pkgFilterWeb" onclick="filterPackages('web', this)">Web Architecture</button>
+            <button class="service-tab-btn" id="pkgFilterVideo" onclick="filterPackages('video', this)">4K Video Production</button>
+          </div>
+
+          <!-- 1. MULTI-PILLAR ACCELERATOR TIERS -->
+          <div class="package-category-block" data-pkg-category="growth" style="margin-bottom: 54px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+              <div>
+                <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-blue);">ALL-IN-ONE GROWTH ENGINES</span>
+                <h2 style="font-size: 26px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 0;">Comprehensive Growth Suites</h2>
+              </div>
+              <span style="font-size: 13px; color: #86868b;">Cross-discipline strategy combining Identity, Video, Web &amp; Social</span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+              <!-- Tier 1: Starter Brand -->
+              <div class="apple-configurator-box" style="padding: 34px 26px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: #86868b; text-transform: uppercase;">TIER 01 // STARTUP SPEC</span>
+                    <span style="font-size: 11px; background: #f0f0f4; color: #555; padding: 2px 8px; border-radius: 4px; font-weight: 600;">7–10 Days SLA</span>
+                  </div>
+                  <h3 style="font-size: 22px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 10px;">Starter Brand Suite</h3>
+                  <div style="font-size: 32px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 14px;">K5,500 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW</span></div>
+                  <p style="font-size: 13.5px; color: var(--apple-text-secondary); line-height: 1.5; margin-bottom: 20px;">
+                    Designed for startups and growing enterprises seeking instant visual stature and uniform corporate touchpoints.
+                  </p>
+                  
+                  <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #86868b; margin-bottom: 8px;">Clear Deliverables:</div>
+                  <ul style="list-style: none; font-size: 13px; color: #333; display: flex; flex-direction: column; gap: 9px; margin: 0 0 24px; padding: 0;">
+                    <li>✓ Complete Vector Logo Suite (.AI, .EPS, .SVG, .PNG)</li>
+                    <li>✓ 8 Custom Social Media Promotional Post Designs</li>
+                    <li>✓ Professional Business Card &amp; Letterhead System</li>
+                    <li>✓ Typography &amp; Brand Color Palette Guidelines</li>
+                    <li>✓ 3 Concept Exploration Rounds with Revisions</li>
+                  </ul>
+                </div>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 11px;" onclick="requestPackageQuote('Starter Brand Suite', 5500, 'Identity + Social Post Templates')">
+                  Request a Quote (K5,500) &gt;
+                </button>
+              </div>
+
+              <!-- Tier 2: Growth Accelerator (Featured) -->
+              <div class="apple-configurator-box" style="padding: 34px 26px; border: 2px solid var(--apple-blue); box-shadow: 0 8px 30px rgba(41,151,255,0.12); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                <div style="position: absolute; top: -12px; right: 24px; background: var(--apple-blue); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 12px; letter-spacing: 0.05em; text-transform: uppercase;">
+                  RECOMMENDED // HIGH VALUE
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: var(--apple-blue); text-transform: uppercase;">TIER 02 // MARKET DOMINANCE</span>
+                    <span style="font-size: 11px; background: rgba(41,151,255,0.1); color: var(--apple-blue); padding: 2px 8px; border-radius: 4px; font-weight: 600;">14 Days SLA</span>
+                  </div>
+                  <h3 style="font-size: 22px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 10px;">Growth Accelerator</h3>
+                  <div style="font-size: 32px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 14px;">K12,500 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW</span></div>
+                  <p style="font-size: 13.5px; color: var(--apple-text-secondary); line-height: 1.5; margin-bottom: 20px;">
+                    Our most requested comprehensive package. Deploys full social management, 4K cinema video reels, and a high-speed corporate web platform.
+                  </p>
+                  
+                  <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #86868b; margin-bottom: 8px;">Clear Deliverables:</div>
+                  <ul style="list-style: none; font-size: 13px; color: #333; display: flex; flex-direction: column; gap: 9px; margin: 0 0 24px; padding: 0;">
+                    <li>✓ 1 Month Social Media Management Retainer (16 Posts + Captions)</li>
+                    <li>✓ 4 Short-Form 4K Video Reels Shot on Sony Cinema Line</li>
+                    <li>✓ High-Conversion 5-Page Responsive Web Architecture</li>
+                    <li>✓ 1-Year Free Managed Cloud Hosting, Domain &amp; SSL</li>
+                    <li>✓ Instant WhatsApp Lead Router &amp; Dynamic Inquiries</li>
+                    <li>✓ Performance Analytics Dashboard Handover</li>
+                  </ul>
+                </div>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 11px; background: var(--apple-blue);" onclick="requestPackageQuote('Growth Accelerator Suite', 12500, 'Social Retainer + 4K Reels + Web Architecture')">
+                  Request a Quote (K12,500) &gt;
+                </button>
+              </div>
+
+              <!-- Tier 3: Enterprise Suite -->
+              <div class="apple-configurator-box" style="padding: 34px 26px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 11px; font-weight: 700; color: #86868b; text-transform: uppercase;">TIER 03 // INSTITUTIONAL</span>
+                    <span style="font-size: 11px; background: #f0f0f4; color: #555; padding: 2px 8px; border-radius: 4px; font-weight: 600;">21 Days SLA</span>
+                  </div>
+                  <h3 style="font-size: 22px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 10px;">Enterprise Authority</h3>
+                  <div style="font-size: 32px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 14px;">K28,000 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW</span></div>
+                  <p style="font-size: 13.5px; color: var(--apple-text-secondary); line-height: 1.5; margin-bottom: 20px;">
+                    Dedicated agency partnership for established mining, financial, retail and commercial organizations in Zambia.
+                  </p>
+                  
+                  <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #86868b; margin-bottom: 8px;">Clear Deliverables:</div>
+                  <ul style="list-style: none; font-size: 13px; color: #333; display: flex; flex-direction: column; gap: 9px; margin: 0 0 24px; padding: 0;">
+                    <li>✓ Dedicated Senior Art Director &amp; Cinema Production Crew</li>
+                    <li>✓ Multi-Location 4K Commercial Shoot with Aerial Drone</li>
+                    <li>✓ Custom Enterprise Digital Web Portal Architecture</li>
+                    <li>✓ Multi-Channel Meta &amp; Google Ad Growth Campaigns</li>
+                    <li>✓ Complete Corporate Stationery, Signage &amp; Apparel Dies</li>
+                    <li>✓ Priority 24/7 Production Dispatch Service</li>
+                  </ul>
+                </div>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 11px;" onclick="requestPackageQuote('Enterprise Authority Suite', 28000, 'Full Agency Retainer + 4K Cinema + Enterprise Web')">
+                  Request a Quote (K28,000) &gt;
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. SOCIAL MEDIA MANAGEMENT TIERS -->
+          <div class="package-category-block" data-pkg-category="smm" style="background: #ffffff; border-radius: 20px; padding: 36px 32px; border: 1px solid #d2d2d7; margin-bottom: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
               <div>
                 <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-blue);">MONTHLY RETAINER PLANS</span>
-                <h2 style="font-size: 26px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 8px;">Social Media Management</h2>
-                <p style="font-size: 15px; color: var(--apple-text-secondary); max-width: 650px; line-height: 1.5;">
-                  Your Facebook &amp; Instagram should make your business look active, professional and credible not forgotten. Vigorish Media can manage it for you.
+                <h2 style="font-size: 26px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 8px;">Social Media Management Retainers</h2>
+                <p style="font-size: 15px; color: var(--apple-text-secondary); max-width: 680px; line-height: 1.5;">
+                  Your Facebook &amp; Instagram should make your business look active, prestigious and credible not forgotten. We engineer high-retention post designs, captions, and boosting strategies.
                 </p>
               </div>
               <div style="display: flex; gap: 10px; align-items: center;">
-                <button class="btn-apple-secondary" onclick="openLiveSupportChat();" style="font-size: 13.5px; padding: 10px 18px;">Ask AI Support</button>
-                <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;" style="font-size: 13.5px; padding: 10px 20px;">Book Plan</a>
+                <button class="btn-apple-secondary" onclick="openLiveSupportChat();" style="font-size: 13px; padding: 9px 16px;">Ask AI Support</button>
+                <button class="btn-apple-pill" onclick="switchLabsTab('quote'); navigateTo('/labs');" style="font-size: 13px; padding: 9px 18px;">Customize in Labs &gt;</button>
               </div>
             </div>
 
-            <!-- Handled Features Grid -->
+            <!-- What We Handle -->
             <div style="background: #fbfbfd; border-radius: 12px; padding: 16px 20px; border: 1px solid #f0f0f2; margin-bottom: 28px;">
-              <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #86868b; margin-bottom: 8px;">We handle:</div>
+              <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #86868b; margin-bottom: 8px;">Included in every retainer:</div>
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 13.5px; color: #333;">
-                <div>✓ Strategy &amp; consistent posting</div>
-                <div>✓ Professional post designs &amp; captions</div>
-                <div>✓ Community building</div>
-                <div>✓ Facebook &amp; Instagram boosting</div>
-                <div>✓ Photo editing &amp; Reels</div>
-                <div>✓ Product &amp; location showcasing</div>
-                <div style="grid-column: span 2;">✓ Branding &amp; website management</div>
+                <div>✓ Strategy &amp; consistent weekly posting rhythm</div>
+                <div>✓ Bespoke vector graphic designs &amp; caption copy</div>
+                <div>✓ Audience inquiry monitoring &amp; community management</div>
+                <div>✓ Facebook &amp; Instagram ad boosting setup</div>
+                <div>✓ High-resolution photo retouching &amp; video Reels</div>
+                <div>✓ Monthly reach &amp; engagement performance reports</div>
               </div>
             </div>
 
-            <!-- The 3 SMM Tiers -->
+            <!-- 3 SMM Tiers -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+              <!-- Plan A -->
               <div style="background: #f5f5f7; border-radius: 16px; padding: 24px 20px; border: 1px solid #e5e5ea; display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
-                  <div style="font-size: 12px; font-weight: 700; color: #86868b; text-transform: uppercase;">PLAN A</div>
+                  <div style="font-size: 11.5px; font-weight: 700; color: #86868b; text-transform: uppercase;">PLAN A // ESSENTIAL</div>
                   <h3 style="font-size: 20px; font-weight: 800; color: var(--apple-text-dark); margin: 6px 0 10px;">5 Posts / Month</h3>
                   <div style="font-size: 28px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 12px;">K1,200 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW / mo</span></div>
                   <p style="font-size: 13.5px; color: #555; line-height: 1.5; margin-bottom: 16px;">
-                    Essential baseline active presence. Every post includes a professional design + caption.
+                    Essential baseline presence for boutique brands maintaining active credibility in search and discovery.
                   </p>
+                  <ul style="list-style: none; font-size: 12.5px; color: #444; display: flex; flex-direction: column; gap: 6px; padding: 0; margin-bottom: 20px;">
+                    <li>✓ 5 Bespoke post artworks</li>
+                    <li>✓ High-converting copywriting &amp; hashtags</li>
+                    <li>✓ FB &amp; IG cross-posting</li>
+                  </ul>
                 </div>
-                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 10px;" onclick="selectSmmTier('5 Posts', 1200);">Select 5 Posts (K1,200)</button>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13px; padding: 10px;" onclick="requestPackageQuote('Social Media Retainer: Plan A (5 Posts)', 1200, '5 Posts / Month Retainer')">
+                  Request a Quote (K1,200/mo) &gt;
+                </button>
               </div>
 
+              <!-- Plan B -->
               <div style="background: #ffffff; border-radius: 16px; padding: 24px 20px; border: 2px solid var(--apple-blue); box-shadow: 0 4px 16px rgba(41,151,255,0.12); display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
                   <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 12px; font-weight: 700; color: var(--apple-blue); text-transform: uppercase;">PLAN B // POPULAR</span>
+                    <span style="font-size: 11.5px; font-weight: 700; color: var(--apple-blue); text-transform: uppercase;">PLAN B // MOST POPULAR</span>
                   </div>
                   <h3 style="font-size: 20px; font-weight: 800; color: var(--apple-text-dark); margin: 6px 0 10px;">10 Posts / Month</h3>
                   <div style="font-size: 28px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 12px;">K2,500 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW / mo</span></div>
                   <p style="font-size: 13.5px; color: #555; line-height: 1.5; margin-bottom: 16px;">
-                    Consistent weekly rhythm. Every post includes a professional design + caption + engagement support.
+                    Consistent weekly cadence with enhanced engagement response. Keeps your business top-of-mind.
                   </p>
+                  <ul style="list-style: none; font-size: 12.5px; color: #444; display: flex; flex-direction: column; gap: 6px; padding: 0; margin-bottom: 20px;">
+                    <li>✓ 10 Custom post designs &amp; Reels</li>
+                    <li>✓ Active community engagement support</li>
+                    <li>✓ Target audience demographic boosting</li>
+                  </ul>
                 </div>
-                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 10px;" onclick="selectSmmTier('10 Posts', 2500);">Select 10 Posts (K2,500)</button>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13px; padding: 10px; background: var(--apple-blue);" onclick="requestPackageQuote('Social Media Retainer: Plan B (10 Posts)', 2500, '10 Posts / Month Retainer')">
+                  Request a Quote (K2,500/mo) &gt;
+                </button>
               </div>
 
+              <!-- Plan C -->
               <div style="background: #f5f5f7; border-radius: 16px; padding: 24px 20px; border: 1px solid #e5e5ea; display: flex; flex-direction: column; justify-content: space-between;">
                 <div>
-                  <div style="font-size: 12px; font-weight: 700; color: #86868b; text-transform: uppercase;">PLAN C // GROWTH</div>
+                  <div style="font-size: 11.5px; font-weight: 700; color: #86868b; text-transform: uppercase;">PLAN C // MARKET LEADER</div>
                   <h3 style="font-size: 20px; font-weight: 800; color: var(--apple-text-dark); margin: 6px 0 10px;">20 Posts / Month</h3>
                   <div style="font-size: 28px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 12px;">K4,000 <span style="font-size: 14px; font-weight: 500; color: #86868b;">ZMW / mo</span></div>
                   <p style="font-size: 13.5px; color: #555; line-height: 1.5; margin-bottom: 16px;">
-                    Dominant brand authority. Every post includes a professional design + caption + boosting guidance.
+                    Aggressive daily brand stature and growth velocity. Dominates industry feeds across Lusaka and Zambia.
                   </p>
+                  <ul style="list-style: none; font-size: 12.5px; color: #444; display: flex; flex-direction: column; gap: 6px; padding: 0; margin-bottom: 20px;">
+                    <li>✓ 20 Professional post designs &amp; short video clips</li>
+                    <li>✓ Full weekly content editorial calendar</li>
+                    <li>✓ Monthly performance audit report &amp; ad steering</li>
+                  </ul>
                 </div>
-                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13.5px; padding: 10px;" onclick="selectSmmTier('20 Posts', 4000);">Select 20 Posts (K4,000)</button>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 13px; padding: 10px;" onclick="requestPackageQuote('Social Media Retainer: Plan C (20 Posts)', 4000, '20 Posts / Month Retainer')">
+                  Request a Quote (K4,000/mo) &gt;
+                </button>
               </div>
             </div>
           </div>
 
-          <div style="margin-bottom: 16px;">
-            <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #86868b;">COMPREHENSIVE MULTI-PILLAR PACKAGES</span>
+          <!-- 3. SPECIALIZED PILLARS: BRANDING, WEB & VIDEO TIERS -->
+          <div class="package-category-block" data-pkg-category="brand" style="margin-bottom: 48px;">
+            <div style="margin-bottom: 18px;">
+              <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--apple-blue);">DISCIPLINE SPECIFIC TIERS</span>
+              <h2 style="font-size: 24px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 0;">Branding, Web &amp; 4K Production Packages</h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+              <!-- Identity System -->
+              <div class="apple-configurator-box" style="padding: 26px 22px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <span style="font-size: 11px; font-weight: 700; color: #ff9500; text-transform: uppercase;">BRANDING &amp; IDENTITY</span>
+                  <h3 style="font-size: 19px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 8px;">Corporate Identity System</h3>
+                  <div style="font-size: 26px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 10px;">K5,500 <span style="font-size: 13px; font-weight: 500; color: #86868b;">ZMW</span></div>
+                  <p style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.45; margin-bottom: 14px;">
+                    Distinctive vector identity, corporate stationery (invoices, cards, letterheads), brand guidelines, and merchandise dies.
+                  </p>
+                  <ul style="list-style: none; font-size: 12.5px; color: #444; display: flex; flex-direction: column; gap: 6px; padding: 0; margin-bottom: 18px;">
+                    <li>✓ Master Vector Logo Files (.AI, .EPS, .SVG, .PNG)</li>
+                    <li>✓ Business Card &amp; Stationery Dies</li>
+                    <li>✓ Complete Visual Guidelines Book</li>
+                    <li>✓ 5–7 Business Days Turnaround</li>
+                  </ul>
+                </div>
+                <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 12.5px; padding: 9px;" onclick="requestPackageQuote('Corporate Identity System', 5500, 'Logo + Stationery + Guidelines')">
+                  Request a Quote &gt;
+                </button>
+              </div>
+
+              <!-- Web Architecture -->
+              <div class="package-category-block" data-pkg-category="web" style="display: contents;">
+                <div class="apple-configurator-box" style="padding: 26px 22px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--apple-blue); text-transform: uppercase;">WEB ARCHITECTURE</span>
+                    <h3 style="font-size: 19px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 8px;">Corporate Web Platform</h3>
+                    <div style="font-size: 26px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 10px;">K8,500 <span style="font-size: 13px; font-weight: 500; color: #86868b;">ZMW</span></div>
+                    <p style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.45; margin-bottom: 14px;">
+                      High-speed responsive corporate website with 1-year managed cloud hosting, free custom .com domain, and WhatsApp dispatch.
+                    </p>
+                    <ul style="list-style: none; font-size: 12.5px; color: #444; display: flex; flex-direction: column; gap: 6px; padding: 0; margin-bottom: 18px;">
+                      <li>✓ Up to 5 Responsive Master Pages</li>
+                      <li>✓ 1-Year Cloud Hosting &amp; Domain included</li>
+                      <li>✓ Instant WhatsApp Lead Routing</li>
+                      <li>✓ 10–12 Business Days Turnaround</li>
+                    </ul>
+                  </div>
+                  <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 12.5px; padding: 9px;" onclick="requestPackageQuote('Corporate Web Platform (5-Page)', 8500, '5-Page Web Architecture + Hosting')">
+                    Request a Quote &gt;
+                  </button>
+                </div>
+              </div>
+
+              <!-- 4K Cinema Production -->
+              <div class="package-category-block" data-pkg-category="video" style="display: contents;">
+                <div class="apple-configurator-box" style="padding: 26px 22px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <span style="font-size: 11px; font-weight: 700; color: #ff3b30; text-transform: uppercase;">CINEMA PRODUCTION</span>
+                    <h3 style="font-size: 19px; font-weight: 800; color: var(--apple-text-dark); margin: 4px 0 8px;">4K Cinema Commercial &amp; Reels</h3>
+                    <div style="font-size: 26px; font-weight: 800; color: var(--apple-text-dark); margin-bottom: 10px;">K6,000 <span style="font-size: 13px; font-weight: 500; color: #86868b;">ZMW</span></div>
+                    <p style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.45; margin-bottom: 14px;">
+                      On-location commercial shoot with Sony Cinema line, DaVinci Resolve color grading, drone aerials, and 4 vertical social reels.
+                    </p>
+                    <ul style="list-style: none; font-size: 12.5px; color: #444; display: flex; flex-direction: column; gap: 6px; padding: 0; margin-bottom: 18px;">
+                      <li>✓ 1 Full Production Shoot Day in Lusaka</li>
+                      <li>✓ 1 Master 60s Brand Film + 4 Vertical Cutdowns</li>
+                      <li>✓ DaVinci Resolve Cinema Color Grade &amp; Audio Mix</li>
+                      <li>✓ 7–10 Business Days Delivery</li>
+                    </ul>
+                  </div>
+                  <button class="btn-apple-pill" style="width: 100%; justify-content: center; font-size: 12.5px; padding: 9px;" onclick="requestPackageQuote('4K Cinema Commercial & Reels', 6000, '4K Commercial Shoot + 4 Reels')">
+                    Request a Quote &gt;
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 50px;">
-            <div class="apple-configurator-box" style="padding: 36px 28px;">
-              <div style="font-size: 12px; font-weight: 700; color: #86868b; text-transform: uppercase;">TIER 01</div>
-              <h3 style="font-size: 24px; font-weight: 700; margin: 8px 0 16px;">Starter Brand</h3>
-              <div style="font-size: 34px; font-weight: 700; color: var(--apple-text-dark); margin-bottom: 16px;">K5,500 <span style="font-size: 14px; color: #86868b;">ZMW</span></div>
-              <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 24px;">Ideal for new startups establishing an initial foothold in Lusaka.</p>
-              <ul style="list-style: none; font-size: 13.5px; color: #333; display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px;">
-                <li>✓ Professional Logo Suite &amp; Favicon</li>
-                <li>✓ 8 Custom Social Media Post Designs</li>
-                <li>✓ Business Card &amp; Letterhead Design</li>
-                <li>✓ Brand Color &amp; Font Typography Guide</li>
-                <li>✓ 3 Design Revision Rounds</li>
-              </ul>
-              <button class="btn-apple-pill" style="width: 100%; justify-content: center;" onclick="selectBaseTier('starter', 5500); applySpecToBrief();">Select Starter Spec</button>
+          <!-- Bottom Direct CTA Box -->
+          <div style="background: #161618; border-radius: 18px; padding: 32px 28px; color: #fff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div>
+              <div style="font-size: 11px; font-weight: 700; color: var(--apple-blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px;">NEED A BESPOKE COMBINATION?</div>
+              <h3 style="font-size: 22px; font-weight: 800; margin: 0 0 6px;">Build a Tailored Scope in Vigorish Labs</h3>
+              <p style="font-size: 14px; color: #8e8e93; margin: 0; max-width: 600px;">
+                Select custom capabilities, adjust shoot days, scale social volume, and calculate guaranteed turnarounds in real-time.
+              </p>
             </div>
-
-            <div class="apple-configurator-box" style="padding: 36px 28px; border: 2px solid var(--apple-blue);">
-              <div style="font-size: 12px; font-weight: 700; color: var(--apple-blue); text-transform: uppercase;">RECOMMENDED SPEC</div>
-              <h3 style="font-size: 24px; font-weight: 700; margin: 8px 0 16px;">Growth Accelerator</h3>
-              <div style="font-size: 34px; font-weight: 700; color: var(--apple-text-dark); margin-bottom: 16px;">K12,500 <span style="font-size: 14px; color: #86868b;">ZMW</span></div>
-              <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 24px;">Complete monthly marketing engine to scale customer acquisition.</p>
-              <ul style="list-style: none; font-size: 13.5px; color: #333; display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px;">
-                <li>✓ Full Social Media Management (16 posts)</li>
-                <li>✓ 4 Short-Form 4K Video Reels with Captions</li>
-                <li>✓ High-Conversion 5-Page Responsive Web</li>
-                <li>✓ 1-Year Free Managed Cloud Hosting &amp; Domain</li>
-                <li>✓ WhatsApp Lead Integration &amp; Contact Forms</li>
-              </ul>
-              <button class="btn-apple-pill" style="width: 100%; justify-content: center;" onclick="selectBaseTier('growth', 12500); applySpecToBrief();">Select Growth Spec</button>
-            </div>
-
-            <div class="apple-configurator-box" style="padding: 36px 28px;">
-              <div style="font-size: 12px; font-weight: 700; color: #86868b; text-transform: uppercase;">TIER 03</div>
-              <h3 style="font-size: 24px; font-weight: 700; margin: 8px 0 16px;">Enterprise Suite</h3>
-              <div style="font-size: 34px; font-weight: 700; color: var(--apple-text-dark); margin-bottom: 16px;">K28,000 <span style="font-size: 14px; color: #86868b;">ZMW</span></div>
-              <p style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 24px;">Dedicated creative agency partnership for established market leaders.</p>
-              <ul style="list-style: none; font-size: 13.5px; color: #333; display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px;">
-                <li>✓ Dedicated Senior Art Director &amp; Videographer</li>
-                <li>✓ Multi-channel Paid Meta &amp; Google Ads Setup</li>
-                <li>✓ Executive Corporate Collateral &amp; Annual Reports</li>
-                <li>✓ Drone Cinematography &amp; Product Shoots</li>
-                <li>✓ 24/7 Priority Studio Dispatch</li>
-              </ul>
-              <button class="btn-apple-pill" style="width: 100%; justify-content: center;" onclick="selectBaseTier('enterprise', 28000); applySpecToBrief();">Select Enterprise Spec</button>
+            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+              <button class="btn-apple-pill" onclick="switchLabsTab('quote'); navigateTo('/labs');" style="font-size: 13.5px; padding: 10px 22px;">
+                Open Interactive Quote Builder &gt;
+              </button>
+              <a href="https://wa.me/260979894567?text=Hello%20Vigorish%20Media%2C%20I%20would%20like%20to%20request%20a%20quote%20for%20a%20custom%20service%20package." target="_blank" class="btn-apple-secondary" style="font-size: 13.5px; padding: 10px 20px; background: rgba(255,255,255,0.06); color: #fff; border-color: rgba(255,255,255,0.15);">
+                WhatsApp Us Directly
+              </a>
             </div>
           </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Legacy / Alternate Anchor for pricing -->
+    <section id="view-pricing" class="view-page" style="display: none;"></section>
         </div>
       </div>
     </section>
@@ -2873,29 +3946,81 @@
       '/': 'view-home',
       '/about': 'view-about',
       '/services': 'view-services',
-        '/playground': 'view-playground',
+      '/labs': 'view-labs',
+      '/playground': 'view-labs',
       '/portfolio': 'view-portfolio',
-      '/pricing': 'view-pricing',
+      '/pricing': 'view-packages',
+      '/packages': 'view-packages',
       '/team': 'view-team',
       '/insights': 'view-insights',
       '/donate': 'view-donate',
       '/contact': 'view-contact'
     };
 
+    function triggerPageProgressBar() {
+      const bar = document.getElementById('pageProgressBar');
+      if (!bar) return;
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      bar.style.opacity = '1';
+      setTimeout(() => {
+        bar.style.transition = 'width 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease';
+        bar.style.width = '75%';
+        setTimeout(() => {
+          bar.style.width = '100%';
+          setTimeout(() => {
+            bar.style.opacity = '0';
+          }, 150);
+        }, 120);
+      }, 10);
+    }
+
+    function dismissBrandReveal() {
+      const overlay = document.getElementById('brandRevealOverlay');
+      if (overlay) {
+        overlay.style.transition = 'opacity 0.4s ease, visibility 0.4s ease';
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 400);
+      }
+    }
+    // Auto-dismiss fast studio entrance after 1.4s
+    setTimeout(dismissBrandReveal, 1400);
+
     function navigateTo(path) {
+      triggerPageProgressBar();
       const targetPath = routes[path] ? path : '/';
       const targetViewId = routes[targetPath];
 
       document.querySelectorAll('.view-page').forEach(el => el.classList.remove('active'));
       const activeEl = document.getElementById(targetViewId);
-      if (activeEl) activeEl.classList.add('active');
+      if (activeEl) {
+        activeEl.classList.add('active');
+      }
 
       document.querySelectorAll('.apple-nav-link').forEach(el => {
         el.classList.toggle('active', el.getAttribute('data-route') === targetPath);
       });
 
+      // Update mobile drawer active link if present
+      document.querySelectorAll('.apple-mobile-nav-link').forEach(el => {
+        const routeAttr = el.getAttribute('onclick');
+        if (routeAttr && routeAttr.includes(`'${targetPath}'`)) {
+          el.style.color = 'var(--apple-blue)';
+        } else {
+          el.style.color = '';
+        }
+      });
+
       window.history.pushState(null, '', '#' + targetPath);
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // If user navigated to Labs, trigger initial quote calculation
+      if (targetPath === '/labs') {
+        setTimeout(calculateQuote, 50);
+      }
     }
 
     window.addEventListener('popstate', () => {
@@ -2905,6 +4030,400 @@
 
     const initialHash = window.location.hash.replace('#', '') || '/';
     navigateTo(initialHash);
+
+    // =====================================
+    // Vigorish Labs: Tab Switching Engine
+    // =====================================
+    function switchLabsTab(tabId) {
+      playAppleHaptic('click');
+      const tabs = document.querySelectorAll('.labs-nav-tab');
+      tabs.forEach(tab => {
+        const target = tab.getAttribute('data-tab');
+        if (target === tabId) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      const panes = document.querySelectorAll('.labs-tab-pane');
+      panes.forEach(pane => {
+        pane.classList.remove('active');
+      });
+
+      const activePane = document.getElementById('labsPane-' + tabId);
+      if (activePane) {
+        activePane.classList.add('active');
+      }
+    }
+
+    // =====================================
+    // Vigorish Labs: Interactive Quote Builder
+    // =====================================
+    let currentQuoteState = {
+      total: 8000,
+      sla: '10–14 Business Days',
+      capabilities: ['Branding & Corporate Identity', 'Monthly Social Media Retainer'],
+      deliverables: [
+        'Complete Vector Logo Suite (.AI, .EPS, .SVG, .PNG)',
+        'Full Corporate Stationery & Brand Guidelines',
+        '10 Custom Branded Social Posts & Captions / Month',
+        'Direct Creative Director Point of Contact'
+      ]
+    };
+
+    function calculateQuote() {
+      const capBranding = document.getElementById('quoteCapBranding')?.checked || false;
+      const capVideo = document.getElementById('quoteCapVideo')?.checked || false;
+      const capWeb = document.getElementById('quoteCapWeb')?.checked || false;
+      const capSocial = document.getElementById('quoteCapSocial')?.checked || false;
+      const capAds = document.getElementById('quoteCapAds')?.checked || false;
+
+      const socialPostsVol = parseInt(document.getElementById('quoteSelectSocialPosts')?.value || '10', 10);
+      const webTier = document.getElementById('quoteSelectWebTier')?.value || 'professional';
+      const shootDays = parseInt(document.getElementById('quoteSelectShootDays')?.value || '1', 10);
+      const urgency = document.getElementById('quoteSelectUrgency')?.value || 'standard';
+
+      let total = 0;
+      let activeCaps = [];
+      let deliverables = [];
+      let minDays = 5;
+      let maxDays = 7;
+
+      if (capBranding) {
+        total += 5500;
+        minDays += 3; maxDays += 4;
+        activeCaps.push('Branding & Corporate Identity System');
+        deliverables.push('Complete Vector Logo Suite (.AI, .EPS, .SVG, .PNG)');
+        deliverables.push('Corporate Stationery Suite (Cards, Letterhead & Invoices)');
+        deliverables.push('Brand Guidelines (Color Palette & Typography System)');
+      }
+
+      if (capVideo) {
+        let videoBase = 6000;
+        if (shootDays === 2) videoBase += 4000;
+        if (shootDays === 3) videoBase += 7500;
+        total += videoBase;
+        minDays += (shootDays * 2); maxDays += (shootDays * 3);
+        activeCaps.push(`4K Cinema Video Production (${shootDays} Day${shootDays > 1 ? 's' : ''})`);
+        deliverables.push(`Sony Cinema Line 4K Shoot (${shootDays} Day${shootDays > 1 ? 's' : ''} on-location in Lusaka)`);
+        deliverables.push('1 Master 60s Brand Film + 4 Vertical Cutdowns (9:16) for Reels/TikTok');
+        deliverables.push('DaVinci Resolve Cinema Grade & Sound Design');
+      }
+
+      if (capWeb) {
+        let webPrice = 8500;
+        let webDesc = '5-Page Corporate Web Architecture';
+        if (webTier === 'starter') { webPrice = 6500; webDesc = 'Starter Landing Page'; }
+        else if (webTier === 'professional') { webPrice = 8500; webDesc = '5-Page Corporate Web Architecture'; }
+        else if (webTier === 'business') { webPrice = 10500; webDesc = 'Business Dispatch Portal'; }
+        else if (webTier === 'enterprise') { webPrice = 37000; webDesc = 'Custom Enterprise Web Solution'; }
+        total += webPrice;
+        minDays += 4; maxDays += 6;
+        activeCaps.push(webDesc);
+        deliverables.push(`Responsive Web Platform (${webDesc})`);
+        deliverables.push('1-Year Cloud Hosting & Free Custom .com Domain Included');
+        deliverables.push('Direct WhatsApp Instant Lead Channeling');
+      }
+
+      if (capSocial) {
+        let smmPrice = 2500;
+        if (socialPostsVol === 5) smmPrice = 1200;
+        else if (socialPostsVol === 10) smmPrice = 2500;
+        else if (socialPostsVol === 20) smmPrice = 4000;
+        total += smmPrice;
+        activeCaps.push(`Monthly Social Media Retainer (${socialPostsVol} Posts/mo)`);
+        deliverables.push(`${socialPostsVol} Custom Branded Graphic Post Designs & Captions / Month`);
+        deliverables.push('Active Community Response Guidance & Content Calendar');
+      }
+
+      if (capAds) {
+        total += 1200;
+        activeCaps.push('Paid Meta & Google Ads Setup');
+        deliverables.push('Meta & Google Ads Campaign Setup & Pixel Integration');
+        deliverables.push('Target Audience Demographic Segmentation in Lusaka/Zambia');
+      }
+
+      if (urgency === 'express') {
+        total = Math.round(total * 1.20);
+        minDays = Math.max(3, Math.round(minDays * 0.55));
+        maxDays = Math.max(5, Math.round(maxDays * 0.55));
+      }
+
+      if (total === 0) {
+        total = 0;
+        deliverables.push('No capabilities currently selected. Please check at least one capability.');
+      } else {
+        deliverables.push('Dedicated Creative Director & Priority Studio Support');
+      }
+
+      const slaText = urgency === 'express' 
+        ? `Priority Rush (${minDays}–${maxDays} Business Days)`
+        : `${minDays}–${maxDays} Business Days`;
+
+      currentQuoteState = {
+        total: total,
+        sla: slaText,
+        capabilities: activeCaps,
+        deliverables: deliverables
+      };
+
+      const display = document.getElementById('quoteTotalDisplay');
+      if (display) display.textContent = `K${total.toLocaleString()}`;
+
+      const timelineDisplay = document.getElementById('quoteTimelineDisplay');
+      if (timelineDisplay) timelineDisplay.textContent = slaText;
+
+      const list = document.getElementById('quoteDeliverablesList');
+      if (list) {
+        list.innerHTML = deliverables.map(d => `<li>✓ ${d}</li>`).join('');
+      }
+
+      return currentQuoteState;
+    }
+
+    function applyQuoteToContact() {
+      playAppleHaptic('confirm');
+      calculateQuote();
+      navigateTo('/contact');
+      setTimeout(() => {
+        const msg = document.getElementById('contactMessage');
+        const select = document.getElementById('contactServiceSelect');
+        if (select) {
+          select.value = 'Quote Builder Specification';
+        }
+        if (msg) {
+          msg.value = `CUSTOM VIGORISH LABS QUOTATION:\n` +
+            `Estimated Investment: K${currentQuoteState.total.toLocaleString()} ZMW\n` +
+            `Production SLA: ${currentQuoteState.sla}\n\n` +
+            `Selected Capabilities:\n- ${currentQuoteState.capabilities.join('\n- ')}\n\n` +
+            `Included Deliverables:\n- ${currentQuoteState.deliverables.join('\n- ')}\n\n` +
+            `Please review this scope and arrange our kickoff consultation.`;
+        }
+      }, 150);
+    }
+
+    function resetQuoteBuilder() {
+      playAppleHaptic('click');
+      const b = document.getElementById('quoteCapBranding'); if (b) b.checked = true;
+      const v = document.getElementById('quoteCapVideo'); if (v) v.checked = false;
+      const w = document.getElementById('quoteCapWeb'); if (w) w.checked = false;
+      const s = document.getElementById('quoteCapSocial'); if (s) s.checked = true;
+      const a = document.getElementById('quoteCapAds'); if (a) a.checked = false;
+
+      const p = document.getElementById('quoteSelectSocialPosts'); if (p) p.value = '10';
+      const wt = document.getElementById('quoteSelectWebTier'); if (wt) wt.value = 'professional';
+      const sd = document.getElementById('quoteSelectShootDays'); if (sd) sd.value = '1';
+      const u = document.getElementById('quoteSelectUrgency'); if (u) u.value = 'standard';
+
+      calculateQuote();
+    }
+
+    function sendQuoteViaWhatsApp() {
+      calculateQuote();
+      const text = `*VIGORISH LABS QUOTATION REQUEST*\n\n` +
+        `*Estimated Investment:* K${currentQuoteState.total.toLocaleString()} ZMW\n` +
+        `*Delivery SLA:* ${currentQuoteState.sla}\n\n` +
+        `*Capabilities:*\n${currentQuoteState.capabilities.map(c => '• ' + c).join('\n')}\n\n` +
+        `*Deliverables:*\n${currentQuoteState.deliverables.map(d => '✓ ' + d).join('\n')}\n\n` +
+        `I would like to initiate this project with Vigorish Media.`;
+      const url = `https://wa.me/260979894567?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    function copyQuoteToClipboard(btn) {
+      calculateQuote();
+      const text = `VIGORISH MEDIA — LABS QUOTE SPECIFICATION\n` +
+        `Total: K${currentQuoteState.total.toLocaleString()} ZMW\n` +
+        `SLA: ${currentQuoteState.sla}\n\n` +
+        `Capabilities:\n${currentQuoteState.capabilities.join(', ')}\n\n` +
+        `Deliverables:\n${currentQuoteState.deliverables.join('\n')}`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          playAppleHaptic('confirm');
+          const oldText = btn.innerHTML;
+          btn.innerHTML = '<span>✅ Copied Quote to Clipboard!</span>';
+          setTimeout(() => { btn.innerHTML = oldText; }, 2000);
+        });
+      } else {
+        alert('Quote copied to clipboard:\n\n' + text);
+      }
+    }
+
+    // =====================================
+    // Vigorish Labs: Brand Intelligence Diagnostic Scan
+    // =====================================
+    let lastScanDiagnosis = null;
+
+    function runBrandScan() {
+      const brandName = document.getElementById('scanBrandName')?.value.trim() || 'Your Enterprise';
+      const industry = document.getElementById('scanIndustry')?.value || 'corporate';
+      const objective = document.getElementById('scanObjective')?.value || 'traffic';
+      const hasLogo = document.getElementById('scanHasLogo')?.checked || false;
+      const hasSocial = document.getElementById('scanHasSocial')?.checked || false;
+      const hasWeb = document.getElementById('scanHasWeb')?.checked || false;
+      const hasVideo = document.getElementById('scanHasVideo')?.checked || false;
+
+      playAppleHaptic('click');
+
+      const progressBox = document.getElementById('scanProgressBox');
+      const resultsBox = document.getElementById('scanResultsBox');
+      const statusText = document.getElementById('scanStatusText');
+      const percentText = document.getElementById('scanPercentText');
+      const progressBar = document.getElementById('scanProgressBar');
+
+      if (resultsBox) resultsBox.style.display = 'none';
+      if (progressBox) progressBox.style.display = 'block';
+
+      let stage = 0;
+      const stages = [
+        { pct: 28, text: `Analyzing brand stature and typography vectors for "${brandName}"...` },
+        { pct: 58, text: `Evaluating digital footprint and customer conversion channels...` },
+        { pct: 86, text: `Benchmarking ${industry.toUpperCase()} sector competitors in Lusaka...` },
+        { pct: 100, text: `Diagnostic complete! Synthesizing strategic prescription...` }
+      ];
+
+      function stepProgress() {
+        if (stage < stages.length) {
+          const s = stages[stage];
+          if (statusText) statusText.textContent = s.text;
+          if (percentText) percentText.textContent = s.pct + '%';
+          if (progressBar) progressBar.style.width = s.pct + '%';
+          stage++;
+          setTimeout(stepProgress, 300);
+        } else {
+          setTimeout(finalizeScan, 250);
+        }
+      }
+      stepProgress();
+
+      function finalizeScan() {
+        playAppleHaptic('confirm');
+        if (progressBox) progressBox.style.display = 'none';
+        if (resultsBox) resultsBox.style.display = 'block';
+
+        // Calculate scores based on inputs
+        let visualScore = hasLogo ? 74 : 38;
+        let digitalScore = hasWeb ? 82 : 42;
+        let socialScore = hasSocial ? 70 : 35;
+        let conversionScore = (hasWeb && hasSocial) ? 80 : 45;
+        if (hasVideo) {
+          socialScore = Math.min(95, socialScore + 20);
+          visualScore = Math.min(96, visualScore + 15);
+          conversionScore = Math.min(98, conversionScore + 18);
+        }
+
+        const overall = Math.round((visualScore + digitalScore + socialScore + conversionScore) / 4);
+
+        // Update score indicators
+        const titleEl = document.getElementById('scanResultBrandTitle');
+        if (titleEl) titleEl.textContent = `${brandName} Intelligence Report`;
+
+        const scoreEl = document.getElementById('scanOverallScore');
+        if (scoreEl) scoreEl.innerHTML = `${overall}<span style="font-size: 18px; color: #8e8e93;">/100</span>`;
+
+        const mVis = document.getElementById('metricVisual'); if (mVis) mVis.textContent = visualScore + '%';
+        const bVis = document.getElementById('barVisual'); if (bVis) bVis.style.width = visualScore + '%';
+
+        const mDig = document.getElementById('metricDigital'); if (mDig) mDig.textContent = digitalScore + '%';
+        const bDig = document.getElementById('barDigital'); if (bDig) bDig.style.width = digitalScore + '%';
+
+        const mSoc = document.getElementById('metricSocial'); if (mSoc) mSoc.textContent = socialScore + '%';
+        const bSoc = document.getElementById('barSocial'); if (bSoc) bSoc.style.width = socialScore + '%';
+
+        const mCon = document.getElementById('metricConversion'); if (mCon) mCon.textContent = conversionScore + '%';
+        const bCon = document.getElementById('barConversion'); if (bCon) bCon.style.width = conversionScore + '%';
+
+        // Recommendations tailored to shortcomings
+        const recList = document.getElementById('scanRecommendationsList');
+        const recs = [];
+        if (!hasVideo) {
+          recs.push('Deploy high-impact 4K vertical cinema Reels (Sony Cinema line) to capture mobile algorithm attention on TikTok and Instagram.');
+        }
+        if (!hasWeb) {
+          recs.push('Construct a high-conversion 5-page corporate web architecture with cloud hosting and direct WhatsApp lead routing.');
+        }
+        if (!hasSocial) {
+          recs.push('Establish an active weekly posting cadence (Plan B: 10 Posts/month) with custom graphic post designs and captions.');
+        }
+        if (!hasLogo || visualScore < 70) {
+          recs.push('Standardize brand visual guidelines with master vector logo assets, corporate stationery, and apparel dies for enterprise trust.');
+        }
+        recs.push('Initiate Meta & Google ad audience targeting focused on affluent Lusaka & Copperbelt commercial demographics.');
+
+        if (recList) {
+          recList.innerHTML = recs.map(r => `<li>${r}</li>`).join('');
+        }
+
+        lastScanDiagnosis = {
+          brandName,
+          overall,
+          needsWeb: !hasWeb,
+          needsVideo: !hasVideo,
+          needsSocial: !hasSocial,
+          needsBranding: !hasLogo
+        };
+      }
+    }
+
+    function applyScanToQuoteBuilder() {
+      playAppleHaptic('confirm');
+      switchLabsTab('quote');
+
+      // Pre-select recommended items
+      if (lastScanDiagnosis) {
+        const b = document.getElementById('quoteCapBranding'); if (b) b.checked = lastScanDiagnosis.needsBranding || true;
+        const v = document.getElementById('quoteCapVideo'); if (v) v.checked = lastScanDiagnosis.needsVideo || true;
+        const w = document.getElementById('quoteCapWeb'); if (w) w.checked = lastScanDiagnosis.needsWeb || true;
+        const s = document.getElementById('quoteCapSocial'); if (s) s.checked = true;
+        const a = document.getElementById('quoteCapAds'); if (a) a.checked = true;
+      }
+      calculateQuote();
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+
+    // =====================================
+    // Service Packages Page Engine
+    // =====================================
+    function filterPackages(category, btnEl) {
+      playAppleHaptic('click');
+      document.querySelectorAll('#view-packages .service-tab-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      const blocks = document.querySelectorAll('.package-category-block');
+      blocks.forEach(block => {
+        const cat = block.getAttribute('data-pkg-category');
+        if (category === 'all' || cat === category) {
+          block.style.display = '';
+        } else {
+          block.style.display = 'none';
+        }
+      });
+    }
+
+    function requestPackageQuote(packageName, price, summary) {
+      playAppleHaptic('confirm');
+      navigateTo('/contact');
+      setTimeout(() => {
+        const select = document.getElementById('contactServiceSelect');
+        if (select) {
+          for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].text.toLowerCase().includes(packageName.toLowerCase().split(' ')[0])) {
+              select.selectedIndex = i;
+              break;
+            }
+          }
+        }
+        const msg = document.getElementById('contactMessage');
+        if (msg) {
+          msg.value = `SERVICE PACKAGE REQUEST:\n` +
+            `Package: ${packageName} (K${price.toLocaleString()} ZMW)\n` +
+            `Scope Summary: ${summary}\n\n` +
+            `Please send the formal quotation agreement and outline our onboarding process.`;
+        }
+      }, 150);
+    }
 
     // =====================================
     // Studio Configurator Pricing Engine
@@ -2991,13 +4510,19 @@
       'branding': {
         title: 'Branding & Corporate Identity',
         category: 'IDENTITY SYSTEMS',
-        desc: 'Establish timeless authority with complete visual brand systems that command respect and enable premium pricing.',
+        desc: 'Build a brand that looks professional, consistent and recognisable. One Brand. Every Touchpoint.<br><br>We help businesses build a professional, consistent and memorable identity that works across both digital and physical spaces.',
         points: [
-          'Primary mark, secondary badge, submark icons, and favicon suite.',
-          'Comprehensive brand styleguide document (color palette, typography rules, dos & don’ts).',
-          'Corporate stationery: business cards, official letterhead, corporate stamps, and digital email signatures.',
-          'Vector master files delivered in AI, EPS, SVG, and high-res PNG.'
-        ]
+          '🎨 Logo Design & Brand Identity — Distinctive visuals that represent your business.',
+          '📘 Brand Guidelines — Logo usage, colours, typography and visual standards.',
+          '📄 Corporate Stationery — Letterheads, invoices, quotations, reports and business documents.',
+          '💳 Business Cards — Professional designs that make a lasting impression.',
+          '👕 Branded Apparel — T-shirts, uniforms, jackets and promotional clothing.',
+          '☕ Corporate Merchandise — Mugs, pens, notebooks, calendars and promotional items.',
+          '🛍️ Packaging & Branded Bags — Bags, boxes, labels and customer-facing packaging.',
+          '📱 Digital Brand Assets — Social media graphics, presentations, email signatures & digital materials.',
+          '🏢 Corporate & Environmental Branding — Signage, office branding, reception areas and event branding.'
+        ],
+        image: '/assets/corporate-identity-branding.jpg'
       },
       'web-design': {
         title: 'Website Design & Management',
@@ -3100,60 +4625,174 @@
     // =====================================
     // Case Studies & Article Data Store
     // =====================================
+    // =====================================
+    // "BEHIND THE BRAND" INTERACTIVE PORTFOLIO DATA
+    // Goal, Strategy, Measurable Results
+    // =====================================
     const projectsData = {
       'horizon-capital': {
         title: 'Horizon Capital Zambia',
+        tag: 'branding',
         category: 'Corporate Identity & Investor Prospectus',
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80',
-        overview: 'Horizon Capital required a 24-page high-stakes investor prospectus and corporate profile to present to institutional stakeholders across Southern Africa.',
-        deliverables: ['Editorial typography formatting', 'Full corporate stationery suite', 'Digital interactive PDF version', 'Presentation slidedeck'],
-        quote: '<strong class="brand-name-bold">Vigorish Media</strong> ensured our collateral conveyed rock-solid reliability to investors.'
+        goal: 'Secure US$15M+ in regional private equity commitments by presenting an unassailable standard of institutional governance and financial authority across SADC markets.',
+        strategy: 'Architected a comprehensive bespoke visual identity system: mathematical monogram logo, hot-stamped executive stationery, cryptographic digital investor prospectus PDF, and high-impact boardroom keynote deck.',
+        results: 'US$18.5M Capital Round Over-Subscribed; 100% Institutional Stakeholder Approval; Zero Governance Revisions.',
+        resultsMetrics: [
+          { label: 'Capital Raised', value: 'US$18.5M' },
+          { label: 'Approval Rate', value: '100%' },
+          { label: 'Turnaround', value: '14 Days' }
+        ],
+        deliverables: [
+          'Master vector monogram & corporate seal (.AI, .EPS, .SVG)',
+          '24-page high-stakes investor prospectus & corporate profile',
+          'Executive corporate stationery suite (embossed cards, letterheads)',
+          'C-Suite boardroom keynote presentation slidedeck'
+        ],
+        quote: 'Vigorish Media ensured our collateral conveyed the unshakeable institutional stature demanded by top-tier sovereign and private equity funds.'
       },
       'savannah-reels': {
         title: 'Savannah Lifestyle Apparel',
-        category: 'Cinematography & Viral Reels',
+        tag: 'video',
+        category: 'Cinematography & Viral Growth Engine',
         image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format&fit=crop&q=80',
-        overview: 'A high-energy Lusaka fashion shoot creating 12 viral-ready vertical video reels, drone captures, and rhythm-synchronized cuts.',
-        deliverables: ['12 edited Reels with kinetic captions', '60-second cinema cut for brand launch', 'Photo lookbook for e-commerce'],
-        quote: 'Our engagement exploded by 340% in week one. The cinematography quality was world-class.'
+        goal: 'Transition from a Lusaka boutique to a nationally recognized premium lifestyle brand, capturing the attention of trend-conscious mobile consumers.',
+        strategy: 'High-octane commercial cinematography shoot using Sony Cinema Line 4K cameras, anamorphic primes, dynamic Lusaka city rooftop lighting, and rhythm-synchronized vertical video Reels designed specifically for Instagram & TikTok algorithms.',
+        results: '+340% Engagement Surge in Week 1; 185K+ Organic Impressions; 4.2x Foot Traffic Increase at flagship retail stores.',
+        resultsMetrics: [
+          { label: 'Engagement Lift', value: '+340%' },
+          { label: 'Organic Views', value: '185K+' },
+          { label: 'Store Foot Traffic', value: '4.2x' }
+        ],
+        deliverables: [
+          '12 high-retention 4K vertical Reels with kinetic typography',
+          '60-second cinema hero cut for digital advertising',
+          'Ultra-high-res lookbook photography for e-commerce catalog'
+        ],
+        quote: 'Our engagement exploded by 340% in week one. The cinematography and tempo transformed our apparel into a must-have cultural statement.'
       },
       'copperbelt-logistics': {
         title: 'Copperbelt Haulage Freight Portal',
+        tag: 'web',
         category: 'Web Architecture & Digital Dispatch',
         image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80',
-        overview: 'A robust corporate freight portal engineered for fast mobile load speeds across Zambia and instant WhatsApp dispatch channeling.',
-        deliverables: ['Modern responsive web platform', 'Integrated freight quotation calculator', 'Instant WhatsApp dispatch linking'],
-        quote: 'We saw a 45% increase in online freight inquiries within 60 days of going live.'
+        goal: 'Dismantle manual phone bottlenecks and paperwork delays for regional cross-border freight queries between Zambia, DRC, and South Africa.',
+        strategy: 'Engineered an ultra-fast, mobile-first freight calculation platform with instant Kwacha route estimation and automatic 1-click WhatsApp dispatch linking for logistics managers.',
+        results: '+45% Surge in Online Inquiries; 62% Reduction in Route Quotation Friction; Sub-second mobile load time across 3G/4G networks.',
+        resultsMetrics: [
+          { label: 'Inbound Queries', value: '+45%' },
+          { label: 'Quote Latency', value: '-62%' },
+          { label: 'Mobile Score', value: '99/100' }
+        ],
+        deliverables: [
+          'Modern responsive freight portal & route calculator',
+          '1-Click automated WhatsApp dispatch booking trigger',
+          'Cloud hosting with 99.9% uptime and sub-second caching'
+        ],
+        quote: 'We experienced a 45% increase in verified corporate freight inquiries within the first 60 days of deploying the new portal.'
       },
       'lush-cosmetics': {
         title: 'Lush Botanicals Organic Skincare',
+        tag: 'social',
         category: 'Social Media Management & Packaging',
         image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80',
-        overview: 'Cohesive brand identity and social media growth engine for Lusaka’s premier organic skincare line.',
-        deliverables: ['30 days of branded social media content', 'Packaging label design for 6 product lines', 'Influencer PR kit'],
-        quote: 'Our brand finally reflects the pure organic quality of our products.'
+        goal: 'Establish locally manufactured Zambian organic skincare as an aspirational luxury brand capable of competing with imported European cosmetics.',
+        strategy: 'Orchestrated end-to-end social media management with daily high-aesthetic content, luxury minimalist packaging design across 6 product lines, and an exclusive Lusaka influencer gifting program.',
+        results: '6x Follower Growth in 90 Days; 100% Sellout of Inaugural Product Batch; Signed 3 National Retail Pharmacy Chains.',
+        resultsMetrics: [
+          { label: 'Audience Growth', value: '600%' },
+          { label: 'Inventory Run', value: 'Sold Out' },
+          { label: 'Retail Stockists', value: '3 Chains' }
+        ],
+        deliverables: [
+          'Full month-by-month social media content creation & boosting',
+          'Luxury cosmetic packaging labels & boxed carton dies',
+          'Targeted Facebook & Instagram ads campaign from K450'
+        ],
+        quote: 'Our brand finally reflects the pure organic quality of our products, and retailers now reach out to stock us rather than the other way around.'
       }
     };
+
+    function filterPortfolio(category) {
+      document.querySelectorAll('.portfolio-filter-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-filter') === category);
+      });
+      document.querySelectorAll('.apple-case-card[data-portfolio-tag]').forEach(card => {
+        const tag = card.getAttribute('data-portfolio-tag');
+        if (category === 'all' || tag === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
 
     function openProjectModal(key) {
       const data = projectsData[key];
       if (!data) return;
       const content = document.getElementById('projectModalContent');
       content.innerHTML = `
-        <div style="font-size: 11.5px; font-weight: 700; color: var(--apple-blue); letter-spacing: 0.08em; text-transform: uppercase;">${data.category}</div>
-        <h2 style="font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin: 8px 0 20px;">${data.title}</h2>
-        <div style="height: 320px; border-radius: 16px; overflow: hidden; margin-bottom: 24px; position: relative;">
-          <img src="${data.image}" style="width:100%; height:100%; object-fit:cover;" />
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <div style="font-size: 11.5px; font-weight: 700; color: var(--apple-blue); letter-spacing: 0.08em; text-transform: uppercase;">
+            BEHIND THE BRAND // ${data.category}
+          </div>
+          <span style="font-size: 11px; background: rgba(41, 151, 255, 0.1); color: #2997ff; padding: 4px 10px; border-radius: 12px; font-weight: 600;">Verified Case Study</span>
         </div>
-        <p style="font-size: 16px; color: var(--apple-text-secondary); line-height: 1.6; margin-bottom: 20px;">${data.overview}</p>
-        <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 10px;">Key Deliverables:</h4>
-        <ul style="margin-left: 20px; font-size: 14.5px; color: #444; line-height: 1.6; margin-bottom: 24px;">
+        <h2 style="font-size: clamp(26px, 3.5vw, 34px); font-weight: 800; letter-spacing: -0.025em; margin: 4px 0 18px; color: #1d1d1f;">${data.title}</h2>
+        
+        <div style="height: 300px; border-radius: 16px; overflow: hidden; margin-bottom: 24px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+          <img src="${data.image}" style="width:100%; height:100%; object-fit:cover;" alt="${data.title}" />
+        </div>
+
+        <!-- 3-Pillar Strategic Blueprint -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <!-- 1. Client's Goal -->
+          <div style="background: #fbfbfd; border: 1px solid #e5e5ea; border-radius: 14px; padding: 18px 20px;">
+            <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: #ff3b30; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">
+              <span>🎯</span> Client's Strategic Goal
+            </div>
+            <p style="font-size: 13.5px; color: #333; line-height: 1.55; margin: 0;">${data.goal}</p>
+          </div>
+
+          <!-- 2. Vigorish Strategy -->
+          <div style="background: #fbfbfd; border: 1px solid #e5e5ea; border-radius: 14px; padding: 18px 20px;">
+            <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: #0071e3; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">
+              <span>⚡</span> Vigorish Strategy
+            </div>
+            <p style="font-size: 13.5px; color: #333; line-height: 1.55; margin: 0;">${data.strategy}</p>
+          </div>
+        </div>
+
+        <!-- 3. Measurable Results -->
+        <div style="background: linear-gradient(135deg, rgba(48, 209, 88, 0.08), rgba(41, 151, 255, 0.08)); border: 1px solid rgba(48, 209, 88, 0.25); border-radius: 14px; padding: 20px 22px; margin-bottom: 24px;">
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 800; color: #1e8e3e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">
+            <span>📊</span> Verified Measurable Results
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 12px;">
+            ${(data.resultsMetrics || []).map(m => `
+              <div style="background: #ffffff; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.06); text-align: center;">
+                <div style="font-size: 20px; font-weight: 800; color: #1d1d1f; letter-spacing: -0.02em;">${m.value}</div>
+                <div style="font-size: 11px; color: #666; font-weight: 600; text-transform: uppercase; margin-top: 2px;">${m.label}</div>
+              </div>
+            `).join('')}
+          </div>
+          <p style="font-size: 13.5px; font-weight: 600; color: #1d1d1f; margin: 0;">${data.results}</p>
+        </div>
+
+        <h4 style="font-size: 14.5px; font-weight: 700; margin-bottom: 10px; color: #1d1d1f;">Key Deliverables Produced:</h4>
+        <ul style="margin-left: 18px; font-size: 13.5px; color: #444; line-height: 1.6; margin-bottom: 22px;">
           ${data.deliverables.map(d => `<li>${d}</li>`).join('')}
         </ul>
-        <blockquote style="border-left: 3px solid var(--apple-blue); padding-left: 16px; font-style: italic; color: #555; margin-bottom: 30px;">
+
+        <blockquote style="background: rgba(0,0,0,0.02); border-left: 3px solid var(--apple-blue); padding: 14px 18px; border-radius: 0 10px 10px 0; font-style: italic; color: #444; font-size: 14px; margin-bottom: 26px;">
           "${data.quote}"
+          <div style="font-style: normal; font-weight: 700; font-size: 12px; color: #666; margin-top: 6px;">— Verified Client Executive Review</div>
         </blockquote>
-        <a href="#/contact" class="btn-apple-pill" onclick="closeProjectModal(); navigateTo('/contact'); return false;">Request Similar Project Spec &gt;</a>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <a href="#/contact" class="btn-apple-pill" onclick="closeProjectModal(); navigateTo('/contact'); return false;">Request a Quote for Similar Project &gt;</a>
+          <a href="#/labs" class="btn-apple-secondary" onclick="closeProjectModal(); navigateTo('/labs'); return false;">Explore Scope in Vigorish Labs</a>
+        </div>
       `;
       document.getElementById('projectModal').classList.add('open');
     }
@@ -3222,26 +4861,38 @@
     // =====================================
     function toggleMobileMenu() {
       const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileDrawerBackdrop');
       const btn = document.getElementById('appleMobileMenuBtn');
       if (!drawer || !btn) return;
       const isOpen = drawer.classList.contains('open');
       if (isOpen) {
         drawer.classList.remove('open');
+        if (backdrop) backdrop.classList.remove('open');
         btn.classList.remove('active');
         document.body.style.overflow = '';
       } else {
         drawer.classList.add('open');
+        if (backdrop) backdrop.classList.add('open');
         btn.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
     }
     function closeMobileMenu() {
       const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileDrawerBackdrop');
       const btn = document.getElementById('appleMobileMenuBtn');
       if (drawer) drawer.classList.remove('open');
+      if (backdrop) backdrop.classList.remove('open');
       if (btn) btn.classList.remove('active');
       document.body.style.overflow = '';
     }
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+        closeProjectModal();
+        closeArticleModal();
+      }
+    });
 
     // =====================================
     // Scroll Reveal Observer
@@ -3300,18 +4951,21 @@
       },
       {
         title: 'Branding & Corporate Identity',
-        category: 'BRAND ARCHITECTURE',
-        desc: 'Complete corporate visual systems engineered to elevate perceived value, command premium pricing, and project undeniable corporate trust.',
+        category: 'IDENTITY SYSTEMS',
+        desc: 'Build a brand that looks professional, consistent and recognisable. One Brand. Every Touchpoint across digital and physical spaces.',
         deliverables: [
-          'Primary, secondary, and badge logo variations in full vector suites',
-          'Enterprise brand guidelines covering color theory and typography rules',
-          'Complete corporate stationery (cards, letterheads, invoice templates)',
-          'High-impact company profile presentation and investor pitch deck'
+          '🎨 Logo Design & Brand Identity (Primary mark, badge, submarks & vector files)',
+          '📘 Comprehensive Brand Guidelines (Colours, typography & standards)',
+          '📄 Corporate Stationery (Letterheads, invoices, quotations & reports)',
+          '💳 Professional Business Cards & Executive Profiles',
+          '👕 Branded Apparel (T-shirts, uniforms, jackets & promotional clothing)',
+          '☕ Corporate Merchandise, Mugs, Notebooks & Packaging Bags',
+          '🏢 Corporate & Environmental Branding (Signage, office & reception areas)'
         ],
-        timeline: '10–14 business days from kickoff discovery to delivery',
-        advantage: 'Gives your business the visual stature of a market-leading enterprise.',
-        image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=800&auto=format&fit=crop&q=80',
-        serviceId: 'Brand Identity & Systems'
+        timeline: '10–14 business days from kickoff discovery to full handoff',
+        advantage: 'Gives your business the visual stature and memorability of an undisputed industry leader.',
+        image: '/assets/corporate-identity-branding.jpg',
+        serviceId: 'Branding & Corporate Identity'
       },
       {
         title: 'Website Design & Management',
@@ -3475,29 +5129,31 @@
     // 2. 4K Cinema LUT Split Slider
     function handleLutDrag(e) {
       const container = document.getElementById('lutSplitContainer');
-      const wrapper = document.getElementById('lutGradedWrapper');
-      const handle = document.getElementById('lutSliderHandle');
-      if (!container || !wrapper || !handle) return;
+      if (!container) return;
 
       const rect = container.getBoundingClientRect();
-      const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
-      const pct = (x / rect.width) * 100;
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+      const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+      const pct = Math.round((x / rect.width) * 1000) / 10;
 
-      wrapper.style.width = pct + '%';
-      handle.style.left = pct + '%';
+      container.style.setProperty('--lut-split', pct + '%');
+      const wrapper = document.getElementById('lutGradedWrapper');
+      if (wrapper) wrapper.style.width = '100%'; // uses clip-path via CSS
     }
 
     function handleLutTouch(e) {
-      if (e.touches.length > 0) {
+      if (e.touches && e.touches.length > 0) {
+        if (e.cancelable) e.preventDefault();
         const touch = e.touches[0];
         handleLutDrag({ clientX: touch.clientX });
       }
     }
 
     const lutProfiles = {
-      noir: { name: 'Obsidian Noir', filter: 'contrast(125%) saturate(110%) brightness(95%)' },
-      sunset: { name: 'Zambezi Warmth', filter: 'sepia(30%) saturate(160%) contrast(110%)' },
-      gold: { name: 'Cine Gold 800', filter: 'hue-rotate(-15deg) contrast(120%) saturate(145%)' },
+      twilight: { name: 'Lusaka Twilight 4K', filter: 'contrast(130%) saturate(145%) brightness(104%)' },
+      noir: { name: 'Obsidian Noir', filter: 'contrast(135%) saturate(110%) brightness(95%)' },
+      sunset: { name: 'Zambezi Warmth', filter: 'sepia(25%) saturate(165%) contrast(115%) brightness(102%)' },
+      gold: { name: 'Cine Gold 800', filter: 'hue-rotate(-15deg) contrast(125%) saturate(145%) brightness(105%)' },
       highkey: { name: 'Clean Editorial', filter: 'grayscale(100%) contrast(140%) brightness(105%)' }
     };
 
@@ -3707,6 +5363,26 @@
     window.openLiveSupportChat = openLiveSupportChat;
 
   </script>
+
+  <!-- Mobile Quick Action Dock (Visible exclusively on mobile screens) -->
+  <nav id="mobileQuickDock" class="mobile-quick-dock" aria-label="Mobile Quick Actions">
+    <a href="tel:+260979894567" class="dock-item" aria-label="Call Vigorish Media Studio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      <span>Call</span>
+    </a>
+    <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="dock-item dock-whatsapp" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="color: #25d366;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.31 3.8 2.53 1.09 2.53.73 2.99.68.46-.04 1.47-.6 1.68-1.18.21-.59.21-1.09.15-1.18-.07-.1-.23-.17-.48-.3z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <button onclick="navigateTo('/labs'); switchLabsTab('quote');" class="dock-item dock-highlight" aria-label="Instant Project Quote">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+      <span>Get Quote</span>
+    </button>
+    <button onclick="openLiveSupportChat();" class="dock-item" aria-label="AI Live Support">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      <span style="display: flex; align-items: center; gap: 3px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #30d158; display: inline-block;"></span>AI Help</span>
+    </button>
+  </nav>
 
   <!-- Vigorish Media AI Live Customer Support Widget -->
   <script src="chat/ai-support.js" id="aiSupportScript"></script>

@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import path from 'path';
+import compression from 'compression';
 import { createServer as createViteServer } from 'vite';
 import { CHAT_CONFIG } from './server/config';
 import {
@@ -25,6 +26,9 @@ import { StartChatRequest, SendMessageRequest, EscalateRequest, EndChatRequest, 
 async function startServer() {
   const app = express();
   const PORT = 3000;
+
+  // Gzip/Brotli compression for fast mobile loading
+  app.use(compression());
 
   // Body parser & security headers
   app.use(express.json({ limit: '1mb' }));
