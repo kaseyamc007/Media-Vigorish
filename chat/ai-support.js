@@ -279,8 +279,33 @@
       </div>
     `;
 
-    document.body.appendChild(launcher);
+    // Unified Floating Digital Interface (Live Clock + AI Support Launcher)
+    const floatingDock = document.createElement('div');
+    floatingDock.id = 'vmFloatingDock';
+    floatingDock.className = 'vm-floating-dock';
+    floatingDock.setAttribute('aria-label', 'Vigorish Studio Floating Interface');
+
+    // Live Digital Studio Clock directly above the AI Support Button
+    const clockWidget = document.createElement('div');
+    clockWidget.id = 'vmLiveClock';
+    clockWidget.className = 'vm-live-clock';
+    clockWidget.setAttribute('role', 'timer');
+    clockWidget.setAttribute('aria-label', 'Lusaka Studio Live Clock');
+    clockWidget.innerHTML = `
+      <div class="vm-clock-pill" id="vmClockPill" title="Vigorish Media Studio Headquarters • Lusaka (CAT)">
+        <span class="vm-clock-pulse-dot"></span>
+        <span class="vm-clock-city">LUSAKA HQ</span>
+        <span class="vm-clock-time" id="vmClockTime">--:--:--</span>
+        <span class="vm-clock-tz">CAT</span>
+      </div>
+    `;
+
+    floatingDock.appendChild(clockWidget);
+    floatingDock.appendChild(launcher);
+    document.body.appendChild(floatingDock);
     document.body.appendChild(chatWindow);
+
+    initStudioLiveClock();
 
     bindEvents();
     restoreLocalSession();
@@ -288,6 +313,37 @@
     if (state.conversationId && state.customerName) {
       renderActiveSession();
     }
+  }
+
+  // Live Studio Digital Clock
+  function initStudioLiveClock() {
+    const timeEl = document.getElementById('vmClockTime');
+    if (!timeEl) return;
+
+    function updateTime() {
+      const now = new Date();
+      try {
+        const timeStr = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Africa/Lusaka',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        }).format(now);
+        timeEl.textContent = timeStr;
+      } catch (e) {
+        // High-precision fallback for UTC+2 (Central Africa Time)
+        const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+        const catDate = new Date(utcMs + (2 * 3600000));
+        const hh = String(catDate.getHours()).padStart(2, '0');
+        const mm = String(catDate.getMinutes()).padStart(2, '0');
+        const ss = String(catDate.getSeconds()).padStart(2, '0');
+        timeEl.textContent = `${hh}:${mm}:${ss}`;
+      }
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
   }
 
   // Format timestamp e.g. "14:28"
