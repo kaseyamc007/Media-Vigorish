@@ -354,6 +354,92 @@
     }
   }
 
+  // ==========================================
+  // REAL-TIME HIGH-PRECISION REQUESTANIMATIONFRAME FPS ENGINE
+  // ==========================================
+  const fpsEngine = {
+    rafId: null,
+    lastTimestamp: 0,
+    samples: [],
+    maxSamples: 24, // 24-frame rolling sample window
+    lastUiUpdate: 0,
+    currentFps: 60.0,
+    currentFrameTime: 16.6
+  };
+
+  function updateFpsCounter(timestamp) {
+    if (!fpsEngine.lastTimestamp) {
+      fpsEngine.lastTimestamp = timestamp;
+      fpsEngine.rafId = requestAnimationFrame(updateFpsCounter);
+      return;
+    }
+
+    const delta = timestamp - fpsEngine.lastTimestamp;
+    fpsEngine.lastTimestamp = timestamp;
+
+    // Filter out aberrant delta from background tab suspension (> 1s) or zero delta
+    if (delta > 0 && delta < 1000) {
+      const instantFps = 1000 / delta;
+      fpsEngine.samples.push(instantFps);
+      if (fpsEngine.samples.length > fpsEngine.maxSamples) {
+        fpsEngine.samples.shift();
+      }
+
+      // High-precision rolling calculation
+      const avgFps = fpsEngine.samples.reduce((a, b) => a + b, 0) / fpsEngine.samples.length;
+      fpsEngine.currentFps = avgFps;
+      fpsEngine.currentFrameTime = delta;
+
+      // Update HUD at optimal human-readable interval (~80ms, ~12 updates/sec)
+      if (timestamp - fpsEngine.lastUiUpdate >= 80) {
+        fpsEngine.lastUiUpdate = timestamp;
+
+        const fpsEl = document.getElementById('labsTelemetryFPS');
+        const timeEl = document.getElementById('labsTelemetryFrameTime');
+        const dotEl = document.getElementById('labsFpsStatusDot');
+
+        if (fpsEl) {
+          fpsEl.textContent = avgFps.toFixed(1);
+        }
+        if (timeEl) {
+          timeEl.textContent = `(${delta.toFixed(1)}ms)`;
+        }
+        if (dotEl) {
+          if (avgFps >= 50) {
+            dotEl.className = 'labs-hud-dot';
+          } else if (avgFps >= 28) {
+            dotEl.className = 'labs-hud-dot warning';
+          } else {
+            dotEl.className = 'labs-hud-dot danger';
+          }
+        }
+      }
+    }
+
+    fpsEngine.rafId = requestAnimationFrame(updateFpsCounter);
+  }
+
+  function startFpsEngine() {
+    if (!fpsEngine.rafId) {
+      fpsEngine.lastTimestamp = performance.now();
+      fpsEngine.lastUiUpdate = performance.now();
+      fpsEngine.samples = [];
+      fpsEngine.rafId = requestAnimationFrame(updateFpsCounter);
+    }
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (fpsEngine.rafId) {
+        cancelAnimationFrame(fpsEngine.rafId);
+        fpsEngine.rafId = null;
+      }
+      fpsEngine.lastTimestamp = 0;
+    } else {
+      startFpsEngine();
+    }
+  });
+
   function renderExp001() {
     if (!state.exp001.isVisible) {
       state.exp001.animId = null;
@@ -364,32 +450,12 @@
     const dt = Math.min((now - state.exp001.lastTime) / 1000, 0.1);
     state.exp001.lastTime = now;
 
-    // Real-time FPS & HUD Telemetry calculation
+    // Real-time canvas cycle telemetry
     state.exp001.frameCount++;
-    const instantFps = dt > 0 ? (1 / dt) : 60;
-    // Exponential smoothing for natural jitter-free telemetry
-    state.exp001.fps = state.exp001.fps * 0.88 + Math.min(instantFps, 60) * 0.12;
-
-    // Update real-time frame rates and HUD telemetry every 6 frames
-    if (state.exp001.frameCount % 6 === 0) {
-      const fpsEl = document.getElementById('labsTelemetryFPS');
-      const timeEl = document.getElementById('labsTelemetryFrameTime');
-      const dotEl = document.getElementById('labsFpsStatusDot');
+    if (state.exp001.frameCount % 4 === 0) {
       const cycleEl = document.getElementById('labsTelemetryCycle');
-
-      const fpsVal = Math.min(60, state.exp001.fps);
-      if (fpsEl) fpsEl.textContent = `${fpsVal.toFixed(1)}`;
-      if (timeEl) timeEl.textContent = `(${(dt * 1000).toFixed(1)}ms)`;
-      if (cycleEl) cycleEl.textContent = `#${state.exp001.frameCount.toString().padStart(6, '0')}`;
-
-      if (dotEl) {
-        if (fpsVal >= 52) {
-          dotEl.className = 'labs-hud-dot';
-        } else if (fpsVal >= 32) {
-          dotEl.className = 'labs-hud-dot warning';
-        } else {
-          dotEl.className = 'labs-hud-dot danger';
-        }
+      if (cycleEl) {
+        cycleEl.textContent = `#${state.exp001.frameCount.toString().padStart(6, '0')}`;
       }
     }
 
@@ -1120,6 +1186,7 @@
   // INITIALIZATION ON DOM READY
   // ==========================================
   function bootLabsEngine() {
+    startFpsEngine();
     initExperiment001();
     initProcessVisualizer();
     initLiveTelemetryClock();
@@ -1134,6 +1201,8 @@
   // Export to global for modal/tab resets
   window.VigorishLabsEngine = {
     setProcessStage,
+    startFpsEngine,
+    getFps: () => fpsEngine.currentFps,
     resizeAll: () => {
       resizeExp001();
       resizeProcess();

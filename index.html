@@ -130,27 +130,43 @@
       gap: 12px;
     }
 
-    /* Apple Acoustic Haptics Toggle */
-    .apple-sound-btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Apple Donate Button (Tuli Bantu Baluse) */
+    .apple-donate-nav-btn {
+      background: rgba(255, 95, 86, 0.12);
+      border: 1px solid rgba(255, 95, 86, 0.38);
       border-radius: var(--apple-pill-radius);
-      color: #f5f5f7;
-      font-size: 11px;
-      font-weight: 500;
-      padding: 4px 12px;
+      color: #ff7b72;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 5px 13px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: all 0.2s ease;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-tap-highlight-color: transparent;
     }
-    .apple-sound-btn:hover {
-      background: rgba(255, 255, 255, 0.18);
+    .apple-donate-nav-btn:hover {
+      background: rgba(255, 95, 86, 0.24);
+      border-color: rgba(255, 95, 86, 0.7);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(255, 95, 86, 0.28);
     }
-    .apple-sound-btn.active {
-      border-color: rgba(52, 211, 153, 0.5);
-      color: #34d399;
+    .apple-donate-nav-btn:active {
+      transform: translateY(0);
+    }
+    .apple-donate-nav-btn .donate-heart {
+      font-size: 12px;
+      line-height: 1;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    .apple-donate-nav-btn:hover .donate-heart {
+      transform: scale(1.2);
     }
 
     .btn-apple-pill {
@@ -404,12 +420,13 @@
       text-align: left;
     }
 
-    /* Key Apple Metrics Banner */
+    /* Key Apple Metrics Banner - Animated Countdown System */
     .apple-metrics-banner {
       background: #000000;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 38px 20px;
+      padding: 40px 20px;
+      position: relative;
     }
     .apple-metrics-grid {
       max-width: 1040px;
@@ -419,17 +436,80 @@
       gap: 24px;
       text-align: center;
     }
-    .apple-metric-item h4 {
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: -0.025em;
+    .apple-metric-item {
+      position: relative;
+      padding: 10px 12px;
+      border-radius: 14px;
+      transition: background 0.3s ease, transform 0.25s ease;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .apple-metric-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-2px);
+    }
+    .apple-metric-countdown-wrap {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .apple-metric-item h4,
+    .apple-metric-value {
+      font-size: clamp(30px, 3.6vw, 42px);
+      font-weight: 750;
+      letter-spacing: -0.03em;
       color: #f5f5f7;
-      margin-bottom: 4px;
+      margin: 0;
+      line-height: 1.15;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
+      display: inline-block;
+      transition: color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.25s ease;
+    }
+    .apple-metric-item.counting .apple-metric-value {
+      color: #ffffff;
+      text-shadow: 0 0 20px rgba(41, 151, 255, 0.4);
+    }
+    .apple-metric-item.counted-complete .apple-metric-value {
+      color: #f5f5f7;
+    }
+    .apple-metric-item.counted-pop .apple-metric-value {
+      animation: metricCountPop 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes metricCountPop {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.08); color: #2997ff; text-shadow: 0 0 22px rgba(41, 151, 255, 0.65); }
+      100% { transform: scale(1); color: #f5f5f7; }
+    }
+    .apple-metric-progress-track {
+      width: 38px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      margin: 8px auto 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .apple-metric-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2997ff, #64d2ff);
+      border-radius: 2px;
+      transition: width 0.05s linear;
+    }
+    .apple-metric-item.counted-complete .apple-metric-progress-bar {
+      width: 100%;
+      background: rgba(41, 151, 255, 0.4);
     }
     .apple-metric-item p {
       font-size: 13px;
       color: #86868b;
       letter-spacing: -0.01em;
+      line-height: 1.4;
+      margin: 0;
     }
 
     /* Section Styling */
@@ -1355,6 +1435,18 @@
       background: rgba(191, 90, 242, 0.18);
       color: #bf5af2;
       border-color: rgba(191, 90, 242, 0.45);
+    }
+    .labs-hud-fps-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-variant-numeric: tabular-nums;
+      transition: all 0.18s ease;
     }
     .labs-hud-dot {
       width: 6px;
@@ -2351,10 +2443,10 @@
           <span></span><span></span>
         </button>
         <div class="apple-nav-actions">
-        <button id="appleSoundToggle" class="apple-sound-btn active" title="Toggle Apple UI Haptics">
-          <span id="hapticIcon">🔊</span>
-          <span id="hapticLabel">Haptics</span>
-        </button>
+        <a href="#/donate" id="navDonateBtn" class="apple-donate-nav-btn" onclick="navigateTo('/donate'); return false;" title="Donate to Tuli Bantu Baluse" aria-label="Donate to Tuli Bantu Baluse">
+          <span class="donate-heart" aria-hidden="true">❤️</span>
+          <span>DONATE</span>
+        </a>
         <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;">Start a Project</a>
       </div>
     </div>
@@ -2381,6 +2473,7 @@
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/about');">About Studio</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/insights');">Newsroom</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/contact');">Contact &amp; Brief</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/donate');" style="color: #ff7b72; display: flex; align-items: center; gap: 8px;"><span>❤️</span> Donate (Tuli Bantu Baluse)</a></li>
       <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); openLiveSupportChat();" style="color: #2997ff; display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>✦ AI Live Support (Online)</a></li>
     </ul>
     <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
@@ -2439,22 +2532,34 @@
       </div>
 
       <!-- Key Apple Metrics Banner -->
-      <div class="apple-metrics-banner">
+      <div class="apple-metrics-banner" id="appleMetricsBanner">
         <div class="apple-metrics-grid">
-          <div class="apple-metric-item">
-            <h4>+340%</h4>
+          <div class="apple-metric-item" data-metric-index="0" title="Click to replay countdown">
+            <div class="apple-metric-countdown-wrap">
+              <h4 class="apple-metric-value" data-target="340" data-prefix="+" data-suffix="%" data-target-final="+340%" data-duration="1700">+340%</h4>
+              <div class="apple-metric-progress-track"><div class="apple-metric-progress-bar"></div></div>
+            </div>
             <p>Average client engagement surge</p>
           </div>
-          <div class="apple-metric-item">
-            <h4>4K Ultra</h4>
+          <div class="apple-metric-item" data-metric-index="1" title="Click to replay countdown">
+            <div class="apple-metric-countdown-wrap">
+              <h4 class="apple-metric-value" data-target="4" data-prefix="" data-suffix="K Ultra" data-target-final="4K Ultra" data-duration="1500">4K Ultra</h4>
+              <div class="apple-metric-progress-track"><div class="apple-metric-progress-bar"></div></div>
+            </div>
             <p>Cinema-grade color &amp; acoustics</p>
           </div>
-          <div class="apple-metric-item">
-            <h4>100%</h4>
+          <div class="apple-metric-item" data-metric-index="2" title="Click to replay countdown">
+            <div class="apple-metric-countdown-wrap">
+              <h4 class="apple-metric-value" data-target="100" data-prefix="" data-suffix="%" data-target-final="100%" data-duration="1600">100%</h4>
+              <div class="apple-metric-progress-track"><div class="apple-metric-progress-bar"></div></div>
+            </div>
             <p>Zambian creative ownership &amp; passion</p>
           </div>
-          <div class="apple-metric-item">
-            <h4>1 Year</h4>
+          <div class="apple-metric-item" data-metric-index="3" title="Click to replay countdown">
+            <div class="apple-metric-countdown-wrap">
+              <h4 class="apple-metric-value" data-target="1" data-prefix="" data-suffix=" Year" data-target-final="1 Year" data-decimals="1" data-duration="1500">1 Year</h4>
+              <div class="apple-metric-progress-track"><div class="apple-metric-progress-bar"></div></div>
+            </div>
             <p>Complimentary web hosting &amp; maintenance</p>
           </div>
         </div>
@@ -2651,16 +2756,16 @@
               </div>
             </div>
 
-            <div class="apple-case-card" onclick="openProjectModal('copperbelt-logistics')">
+            <div class="apple-case-card" onclick="openProjectModal('cleo-ice-queen')">
               <div class="apple-case-img-box">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80" 
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-web.jpg';" 
-                     alt="Copperbelt Haulage" />
+                     alt="Cleo Ice Queen Official Digital Platform" />
               </div>
               <div class="apple-case-body">
-                <div class="apple-case-category">WEB ARCHITECTURE</div>
-                <h4 class="apple-case-title">Copperbelt Haulage Portal</h4>
-                <p class="apple-case-desc">Ultra-fast logistics portal with instant dispatch quotations resulting in 45% inquiry growth.</p>
+                <div class="apple-case-category">WEB ARCHITECTURE &amp; ARTIST PLATFORM</div>
+                <h4 class="apple-case-title">Cleo Ice Queen Official Platform</h4>
+                <p class="apple-case-desc">Official website and digital ecosystem for award-winning hip-hop pioneer Cleo Ice Queen (cleoicequeen.com).</p>
                 <span class="apple-link-cta">View case study &gt;</span>
               </div>
             </div>
@@ -3189,21 +3294,21 @@
             </div>
 
             <!-- Project 3 -->
-            <div class="apple-case-card" data-portfolio-tag="web" onclick="openProjectModal('copperbelt-logistics')" style="display: flex; flex-direction: column;">
+            <div class="apple-case-card" data-portfolio-tag="web" onclick="openProjectModal('cleo-ice-queen')" style="display: flex; flex-direction: column;">
               <div class="apple-case-img-box" style="height: 280px; position: relative;">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80" 
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80" 
                      onerror="this.onerror=null; this.src='src/images/portfolio-web.jpg';" 
-                     alt="Copperbelt Logistics" />
+                     alt="Cleo Ice Queen Official Platform (cleoicequeen.com)" />
                 <div style="position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 5px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; color: #30d158; border: 1px solid rgba(48,209,88,0.3);">
-                  RESULT: +45% INBOUND LEADS
+                  VERIFIED LAUNCH: cleoicequeen.com
                 </div>
               </div>
               <div class="apple-case-body" style="flex: 1; display: flex; flex-direction: column;">
-                <div class="apple-case-category">WEB ARCHITECTURE &bull; DISPATCH</div>
-                <h4 class="apple-case-title">Copperbelt Haulage Freight Portal</h4>
+                <div class="apple-case-category">WEB ARCHITECTURE &bull; ARTIST ECOSYSTEM</div>
+                <h4 class="apple-case-title">Cleo Ice Queen Official Platform</h4>
                 <div style="margin: 10px 0; font-size: 13px; color: #a1a1a6; line-height: 1.5; flex: 1;">
-                  <div style="margin-bottom: 6px;"><strong style="color: #fff;">Goal:</strong> Remove manual booking bottlenecks across regional haulage routes.</div>
-                  <div><strong style="color: #2997ff;">Result:</strong> 62% faster quotation speed, instant WhatsApp freight dispatch.</div>
+                  <div style="margin-bottom: 6px;"><strong style="color: #fff;">Goal:</strong> Unify continental discography, tour dates, and brand endorsements into an authoritative digital home.</div>
+                  <div><strong style="color: #2997ff;">Result:</strong> Direct fan engagement hub, multi-platform streaming integration, and global corporate bookings.</div>
                 </div>
                 <span class="apple-link-cta" style="margin-top: 10px;">Behind the Brand: View Goal, Strategy &amp; Results &gt;</span>
               </div>
@@ -3312,18 +3417,17 @@
 
           <!-- Small Data-Driven System HUD directly above Live Experiment 001 Canvas -->
           <div id="labsSystemHUD" class="labs-canvas-hud" role="region" aria-label="Live Experiment 001 System HUD">
-            <!-- Left Group: Real-Time Frame Rates and Interaction Status -->
+            <!-- Left Group: Real-Time Interaction Status and High-Precision FPS Telemetry -->
             <div class="labs-hud-group">
               <div class="labs-hud-item">
+                <span class="labs-hud-key">STATUS:</span>
+                <span class="labs-hud-status" id="labsTelemetryInteraction">READY // OPERATIONAL</span>
+              </div>
+              <div class="labs-hud-item labs-hud-fps-badge" id="labsHudFpsBadge" title="Real-time requestAnimationFrame engine frame rate">
                 <span class="labs-hud-dot" id="labsFpsStatusDot"></span>
                 <span class="labs-hud-key">FPS:</span>
                 <span class="labs-hud-num" id="labsTelemetryFPS">60.0</span>
                 <span class="labs-hud-sub" id="labsTelemetryFrameTime">(16.6ms)</span>
-              </div>
-              <div class="labs-hud-divider"></div>
-              <div class="labs-hud-item">
-                <span class="labs-hud-key">STATUS:</span>
-                <span class="labs-hud-status" id="labsTelemetryInteraction">READY // OPERATIONAL</span>
               </div>
             </div>
 
@@ -4879,34 +4983,12 @@
     }
 
     document.addEventListener('click', (e) => {
-      if (e.target.closest('#appleSoundToggle')) return;
-      if (e.target.closest('.btn-apple-pill, [type="submit"], #studioTotalDisplay')) {
+      if (e.target.closest('.btn-apple-pill, [type="submit"], #studioTotalDisplay, #navDonateBtn')) {
         playAppleHaptic('confirm');
       } else if (e.target.closest('a, button, .apple-option-card, .apple-bento-card, .apple-case-card')) {
         playAppleHaptic('click');
       }
     });
-
-    const soundToggle = document.getElementById('appleSoundToggle');
-    const hapticIcon = document.getElementById('hapticIcon');
-    const hapticLabel = document.getElementById('hapticLabel');
-
-    if (soundToggle) {
-      soundToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        hapticsEnabled = !hapticsEnabled;
-        if (hapticsEnabled) {
-          soundToggle.classList.add('active');
-          hapticIcon.textContent = '🔊';
-          hapticLabel.textContent = 'Haptics';
-          playAppleHaptic('confirm');
-        } else {
-          soundToggle.classList.remove('active');
-          hapticIcon.textContent = '🔇';
-          hapticLabel.textContent = 'Muted';
-        }
-      });
-    }
 
     // =====================================
     // SPA Routing System
@@ -4994,6 +5076,15 @@
         }
       }
 
+      // If user navigated to Home, trigger metrics countdown animation
+      if (targetPath === '/' || targetPath === '') {
+        setTimeout(() => {
+          if (typeof triggerMetricsCountdown === 'function') {
+            triggerMetricsCountdown(true);
+          }
+        }, 120);
+      }
+
       const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       // Fast path for reduced motion or same page
@@ -5023,6 +5114,142 @@
           targetEl.classList.remove('page-entering');
         }
       }, 260);
+    }
+
+    // =====================================
+    // Apple Metrics Animated Countdown System
+    // =====================================
+    let metricsCountdownTriggered = false;
+    let metricsCountdownRafs = [];
+
+    function animateSingleMetric(item, staggerDelay = 0) {
+      const valueEl = item.querySelector('.apple-metric-value');
+      const barEl = item.querySelector('.apple-metric-progress-bar');
+      if (!valueEl) return;
+
+      const target = parseFloat(valueEl.dataset.target || '0');
+      const prefix = valueEl.dataset.prefix || '';
+      const suffix = valueEl.dataset.suffix || '';
+      const targetFinal = valueEl.dataset.targetFinal || `${prefix}${target}${suffix}`;
+      const decimals = parseInt(valueEl.dataset.decimals || '0', 10);
+      const duration = parseInt(valueEl.dataset.duration || '1600', 10);
+      const startTime = performance.now() + staggerDelay;
+
+      item.classList.remove('counted-complete', 'counted-pop');
+      item.classList.add('counting');
+      if (barEl) {
+        barEl.style.transition = 'none';
+        barEl.style.width = '0%';
+      }
+
+      function update(now) {
+        if (now < startTime) {
+          const id = requestAnimationFrame(update);
+          metricsCountdownRafs.push(id);
+          return;
+        }
+
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / duration);
+        // Exponential ease-out for thrilling countdown deceleration
+        const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+
+        if (decimals > 0 && target <= 1) {
+          const current = (target * ease).toFixed(decimals);
+          valueEl.textContent = `${prefix}${current}${suffix}`;
+        } else {
+          const current = Math.round(target * ease);
+          valueEl.textContent = `${prefix}${current}${suffix}`;
+        }
+
+        if (barEl) {
+          barEl.style.width = `${(ease * 100).toFixed(1)}%`;
+        }
+
+        if (progress < 1) {
+          const id = requestAnimationFrame(update);
+          metricsCountdownRafs.push(id);
+        } else {
+          valueEl.textContent = targetFinal;
+          item.classList.remove('counting');
+          item.classList.add('counted-complete', 'counted-pop');
+          if (barEl) barEl.style.width = '100%';
+
+          setTimeout(() => {
+            item.classList.remove('counted-pop');
+          }, 450);
+        }
+      }
+
+      const id = requestAnimationFrame(update);
+      metricsCountdownRafs.push(id);
+    }
+
+    function triggerMetricsCountdown(force = false) {
+      const banner = document.getElementById('appleMetricsBanner');
+      if (!banner) return;
+      if (metricsCountdownTriggered && !force) return;
+      metricsCountdownTriggered = true;
+
+      // Cancel previous RAFs
+      metricsCountdownRafs.forEach(id => cancelAnimationFrame(id));
+      metricsCountdownRafs = [];
+
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const items = banner.querySelectorAll('.apple-metric-item');
+
+      if (prefersReducedMotion) {
+        items.forEach(item => {
+          const valEl = item.querySelector('.apple-metric-value');
+          if (valEl && valEl.dataset.targetFinal) valEl.textContent = valEl.dataset.targetFinal;
+          item.classList.add('counted-complete');
+        });
+        return;
+      }
+
+      items.forEach((item, idx) => {
+        animateSingleMetric(item, idx * 110);
+      });
+    }
+
+    function initMetricsObserver() {
+      const banner = document.getElementById('appleMetricsBanner');
+      if (!banner) return;
+
+      if (!('IntersectionObserver' in window)) {
+        triggerMetricsCountdown();
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            triggerMetricsCountdown();
+          } else {
+            // Allow re-trigger when scrolled away and back
+            metricsCountdownTriggered = false;
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(banner);
+
+      // Interactive click on individual metric cards to replay countdown
+      banner.querySelectorAll('.apple-metric-item').forEach(item => {
+        item.addEventListener('click', () => {
+          animateSingleMetric(item, 0);
+          if (typeof playAppleHaptic === 'function') {
+            playAppleHaptic('click');
+          }
+        });
+      });
+    }
+
+    // Initialize metrics observer immediately or on ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMetricsObserver);
+    } else {
+      initMetricsObserver();
     }
 
     window.addEventListener('popstate', () => {
@@ -5822,25 +6049,58 @@
         ],
         quote: 'The video showcase brought our custom kitchens and fitted wardrobes to life with world-class elegance. Clients immediately recognized the precision of our craftsmanship.'
       },
-      'copperbelt-logistics': {
-        title: 'Copperbelt Haulage Freight Portal',
+      'cleo-ice-queen': {
+        title: 'Cleo Ice Queen Official Digital Platform',
         tag: 'web',
-        category: 'Web Architecture & Digital Dispatch',
-        image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80',
-        goal: 'Dismantle manual phone bottlenecks and paperwork delays for regional cross-border freight queries between Zambia, DRC, and South Africa.',
-        strategy: 'Engineered an ultra-fast, mobile-first freight calculation platform with instant Kwacha route estimation and automatic 1-click WhatsApp dispatch linking for logistics managers.',
-        results: '+45% Surge in Online Inquiries; 62% Reduction in Route Quotation Friction; Sub-second mobile load time across 3G/4G networks.',
+        category: 'Web Architecture & Artist Digital Ecosystem',
+        website: 'https://www.cleoicequeen.com',
+        image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&auto=format&fit=crop&q=80',
+        brandColor: '#0071e3',
+        brandBg: 'rgba(0, 113, 227, 0.1)',
+        leadWriteup: `
+          <div style="background: rgba(0, 113, 227, 0.05); border: 1px solid rgba(0, 113, 227, 0.2); border-radius: 14px; padding: 20px 22px; margin-bottom: 22px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(0, 113, 227, 0.18); flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 14px;">
+                <div style="width: 54px; height: 54px; background: #000000; border-radius: 12px; border: 1px solid rgba(41, 151, 255, 0.35); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0, 113, 227, 0.2); flex-shrink: 0; color: #2997ff; font-size: 24px;">
+                  👑
+                </div>
+                <div>
+                  <div style="font-size: 11px; text-transform: uppercase; font-weight: 800; color: #0071e3; letter-spacing: 0.08em;">Official Client Web Launch • www.cleoicequeen.com</div>
+                  <div style="font-size: 18px; font-weight: 800; color: #1d1d1f; letter-spacing: -0.015em;">Cleo Ice Queen (Clementina Mulenga)</div>
+                </div>
+              </div>
+              <a href="https://www.cleoicequeen.com" target="_blank" rel="noopener noreferrer" style="font-size: 12.5px; font-weight: 700; color: #0071e3; text-decoration: none; background: #ffffff; border: 1px solid rgba(0, 113, 227, 0.3); padding: 7px 16px; border-radius: 980px; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+                Visit Live Site ↗
+              </a>
+            </div>
+            <p style="font-size: 15px; color: #1d1d1f; line-height: 1.6; margin-bottom: 12px; font-weight: 700;">
+              "Pioneering Southern African female hip-hop icon, AFRIMMA &amp; AFRIMA award winner, Def Jam Africa artist, and Global Citizen Ambassador."
+            </p>
+            <p style="font-size: 13.5px; color: #48484a; line-height: 1.65; margin-bottom: 16px;">
+              Vigorish Media architected and engineered the official website for Cleo Ice Queen (<a href="https://www.cleoicequeen.com" target="_blank" rel="noopener noreferrer" style="color: #0071e3; font-weight: 600;">www.cleoicequeen.com</a>)—creating an authoritative digital home that unifies her catalog (from <em>Geminice</em> and <em>Leaders Of The New School</em> to <em>I Am Her</em>), streaming integrations (Apple Music, Spotify, YouTube), press credentials, international tour bookings, and brand ambassadorships (Global Citizen, Softcare) into a luxury, mobile-first experience.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; background: #ffffff; padding: 14px 18px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.08);">
+              <div><strong style="color: #1d1d1f; font-size: 12.5px;">Accolades:</strong> <span style="font-size: 12.5px; color: #1d1d1f; font-weight: 600;">AFRIMMA Best Female Rapper • AFRIMA Winner</span></div>
+              <div><strong style="color: #1d1d1f; font-size: 12.5px;">Ambassadorships:</strong> <span style="font-size: 12.5px; color: #0071e3; font-weight: 600;">Global Citizen • Softcare</span></div>
+            </div>
+          </div>
+        `,
+        goal: 'Establish a world-class, authoritative official digital platform for pan-African hip-hop pioneer Cleo Ice Queen, unifying her discography, streaming gateways, press kits, tour dates, and corporate brand endorsements into a single verified web home (www.cleoicequeen.com).',
+        strategy: 'Engineered an ultra-fast, mobile-first responsive web architecture with embedded multi-DSP music streaming (Spotify, Apple Music, YouTube), an international promoter tour & corporate booking channel, dynamic press bio assets, and cloud edge caching across African mobile networks.',
+        results: 'Pan-African & Global Fan Reach; Direct VIP Tour & Corporate Booking Inquiries; Sub-second mobile load speeds across 3G/4G/5G connections with zero streaming friction.',
         resultsMetrics: [
-          { label: 'Inbound Queries', value: '+45%' },
-          { label: 'Quote Latency', value: '-62%' },
+          { label: 'Audience Reach', value: 'Pan-Africa' },
+          { label: 'Streaming', value: 'Multi-DSP' },
           { label: 'Mobile Score', value: '99/100' }
         ],
         deliverables: [
-          'Modern responsive freight portal & route calculator',
-          '1-Click automated WhatsApp dispatch booking trigger',
-          'Cloud hosting with 99.9% uptime and sub-second caching'
+          'Official responsive artist website & digital platform (www.cleoicequeen.com)',
+          'Multi-platform streaming hubs & official music video showcase',
+          'VIP corporate booking inquiry engine & international tour schedule',
+          'Interactive media press kit, award credentials & brand endorsement spotlight',
+          'High-performance cloud hosting with SSL, 99.9% uptime and global CDN'
         ],
-        quote: 'We experienced a 45% increase in verified corporate freight inquiries within the first 60 days of deploying the new portal.'
+        quote: 'Vigorish Media delivered a world-class digital platform that truly matches the energy, royalty, and international caliber of the Cleo Ice Queen brand across Africa and the diaspora.'
       },
       'lush-cosmetics': {
         title: 'Lush Botanicals Organic Skincare',
@@ -5864,6 +6124,7 @@
       }
     };
     projectsData['savannah-reels'] = projectsData['alva-fabrica'];
+    projectsData['copperbelt-logistics'] = projectsData['cleo-ice-queen'];
 
     function filterPortfolio(category) {
       document.querySelectorAll('.portfolio-filter-pill').forEach(btn => {
@@ -5981,6 +6242,12 @@
         </blockquote>
 
         <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          ${data.website ? `
+            <a href="${data.website}" target="_blank" rel="noopener noreferrer" class="btn-apple-pill" style="display: inline-flex; align-items: center; gap: 8px; background: #0071e3; color: #ffffff; text-decoration: none; box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);">
+              <span>Visit Live Website (${data.website.replace('https://', '')})</span>
+              <span style="font-size: 13px;">↗</span>
+            </a>
+          ` : ''}
           <a href="#/contact" class="btn-apple-pill" onclick="closeProjectModal(); navigateTo('/contact'); return false;">Request a Quote for Similar Project &gt;</a>
           <a href="#/labs" class="btn-apple-secondary" onclick="closeProjectModal(); navigateTo('/labs'); return false;">Explore Scope in Vigorish Labs</a>
         </div>
