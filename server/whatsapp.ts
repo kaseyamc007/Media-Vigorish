@@ -77,7 +77,7 @@ export async function dispatchWhatsAppAlert(
   const nowIso = new Date().toISOString();
 
   console.log(`\n================== [WHATSAPP DISPATCH TO ${recipient}] ==================`);
-  console.log(`TYPE: ${alertType} | CONVERSATION: ${session.conversationId} | CLIENT: ${session.customerName}`);
+  console.log(`TYPE: ${alertType} | CONVERSATION: ${session.conversationId} | CLIENT: ${session.clientName || session.customerName}`);
   console.log(formattedMessage);
   console.log('=======================================================================\n');
 
@@ -122,14 +122,16 @@ export function formatNewChatAlert(session: ConversationSession, firstMessage: s
     timeStyle: 'short'
   });
 
-  const contactLine = session.customerContact ? `\n📞 Contact: ${session.customerContact}` : '';
+  const name = session.clientName || session.customerName;
+  const contact = session.clientContact || session.customerContact;
+  const contactLine = contact ? `\n📞 Contact: ${contact}` : '';
 
   return `━━━━━━━━━━━━━━━━━━
 🔔 NEW WEBSITE SUPPORT CHAT
 ━━━━━━━━━━━━━━━━━━
 
-👤 Customer:
-${session.customerName}${contactLine}
+👤 Client:
+${name}${contactLine}
 
 🆔 Conversation:
 ${session.conversationId}
@@ -142,7 +144,7 @@ Vigorish Media Live Support (${session.pageUrl || 'Home'})
 
 ━━━━━━━━━━━━━━━━━━
 
-💬 CUSTOMER MESSAGE:
+💬 CLIENT MESSAGE:
 "${firstMessage}"
 
 ━━━━━━━━━━━━━━━━━━
@@ -163,7 +165,7 @@ AI SUPPORT ACTIVE (Monitoring)
 export function formatEscalationAlert(
   session: ConversationSession,
   reason: string,
-  latestCustomerMessage: string
+  latestClientMessage: string
 ): string {
   const dateFormatted = new Date().toLocaleString('en-GB', {
     timeZone: CHAT_CONFIG.businessHours.timezone,
@@ -171,7 +173,9 @@ export function formatEscalationAlert(
     timeStyle: 'short'
   });
 
-  const contactLine = session.customerContact ? `\n📞 Client Contact: ${session.customerContact}` : '';
+  const name = session.clientName || session.customerName;
+  const contact = session.clientContact || session.customerContact;
+  const contactLine = contact ? `\n📞 Client Contact: ${contact}` : '';
 
   // Get last 4 messages for context trail
   const recentTrail = session.messages
@@ -183,8 +187,8 @@ export function formatEscalationAlert(
 🚨 HUMAN SUPPORT REQUEST
 ━━━━━━━━━━━━━━━━━━
 
-👤 Customer:
-${session.customerName}${contactLine}
+👤 Client:
+${name}${contactLine}
 
 🆔 Conversation ID:
 ${session.conversationId}
@@ -198,7 +202,7 @@ ${reason}
 ━━━━━━━━━━━━━━━━━━
 
 💬 LATEST MESSAGE:
-"${latestCustomerMessage}"
+"${latestClientMessage}"
 
 ━━━━━━━━━━━━━━━━━━
 
@@ -208,7 +212,7 @@ ${recentTrail}
 ━━━━━━━━━━━━━━━━━━
 
 📌 ACTION REQUIRED:
-Customer is waiting in live chat on the website.
+Client is waiting in live chat on the website.
 Please review conversation or reply directly!
 ━━━━━━━━━━━━━━━━━━`;
 }
@@ -221,12 +225,13 @@ export function formatSummaryAlert(
   summaryText: string
 ): string {
   const durationMinutes = Math.max(1, Math.round((new Date().getTime() - new Date(session.startedAt).getTime()) / 60000));
+  const name = session.clientName || session.customerName;
 
   return `━━━━━━━━━━━━━━━━━━
 📋 CONVERSATION SUMMARY & AUDIT
 ━━━━━━━━━━━━━━━━━━
 
-👤 Customer: ${session.customerName}
+👤 Client: ${name}
 🆔 Conversation ID: ${session.conversationId}
 ⏱️ Session Duration: ~${durationMinutes} mins
 📊 Total Messages: ${session.messages.length}

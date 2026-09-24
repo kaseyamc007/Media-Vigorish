@@ -87,17 +87,21 @@ export function checkRateLimit(ip: string): { allowed: boolean; remaining: numbe
  * Creates a new conversation session
  */
 export function createConversation(
-  customerName: string,
-  customerContact?: string,
+  clientName: string,
+  clientContact?: string,
   pageUrl: string = '/'
 ): ConversationSession {
   const conversationId = generateConversationId();
   const nowIso = new Date().toISOString();
+  const trimmedName = clientName.trim() || 'Visitor';
+  const trimmedContact = clientContact?.trim() || undefined;
 
   const session: ConversationSession = {
     conversationId,
-    customerName: customerName.trim() || 'Visitor',
-    customerContact: customerContact?.trim() || undefined,
+    clientName: trimmedName,
+    clientContact: trimmedContact,
+    customerName: trimmedName,
+    customerContact: trimmedContact,
     pageUrl,
     startedAt: nowIso,
     lastActiveAt: nowIso,

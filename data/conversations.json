@@ -1,8 +1,8 @@
 [
   {
     "conversationId": "CHAT-20260917-2076",
-    "customerName": "Mwamba Chileshe",
-    "customerContact": "+260977112233",
+    "clientName": "Mwamba Chileshe",
+    "clientContact": "+260977112233",
     "pageUrl": "https://vigorishmedia.com/#/services",
     "startedAt": "2026-09-17T18:50:54.234Z",
     "lastActiveAt": "2026-09-17T18:51:01.971Z",
@@ -17,7 +17,7 @@
       },
       {
         "id": "MSG-1789671056753-367",
-        "sender": "customer",
+        "sender": "client",
         "senderName": "Mwamba Chileshe",
         "text": "What services do you offer for high-end corporate branding?",
         "timestamp": "2026-09-17T18:50:56.753Z"
@@ -47,9 +47,9 @@
         "recipientPhone": "+260979894567",
         "dispatchedAt": "2026-09-17T18:50:56.969Z",
         "deliveredStatus": "SIMULATED_LOGGED",
-        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nMwamba Chileshe\n📞 Contact: +260977112233\n\n🆔 Conversation:\nCHAT-20260917-2076\n\n🕒 Started:\n17 Sept 2026, 20:50 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/services)\n\n━━━━━━━━━━━━━━━━━━\n\n💬...",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nMwamba Chileshe\n📞 Contact: +260977112233\n\n🆔 Conversation:\nCHAT-20260917-2076\n\n🕒 Started:\n17 Sept 2026, 20:50 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/services)\n\n━━━━━━━━━━━━━━━━━━\n\n💬...",
         "rawPayload": {
-          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nMwamba Chileshe\n📞 Contact: +260977112233\n\n🆔 Conversation:\nCHAT-20260917-2076\n\n🕒 Started:\n17 Sept 2026, 20:50 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/services)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CUSTOMER MESSAGE:\n\"What services do you offer for high-end corporate branding?\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
+          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nMwamba Chileshe\n📞 Contact: +260977112233\n\n🆔 Conversation:\nCHAT-20260917-2076\n\n🕒 Started:\n17 Sept 2026, 20:50 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/services)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CLIENT MESSAGE:\n\"What services do you offer for high-end corporate branding?\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
         },
         "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
       },
@@ -59,20 +59,20 @@
         "recipientPhone": "+260979894567",
         "dispatchedAt": "2026-09-17T18:51:01.971Z",
         "deliveredStatus": "SIMULATED_LOGGED",
-        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nMwamba Chileshe\n📞 Client Contact: +260977112233\n\n🆔 Conversation ID:\nCHAT-20260917-2076\n\n🕒 Escalated:\n17 Sept 2026, 20:51 (CAT)\n\n⚠️ Trigger Reason:\nCustomer requested human representative\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST ME...",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nMwamba Chileshe\n📞 Client Contact: +260977112233\n\n🆔 Conversation ID:\nCHAT-20260917-2076\n\n🕒 Escalated:\n17 Sept 2026, 20:51 (CAT)\n\n⚠️ Trigger Reason:\nCustomer requested human representative\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST ME...",
         "rawPayload": {
-          "body": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nMwamba Chileshe\n📞 Client Contact: +260977112233\n\n🆔 Conversation ID:\nCHAT-20260917-2076\n\n🕒 Escalated:\n17 Sept 2026, 20:51 (CAT)\n\n⚠️ Trigger Reason:\nCustomer requested human representative\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST MESSAGE:\n\"What services do you offer for high-end corporate branding?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📜 RECENT CONVERSATION TRAIL:\nAI (Vigorish AI Concierge):\n\"Hi Mwamba Chileshe 👋 Welcome! I’m your AI Support Assistant. How can I help you today?\"\n\nCUSTOMER (Mwamba Chileshe):\n\"What services do you offer for high-end corporate branding?\"\n\nAI (Vigorish AI Concierge):\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.\n4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.\n5. **Graphic Design & Print Collateral**: Press-ready 300 DPI annual reports, packaging, and large-format expo banners.\n6. **Digital Ads & Performance**: Targeted campaigns across Meta and Google with conversion tracking.\n\nWhich of these would you like to explore for your brand?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 ACTION REQUIRED:\nCustomer is waiting in live chat on the website.\nPlease review conversation or reply directly!\n━━━━━━━━━━━━━━━━━━"
+          "body": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nMwamba Chileshe\n📞 Client Contact: +260977112233\n\n🆔 Conversation ID:\nCHAT-20260917-2076\n\n🕒 Escalated:\n17 Sept 2026, 20:51 (CAT)\n\n⚠️ Trigger Reason:\nCustomer requested human representative\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST MESSAGE:\n\"What services do you offer for high-end corporate branding?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📜 RECENT CONVERSATION TRAIL:\nAI (Vigorish AI Concierge):\n\"Hi Mwamba Chileshe 👋 Welcome! I’m your AI Support Assistant. How can I help you today?\"\n\nCUSTOMER (Mwamba Chileshe):\n\"What services do you offer for high-end corporate branding?\"\n\nAI (Vigorish AI Concierge):\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.\n4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.\n5. **Graphic Design & Print Collateral**: Press-ready 300 DPI annual reports, packaging, and large-format expo banners.\n6. **Digital Ads & Performance**: Targeted campaigns across Meta and Google with conversion tracking.\n\nWhich of these would you like to explore for your brand?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 ACTION REQUIRED:\nCustomer is waiting in live chat on the website.\nPlease review conversation or reply directly!\n━━━━━━━━━━━━━━━━━━"
         },
         "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
       }
     ],
-    "escalationReason": "Customer requested human representative",
+    "escalationReason": "Client requested human representative",
     "escalatedAt": "2026-09-17T18:51:01.970Z"
   },
   {
     "conversationId": "CHAT-20260917-1217",
-    "customerName": "Kaseya",
-    "customerContact": "kaseyamc@gmail.com",
+    "clientName": "Kaseya",
+    "clientContact": "kaseyamc@gmail.com",
     "pageUrl": "https://ais-dev-4hdshro4ibndnt23rtzrda-518377241942.europe-west2.run.app/#/",
     "startedAt": "2026-09-17T18:56:08.918Z",
     "lastActiveAt": "2026-09-17T18:56:30.253Z",
@@ -87,7 +87,7 @@
       },
       {
         "id": "MSG-1789671374443-329",
-        "sender": "customer",
+        "sender": "client",
         "senderName": "Kaseya",
         "text": "Hi",
         "timestamp": "2026-09-17T18:56:14.443Z"
@@ -102,7 +102,7 @@
       },
       {
         "id": "MSG-1789671382332-309",
-        "sender": "customer",
+        "sender": "client",
         "senderName": "Kaseya",
         "text": "What services do you offer?",
         "timestamp": "2026-09-17T18:56:22.332Z"
@@ -132,9 +132,9 @@
         "recipientPhone": "+260979894567",
         "dispatchedAt": "2026-09-17T18:56:14.664Z",
         "deliveredStatus": "SIMULATED_LOGGED",
-        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Contact: kaseyamc@gmail.com\n\n🆔 Conversation:\nCHAT-20260917-1217\n\n🕒 Started:\n17 Sept 2026, 20:56 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://ais-dev-4hdshro4ibndnt23rtzrda-518377241942.europe-west2....",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nKaseya\n📞 Contact: kaseyamc@gmail.com\n\n🆔 Conversation:\nCHAT-20260917-1217\n\n🕒 Started:\n17 Sept 2026, 20:56 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://ais-dev-4hdshro4ibndnt23rtzrda-518377241942.europe-west2....",
         "rawPayload": {
-          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Contact: kaseyamc@gmail.com\n\n🆔 Conversation:\nCHAT-20260917-1217\n\n🕒 Started:\n17 Sept 2026, 20:56 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://ais-dev-4hdshro4ibndnt23rtzrda-518377241942.europe-west2.run.app/#/)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CUSTOMER MESSAGE:\n\"Hi\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"Hello Kaseya! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
+          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nKaseya\n📞 Contact: kaseyamc@gmail.com\n\n🆔 Conversation:\nCHAT-20260917-1217\n\n🕒 Started:\n17 Sept 2026, 20:56 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://ais-dev-4hdshro4ibndnt23rtzrda-518377241942.europe-west2.run.app/#/)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CLIENT MESSAGE:\n\"Hi\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"Hello Kaseya! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
         },
         "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
       },
@@ -144,20 +144,20 @@
         "recipientPhone": "+260979894567",
         "dispatchedAt": "2026-09-17T18:56:30.253Z",
         "deliveredStatus": "SIMULATED_LOGGED",
-        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Client Contact: kaseyamc@gmail.com\n\n🆔 Conversation ID:\nCHAT-20260917-1217\n\n🕒 Escalated:\n17 Sept 2026, 20:56 (CAT)\n\n⚠️ Trigger Reason:\nCustomer clicked Request Human Representative in chat footer\n\n━━━━━━━━━━━━━━━...",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nKaseya\n📞 Client Contact: kaseyamc@gmail.com\n\n🆔 Conversation ID:\nCHAT-20260917-1217\n\n🕒 Escalated:\n17 Sept 2026, 20:56 (CAT)\n\n⚠️ Trigger Reason:\nCustomer clicked Request Human Representative in chat footer\n\n━━━━━━━━━━━━━━━...",
         "rawPayload": {
-          "body": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Client Contact: kaseyamc@gmail.com\n\n🆔 Conversation ID:\nCHAT-20260917-1217\n\n🕒 Escalated:\n17 Sept 2026, 20:56 (CAT)\n\n⚠️ Trigger Reason:\nCustomer clicked Request Human Representative in chat footer\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST MESSAGE:\n\"What services do you offer?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📜 RECENT CONVERSATION TRAIL:\nAI (Vigorish AI Concierge):\n\"Hi Kaseya 👋 Welcome! I’m your AI Support Assistant. How can I help you today?\"\n\nCUSTOMER (Kaseya):\n\"Hi\"\n\nAI (Vigorish AI Concierge):\n\"Hello Kaseya! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.\"\n\nCUSTOMER (Kaseya):\n\"What services do you offer?\"\n\nAI (Vigorish AI Concierge):\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.\n4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.\n5. **Graphic Design & Print Collateral**: Press-ready 300 DPI annual reports, packaging, and large-format expo banners.\n6. **Digital Ads & Performance**: Targeted campaigns across Meta and Google with conversion tracking.\n\nWhich of these would you like to explore for your brand?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 ACTION REQUIRED:\nCustomer is waiting in live chat on the website.\nPlease review conversation or reply directly!\n━━━━━━━━━━━━━━━━━━"
+          "body": "━━━━━━━━━━━━━━━━━━\n🚨 HUMAN SUPPORT REQUEST\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nKaseya\n📞 Client Contact: kaseyamc@gmail.com\n\n🆔 Conversation ID:\nCHAT-20260917-1217\n\n🕒 Escalated:\n17 Sept 2026, 20:56 (CAT)\n\n⚠️ Trigger Reason:\nCustomer clicked Request Human Representative in chat footer\n\n━━━━━━━━━━━━━━━━━━\n\n💬 LATEST MESSAGE:\n\"What services do you offer?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📜 RECENT CONVERSATION TRAIL:\nAI (Vigorish AI Concierge):\n\"Hi Kaseya 👋 Welcome! I’m your AI Support Assistant. How can I help you today?\"\n\nCUSTOMER (Kaseya):\n\"Hi\"\n\nAI (Vigorish AI Concierge):\n\"Hello Kaseya! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.\"\n\nCUSTOMER (Kaseya):\n\"What services do you offer?\"\n\nAI (Vigorish AI Concierge):\n\"At Vigorish Media, we offer six specialized creative pillars:\n1. **Social Media Management**: Turnkey content calendars, Reels & TikTok video scripts, and community growth.\n2. **4K Cinema Videography & Photography**: Brand commercials, executive leadership portraits, and documentary coverage with cinema prime optics.\n3. **Branding & Corporate Identity**: Complete vector logo suites, color palettes, stationery, and comprehensive guidelines.\n4. **Website Design & Architecture**: High-speed, responsive platforms with 12 months complimentary managed cloud infrastructure & domain renewal.\n5. **Graphic Design & Print Collateral**: Press-ready 300 DPI annual reports, packaging, and large-format expo banners.\n6. **Digital Ads & Performance**: Targeted campaigns across Meta and Google with conversion tracking.\n\nWhich of these would you like to explore for your brand?\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 ACTION REQUIRED:\nCustomer is waiting in live chat on the website.\nPlease review conversation or reply directly!\n━━━━━━━━━━━━━━━━━━"
         },
         "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
       }
     ],
-    "escalationReason": "Customer clicked Request Human Representative in chat footer",
+    "escalationReason": "Client clicked Request Human Representative in chat footer",
     "escalatedAt": "2026-09-17T18:56:30.252Z"
   },
   {
     "conversationId": "CHAT-20260917-7981",
-    "customerName": "Kaseya",
-    "customerContact": "+260971234567",
+    "clientName": "Kaseya",
+    "clientContact": "+260971234567",
     "pageUrl": "https://vigorishmedia.com/#/contact",
     "startedAt": "2026-09-17T19:02:27.209Z",
     "lastActiveAt": "2026-09-17T19:02:32.866Z",
@@ -172,7 +172,7 @@
       },
       {
         "id": "MSG-1789671747253-308",
-        "sender": "customer",
+        "sender": "client",
         "senderName": "Kaseya",
         "text": "Where is your physical office or studio located?",
         "timestamp": "2026-09-17T19:02:27.253Z"
@@ -187,7 +187,7 @@
       },
       {
         "id": "MSG-1789671752688-192",
-        "sender": "customer",
+        "sender": "client",
         "senderName": "Kaseya",
         "text": "How can I contact or visit you?",
         "timestamp": "2026-09-17T19:02:32.688Z"
@@ -209,9 +209,9 @@
         "recipientPhone": "+260979894567",
         "dispatchedAt": "2026-09-17T19:02:27.508Z",
         "deliveredStatus": "SIMULATED_LOGGED",
-        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Contact: +260971234567\n\n🆔 Conversation:\nCHAT-20260917-7981\n\n🕒 Started:\n17 Sept 2026, 21:02 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/contact)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CUSTOMER ...",
+        "payloadSummary": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nKaseya\n📞 Contact: +260971234567\n\n🆔 Conversation:\nCHAT-20260917-7981\n\n🕒 Started:\n17 Sept 2026, 21:02 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/contact)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CLIENT ...",
         "rawPayload": {
-          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Customer:\nKaseya\n📞 Contact: +260971234567\n\n🆔 Conversation:\nCHAT-20260917-7981\n\n🕒 Started:\n17 Sept 2026, 21:02 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/contact)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CUSTOMER MESSAGE:\n\"Where is your physical office or studio located?\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"Vigorish Media is an independent 100% Zambian creative media and digital marketing studio located at Chibuluma Road, New Kasama, Lusaka, Zambia. We produce campaigns across Lusaka, the Copperbelt (Ndola, Kitwe), Livingstone, and serve corporate clients across Southern Africa and internationally.\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
+          "body": "━━━━━━━━━━━━━━━━━━\n🔔 NEW WEBSITE SUPPORT CHAT\n━━━━━━━━━━━━━━━━━━\n\n👤 Client:\nKaseya\n📞 Contact: +260971234567\n\n🆔 Conversation:\nCHAT-20260917-7981\n\n🕒 Started:\n17 Sept 2026, 21:02 (CAT)\n\n📍 Source:\nVigorish Media Live Support (https://vigorishmedia.com/#/contact)\n\n━━━━━━━━━━━━━━━━━━\n\n💬 CLIENT MESSAGE:\n\"Where is your physical office or studio located?\"\n\n━━━━━━━━━━━━━━━━━━\n\n🤖 AI RESPONSE:\n\"Vigorish Media is an independent 100% Zambian creative media and digital marketing studio located at Chibuluma Road, New Kasama, Lusaka, Zambia. We produce campaigns across Lusaka, the Copperbelt (Ndola, Kitwe), Livingstone, and serve corporate clients across Southern Africa and internationally.\"\n\n━━━━━━━━━━━━━━━━━━\n\n📌 STATUS:\nAI SUPPORT ACTIVE (Monitoring)\n━━━━━━━━━━━━━━━━━━"
         },
         "error": "Running in preview/development mode. Configure WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env for live Meta delivery."
       }

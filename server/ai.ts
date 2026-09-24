@@ -17,7 +17,7 @@ function getGenAIClient(): GoogleGenAI | null {
 }
 
 /**
- * Checks if customer's message contains human escalation triggers
+ * Checks if client's message contains human escalation triggers
  */
 export function checkEscalationIntent(text: string): { shouldEscalate: boolean; reason: string } {
   const normalized = text.toLowerCase().trim();
@@ -26,7 +26,7 @@ export function checkEscalationIntent(text: string): { shouldEscalate: boolean; 
     if (normalized.includes(trigger)) {
       return {
         shouldEscalate: true,
-        reason: `Customer triggered escalation with phrase matching: "${trigger}"`
+        reason: `Client triggered escalation with phrase matching: "${trigger}"`
       };
     }
   }
@@ -35,7 +35,7 @@ export function checkEscalationIntent(text: string): { shouldEscalate: boolean; 
   if (/\b(human|person|agent|representative|advisor|manager|call me)\b/i.test(normalized)) {
     return {
       shouldEscalate: true,
-      reason: 'Customer explicitly asked to speak with a human team member'
+      reason: 'Client explicitly asked to speak with a human team member'
     };
   }
 
@@ -53,14 +53,14 @@ export function checkEscalationIntent(text: string): { shouldEscalate: boolean; 
 /**
  * Rule-based local intelligent fallback if Gemini API is unavailable or offline
  */
-function localKnowledgeMatch(userText: string, customerName: string): { reply: string; escalate: boolean; reason: string } {
+function localKnowledgeMatch(userText: string, clientName: string): { reply: string; escalate: boolean; reason: string } {
   const q = userText.toLowerCase();
 
   // Check escalation
   const esc = checkEscalationIntent(q);
   if (esc.shouldEscalate) {
     return {
-      reply: `I’d like to make sure you get the right assistance, ${customerName}. I’ve notified our support team now, and someone will assist you shortly. In the meantime, feel free to share any specific requirements or details here.`,
+      reply: `I’d like to make sure you get the right assistance, ${clientName}. I’ve notified our support team now, and someone will assist you shortly. In the meantime, feel free to share any specific requirements or details here.`,
       escalate: true,
       reason: esc.reason
     };
@@ -69,7 +69,7 @@ function localKnowledgeMatch(userText: string, customerName: string): { reply: s
   // Greetings
   if (/^(hi|hello|hey|good day|muli bwanji|greetings)/i.test(q)) {
     return {
-      reply: `Hello ${customerName}! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.`,
+      reply: `Hello ${clientName}! 👋 How can I help you today? Whether you're exploring our 4K video productions, social media management retainers, bespoke branding, or web platforms, I'm at your service.`,
       escalate: false,
       reason: ''
     };
@@ -187,7 +187,7 @@ Would you like to book a package or receive a customized formal proposal for you
 
   // Default answer with intelligent fallback
   return {
-    reply: `Thank you for asking, ${customerName}. At Vigorish Media, we focus on building brands that add tangible value through high-octane visual storytelling, branding systems, social media, and web solutions. Could you tell me a little more about your brand or project goals? If you'd prefer to speak directly with our team, just let me know!`,
+    reply: `Thank you for asking, ${clientName}. At Vigorish Media, we focus on building brands that add tangible value through high-octane visual storytelling, branding systems, social media, and web solutions. Could you tell me a little more about your brand or project goals? If you'd prefer to speak directly with our team, just let me know!`,
     escalate: false,
     reason: ''
   };
@@ -199,13 +199,16 @@ Would you like to book a package or receive a customized formal proposal for you
  */
 export async function generateAIResponse(
   session: ConversationSession,
-  customerMessage: string
+  clientMessage: string
 ): Promise<{ replyText: string; shouldEscalate: boolean; escalationReason: string }> {
+  const activeClientName = session.clientName || session.customerName || 'Client';
+  const activeClientContact = session.clientContact || session.customerContact;
+
   // 1. Check escalation rule first
-  const escCheck = checkEscalationIntent(customerMessage);
+  const escCheck = checkEscalationIntent(clientMessage);
   if (escCheck.shouldEscalate) {
     return {
-      replyText: `I’d like to make sure you get the right assistance, ${session.customerName}. I’ve notified our support team now, and someone will assist you shortly. In the meantime, please feel free to leave any extra details about your request.`,
+      replyText: `I’d like to make sure you get the right assistance, ${activeClientName}. I’ve notified our support team now, and someone will assist you shortly. In the meantime, please feel free to leave any extra details about your request.`,
       shouldEscalate: true,
       escalationReason: escCheck.reason
     };
@@ -219,8 +222,8 @@ export async function generateAIResponse(
       const systemInstruction = `
 You are the official ${CHAT_CONFIG.aiAssistantName} for ${CHAT_CONFIG.brandName} — an elite creative media, digital marketing, 4K cinema videography, and web architecture company headquartered at Chibuluma Road, New Kasama, Lusaka, Zambia.
 
-CUSTOMER NAME: ${session.customerName}
-CUSTOMER CONTACT: ${session.customerContact || 'Not provided'}
+CLIENT NAME: ${activeClientName}
+CLIENT CONTACT: ${activeClientContact || 'Not provided'}
 CURRENT CONVERSATION ID: ${session.conversationId}
 WEBSITE PAGE: ${session.pageUrl}
 
@@ -229,24 +232,27 @@ CORE GUIDELINES:
 2. Ground all answers strictly in this studio knowledge base:
 ${STUDIO_KNOWLEDGE_BASE}
 3. Never hallucinate pricing or deliverable promises that aren't verified in the knowledge base.
-4. If the customer asks for a quote or custom scope, explain our offerings clearly and offer to notify the team to draft a formal proposal.
-5. If the customer asks to speak with a human representative, sounds upset, has an urgent custom contract or complaint, say:
+4. If the client asks for a quote or custom scope, explain our offerings clearly and offer to notify the team to draft a formal proposal.
+5. If the client asks to speak with a human representative, sounds upset, has an urgent custom contract or complaint, say:
 "I’d like to make sure you get the right assistance. I’ve notified our support team now, and someone will assist you shortly."
-CRITICAL: NEVER mention WhatsApp to the customer. WhatsApp is strictly a background internal routing mechanism and must remain invisible to the client.
+CRITICAL: NEVER mention WhatsApp to the client. WhatsApp is strictly a background internal routing mechanism and must remain invisible to the client.
 6. Remember previous messages in this conversation. Do not repeat greeting questions unnecessarily.
 7. Keep responses concise (2 to 4 short paragraphs or bullet points). Avoid overwhelming walls of text.
 `;
 
       // Build conversation history for multi-turn context
-      const contents = session.messages.map(m => ({
-        role: m.sender === 'customer' ? 'user' : 'model',
-        parts: [{ text: `${m.sender === 'customer' ? session.customerName : 'Assistant'}: ${m.text}` }]
-      }));
+      const contents = session.messages.map(m => {
+        const isClient = m.sender === 'client' || m.sender === 'customer';
+        return {
+          role: isClient ? 'user' : 'model',
+          parts: [{ text: `${isClient ? activeClientName : 'Assistant'}: ${m.text}` }]
+        };
+      });
 
       // Add latest message
       contents.push({
         role: 'user',
-        parts: [{ text: `${session.customerName}: ${customerMessage}` }]
+        parts: [{ text: `${activeClientName}: ${clientMessage}` }]
       });
 
       const response = await aiClient.models.generateContent({
@@ -275,7 +281,7 @@ CRITICAL: NEVER mention WhatsApp to the customer. WhatsApp is strictly a backgro
   }
 
   // 3. Fallback to local studio engine
-  const localMatch = localKnowledgeMatch(customerMessage, session.customerName);
+  const localMatch = localKnowledgeMatch(clientMessage, activeClientName);
   return {
     replyText: localMatch.reply,
     shouldEscalate: localMatch.escalate,
@@ -287,17 +293,18 @@ CRITICAL: NEVER mention WhatsApp to the customer. WhatsApp is strictly a backgro
  * Generates an executive summary of the conversation for support alerts
  */
 export async function generateConversationSummary(session: ConversationSession): Promise<string> {
-  const customerMessages = session.messages.filter(m => m.sender === 'customer');
-  if (customerMessages.length === 0) {
-    return 'Customer initiated chat session but did not submit queries.';
+  const activeClientName = session.clientName || session.customerName || 'Client';
+  const clientMessages = session.messages.filter(m => m.sender === 'client' || m.sender === 'customer');
+  if (clientMessages.length === 0) {
+    return 'Client initiated chat session but did not submit queries.';
   }
 
   const aiClient = getGenAIClient();
   if (aiClient && session.messages.length > 2) {
     try {
       const summaryPrompt = `
-Generate a concise 4-line customer support summary for this conversation:
-Customer: ${session.customerName}
+Generate a concise 4-line client support summary for this conversation:
+Client: ${activeClientName}
 Messages:
 ${session.messages.map(m => `${m.sender.toUpperCase()}: ${m.text}`).join('\n')}
 
@@ -321,6 +328,6 @@ FOLLOW-UP NEEDED: (Yes/No)
   }
 
   // Rule-based summary
-  const topics = customerMessages.map(m => m.text).join(' | ');
-  return `Customer ${session.customerName} inquired about: "${topics.slice(0, 160)}...". Session status: ${session.status}. Total customer inquiries: ${customerMessages.length}.`;
+  const topics = clientMessages.map(m => m.text).join(' | ');
+  return `Client ${activeClientName} inquired about: "${topics.slice(0, 160)}...". Session status: ${session.status}. Total client inquiries: ${clientMessages.length}.`;
 }

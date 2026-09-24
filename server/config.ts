@@ -48,6 +48,7 @@ export const CHAT_CONFIG = {
     'real person',
     'agent',
     'representative',
+    'client care',
     'customer care',
     'call me',
     'complaint',

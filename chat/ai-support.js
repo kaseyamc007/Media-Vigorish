@@ -1,5 +1,5 @@
 /**
- * VIGORISH MEDIA — FUTURISTIC AI LIVE CUSTOMER SUPPORT SYSTEM
+ * VIGORISH MEDIA — FUTURISTIC AI LIVE CLIENT SUPPORT SYSTEM
  * Client-Side Controller & UI Widget
  * Apple-inspired minimalism + futuristic AI concierge
  */
@@ -16,6 +16,8 @@
     isOpen: false,
     soundEnabled: true,
     conversationId: null,
+    clientName: null,
+    clientContact: null,
     customerName: null,
     customerContact: null,
     status: 'AI_ACTIVE', // AI_ACTIVE | HUMAN_REQUESTED | HUMAN_ACTIVE | RESOLVED
@@ -95,10 +97,10 @@
       const saved = sessionStorage.getItem('vigorish_ai_session');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed.conversationId && parsed.customerName) {
+        if (parsed.conversationId && (parsed.clientName || parsed.customerName)) {
           state.conversationId = parsed.conversationId;
-          state.customerName = parsed.customerName;
-          state.customerContact = parsed.customerContact || null;
+          state.clientName = (parsed.clientName || parsed.customerName);
+          state.clientContact = (parsed.clientContact || parsed.customerContact) || null;
           state.status = parsed.status || 'AI_ACTIVE';
           state.messages = parsed.messages || [];
         }
@@ -112,8 +114,10 @@
     try {
       sessionStorage.setItem('vigorish_ai_session', JSON.stringify({
         conversationId: state.conversationId,
-        customerName: state.customerName,
-        customerContact: state.customerContact,
+        clientName: state.clientName,
+        clientContact: state.clientContact,
+        customerName: state.clientName,
+        customerContact: state.clientContact,
         status: state.status,
         messages: state.messages
       }));
@@ -151,7 +155,7 @@
     chatWindow.id = 'aiChatWindow';
     chatWindow.className = 'ai-chat-window';
     chatWindow.setAttribute('role', 'dialog');
-    chatWindow.setAttribute('aria-label', 'Live Customer Support Assistant');
+    chatWindow.setAttribute('aria-label', 'Live Client Support Assistant');
     chatWindow.innerHTML = `
       <div class="ai-chat-glow"></div>
       
@@ -209,12 +213,12 @@
         
         <form id="aiNameForm" class="ai-gate-form">
           <div class="ai-input-group">
-            <label class="ai-input-label" for="aiCustomerNameInput">Your Name *</label>
-            <input type="text" id="aiCustomerNameInput" class="ai-text-input" placeholder="e.g., Peter Kalumba Chishala" required autocomplete="name" />
+            <label class="ai-input-label" for="aiClientNameInput">Your Name *</label>
+            <input type="text" id="aiClientNameInput" class="ai-text-input" placeholder="e.g., Peter Kalumba Chishala" required autocomplete="name" />
           </div>
           <div class="ai-input-group">
-            <label class="ai-input-label" for="aiCustomerContactInput">Phone or Email (Optional)</label>
-            <input type="text" id="aiCustomerContactInput" class="ai-text-input" placeholder="For priority follow-ups" autocomplete="email" />
+            <label class="ai-input-label" for="aiClientContactInput">Phone or Email (Optional)</label>
+            <input type="text" id="aiClientContactInput" class="ai-text-input" placeholder="For priority follow-ups" autocomplete="email" />
           </div>
           <button type="submit" id="aiStartChatBtn" class="ai-btn-primary">
             <span>Start Live Chat</span>
@@ -310,7 +314,7 @@
     bindEvents();
     restoreLocalSession();
 
-    if (state.conversationId && state.customerName) {
+    if (state.conversationId && state.clientName) {
       renderActiveSession();
     }
   }
@@ -379,7 +383,7 @@
           setTimeout(() => textarea.focus(), 300);
         } else {
           setTimeout(() => {
-            const nameInput = document.getElementById('aiCustomerNameInput');
+            const nameInput = document.getElementById('aiClientNameInput');
             if (nameInput) nameInput.focus();
           }, 300);
         }
@@ -405,8 +409,8 @@
       if (confirm('Start a fresh conversation? This will clear your current chat.')) {
         sessionStorage.removeItem('vigorish_ai_session');
         state.conversationId = null;
-        state.customerName = null;
-        state.customerContact = null;
+        state.clientName = null;
+        state.clientContact = null;
         state.status = 'AI_ACTIVE';
         state.messages = [];
         document.getElementById('aiWelcomeGate').style.display = 'flex';
@@ -419,8 +423,8 @@
     // Name Gate Submission
     nameForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const nameInput = document.getElementById('aiCustomerNameInput');
-      const contactInput = document.getElementById('aiCustomerContactInput');
+      const nameInput = document.getElementById('aiClientNameInput');
+      const contactInput = document.getElementById('aiClientContactInput');
       const startBtn = document.getElementById('aiStartChatBtn');
 
       const nameVal = nameInput.value.trim();
@@ -432,8 +436,8 @@
 
       if (state.isStaticDeployment) {
         state.conversationId = `CHAT-${Date.now().toString().slice(-6)}`;
-        state.customerName = nameVal;
-        state.customerContact = contactVal || null;
+        state.clientName = nameVal;
+        state.clientContact = contactVal || null;
         state.status = 'AI_ACTIVE';
         state.messages = [{
           id: `MSG-${Date.now()}`,
@@ -460,7 +464,9 @@
           headers: { 'Content-Type': 'application/json' },
           signal: controller.signal,
           body: JSON.stringify({
+            clientName: nameVal,
             customerName: nameVal,
+            clientContact: contactVal,
             customerContact: contactVal,
             pageUrl: window.location.href
           })
@@ -470,8 +476,8 @@
         const data = await res.json().catch(() => null);
         if (res.ok && data && data.success) {
           state.conversationId = data.conversationId;
-          state.customerName = data.customerName;
-          state.customerContact = contactVal || null;
+          state.clientName = (data.clientName || data.customerName);
+          state.clientContact = contactVal || null;
           state.status = data.status || 'AI_ACTIVE';
           state.messages = [data.welcomeMessage];
           persistLocalSession();
@@ -481,8 +487,8 @@
           // Seamless fallback so the user is NEVER blocked on published or static hosting
           state.isStaticDeployment = true;
           state.conversationId = `CHAT-${Date.now().toString().slice(-6)}`;
-          state.customerName = nameVal;
-          state.customerContact = contactVal || null;
+          state.clientName = nameVal;
+          state.clientContact = contactVal || null;
           state.status = 'AI_ACTIVE';
           state.messages = [{
             id: `MSG-${Date.now()}`,
@@ -500,8 +506,8 @@
         state.isStaticDeployment = true;
         // Resilient fallback entry
         state.conversationId = `CHAT-${Date.now().toString().slice(-6)}`;
-        state.customerName = nameVal;
-        state.customerContact = contactVal || null;
+        state.clientName = nameVal;
+        state.clientContact = contactVal || null;
         state.status = 'AI_ACTIVE';
         state.messages = [{
           id: `MSG-${Date.now()}`,
@@ -557,7 +563,7 @@
 
     // Explicit Request Human button
     escalateBtn.addEventListener('click', () => {
-      triggerHumanEscalation('Customer clicked Request Human Representative in chat footer');
+      triggerHumanEscalation('Client clicked Request Human Representative in chat footer');
     });
 
     // Close on Escape
@@ -621,7 +627,7 @@
     if (!container) return;
 
     const row = document.createElement('div');
-    const isUser = msg.sender === 'customer';
+    const isUser = (msg.sender === 'client' || msg.sender === 'customer');
     const isAgent = msg.sender === 'agent';
     const isSystem = msg.sender === 'system';
 
@@ -704,7 +710,7 @@
     }
   }
 
-  // Send Customer Inquiry
+  // Send Client Inquiry
   async function submitUserMessage() {
     const textarea = document.getElementById('aiMessageInput');
     const sendBtn = document.getElementById('aiSendBtn');
@@ -719,8 +725,8 @@
     // Add user message to UI
     const userMsg = {
       id: `USER-${Date.now()}`,
-      sender: 'customer',
-      senderName: state.customerName,
+      sender: 'client',
+      senderName: state.clientName,
       text: text,
       timestamp: new Date().toISOString()
     };
@@ -735,7 +741,7 @@
     if (state.isStaticDeployment) {
       setTimeout(() => {
         hideTypingIndicator();
-        const kb = getStudioKnowledgeResponse(text, state.customerName);
+        const kb = getStudioKnowledgeResponse(text, state.clientName);
         const replyMsg = {
           id: `AI-KB-${Date.now()}`,
           sender: 'ai',
@@ -792,7 +798,7 @@
       } else {
         state.isStaticDeployment = true;
         // Fall back seamlessly to studio knowledge base
-        const kb = getStudioKnowledgeResponse(text, state.customerName);
+        const kb = getStudioKnowledgeResponse(text, state.clientName);
         const fallbackMsg = {
           id: `AI-KB-${Date.now()}`,
           sender: 'ai',
@@ -818,7 +824,7 @@
       state.isStaticDeployment = true;
       console.warn('[AI Support] Dispatch handled via local studio engine:', err);
       // Fall back seamlessly to studio knowledge base
-      const kb = getStudioKnowledgeResponse(text, state.customerName);
+      const kb = getStudioKnowledgeResponse(text, state.clientName);
       const fallbackMsg = {
         id: `AI-KB-${Date.now()}`,
         sender: 'ai',
@@ -876,7 +882,7 @@
     // Digital Marketing / Paid Ads / Performance Advertising
     if (/ad|ads|advertising|digital marketing|paid ads|facebook ads|instagram ads|meta ads|boost|leads|lead generation|k450|campaign/i.test(q)) {
       return {
-        text: `📢 **PAID FACEBOOK & INSTAGRAM ADVERTISING**\n\nPut your brand in front of the right people.\nReach more potential customers, grow your audience and generate meaningful results with targeted Facebook & Instagram advertising from Vigorish Media.\n\nWhether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.\n\n🔥 **Campaigns from just K450**\n\n🎯 **Lead Generation** – Reach potential customers and generate enquiries.\n👍 **Page Likes & Followers** – Build your social media audience.\n▶️ **Video Views** – Get more people watching your brand videos.\n💬 **Post Engagement** – Increase likes, comments, shares and interactions.\n📢 **Brand Awareness** – Put your business in front of more potential customers.\n🔗 **Traffic Campaigns** – Drive people to your website, WhatsApp or other online destinations.\n\nFrom campaign setup and audience targeting to monitoring and optimisation, Vigorish Media helps you get more from your advertising budget.\n\nWould you like to launch a targeted campaign starting from K450 today?`,
+        text: `📢 **PAID FACEBOOK & INSTAGRAM ADVERTISING**\n\nPut your brand in front of the right people.\nReach more potential clients, grow your audience and generate meaningful results with targeted Facebook & Instagram advertising from Vigorish Media.\n\nWhether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.\n\n🔥 **Campaigns from just K450**\n\n🎯 **Lead Generation** – Reach potential clients and generate enquiries.\n👍 **Page Likes & Followers** – Build your social media audience.\n▶️ **Video Views** – Get more people watching your brand videos.\n💬 **Post Engagement** – Increase likes, comments, shares and interactions.\n📢 **Brand Awareness** – Put your business in front of more potential clients.\n🔗 **Traffic Campaigns** – Drive people to your website, WhatsApp or other online destinations.\n\nFrom campaign setup and audience targeting to monitoring and optimisation, Vigorish Media helps you get more from your advertising budget.\n\nWould you like to launch a targeted campaign starting from K450 today?`,
         escalate: false
       };
     }
@@ -908,7 +914,7 @@
     // Websites / Web design
     if (/website|web|hosting|domain|developer|seo|ecommerce|online store/i.test(q)) {
       return {
-        text: `🌐 **WEBSITE DESIGN & MANAGEMENT**\nYour website is often the first impression customers have of your business. Make it count.\n\nWhether you're a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract customers, and grow online:\n\n✅ **Free Domain for 1 Year**\n✅ **Professional Design**\n✅ **Cloud Hosting**\n✅ **Marketing Tools**\n✅ **eCommerce & Online Payments Available**\n✅ **Scalable Solutions for Every Business**\n\n🔹 **Starter Website** – **K6,500/Year**\n🔹 **Professional Website** – **K8,500/Year**\n🔹 **Business Website** – **K10,500/Year**\n🔹 **Enterprise Website** – **K37,000/Year**\n\nChoose the package that fits your goals and let us help you create a website that works as hard as you do!`,
+        text: `🌐 **WEBSITE DESIGN & MANAGEMENT**\nYour website is often the first impression clients have of your business. Make it count.\n\nWhether you're a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract clients, and grow online:\n\n✅ **Free Domain for 1 Year**\n✅ **Professional Design**\n✅ **Cloud Hosting**\n✅ **Marketing Tools**\n✅ **eCommerce & Online Payments Available**\n✅ **Scalable Solutions for Every Business**\n\n🔹 **Starter Website** – **K6,500/Year**\n🔹 **Professional Website** – **K8,500/Year**\n🔹 **Business Website** – **K10,500/Year**\n🔹 **Enterprise Website** – **K37,000/Year**\n\nChoose the package that fits your goals and let us help you create a website that works as hard as you do!`,
         escalate: false
       };
     }
@@ -960,7 +966,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           conversationId: state.conversationId,
-          reason: reason || 'Customer requested human assistance'
+          reason: reason || 'Client requested human assistance'
         })
       });
 
@@ -983,8 +989,8 @@
         id: `ESC-${Date.now()}`,
         sender: 'ai',
         senderName: 'Vigorish AI Concierge',
-        text: `I’ve alerted our support team now, ${state.customerName}. A creative lead is reviewing your inquiry. You can also chat directly with us on WhatsApp at +260 97 989 4567:`,
-        whatsappLink: `https://wa.me/260979894567?text=${encodeURIComponent('Hello Vigorish Media team, my name is ' + state.customerName + ' and I am requesting human assistance.')}`,
+        text: `I’ve alerted our support team now, ${state.clientName}. A creative lead is reviewing your inquiry. You can also chat directly with us on WhatsApp at +260 97 989 4567:`,
+        whatsappLink: `https://wa.me/260979894567?text=${encodeURIComponent('Hello Vigorish Media team, my name is ' + state.clientName + ' and I am requesting human assistance.')}`,
         timestamp: new Date().toISOString(),
         escalationTriggered: true
       };
@@ -1040,7 +1046,7 @@
         playAudioChime('receive');
         setTimeout(() => {
           const textarea = document.getElementById('aiMessageInput');
-          const nameInput = document.getElementById('aiCustomerNameInput');
+          const nameInput = document.getElementById('aiClientNameInput');
           if (textarea && textarea.offsetParent !== null) textarea.focus();
           else if (nameInput && nameInput.offsetParent !== null) nameInput.focus();
         }, 300);

@@ -293,7 +293,7 @@ JS_LOGIC = '''
           'Bi-weekly conversion reports & audience demographic insights'
         ],
         timeline: '72hr Initial Onboarding // Continuous Monthly Retainer',
-        advantage: 'Builds top-of-mind brand authority so customers choose you before competitors.',
+        advantage: 'Builds top-of-mind brand authority so clients choose you before competitors.',
         image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&auto=format&fit=crop&q=80',
         serviceId: 'Social Media Management'
       },
@@ -330,7 +330,7 @@ JS_LOGIC = '''
       {
         title: 'Website Design & Management',
         category: 'DIGITAL ARCHITECTURE',
-        desc: 'Lightning-fast, mobile-responsive web platforms engineered for conversion, prestige, and seamless customer action. Includes 1-year complimentary hosting.',
+        desc: 'Lightning-fast, mobile-responsive web platforms engineered for conversion, prestige, and seamless client action. Includes 1-year complimentary hosting.',
         deliverables: [
           'Custom responsive UI/UX architecture optimized for all mobile screens',
           'Direct WhatsApp lead channeling and interactive quote estimators',
@@ -360,7 +360,7 @@ JS_LOGIC = '''
       {
         title: 'Digital Marketing & Paid Advertising',
         category: 'PERFORMANCE ACQUISITION',
-        desc: 'Precision targeted customer acquisition campaigns across Meta and Google that deliver measurable inquiries, phone calls, and sales pipeline.',
+        desc: 'Precision targeted client acquisition campaigns across Meta and Google that deliver measurable inquiries, phone calls, and sales pipeline.',
         deliverables: [
           'Custom demographic and interest targeting mapped to Zambia and Southern Africa',
           'Iterative A/B split-testing of creative ad copy and visual headlines',

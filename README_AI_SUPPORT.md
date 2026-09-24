@@ -1,21 +1,21 @@
-# Vigorish Media — Futuristic AI Live Customer Support System
+# Vigorish Media — Futuristic AI Live Client Support System
 **Enterprise-Grade AI Concierge with Background WhatsApp Support Routing**
 
-This document outlines the complete architecture, setup, configuration, and API reference for the AI-powered live customer support system built for **Vigorish Media**.
+This document outlines the complete architecture, setup, configuration, and API reference for the AI-powered live client support system built for **Vigorish Media**.
 
 ---
 
 ## 1. System Overview
 
-The system presents website visitors with a **native, futuristic live customer support experience** ("Apple-level simplicity + futuristic AI interface + premium customer service").
+The system presents website visitors with a **native, futuristic live client support experience** ("Apple-level simplicity + futuristic AI interface + premium client service").
 
 ### Key Principles:
 1. **Proprietary Studio Aesthetic**: Fixed floating AI support button in the bottom-right corner with smooth ambient glowing rings, animated AI orb, and status indicator.
-2. **Customer Name-Gate Experience**: Before entering the live conversation, visitors provide their name (and optional phone/email) so every session is personalized and traceable.
+2. **Client Name-Gate Experience**: Before entering the live conversation, visitors provide their name (and optional phone/email) so every session is personalized and traceable.
 3. **Hidden WhatsApp Notification Routing**: 
-   - Customers **NEVER** see mentions of WhatsApp, WhatsApp API, or external redirect links.
+   - Clients **NEVER** see mentions of WhatsApp, WhatsApp API, or external redirect links.
    - All WhatsApp alerts are dispatched **strictly server-side in the background** to the studio support hotline: **`+260979894567`**.
-   - When escalation occurs, the AI tells the customer: *"I’d like to make sure you get the right assistance. I’ve notified our support team now, and someone will assist you shortly."*
+   - When escalation occurs, the AI tells the client: *"I’d like to make sure you get the right assistance. I’ve notified our support team now, and someone will assist you shortly."*
 4. **Official WhatsApp Business Platform / Cloud API**: Built directly on Meta's official Graph API endpoint (`https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages`), not fragile browser automation or scraping.
 
 ---
@@ -78,12 +78,12 @@ API_SECRET="your_optional_secret_token"
 ## 4. API Endpoints Reference
 
 ### `POST /api/chat/start`
-Initializes a new session. Customer name is mandatory.
+Initializes a new session. Client name is mandatory.
 - **Request Body**:
   ```json
   {
-    "customerName": "Kaseya Banda",
-    "customerContact": "kaseya@example.com",
+    "clientName": "Kaseya Banda",
+    "clientContact": "kaseya@example.com",
     "pageUrl": "https://vigorishmedia.com/#/services"
   }
   ```
@@ -92,7 +92,7 @@ Initializes a new session. Customer name is mandatory.
   {
     "success": true,
     "conversationId": "CHAT-20260917-4821",
-    "customerName": "Kaseya Banda",
+    "clientName": "Kaseya Banda",
     "status": "AI_ACTIVE",
     "welcomeMessage": {
       "id": "MSG-1726573821-124",
@@ -104,7 +104,7 @@ Initializes a new session. Customer name is mandatory.
   ```
 
 ### `POST /api/chat/message`
-Submits a customer inquiry. Handles rate limiting, context memory, AI reasoning, escalation triggers, and first-message alert dispatch.
+Submits a client inquiry. Handles rate limiting, context memory, AI reasoning, escalation triggers, and first-message alert dispatch.
 - **Request Body**:
   ```json
   {
@@ -133,7 +133,7 @@ Explicitly requests human assistance. Transitions status to `HUMAN_REQUESTED` an
   ```json
   {
     "conversationId": "CHAT-20260917-4821",
-    "reason": "Customer requested human representative"
+    "reason": "Client requested human representative"
   }
   ```
 
@@ -147,7 +147,7 @@ Polls current status and message stream (supports live agent replies in the UI).
 Inspects all active sessions, messages, and the WhatsApp dispatch audit log.
 
 ### `POST /api/chat/admin/reply`
-Allows a studio representative to inject a reply directly into the customer's live chat session.
+Allows a studio representative to inject a reply directly into the client's live chat session.
 
 ---
 
@@ -159,7 +159,7 @@ Allows a studio representative to inject a reply directly into the customer's li
 🔔 NEW WEBSITE SUPPORT CHAT
 ━━━━━━━━━━━━━━━━━━
 
-👤 Customer:
+👤 Client:
 John Banda
 📞 Contact: +260971234567
 
@@ -174,7 +174,7 @@ Vigorish Media Live Support (https://vigorishmedia.com/#/services)
 
 ━━━━━━━━━━━━━━━━━━
 
-💬 CUSTOMER MESSAGE:
+💬 CLIENT MESSAGE:
 "Do you deliver 4K videography to Ndola?"
 
 ━━━━━━━━━━━━━━━━━━
@@ -195,7 +195,7 @@ AI SUPPORT ACTIVE (Monitoring)
 🚨 HUMAN SUPPORT REQUEST
 ━━━━━━━━━━━━━━━━━━
 
-👤 Customer:
+👤 Client:
 Sarah Banda
 📞 Client Contact: +260979112233
 
@@ -206,7 +206,7 @@ CHAT-20260917-9281
 17 Sep 2026, 20:44 (CAT)
 
 ⚠️ Trigger Reason:
-Customer requested to speak with a human representative
+Client requested to speak with a human representative
 
 ━━━━━━━━━━━━━━━━━━
 
@@ -216,19 +216,19 @@ Customer requested to speak with a human representative
 ━━━━━━━━━━━━━━━━━━
 
 📜 RECENT CONVERSATION TRAIL:
-CUSTOMER (Sarah Banda):
+CLIENT (Sarah Banda):
 "What does a corporate rebranding package include?"
 
 AI (Vigorish AI Concierge):
 "Our corporate identity systems include primary/secondary vector suites..."
 
-CUSTOMER (Sarah Banda):
+CLIENT (Sarah Banda):
 "Can someone from your team give me a custom quotation?"
 
 ━━━━━━━━━━━━━━━━━━
 
 📌 ACTION REQUIRED:
-Customer is waiting in live chat on the website.
+Client is waiting in live chat on the website.
 Please review conversation or reply directly!
 ━━━━━━━━━━━━━━━━━━
 ```
@@ -270,4 +270,4 @@ window.VigorishAI.escalate();
 1. **Credentials Isolation**: `WHATSAPP_ACCESS_TOKEN` and `GEMINI_API_KEY` are strictly held in Node environment memory and never sent across the network to client browsers.
 2. **Rate Limiting**: Integrated token bucket algorithm limits each IP to a configurable maximum of requests per minute (default: 45 req/min).
 3. **Input Sanitization**: Messages and names are trimmed, HTML-escaped, and length-capped to prevent XSS and buffer injection attacks.
-4. **Confidentiality**: Customer sessions are scoped to ephemeral session storage.
+4. **Confidentiality**: Client sessions are scoped to ephemeral session storage.

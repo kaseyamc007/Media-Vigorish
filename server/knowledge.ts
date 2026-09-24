@@ -71,14 +71,14 @@ export const STUDIO_KNOWLEDGE_BASE = `
 - Timeline: 3-5 business days per design batch.
 
 ### Pillar 6: Performance Advertising — Paid Facebook & Instagram Advertising
-- Value Proposition: "Put your brand in front of the right people. Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook & Instagram advertising from Vigorish Media. Whether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective."
+- Value Proposition: "Put your brand in front of the right people. Reach more potential clients, grow your audience and generate meaningful results with targeted Facebook & Instagram advertising from Vigorish Media. Whether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective."
 - Pricing: Starting from just K450 per campaign.
 - Campaign Objectives Handled:
-  🎯 Lead Generation – Reach potential customers and generate enquiries.
+  🎯 Lead Generation – Reach potential clients and generate enquiries.
   👍 Page Likes & Followers – Build your social media audience.
   ▶️ Video Views – Get more people watching your brand videos.
   💬 Post Engagement – Increase likes, comments, shares and interactions.
-  📢 Brand Awareness – Put your business in front of more potential customers.
+  📢 Brand Awareness – Put your business in front of more potential clients.
   🔗 Traffic Campaigns – Drive people to your website, WhatsApp or other online destinations.
 - Management: From campaign setup and audience targeting to monitoring and optimisation, Vigorish Media helps you get more from your advertising budget. Starting from K450 per campaign.
 

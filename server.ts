@@ -74,7 +74,7 @@ async function startServer() {
   });
 
   // 2. POST /api/chat/start
-  // Creates a unique conversation session with customer name
+  // Creates a unique conversation session with client name
   app.post('/api/chat/start', (req: Request, res: Response) => {
     const ip = req.ip || req.socket.remoteAddress || '127.0.0.1';
     const rate = checkRateLimit(ip);
@@ -82,14 +82,16 @@ async function startServer() {
       return res.status(429).json({ error: 'Too many requests. Please wait a moment.' });
     }
 
-    const { customerName, customerContact, pageUrl } = req.body as StartChatRequest;
+    const { clientName, customerName, clientContact, customerContact, pageUrl } = req.body as StartChatRequest;
+    const providedName = clientName || customerName;
+    const providedContact = clientContact || customerContact;
 
-    if (!customerName || !customerName.trim()) {
-      return res.status(400).json({ error: 'Customer name is required before starting chat.' });
+    if (!providedName || !providedName.trim()) {
+      return res.status(400).json({ error: 'Client name is required before starting chat.' });
     }
 
-    const sanitizedName = customerName.trim().slice(0, 50);
-    const session = createConversation(sanitizedName, customerContact, pageUrl || '/');
+    const sanitizedName = providedName.trim().slice(0, 50);
+    const session = createConversation(sanitizedName, providedContact, pageUrl || '/');
 
     // Generate personalized first greeting from AI
     const personalGreeting = `Hi ${sanitizedName} 👋 Welcome! I’m your AI Support Assistant. How can I help you today?`;
@@ -100,7 +102,8 @@ async function startServer() {
     return res.json({
       success: true,
       conversationId: session.conversationId,
-      customerName: session.customerName,
+      clientName: session.clientName || session.customerName,
+      customerName: session.clientName || session.customerName,
       status: session.status,
       welcomeMessage: aiMessage
     });
@@ -127,12 +130,13 @@ async function startServer() {
     }
 
     const trimmedMsg = message.trim().slice(0, 1500);
+    const activeClientName = session.clientName || session.customerName || 'Client';
 
-    // Save customer message
-    const userMsg = addMessage(conversationId, 'customer', trimmedMsg, session.customerName);
+    // Save client message
+    const userMsg = addMessage(conversationId, 'client', trimmedMsg, activeClientName);
 
-    // Count how many customer messages have been sent so far
-    const customerMsgCount = session.messages.filter(m => m.sender === 'customer').length;
+    // Count how many client messages have been sent so far
+    const clientMsgCount = session.messages.filter(m => m.sender === 'client' || m.sender === 'customer').length;
 
     // Generate AI response with context memory
     const aiResult = await generateAIResponse(session, trimmedMsg);
@@ -144,8 +148,8 @@ async function startServer() {
       // Dispatch immediate background escalation alert to WhatsApp (+260979894567)
       const escalationAlertText = formatEscalationAlert(session, aiResult.escalationReason, trimmedMsg);
       dispatchWhatsAppAlert(session, 'ESCALATION', escalationAlertText).catch(e => console.error(e));
-    } else if (customerMsgCount === 1) {
-      // First customer inquiry: Dispatch "New Website Support Chat" notification to support WhatsApp
+    } else if (clientMsgCount === 1) {
+      // First client inquiry: Dispatch "New Website Support Chat" notification to support WhatsApp
       const newChatAlertText = formatNewChatAlert(session, trimmedMsg, aiResult.replyText);
       dispatchWhatsAppAlert(session, 'NEW_CHAT', newChatAlertText).catch(e => console.error(e));
     }
@@ -168,7 +172,7 @@ async function startServer() {
   });
 
   // 4. POST /api/chat/escalate
-  // Explicit escalation requested by customer
+  // Explicit escalation requested by client
   app.post('/api/chat/escalate', async (req: Request, res: Response) => {
     const { conversationId, reason } = req.body as EscalateRequest;
 
@@ -181,17 +185,18 @@ async function startServer() {
       return res.status(404).json({ error: 'Conversation session not found.' });
     }
 
-    const escReason = reason || 'Customer clicked Speak with a Human Representative';
+    const activeClientName = session.clientName || session.customerName || 'Client';
+    const escReason = reason || 'Client clicked Speak with a Human Representative';
     updateConversationStatus(conversationId, 'HUMAN_REQUESTED', escReason);
 
-    const latestCustomerMsg = [...session.messages].reverse().find(m => m.sender === 'customer')?.text || 'Customer requested direct live support.';
+    const latestClientMsg = [...session.messages].reverse().find(m => m.sender === 'client' || m.sender === 'customer')?.text || 'Client requested direct live support.';
 
     // Send WhatsApp notification in background
-    const alertText = formatEscalationAlert(session, escReason, latestCustomerMsg);
+    const alertText = formatEscalationAlert(session, escReason, latestClientMsg);
     await dispatchWhatsAppAlert(session, 'ESCALATION', alertText);
 
     // Add confirmation message in chat
-    const confirmText = `I’ve notified our support team now, ${session.customerName}. A creative lead is reviewing your conversation and someone will assist you shortly.`;
+    const confirmText = `I’ve notified our support team now, ${activeClientName}. A creative lead is reviewing your conversation and someone will assist you shortly.`;
     const aiMsg = addMessage(conversationId, 'ai', confirmText, CHAT_CONFIG.aiAssistantName, true);
 
     return res.json({
@@ -221,7 +226,7 @@ async function startServer() {
     const messageBody = `━━━━━━━━━━━━━━━━━━
 🔔 CONVERSATION TRAIL UPDATE
 ━━━━━━━━━━━━━━━━━━
-👤 Customer: ${session.customerName}
+👤 Client: ${session.clientName || session.customerName}
 🆔 Conversation: ${session.conversationId}
 📌 Status: ${session.status}
 ━━━━━━━━━━━━━━━━━━
@@ -283,7 +288,8 @@ ${recentTrail}
 
     res.json({
       conversationId: session.conversationId,
-      customerName: session.customerName,
+      clientName: session.clientName || session.customerName,
+      customerName: session.clientName || session.customerName,
       status: session.status,
       escalated: session.escalated,
       messages: session.messages,

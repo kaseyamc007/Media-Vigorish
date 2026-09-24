@@ -397,6 +397,7 @@
         const fpsEl = document.getElementById('labsTelemetryFPS');
         const timeEl = document.getElementById('labsTelemetryFrameTime');
         const dotEl = document.getElementById('labsFpsStatusDot');
+        const badgeEl = document.getElementById('labsHudFpsBadge');
 
         if (fpsEl) {
           fpsEl.textContent = avgFps.toFixed(1);
@@ -404,14 +405,19 @@
         if (timeEl) {
           timeEl.textContent = `(${delta.toFixed(1)}ms)`;
         }
-        if (dotEl) {
-          if (avgFps >= 50) {
-            dotEl.className = 'labs-hud-dot';
-          } else if (avgFps >= 28) {
-            dotEl.className = 'labs-hud-dot warning';
-          } else {
-            dotEl.className = 'labs-hud-dot danger';
-          }
+
+        // Color-coded thresholds:
+        // Green for 60FPS (avgFps >= 59.5), Yellow for 30-59FPS (avgFps >= 29.5 && < 59.5), Red for below 30FPS (< 29.5)
+        const roundedFps = Math.round(avgFps);
+        if (roundedFps >= 60) {
+          if (dotEl) dotEl.className = 'labs-hud-dot';
+          if (badgeEl) badgeEl.className = 'labs-hud-item labs-hud-fps-badge fps-green';
+        } else if (roundedFps >= 30) {
+          if (dotEl) dotEl.className = 'labs-hud-dot warning';
+          if (badgeEl) badgeEl.className = 'labs-hud-item labs-hud-fps-badge fps-yellow';
+        } else {
+          if (dotEl) dotEl.className = 'labs-hud-dot danger';
+          if (badgeEl) badgeEl.className = 'labs-hud-item labs-hud-fps-badge fps-red';
         }
       }
     }

@@ -6,6 +6,35 @@
   <title>Vigorish Media — Building Brands That Add Value</title>
   <meta name="description" content="Vigorish Media is a premier creative media, digital marketing, and web architecture studio in Lusaka, Zambia. Inspiring branding, 4K cinema videography, and growth marketing." />
   <meta name="theme-color" content="#000000" />
+  <script>
+    (function() {
+      try {
+        var t = localStorage.getItem('vigorish_theme');
+        if (t === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.classList.add('theme-light');
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', '#fbfbfd');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.classList.add('theme-dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Analytics 4 (GA4) Client Conversion Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VIGORISH01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-VIGORISH01', {
+      send_page_view: false, // Managed manually via SPA navigateTo()
+      cookie_flags: 'SameSite=None;Secure'
+    });
+  </script>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="format-detection" content="telephone=no" />
@@ -644,6 +673,473 @@
       visibility: hidden !important;
       opacity: 0 !important;
       pointer-events: none !important;
+    }
+
+    /* =====================================
+       Apple FAQ Accordion Section Component
+       ===================================== */
+    .apple-faq-section {
+      background: var(--apple-gray-bg);
+      color: var(--apple-text-dark);
+      padding: 96px 20px;
+      position: relative;
+    }
+    .apple-faq-section.dark {
+      background: var(--apple-black);
+      color: #f5f5f7;
+    }
+    .apple-faq-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Apple Segmented Category Filter Bar */
+    .apple-faq-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 0 auto 30px;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 5px;
+      border-radius: var(--apple-pill-radius);
+      flex-wrap: wrap;
+      max-width: fit-content;
+    }
+    .apple-faq-section.dark .apple-faq-filter-bar {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .apple-faq-filter-btn {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--apple-text-secondary);
+      padding: 7px 18px;
+      border-radius: var(--apple-pill-radius);
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      user-select: none;
+    }
+    .apple-faq-section.dark .apple-faq-filter-btn {
+      color: var(--apple-text-muted-light);
+    }
+    .apple-faq-filter-btn:hover {
+      color: var(--apple-text-dark);
+    }
+    .apple-faq-section.dark .apple-faq-filter-btn:hover {
+      color: #ffffff;
+    }
+    .apple-faq-filter-btn.active {
+      background: #ffffff;
+      color: var(--apple-text-dark);
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .apple-faq-section.dark .apple-faq-filter-btn.active {
+      background: var(--apple-blue);
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 113, 227, 0.4);
+    }
+
+    /* Live Search & Filter Input */
+    .apple-faq-search-wrapper {
+      position: relative;
+      max-width: 620px;
+      margin: 0 auto 34px;
+      display: flex;
+      align-items: center;
+    }
+    .apple-faq-search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--apple-text-secondary);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease;
+      z-index: 2;
+    }
+    .apple-faq-search-wrapper:focus-within .apple-faq-search-icon {
+      color: var(--apple-blue);
+    }
+    .apple-faq-search-input {
+      width: 100%;
+      padding: 13.5px 78px 13.5px 46px;
+      font-size: 14.5px;
+      font-family: inherit;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      color: var(--apple-text-dark);
+      outline: none;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+    .apple-faq-section.dark .apple-faq-search-input {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #f5f5f7;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+    .apple-faq-search-input:focus {
+      border-color: var(--apple-blue);
+      box-shadow: 0 0 0 3.5px rgba(0, 113, 227, 0.18);
+      background: #ffffff;
+    }
+    .apple-faq-section.dark .apple-faq-search-input:focus {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--apple-blue);
+      box-shadow: 0 0 0 3.5px rgba(0, 113, 227, 0.35);
+    }
+    .apple-faq-search-input::placeholder {
+      color: var(--apple-text-secondary);
+      opacity: 0.8;
+      font-size: 14px;
+    }
+    .apple-faq-search-actions {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      z-index: 2;
+    }
+    .apple-faq-search-count {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--apple-blue);
+      background: rgba(0, 113, 227, 0.1);
+      padding: 3px 8px;
+      border-radius: 12px;
+      display: none;
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.01em;
+    }
+    .apple-faq-section.dark .apple-faq-search-count {
+      background: rgba(0, 113, 227, 0.25);
+      color: #64b5f6;
+    }
+    .apple-faq-search-clear {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.07);
+      border: none;
+      color: var(--apple-text-secondary);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      outline: none;
+    }
+    .apple-faq-section.dark .apple-faq-search-clear {
+      background: rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .apple-faq-search-clear:hover {
+      background: rgba(0, 0, 0, 0.15);
+      color: var(--apple-text-dark);
+      transform: scale(1.08);
+    }
+    .apple-faq-section.dark .apple-faq-search-clear:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      transform: scale(1.08);
+    }
+    .apple-faq-search-clear:active {
+      transform: scale(0.92);
+    }
+
+    /* Accordion Stack */
+    .apple-faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .apple-faq-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+      transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.025);
+    }
+    .apple-faq-section.dark .apple-faq-card {
+      background: var(--apple-dark);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+    }
+    .apple-faq-card:hover {
+      border-color: rgba(0, 113, 227, 0.32);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+    .apple-faq-section.dark .apple-faq-card:hover {
+      border-color: rgba(41, 151, 255, 0.35);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+    }
+    .apple-faq-card.open {
+      border-color: rgba(0, 113, 227, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 113, 227, 0.07);
+    }
+    .apple-faq-section.dark .apple-faq-card.open {
+      border-color: rgba(41, 151, 255, 0.45);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Accordion Trigger Button */
+    .apple-faq-trigger {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      text-align: left;
+      cursor: pointer;
+      user-select: none;
+      font-family: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .apple-faq-trigger-content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+      min-width: 0;
+    }
+    .apple-faq-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--apple-blue);
+      text-transform: uppercase;
+      font-variant-numeric: tabular-nums;
+    }
+    .apple-faq-question {
+      font-size: 17.5px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.35;
+      color: var(--apple-text-dark);
+      margin: 0;
+      transition: color 0.2s ease;
+    }
+    .apple-faq-section.dark .apple-faq-question {
+      color: #f5f5f7;
+    }
+    .apple-faq-card.open .apple-faq-question {
+      color: var(--apple-blue);
+    }
+    .apple-faq-section.dark .apple-faq-card.open .apple-faq-question {
+      color: #2997ff;
+    }
+
+    /* Apple Toggle Circle with Plus/Minus Rotation */
+    .apple-faq-icon-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--apple-text-dark);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-faq-section.dark .apple-faq-icon-circle {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f5f5f7;
+    }
+    .apple-faq-card:hover .apple-faq-icon-circle {
+      background: rgba(0, 113, 227, 0.12);
+      color: var(--apple-blue);
+    }
+    .apple-faq-card.open .apple-faq-icon-circle {
+      background: var(--apple-blue);
+      color: #ffffff;
+      transform: rotate(45deg);
+    }
+
+    /* Smooth CSS Grid Expandable Drawer */
+    .apple-faq-drawer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-faq-card.open .apple-faq-drawer {
+      grid-template-rows: 1fr;
+    }
+    .apple-faq-inner {
+      overflow: hidden;
+    }
+    .apple-faq-body {
+      padding: 0 26px 26px 26px;
+      font-size: 15px;
+      line-height: 1.68;
+      color: var(--apple-text-secondary);
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      padding-top: 18px;
+    }
+    .apple-faq-section.dark .apple-faq-body {
+      color: var(--apple-text-muted-light);
+      border-top-color: rgba(255, 255, 255, 0.07);
+    }
+    .apple-faq-body p {
+      margin-bottom: 12px;
+    }
+    .apple-faq-body p:last-child {
+      margin-bottom: 0;
+    }
+    .apple-faq-bullets {
+      margin: 12px 0;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .apple-faq-bullets li {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 14.5px;
+    }
+    .apple-faq-bullets li::before {
+      content: "—";
+      color: var(--apple-blue);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .apple-faq-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Empty Search State */
+    .apple-faq-empty {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px dashed rgba(0, 0, 0, 0.12);
+    }
+    .apple-faq-section.dark .apple-faq-empty {
+      background: var(--apple-dark);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Apple Still-Have-Questions Support Box */
+    .apple-faq-support-box {
+      margin-top: 48px;
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 40px 32px;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+    .apple-faq-section.dark .apple-faq-support-box {
+      background: var(--apple-dark);
+      border-color: rgba(255, 255, 255, 0.08);
+      box-shadow: none;
+    }
+    .apple-faq-support-eyebrow {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--apple-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+    .apple-faq-support-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      color: var(--apple-text-dark);
+    }
+    .apple-faq-section.dark .apple-faq-support-title {
+      color: #ffffff;
+    }
+    .apple-faq-support-desc {
+      font-size: 15px;
+      color: var(--apple-text-secondary);
+      max-width: 580px;
+      margin: 0 auto 24px;
+      line-height: 1.55;
+    }
+    .apple-faq-section.dark .apple-faq-support-desc {
+      color: var(--apple-text-muted-light);
+    }
+    .apple-faq-support-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .apple-faq-section {
+        padding: 64px 16px;
+      }
+      .apple-faq-trigger {
+        padding: 18px 18px;
+        gap: 12px;
+      }
+      .apple-faq-question {
+        font-size: 16px;
+      }
+      .apple-faq-body {
+        padding: 0 18px 20px 18px;
+        font-size: 14.5px;
+      }
+      .apple-faq-filter-bar {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .apple-faq-filter-btn {
+        padding: 6px 14px;
+        font-size: 12px;
+      }
+      .apple-faq-search-wrapper {
+        margin: 0 auto 24px;
+      }
+      .apple-faq-search-input {
+        font-size: 13.5px;
+        padding: 12px 70px 12px 42px;
+      }
     }
 
     /* Apple Studio Configurator (Pricing) */
@@ -1368,20 +1864,25 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
-      padding: 9px 22px;
-      background: rgba(10, 11, 16, 0.96);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 14px;
+      padding: 14px 28px;
+      background: rgba(5, 6, 10, 0.98);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 11px;
+      font-size: 11.5px;
       letter-spacing: 0.04em;
-      color: #8e8e93;
+      color: #a1a1a8;
       user-select: none;
+      position: relative;
+      z-index: 10;
     }
     .labs-hud-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
     }
     .labs-hud-item {
@@ -1392,31 +1893,32 @@
     .labs-hud-key {
       font-size: 10px;
       font-weight: 600;
-      color: #636366;
+      color: #8e8e93;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
     .labs-hud-num {
-      font-weight: 600;
-      color: #f5f5f7;
+      font-weight: 700;
+      color: #ffffff;
       font-variant-numeric: tabular-nums;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
     }
     .labs-hud-sub {
       font-size: 10px;
-      color: #636366;
+      color: #8e8e93;
       font-variant-numeric: tabular-nums;
     }
     .labs-hud-status {
       display: inline-flex;
       align-items: center;
-      padding: 2px 8px;
-      border-radius: 4px;
+      padding: 3px 10px;
+      border-radius: 5px;
       font-size: 10.5px;
       font-weight: 600;
       letter-spacing: 0.04em;
       background: rgba(48, 209, 88, 0.12);
       color: #30d158;
-      border: 1px solid rgba(48, 209, 88, 0.3);
+      border: 1px solid rgba(48, 209, 88, 0.35);
       transition: all 0.18s ease;
     }
     .labs-hud-status.active {
@@ -1439,31 +1941,74 @@
     .labs-hud-fps-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 10.5px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      background: rgba(14, 16, 24, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       font-variant-numeric: tabular-nums;
-      transition: all 0.18s ease;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .labs-hud-fps-badge.fps-green {
+      background: rgba(12, 34, 20, 0.96);
+      border-color: rgba(48, 209, 88, 0.6);
+      color: #3bf06e;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.65), 0 0 14px rgba(48, 209, 88, 0.35);
+    }
+    .labs-hud-fps-badge.fps-green .labs-hud-num {
+      color: #3bf06e;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(48, 209, 88, 0.6);
+    }
+    .labs-hud-fps-badge.fps-green .labs-hud-key {
+      color: rgba(59, 240, 110, 0.9);
+      font-weight: 700;
+    }
+    .labs-hud-fps-badge.fps-yellow {
+      background: rgba(255, 214, 10, 0.12);
+      border-color: rgba(255, 214, 10, 0.45);
+      color: #ffd60a;
+      box-shadow: 0 0 12px rgba(255, 214, 10, 0.2);
+    }
+    .labs-hud-fps-badge.fps-yellow .labs-hud-num {
+      color: #ffd60a;
+      text-shadow: 0 0 10px rgba(255, 214, 10, 0.5);
+    }
+    .labs-hud-fps-badge.fps-yellow .labs-hud-key {
+      color: rgba(255, 214, 10, 0.85);
+    }
+    .labs-hud-fps-badge.fps-red {
+      background: rgba(255, 69, 58, 0.15);
+      border-color: rgba(255, 69, 58, 0.5);
+      color: #ff453a;
+      box-shadow: 0 0 12px rgba(255, 69, 58, 0.25);
+    }
+    .labs-hud-fps-badge.fps-red .labs-hud-num {
+      color: #ff453a;
+      text-shadow: 0 0 10px rgba(255, 69, 58, 0.55);
+    }
+    .labs-hud-fps-badge.fps-red .labs-hud-key {
+      color: rgba(255, 69, 58, 0.85);
     }
     .labs-hud-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: #30d158;
       display: inline-block;
-      box-shadow: 0 0 6px #30d158;
+      box-shadow: 0 0 8px #30d158;
       transition: background 0.2s ease, box-shadow 0.2s ease;
+      flex-shrink: 0;
     }
     .labs-hud-dot.warning {
       background: #ffd60a;
-      box-shadow: 0 0 6px #ffd60a;
+      box-shadow: 0 0 8px #ffd60a;
     }
     .labs-hud-dot.danger {
       background: #ff453a;
-      box-shadow: 0 0 6px #ff453a;
+      box-shadow: 0 0 8px #ff453a;
     }
     .labs-hud-divider {
       width: 1px;
@@ -2389,11 +2934,496 @@
       flex-wrap: wrap;
     }
 
+    /* =========================================================
+       GLOBAL THEME SYSTEM: LIGHT MODE & TOGGLE STYLES
+       ========================================================= */
+
+    /* Global Theme Toggle Button in Header */
+    .apple-theme-toggle-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--apple-pill-radius);
+      color: #f5f5f7;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      padding: 5px 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .apple-theme-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.32);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    }
+    .apple-theme-toggle-btn:active {
+      transform: translateY(0) scale(0.97);
+    }
+    .apple-theme-toggle-btn .theme-icon-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      position: relative;
+    }
+    .apple-theme-toggle-btn svg {
+      display: block;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+    }
+    /* Dark Theme Default: Show Sun icon, hide Moon icon */
+    .apple-theme-toggle-btn .theme-icon-sun {
+      display: block;
+      color: #ffd60a;
+    }
+    .apple-theme-toggle-btn .theme-icon-moon {
+      display: none;
+      color: #0071e3;
+    }
+
+    /* Light Theme Button State */
+    html[data-theme="light"] .apple-theme-toggle-btn,
+    html.theme-light .apple-theme-toggle-btn {
+      background: rgba(0, 0, 0, 0.05);
+      border-color: rgba(0, 0, 0, 0.12);
+      color: #1d1d1f;
+    }
+    html[data-theme="light"] .apple-theme-toggle-btn:hover,
+    html.theme-light .apple-theme-toggle-btn:hover {
+      background: rgba(0, 0, 0, 0.09);
+      border-color: rgba(0, 0, 0, 0.22);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+    html[data-theme="light"] .apple-theme-toggle-btn .theme-icon-sun,
+    html.theme-light .apple-theme-toggle-btn .theme-icon-sun {
+      display: none;
+    }
+    html[data-theme="light"] .apple-theme-toggle-btn .theme-icon-moon,
+    html.theme-light .apple-theme-toggle-btn .theme-icon-moon {
+      display: block;
+      color: #0071e3;
+    }
+
+    /* Mobile Drawer Appearance Bar */
+    .mobile-drawer-theme-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      margin-bottom: 20px;
+    }
+    html[data-theme="light"] .mobile-drawer-theme-bar,
+    html.theme-light .mobile-drawer-theme-bar {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    .mobile-drawer-theme-label {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #f5f5f7;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    html[data-theme="light"] .mobile-drawer-theme-label,
+    html.theme-light .mobile-drawer-theme-label {
+      color: #1d1d1f;
+    }
+    .mobile-drawer-theme-label .theme-indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffd60a;
+      box-shadow: 0 0 6px rgba(255, 214, 10, 0.5);
+    }
+    html[data-theme="light"] .mobile-drawer-theme-label .theme-indicator-dot,
+    html.theme-light .mobile-drawer-theme-label .theme-indicator-dot {
+      background: #0071e3;
+      box-shadow: 0 0 6px rgba(0, 113, 227, 0.5);
+    }
+
+    /* -------------------------------------------------------------
+       LIGHT MODE GLOBAL THEME OVERRIDES
+       ------------------------------------------------------------- */
+    html[data-theme="light"],
+    html.theme-light {
+      background-color: #fbfbfd !important;
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] body,
+    html.theme-light body {
+      background-color: #fbfbfd !important;
+      color: #1d1d1f !important;
+    }
+
+    /* Header Nav Light */
+    html[data-theme="light"] .apple-nav,
+    html.theme-light .apple-nav {
+      background: rgba(255, 255, 255, 0.85) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    }
+    html[data-theme="light"] .apple-logo-link,
+    html.theme-light .apple-logo-link {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .brand-nav-title,
+    html.theme-light .brand-nav-title {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-nav-link,
+    html.theme-light .apple-nav-link {
+      color: #515154 !important;
+    }
+    html[data-theme="light"] .apple-nav-link:hover,
+    html[data-theme="light"] .apple-nav-link.active,
+    html.theme-light .apple-nav-link:hover,
+    html.theme-light .apple-nav-link.active {
+      color: #000000 !important;
+    }
+    html[data-theme="light"] .apple-mobile-menu-btn span,
+    html.theme-light .apple-mobile-menu-btn span {
+      background: #1d1d1f !important;
+    }
+
+    /* Mobile Drawer Light */
+    html[data-theme="light"] .apple-mobile-drawer,
+    html.theme-light .apple-mobile-drawer {
+      background: rgba(255, 255, 255, 0.97) !important;
+      border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.08) !important;
+    }
+    html[data-theme="light"] .apple-mobile-drawer .brand-nav-title,
+    html.theme-light .apple-mobile-drawer .brand-nav-title {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-mobile-drawer button[onclick*="closeMobileMenu"],
+    html.theme-light .apple-mobile-drawer button[onclick*="closeMobileMenu"] {
+      background: rgba(0, 0, 0, 0.06) !important;
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-mobile-nav-link,
+    html.theme-light .apple-mobile-nav-link {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-mobile-nav-link:hover,
+    html.theme-light .apple-mobile-nav-link:hover {
+      background: rgba(0, 0, 0, 0.04) !important;
+      color: var(--apple-blue) !important;
+    }
+
+    /* Particle Canvas Light Inversion */
+    html[data-theme="light"] .vm-particle-canvas,
+    html.theme-light .vm-particle-canvas {
+      filter: invert(0.92) hue-rotate(180deg);
+      opacity: 0.38;
+    }
+
+    /* Hero Section Light */
+    html[data-theme="light"] .apple-hero,
+    html.theme-light .apple-hero {
+      background: radial-gradient(circle at 50% 25%, rgba(0, 113, 227, 0.09) 0%, rgba(251, 251, 253, 0) 70%), rgba(251, 251, 253, 0.95) !important;
+    }
+    html[data-theme="light"] .apple-hero-headline,
+    html[data-theme="light"] .studio-display-title,
+    html.theme-light .apple-hero-headline,
+    html.theme-light .studio-display-title {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-hero-subheadline,
+    html[data-theme="light"] .apple-hero-desc,
+    html.theme-light .apple-hero-subheadline,
+    html.theme-light .apple-hero-desc {
+      color: #515154 !important;
+    }
+    html[data-theme="light"] .apple-hero-badge,
+    html.theme-light .apple-hero-badge {
+      background: rgba(0, 0, 0, 0.04) !important;
+      border-color: rgba(0, 0, 0, 0.09) !important;
+      color: #1d1d1f !important;
+    }
+
+    /* Metrics Banner Light */
+    html[data-theme="light"] .apple-metrics-banner,
+    html.theme-light .apple-metrics-banner {
+      background: rgba(245, 245, 247, 0.95) !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    html[data-theme="light"] .apple-metric-value,
+    html.theme-light .apple-metric-value {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-metric-label,
+    html.theme-light .apple-metric-label {
+      color: #6e6e73 !important;
+    }
+
+    /* Dark Sections Adaptation in Light Mode */
+    html[data-theme="light"] .apple-section-dark,
+    html.theme-light .apple-section-dark {
+      background: #fbfbfd !important;
+      color: #1d1d1f !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    html[data-theme="light"] .apple-section-dark .apple-section-title,
+    html.theme-light .apple-section-dark .apple-section-title {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-section-dark .apple-section-desc,
+    html.theme-light .apple-section-dark .apple-section-desc {
+      color: #6e6e73 !important;
+    }
+    html[data-theme="light"] .apple-section-dark p,
+    html.theme-light .apple-section-dark p {
+      color: #515154;
+    }
+
+    /* Cards with hardcoded dark backgrounds adapt cleanly */
+    html[data-theme="light"] div[style*="background: #161617"],
+    html.theme-light div[style*="background: #161617"],
+    html[data-theme="light"] div[style*="background:#161617"],
+    html.theme-light div[style*="background:#161617"] {
+      background: #ffffff !important;
+      border-color: rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    }
+    html[data-theme="light"] div[style*="background: #161617"] h3,
+    html[data-theme="light"] div[style*="background: #161617"] h4,
+    html.theme-light div[style*="background: #161617"] h3,
+    html.theme-light div[style*="background: #161617"] h4 {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] div[style*="background: #161617"] p,
+    html.theme-light div[style*="background: #161617"] p {
+      color: #515154 !important;
+    }
+
+    /* Social Responsibility & Philanthropy Light */
+    html[data-theme="light"] .apple-values-hero h2,
+    html.theme-light .apple-values-hero h2 {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-values-hero p[style*="color: #f5f5f7"],
+    html.theme-light .apple-values-hero p[style*="color: #f5f5f7"] {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-values-hero p[style*="color: #a1a1a6"],
+    html.theme-light .apple-values-hero p[style*="color: #a1a1a6"] {
+      color: #6e6e73 !important;
+    }
+
+    /* Interactive Service Console Light */
+    html[data-theme="light"] .service-console-container,
+    html.theme-light .service-console-container {
+      background: #ffffff !important;
+      border-color: rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    }
+    html[data-theme="light"] .service-tabs-nav,
+    html.theme-light .service-tabs-nav {
+      border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+    }
+    html[data-theme="light"] .service-tab-btn:not(.active),
+    html.theme-light .service-tab-btn:not(.active) {
+      background: rgba(0, 0, 0, 0.04) !important;
+      border-color: rgba(0, 0, 0, 0.08) !important;
+      color: #515154 !important;
+    }
+    html[data-theme="light"] .service-console-title,
+    html.theme-light .service-console-title {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .service-console-desc,
+    html.theme-light .service-console-desc {
+      color: #515154 !important;
+    }
+    html[data-theme="light"] .service-deliverable-item,
+    html.theme-light .service-deliverable-item {
+      color: #1d1d1f !important;
+    }
+
+    /* Portfolio Filter Pills Light */
+    html[data-theme="light"] .portfolio-filter-pill:not(.active),
+    html.theme-light .portfolio-filter-pill:not(.active) {
+      background: rgba(0, 0, 0, 0.04) !important;
+      color: #6e6e73 !important;
+      border-color: rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* Labs Light Mode Styles */
+    html[data-theme="light"] .labs-hero-title,
+    html.theme-light .labs-hero-title {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .labs-hero-desc,
+    html.theme-light .labs-hero-desc {
+      color: #515154 !important;
+    }
+    html[data-theme="light"] .labs-pill-link,
+    html.theme-light .labs-pill-link {
+      background: rgba(0, 0, 0, 0.04) !important;
+      border-color: rgba(0, 0, 0, 0.09) !important;
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .labs-pill-link:hover,
+    html.theme-light .labs-pill-link:hover {
+      background: rgba(41, 151, 255, 0.12) !important;
+      color: #0071e3 !important;
+    }
+    html[data-theme="light"] .labs-stage-frame,
+    html.theme-light .labs-stage-frame {
+      border-color: rgba(0, 0, 0, 0.12) !important;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12) !important;
+    }
+
+    /* Secondary Buttons in Light Mode */
+    html[data-theme="light"] .btn-apple-secondary,
+    html.theme-light .btn-apple-secondary {
+      background: rgba(0, 0, 0, 0.05) !important;
+      border-color: rgba(0, 0, 0, 0.12) !important;
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .btn-apple-secondary:hover,
+    html.theme-light .btn-apple-secondary:hover {
+      background: rgba(0, 0, 0, 0.09) !important;
+      border-color: rgba(0, 0, 0, 0.2) !important;
+      color: #000000 !important;
+    }
+
+    /* Footer in Light Mode */
+    html[data-theme="light"] .apple-footer,
+    html.theme-light .apple-footer {
+      background: #f5f5f7 !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+      color: #6e6e73 !important;
+    }
+    html[data-theme="light"] .apple-footer h5,
+    html.theme-light .apple-footer h5 {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-footer a,
+    html.theme-light .apple-footer a {
+      color: #6e6e73 !important;
+    }
+    html[data-theme="light"] .apple-footer a:hover,
+    html.theme-light .apple-footer a:hover {
+      color: #0071e3 !important;
+    }
+    html[data-theme="light"] .brand-name-bold,
+    html.theme-light .brand-name-bold {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-footer-legal,
+    html.theme-light .apple-footer-legal {
+      color: #86868b !important;
+      border-top-color: rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* Final CTA in Light Mode */
+    html[data-theme="light"] .apple-final-cta-section,
+    html.theme-light .apple-final-cta-section {
+      background: #f5f5f7 !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    html[data-theme="light"] .apple-final-cta-headline,
+    html.theme-light .apple-final-cta-headline {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .apple-final-cta-desc,
+    html.theme-light .apple-final-cta-desc {
+      color: #6e6e73 !important;
+    }
+
+    /* Live Clock Pill Light */
+    html[data-theme="light"] .vm-clock-pill,
+    html.theme-light .vm-clock-pill {
+      background: rgba(255, 255, 255, 0.92) !important;
+      border-color: rgba(0, 0, 0, 0.12) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    }
+    html[data-theme="light"] .vm-clock-time,
+    html.theme-light .vm-clock-time {
+      color: #1d1d1f !important;
+    }
+    html[data-theme="light"] .vm-clock-location,
+    html.theme-light .vm-clock-location {
+      color: #6e6e73 !important;
+    }
+
+    /* Labs Canvas HUD in Light Mode */
+    html[data-theme="light"] .labs-canvas-hud,
+    html.theme-light .labs-canvas-hud {
+      background: rgba(245, 245, 248, 0.98);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      color: #3a3a3c;
+    }
+    html[data-theme="light"] .labs-hud-key,
+    html.theme-light .labs-hud-key {
+      color: #6e6e73;
+    }
+    html[data-theme="light"] .labs-hud-num,
+    html.theme-light .labs-hud-num {
+      color: #1d1d1f;
+      text-shadow: none;
+    }
+    html[data-theme="light"] .labs-hud-fps-badge,
+    html.theme-light .labs-hud-fps-badge {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    html[data-theme="light"] .labs-hud-fps-badge.fps-green,
+    html.theme-light .labs-hud-fps-badge.fps-green {
+      background: rgba(235, 253, 240, 0.98);
+      border-color: rgba(48, 209, 88, 0.5);
+      color: #1b873a;
+      box-shadow: 0 2px 8px rgba(48, 209, 88, 0.18);
+    }
+    html[data-theme="light"] .labs-hud-fps-badge.fps-green .labs-hud-num,
+    html.theme-light .labs-hud-fps-badge.fps-green .labs-hud-num {
+      color: #1b873a;
+      text-shadow: none;
+    }
+    html[data-theme="light"] .labs-hud-fps-badge.fps-green .labs-hud-key,
+    html.theme-light .labs-hud-fps-badge.fps-green .labs-hud-key {
+      color: #1b873a;
+    }
+
+    /* Responsive adjustments for theme toggle button and nav */
+    @media (max-width: 680px) {
+      .apple-theme-toggle-btn {
+        padding: 5px 8px;
+        gap: 0;
+      }
+      .apple-theme-toggle-btn .theme-toggle-text {
+        display: none;
+      }
+    }
     @media (max-width: 900px) {
       .apple-mobile-menu-btn { display: flex; }
       .service-console-content { grid-template-columns: 1fr; }
       .playground-grid { grid-template-columns: 1fr; }
       .apple-final-cta-section { padding: 80px 20px; }
+      .apple-nav-actions {
+        order: 2;
+        gap: 8px;
+      }
+      .apple-mobile-menu-btn {
+        order: 3;
+      }
     }
 
   </style>
@@ -2429,26 +3459,49 @@
       </a>
 
       <ul class="apple-nav-links">
-        <li><a class="apple-nav-link" data-route="/" onclick="navigateTo('/'); return false;">Overview</a></li>
-        <li><a class="apple-nav-link" data-route="/services" onclick="navigateTo('/services'); return false;">Services</a></li>
-        <li><a class="apple-nav-link" data-route="/portfolio" onclick="navigateTo('/portfolio'); return false;">Behind the Brand</a></li>
-        <li><a class="apple-nav-link" data-route="/labs" onclick="navigateTo('/labs'); return false;">Vigorish Labs</a></li>
-        <li><a class="apple-nav-link" data-route="/pricing" onclick="navigateTo('/pricing'); return false;">Service Packages</a></li>
-        <li><a class="apple-nav-link" data-route="/about" onclick="navigateTo('/about'); return false;">About</a></li>
-        <li><a class="apple-nav-link" data-route="/insights" onclick="navigateTo('/insights'); return false;">Newsroom</a></li>
-        <li><a class="apple-nav-link" data-route="/contact" onclick="navigateTo('/contact'); return false;">Contact</a></li>
+        <li><a class="apple-nav-link" data-route="/" onclick="trackHeaderNavClick('Overview', '/', 'header_nav'); navigateTo('/'); return false;">Overview</a></li>
+        <li><a class="apple-nav-link" data-route="/services" onclick="trackHeaderNavClick('Services', '/services', 'header_nav'); navigateTo('/services'); return false;">Services</a></li>
+        <li><a class="apple-nav-link" data-route="/portfolio" onclick="trackHeaderNavClick('Behind the Brand', '/portfolio', 'header_nav'); navigateTo('/portfolio'); return false;">Behind the Brand</a></li>
+        <li><a class="apple-nav-link" data-route="/labs" onclick="trackHeaderNavClick('Vigorish Labs', '/labs', 'header_nav'); navigateTo('/labs'); return false;">Vigorish Labs</a></li>
+        <li><a class="apple-nav-link" data-route="/pricing" onclick="trackHeaderNavClick('Service Packages', '/pricing', 'header_nav'); navigateTo('/pricing'); return false;">Service Packages</a></li>
+        <li><a class="apple-nav-link" data-route="/faq" onclick="trackHeaderNavClick('Client FAQs', '/faq', 'header_nav'); navigateTo('/faq'); return false;">Client FAQs</a></li>
+        <li><a class="apple-nav-link" data-route="/about" onclick="trackHeaderNavClick('About', '/about', 'header_nav'); navigateTo('/about'); return false;">About</a></li>
+        <li><a class="apple-nav-link" data-route="/insights" onclick="trackHeaderNavClick('Newsroom', '/insights', 'header_nav'); navigateTo('/insights'); return false;">Newsroom</a></li>
+        <li><a class="apple-nav-link" data-route="/contact" onclick="trackHeaderNavClick('Contact', '/contact', 'header_nav'); navigateTo('/contact'); return false;">Contact</a></li>
       </ul>
 
-      <button id="appleMobileMenuBtn" class="apple-mobile-menu-btn" aria-label="Toggle Navigation" onclick="toggleMobileMenu()">
-          <span></span><span></span>
+      <div class="apple-nav-actions">
+        <!-- Global Theme Toggle Button (Dark / Light) -->
+        <button type="button" id="appleThemeToggleBtn" class="apple-theme-toggle-btn" onclick="toggleGlobalTheme()" aria-label="Switch to light mode" title="Switch Theme (Dark / Light)">
+          <span class="theme-icon-container">
+            <svg class="theme-icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <svg class="theme-icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+          </span>
+          <span class="theme-toggle-text">Light</span>
         </button>
-        <div class="apple-nav-actions">
-        <a href="#/donate" id="navDonateBtn" class="apple-donate-nav-btn" onclick="navigateTo('/donate'); return false;" title="Donate to Tuli Bantu Baluse" aria-label="Donate to Tuli Bantu Baluse">
+
+        <a href="#/donate" id="navDonateBtn" class="apple-donate-nav-btn" onclick="trackHeaderNavClick('Donate', '/donate', 'header_nav'); navigateTo('/donate'); return false;" title="Donate to Tuli Bantu Baluse" aria-label="Donate to Tuli Bantu Baluse">
           <span class="donate-heart" aria-hidden="true">❤️</span>
           <span>DONATE</span>
         </a>
-        <a href="#/contact" class="btn-apple-pill" onclick="navigateTo('/contact'); return false;">Start a Project</a>
+        <a href="#/contact" id="navStartProjectBtn" class="btn-apple-pill" onclick="trackStartProjectClick('header_nav'); navigateTo('/contact'); return false;" data-analytics-cta="header_nav">Start a Project</a>
       </div>
+
+      <button id="appleMobileMenuBtn" class="apple-mobile-menu-btn" aria-label="Toggle Navigation" onclick="toggleMobileMenu()">
+        <span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -2457,28 +3510,56 @@
 
   <!-- Mobile Navigation Drawer -->
   <div id="mobileDrawer" class="apple-mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);">
       <div style="display: flex; align-items: center; gap: 10px;">
         <img src="src/logo/logo.png" alt="Vigorish Media" style="height: 26px; width: auto; object-fit: contain;" onerror="this.src='public/logo.png';" />
         <strong class="brand-nav-title" style="font-size: 16px; color: #fff;">Vigorish Media</strong>
       </div>
       <button onclick="closeMobileMenu()" aria-label="Close navigation" style="background: rgba(255,255,255,0.12); border: none; color: #fff; width: 38px; height: 38px; border-radius: 50%; font-size: 16px; font-weight: bold; display: flex; align-items: center; justify-content: center; cursor: pointer; -webkit-tap-highlight-color: transparent;">✕</button>
     </div>
+
+    <!-- Mobile Theme Appearance Toggle Bar -->
+    <div class="mobile-drawer-theme-bar">
+      <span class="mobile-drawer-theme-label">
+        <span class="theme-indicator-dot"></span>
+        <span id="mobileDrawerThemeText">Dark Mode</span>
+      </span>
+      <button type="button" class="apple-theme-toggle-btn" onclick="toggleGlobalTheme()" aria-label="Toggle light and dark mode">
+        <span class="theme-icon-container">
+          <svg class="theme-icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </span>
+        <span class="theme-toggle-text">Switch Mode</span>
+      </button>
+    </div>
     <ul class="apple-mobile-nav-list">
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/');">Overview</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/services');">Services</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/portfolio');">Behind the Brand (Work)</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/labs');">Vigorish Labs</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/pricing');">Service Packages</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/about');">About Studio</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/insights');">Newsroom</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/contact');">Contact &amp; Brief</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); navigateTo('/donate');" style="color: #ff7b72; display: flex; align-items: center; gap: 8px;"><span>❤️</span> Donate (Tuli Bantu Baluse)</a></li>
-      <li><a class="apple-mobile-nav-link" onclick="closeMobileMenu(); openLiveSupportChat();" style="color: #2997ff; display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>✦ AI Live Support (Online)</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Overview', '/', 'mobile_drawer'); closeMobileMenu(); navigateTo('/');">Overview</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Services', '/services', 'mobile_drawer'); closeMobileMenu(); navigateTo('/services');">Services</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Behind the Brand', '/portfolio', 'mobile_drawer'); closeMobileMenu(); navigateTo('/portfolio');">Behind the Brand (Work)</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Vigorish Labs', '/labs', 'mobile_drawer'); closeMobileMenu(); navigateTo('/labs');">Vigorish Labs</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Service Packages', '/pricing', 'mobile_drawer'); closeMobileMenu(); navigateTo('/pricing');">Service Packages</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Client FAQs', '/faq', 'mobile_drawer'); closeMobileMenu(); navigateTo('/faq');">Client FAQs</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('About Studio', '/about', 'mobile_drawer'); closeMobileMenu(); navigateTo('/about');">About Studio</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Newsroom', '/insights', 'mobile_drawer'); closeMobileMenu(); navigateTo('/insights');">Newsroom</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Contact & Brief', '/contact', 'mobile_drawer'); closeMobileMenu(); navigateTo('/contact');">Contact &amp; Brief</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackHeaderNavClick('Donate', '/donate', 'mobile_drawer'); closeMobileMenu(); navigateTo('/donate');" style="color: #ff7b72; display: flex; align-items: center; gap: 8px;"><span>❤️</span> Donate (Tuli Bantu Baluse)</a></li>
+      <li><a class="apple-mobile-nav-link" onclick="trackGAEvent('ai_support_open', { source: 'mobile_drawer' }); closeMobileMenu(); openLiveSupportChat();" style="color: #2997ff; display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #30d158; box-shadow: 0 0 6px #30d158;"></span>✦ AI Live Support (Online)</a></li>
     </ul>
     <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 10px; margin-top: auto;">
-      <a href="#/contact" class="btn-apple-pill" style="text-align: center; justify-content: center; padding: 13px 20px; font-size: 15px; font-weight: 600;" onclick="closeMobileMenu(); navigateTo('/contact');">Start a Project</a>
-      <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="btn-apple-secondary" style="text-align: center; justify-content: center; padding: 12px 20px; font-size: 14px;">WhatsApp: +260 97 989 4567</a>
+      <a href="#/contact" id="mobileDrawerStartProjectBtn" class="btn-apple-pill" style="text-align: center; justify-content: center; padding: 13px 20px; font-size: 15px; font-weight: 600;" onclick="trackStartProjectClick('mobile_drawer'); closeMobileMenu(); navigateTo('/contact');" data-analytics-cta="mobile_drawer">Start a Project</a>
+      <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="btn-apple-secondary" style="text-align: center; justify-content: center; padding: 12px 20px; font-size: 14px;" onclick="trackGAEvent('whatsapp_click', { source: 'mobile_drawer' });">WhatsApp: +260 97 989 4567</a>
     </div>
   </div>
 
@@ -2501,7 +3582,7 @@
         </p>
 
         <div class="apple-hero-cta-group">
-          <a href="#/contact" class="btn-apple-pill" style="font-size: 15px; padding: 10px 24px;" onclick="navigateTo('/contact'); return false;">Start a Project</a>
+          <a href="#/contact" class="btn-apple-pill" style="font-size: 15px; padding: 10px 24px;" onclick="trackStartProjectClick('hero_section'); navigateTo('/contact'); return false;" data-analytics-cta="hero_section">Start a Project</a>
           <a href="#/services" class="apple-link-cta" onclick="navigateTo('/services'); return false;">Explore Full Capabilities &gt;</a>
         </div>
 
@@ -2643,7 +3724,7 @@
                 <div class="apple-bento-eyebrow">DIGITAL ARCHITECTURE</div>
                 <h3 class="apple-bento-title">Website Design &amp; Management.</h3>
                 <p class="apple-bento-text">
-                  🌐 Your website is often the first impression customers have of your business. Make it count. Scalable website packages from K6,500/Year with free domain, cloud hosting, and eCommerce.
+                  🌐 Your website is often the first impression clients have of your business. Make it count. Scalable website packages from K6,500/Year with free domain, cloud hosting, and eCommerce.
                 </p>
               </div>
               <div class="apple-bento-media" style="aspect-ratio: 16/9; width: 100%; height: auto; border-radius: 14px; overflow: hidden; position: relative; background: #0b0f19; margin-top: auto;">
@@ -2679,7 +3760,7 @@
                 <div class="apple-bento-eyebrow">PERFORMANCE ADVERTISING</div>
                 <h3 class="apple-bento-title">Paid Facebook &amp; Instagram Advertising</h3>
                 <p class="apple-bento-text">
-                  Put your brand in front of the right people. Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising. Campaigns from just K450.
+                  Put your brand in front of the right people. Reach more potential clients, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising. Campaigns from just K450.
                 </p>
                 <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px;">
                   <span style="background: rgba(0, 113, 227, 0.08); color: var(--apple-blue); font-size: 11.5px; font-weight: 600; padding: 4px 10px; border-radius: 9999px;">🎯 Lead Gen</span>
@@ -2862,6 +3943,569 @@
           </div>
         </div>
       </div>
+
+      <!-- 4. FAQ ACCORDION SECTION (Client Inquiries & Advisory) -->
+      <section id="section-faq" class="apple-faq-section reveal-on-scroll" aria-label="Frequently Asked Questions">
+        <div class="apple-faq-container">
+          <div class="apple-section-header">
+            <div class="apple-section-eyebrow">CLIENT INQUIRIES &amp; ADVISORY</div>
+            <h2 class="apple-section-title">Frequently Asked Questions.</h2>
+            <p class="apple-section-desc">
+              Everything potential clients need to know about partnering with Vigorish Media — from project scopes and transparent pricing to equipment standards and guaranteed turnarounds.
+            </p>
+          </div>
+
+          <!-- Apple Segmented Filter Bar -->
+          <div class="apple-faq-filter-bar" role="tablist" aria-label="Filter FAQ by Category">
+            <button type="button" class="apple-faq-filter-btn active" role="tab" aria-selected="true" onclick="filterFaqCategory('all', this, 'section-faq')">All Questions</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('general', this, 'section-faq')">General</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('technical', this, 'section-faq')">Technical</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('services', this, 'section-faq')">Services &amp; Scope</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('pricing', this, 'section-faq')">Pricing &amp; Retainers</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('timelines', this, 'section-faq')">Timelines &amp; Workflow</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('web', this, 'section-faq')">Web &amp; Hosting</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('standards', this, 'section-faq')">Production Standards</button>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="apple-faq-search-wrapper">
+            <span class="apple-faq-search-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input
+              type="text"
+              class="apple-faq-search-input"
+              placeholder="Search questions (e.g. pricing, timelines, hosting, camera gear, Lusaka)..."
+              oninput="searchFaq(this, 'section-faq')"
+              onkeydown="if(event.key === 'Escape') clearFaqSearch(this.parentElement.querySelector('.apple-faq-search-clear'), 'section-faq')"
+              aria-label="Search frequently asked questions"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <div class="apple-faq-search-actions">
+              <span class="apple-faq-search-count" aria-live="polite"></span>
+              <button
+                type="button"
+                class="apple-faq-search-clear"
+                onclick="clearFaqSearch(this, 'section-faq')"
+                aria-label="Clear search query"
+                title="Clear search (Esc)"
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="2" y1="2" x2="10" y2="10"></line>
+                  <line x1="10" y1="2" x2="2" y2="10"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- FAQ Accordion Cards Stack -->
+          <div class="apple-faq-list">
+
+            <!-- Q1 -->
+            <div class="apple-faq-card open" data-category="general services">
+              <button type="button" class="apple-faq-trigger" aria-expanded="true" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>01</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Services &amp; Capabilities</span>
+                  </div>
+                  <h3 class="apple-faq-question">What creative and digital marketing services does Vigorish Media provide?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      <strong>Vigorish Media</strong> is an integrated creative studio and digital marketing company headquartered in Lusaka, Zambia. We engineer commercial leverage for enterprises through six core creative pillars:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Social Media Management:</strong> Turnkey multi-channel publishing (Facebook, Instagram, TikTok, LinkedIn), daily audience community moderation, high-converting copy, and viral short-form video scripting.</li>
+                      <li><strong>4K Cinema Videography &amp; Photography:</strong> High-octane commercials, executive brand films, drone aerials, documentary showcases, and studio product photography captured on cinema prime lenses.</li>
+                      <li><strong>Branding &amp; Corporate Identity:</strong> Vector logo marks, stationery dies, comprehensive brand books, typography guidelines, and packaging architecture.</li>
+                      <li><strong>Website Architecture:</strong> High-speed corporate websites, custom CMS portals, mobile-first responsiveness, SEO foundations, and instant WhatsApp lead dispatch.</li>
+                      <li><strong>Graphic Design &amp; Print Collateral:</strong> Press-ready 300 DPI annual reports, company profiles, pull-up banners, and promotional print dies.</li>
+                      <li><strong>Digital Performance Ads:</strong> Precision Meta and Google Ads management calibrated for verified client inquiries and tangible revenue return.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/services" class="apple-link-cta" onclick="navigateTo('/services'); return false;">Explore Detailed Services &gt;</a>
+                      <a href="#/packages" class="apple-link-cta" onclick="navigateTo('/packages'); return false;">View Service Packages &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="apple-faq-card" data-category="general pricing">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>02</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Pricing &amp; Retainers</span>
+                  </div>
+                  <h3 class="apple-faq-question">How much do your services cost, and are there flexible packages?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      We believe in absolute pricing transparency with no hidden fees. We provide both standardized tiers and bespoke scopes:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Paid Digital Ad Campaigns:</strong> Entry campaign execution starting from <strong>K450</strong> for targeted Meta &amp; Instagram ads.</li>
+                      <li><strong>Corporate Website Architecture:</strong> Starting at <strong>K6,500/year</strong> (Starter 3-Page) and <strong>K8,500/year</strong> (Corporate 5-Page), which includes 1 full year of complimentary managed cloud hosting, SSL certificate, and custom .com domain.</li>
+                      <li><strong>Social Media Management Retainers:</strong> Monthly retainers range from <strong>K4,000/mo</strong> (Silver Growth — 12 designs + 2 reels), <strong>K8,500/mo</strong> (Gold Authority — 18 designs + 4 reels + ads), up to <strong>K12,500/mo</strong> (Platinum Domination — full production team).</li>
+                      <li><strong>Corporate Brand Identity:</strong> Complete master vector brand packages with stationery dies starting at <strong>K5,500</strong>.</li>
+                      <li><strong>4K Cinema Commercial Shoots:</strong> Full-day commercial shoot in Lusaka with DaVinci Resolve color grading from <strong>K6,000</strong>.</li>
+                    </ul>
+                    <p>
+                      Need a tailored scope? You can build an interactive quote in our <strong>Vigorish Labs</strong> estimator to adjust team size, shoot days, and ad spend in real time.
+                    </p>
+                    <div class="apple-faq-actions">
+                      <a href="#/pricing" class="apple-link-cta" onclick="navigateTo('/pricing'); return false;">Compare All Pricing Tiers &gt;</a>
+                      <a href="#/labs" class="apple-link-cta" onclick="navigateTo('/labs'); return false;">Open Vigorish Labs Builder &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="apple-faq-card" data-category="general timelines">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>03</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Timelines &amp; Workflow</span>
+                  </div>
+                  <h3 class="apple-faq-question">What is the typical turnaround time from project kickoff to delivery?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Every project is governed by a strict production calendar and milestone delivery dates established during discovery:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Brand Identity Systems:</strong> 5–7 business days for initial vector concepts and complete visual brand guideline documentation.</li>
+                      <li><strong>4K Commercial Video &amp; Social Cutdowns:</strong> 7–10 business days from shoot wrap to master color grade and sound mix delivery.</li>
+                      <li><strong>Corporate Websites &amp; Portals:</strong> 10–14 business days from content approval to staging review and final live DNS launch.</li>
+                      <li><strong>Monthly Social Management Onboarding:</strong> 72 hours from kickoff to initial content calendar approval and publishing schedule.</li>
+                    </ul>
+                    <p>
+                      <strong>Rush Production:</strong> For urgent product launches, tenders, or high-stakes announcements, expedited priority sprints are available upon request.
+                    </p>
+                    <div class="apple-faq-actions">
+                      <a href="#/contact" class="apple-link-cta" onclick="navigateTo('/contact'); return false;">Request Project Timeline &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="apple-faq-card" data-category="general services">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>04</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Location &amp; Reach</span>
+                  </div>
+                  <h3 class="apple-faq-question">Where is Vigorish Media located, and do you work with clients outside Lusaka?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      <strong>Vigorish Media</strong> is headquartered at <strong>Chibuluma Road, New Kasama, Lusaka, Zambia</strong>.
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Throughout Zambia:</strong> While our primary production studios and edit suites are in Lusaka, our camera and drone crews regularly travel across Zambia — delivering commercial video and photographic shoots in Ndola, Kitwe, Livingstone, Solwezi, and remote industrial and agricultural sites.</li>
+                      <li><strong>Regional &amp; International:</strong> For brand strategy, web design, digital advertising, and creative direction, we collaborate seamlessly with clients across Southern Africa and internationally via video conferences and our secure client staging platform.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/about" class="apple-link-cta" onclick="navigateTo('/about'); return false;">About the Studio &gt;</a>
+                      <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="apple-link-cta">Consult with Our Team &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="apple-faq-card" data-category="technical web">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>05</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Technical · Web &amp; Cloud Hosting</span>
+                  </div>
+                  <h3 class="apple-faq-question">Do your website packages include hosting, domain registration, and maintenance?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Yes, completely. Unlike agencies that leave clients with confusing hosting bills and server setups, every corporate web platform built by Vigorish Media is delivered turnkey:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>12 Months Complimentary Managed Cloud Hosting:</strong> High-speed NVMe cloud infrastructure with 99.9% uptime SLA and automatic off-site backups.</li>
+                      <li><strong>Free Domain Name Registration:</strong> 1 year of your custom domain renewal (.com or .co.zm).</li>
+                      <li><strong>Automated SSL Security:</strong> 256-bit SSL encryption certificate with automated HTTPS redirection.</li>
+                      <li><strong>Instant WhatsApp Lead Routing:</strong> When prospects fill out your contact forms or click call-to-action buttons, the inquiry is dispatched instantly to your team's WhatsApp and email.</li>
+                      <li><strong>Mobile-First Performance:</strong> Handcrafted code engineered for fast loading speeds even on standard 3G/4G cellular connections across Zambia.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/pricing" class="apple-link-cta" onclick="navigateTo('/pricing'); return false;">View Web Packages &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="apple-faq-card" data-category="technical standards">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>06</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Technical · Production Standards</span>
+                  </div>
+                  <h3 class="apple-faq-question">What equipment, cinema optics, and technology standards do you use?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      We refuse to compromise on visual precision. Our production equipment matches international cinema standards:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Cinema Camera Systems:</strong> Sony FX-series cinema cameras capturing in 4K 10-bit 4:2:2 with high dynamic range S-Log3 colour profiles.</li>
+                      <li><strong>Optics &amp; Stabilization:</strong> Sony G Master and cinema prime lenses paired with DJI Ronin 3-axis motorized gimbals for smooth cinematic movement.</li>
+                      <li><strong>Aerial Cinematography:</strong> Licensed 4K HDR drone operations for corporate real estate, factory facilities, and grand landscape vistas.</li>
+                      <li><strong>Audio Mastery:</strong> Sennheiser and Rode broadcast wireless microphones and 32-bit float digital audio recording for dialogue with pristine clarity.</li>
+                      <li><strong>Post-Production Suite:</strong> DaVinci Resolve Studio for precision color grading, balanced tonal curves, and commercial broadcast mastering.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/portfolio" class="apple-link-cta" onclick="navigateTo('/portfolio'); return false;">Watch Our Commercial Showreel &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="apple-faq-card" data-category="general timelines">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>07</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Onboarding &amp; Payments</span>
+                  </div>
+                  <h3 class="apple-faq-question">How does client onboarding and your milestone payment structure work?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Our four-phase onboarding framework guarantees transparency and peace of mind at every step:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>1. Strategic Discovery:</strong> We discuss your commercial goals, target audience demographics, competitive positioning, and specific deliverables.</li>
+                      <li><strong>2. Itemized Proposal &amp; Agreement:</strong> You receive an official proposal detailing timelines, deliverables, and payment terms. Standard projects operate on a <strong>50% commencement deposit</strong> with the remaining <strong>50% payable upon final delivery and sign-off</strong>. Monthly retainers are invoiced at the beginning of each cycle.</li>
+                      <li><strong>3. Production &amp; Staging Reviews:</strong> We build prototypes or conduct production shoots, sharing secure staging links for collaborative feedback.</li>
+                      <li><strong>4. Final Sign-off &amp; Full Asset Handoff:</strong> Upon completion, all master vector design files (.AI, .SVG, .EPS, .PDF), 4K ProRes videos, and hosting administrative credentials are transferred completely to your ownership.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/contact" class="apple-link-cta" onclick="navigateTo('/contact'); return false;">Transmit Project Brief &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="apple-faq-card" data-category="general services">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>08</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Revision Policy</span>
+                  </div>
+                  <h3 class="apple-faq-question">What is your revision policy if our team requests adjustments?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      We view creative collaboration as a partnership. Your complete satisfaction with the finished work is guaranteed:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Dedicated Review Rounds:</strong> Every branding, graphic design, and web development package includes <strong>2 to 3 comprehensive revision rounds</strong> within scope.</li>
+                      <li><strong>Structured Feedback Protocol:</strong> We collect feedback using annotated proofs and visual notes, ensuring your team's feedback on typography, framing, or color balance is applied accurately.</li>
+                      <li><strong>Retainer Flexibility:</strong> For monthly retainer clients, creative adjustments, ad copy refinements, and visual refreshes are an ongoing, iterative part of the monthly service.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/about" class="apple-link-cta" onclick="navigateTo('/about'); return false;">Learn Our Creative Philosophy &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q9 -->
+            <div class="apple-faq-card" data-category="general technical pricing">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>09</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General &amp; Technical · ROI &amp; Conversion Impact</span>
+                  </div>
+                  <h3 class="apple-faq-question">How do your campaigns translate into actual leads, inquiries, and revenue?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      The name <em>"Vigorish"</em> signifies the built-in structural advantage that tilts outcomes toward commercial success. We do not chase empty vanity metrics like superficial likes:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Commercial Conversion Pathways:</strong> Every social reel, video cutdown, and web page is built around concrete conversion actions — direct WhatsApp inquiries, incoming phone calls, quote requests, and store footfall.</li>
+                      <li><strong>Precision In-Market Targeting:</strong> We configure Meta and Google Ad Manager audience parameters specifically for the Zambian and regional market, targeting qualified decision-makers rather than untargeted audiences.</li>
+                      <li><strong>Continuous Data Optimization:</strong> We test hooks, headlines, and visual creatives, optimizing ad spend to reduce cost-per-lead and boost sales velocity.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/portfolio" class="apple-link-cta" onclick="navigateTo('/portfolio'); return false;">Explore Client Case Studies &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="apple-faq-card" data-category="general services">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>10</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Getting Started</span>
+                  </div>
+                  <h3 class="apple-faq-question">How quickly can we get started, and what is the best way to contact you?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Initiating a project takes less than two minutes through whichever channel suits your workflow best:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Start a Project Brief:</strong> Complete our structured online brief form to share your objectives and timeline.</li>
+                      <li><strong>Direct WhatsApp:</strong> Send a quick message to our creative leadership directly at <strong>+260 97 989 4567</strong> for immediate responses.</li>
+                      <li><strong>AI Live Support Assistant:</strong> Click the floating blue studio assistant in the lower right corner for instant answers and guided quote generation 24/7.</li>
+                      <li><strong>Studio Email:</strong> Forward formal tender documents or RFPs to <strong>mediavigorish@gmail.com</strong>.</li>
+                      <li><strong>Studio Hours:</strong> Monday – Friday: 08:30 – 17:30 CAT. Retainer clients receive dedicated emergency weekend coverage.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/contact" class="btn-apple-pill" style="font-size: 13px; padding: 8px 20px;" onclick="navigateTo('/contact'); return false;">Start a Project Brief &gt;</a>
+                      <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="btn-apple-secondary" style="font-size: 13px; padding: 8px 20px;">Direct WhatsApp</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Q11 (Technical) -->
+            <div class="apple-faq-card" data-category="technical web standards">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>11</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Technical · Web Architecture, Performance &amp; Security</span>
+                  </div>
+                  <h3 class="apple-faq-question">What tech stacks, responsive frameworks, and web security protocols do you build with?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Every digital web platform engineered by Vigorish Media is built to enterprise web standards, prioritizing high-velocity page loads, zero layout shifts, and full-stack security:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Frontend Performance:</strong> Semantic HTML5, TypeScript, and modern responsive components avoiding bloated legacy templates. We achieve sub-second First Contentful Paint (&lt; 1.0s) and near-perfect Google Lighthouse scores.</li>
+                      <li><strong>Mobile-First Fluid Layouts:</strong> Zero Cumulative Layout Shift (CLS &lt; 0.05), dynamic clamp typography, high-DPI retina rendering, and seamless native Dark/Light mode theme switching.</li>
+                      <li><strong>Security &amp; Encryption:</strong> Automated TLS 1.3 / 256-bit SSL encryption, strict Content Security Policy headers, daily off-site cloud snapshots, and DDoS mitigation.</li>
+                      <li><strong>Media Delivery &amp; Compression:</strong> Next-gen WebP/AVIF imagery encoding, Brotli asset compression, and lazy-loaded high-bitrate video embeds.</li>
+                      <li><strong>Technical Conversion Tracking:</strong> Google Analytics 4 (GA4) custom event measurement, Meta Pixel conversion tracking, and real-time lead relay via WhatsApp Business and authenticated email endpoints.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/services" class="apple-link-cta" onclick="navigateTo('/services'); return false;">Explore Web Architecture Services &gt;</a>
+                      <a href="#/contact" class="apple-link-cta" onclick="navigateTo('/contact'); return false;">Consult Our Technical Team &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q12 (Technical & General) -->
+            <div class="apple-faq-card" data-category="general technical standards">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>12</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General &amp; Technical · Master Deliverables, File Formats &amp; IP Rights</span>
+                  </div>
+                  <h3 class="apple-faq-question">What master file formats, resolution standards, and source assets do clients receive?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      We enforce a strict <strong>100% Client Ownership Guarantee</strong>. Upon project sign-off and invoice settlement, you receive unrestricted commercial rights and all master production files:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Brand Identity &amp; Print Assets:</strong> Master unflattened vector files (.AI, .EPS, .SVG, .PDF) alongside press-ready 300 DPI CMYK files with bleed marks, digital RGB transparent assets (.PNG), and comprehensive digital brand guidelines.</li>
+                      <li><strong>Cinema Video Deliverables:</strong> Master 4K Apple ProRes 422 HQ archival masters, balanced Rec.709 color grades, web-optimized H.264/H.265 deliveries in 16:9 widescreen, 9:16 vertical reels/TikTok, and 1:1 square feeds, plus uncompressed 24-bit WAV audio tracks.</li>
+                      <li><strong>Web &amp; Digital Assets:</strong> Full repository source code access, DNS delegation, administrative hosting dashboard ownership, and step-by-step handover documentation with zero vendor lock-in.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/contact" class="apple-link-cta" onclick="navigateTo('/contact'); return false;">Start a Project Brief &gt;</a>
+                      <a href="#/pricing" class="apple-link-cta" onclick="navigateTo('/pricing'); return false;">View Tier Specifications &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Empty search state -->
+          <div class="apple-faq-empty">
+            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--apple-text-dark);">No questions match your search</h4>
+            <p style="font-size: 14.5px; color: var(--apple-text-secondary); max-width: 480px; margin: 0 auto 18px;">
+              Can't find what you're looking for? Our team and AI Live Support Assistant are available 24/7 to answer your specific project inquiries.
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn-apple-pill" onclick="openLiveSupportChat();" style="font-size: 13px; padding: 8px 20px;">Ask AI Live Support</button>
+              <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="btn-apple-secondary" style="font-size: 13px; padding: 8px 20px;">WhatsApp Studio Direct</a>
+            </div>
+          </div>
+
+          <!-- Apple Still-Have-Questions Support Box -->
+          <div class="apple-faq-support-box">
+            <div class="apple-faq-support-eyebrow">HAVE A SPECIFIC REQUIREMENT?</div>
+            <h3 class="apple-faq-support-title">Still have questions for our creative team?</h3>
+            <p class="apple-faq-support-desc">
+              Whether you need a custom multi-channel scope, urgent commercial video shoot, or a dedicated enterprise retainer, our Lusaka creative directors are ready to consult.
+            </p>
+            <div class="apple-faq-support-actions">
+              <a href="#/contact" class="btn-apple-pill" style="font-size: 14px; padding: 11px 26px;" onclick="navigateTo('/contact'); return false;">Start a Project Brief</a>
+              <button type="button" class="btn-apple-secondary" style="font-size: 14px; padding: 11px 24px;" onclick="openLiveSupportChat();">
+                <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #30d158; margin-right: 6px; box-shadow: 0 0 6px #30d158;"></span>Chat with AI Assistant
+              </button>
+              <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="apple-link-cta" style="font-size: 14.5px; font-weight: 600;">Direct WhatsApp: +260 97 989 4567 &gt;</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
 
       <!-- 5. SOCIAL RESPONSIBILITY: TULI BANTU BALUSE -->
       <div class="apple-section-dark">
@@ -3086,10 +4730,10 @@
                 <div class="apple-bento-eyebrow">DIGITAL ARCHITECTURE</div>
                 <h3 class="apple-bento-title">Website Design &amp; Management</h3>
                 <p class="apple-bento-text" style="margin-bottom: 12px; font-weight: 500;">
-                  🌐 Your website is often the first impression customers have of your business. Make it count.
+                  🌐 Your website is often the first impression clients have of your business. Make it count.
                 </p>
                 <p style="font-size: 14.5px; color: var(--apple-text-secondary); line-height: 1.55; margin-bottom: 16px;">
-                  Whether you're a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract customers, and grow online.
+                  Whether you're a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract clients, and grow online.
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin-bottom: 18px; font-size: 13.5px; color: #2d2d2f;">
                   <div>✅ Free Domain for 1 Year</div>
@@ -3183,14 +4827,14 @@
                   Put your brand in front of the right people.
                 </p>
                 <p class="apple-bento-text" style="margin-bottom: 12px;">
-                  Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media. Whether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.
+                  Reach more potential clients, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media. Whether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.
                 </p>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 8px; margin-bottom: 16px;">
-                  <div style="font-size: 13px; color: #333;">🎯 <strong>Lead Generation</strong> – Reach potential customers and generate enquiries.</div>
+                  <div style="font-size: 13px; color: #333;">🎯 <strong>Lead Generation</strong> – Reach potential clients and generate enquiries.</div>
                   <div style="font-size: 13px; color: #333;">👍 <strong>Page Likes &amp; Followers</strong> – Build your social media audience.</div>
                   <div style="font-size: 13px; color: #333;">▶️ <strong>Video Views</strong> – Get more people watching your brand videos.</div>
                   <div style="font-size: 13px; color: #333;">💬 <strong>Post Engagement</strong> – Increase likes, comments, shares and interactions.</div>
-                  <div style="font-size: 13px; color: #333;">📢 <strong>Brand Awareness</strong> – Put your business in front of more potential customers.</div>
+                  <div style="font-size: 13px; color: #333;">📢 <strong>Brand Awareness</strong> – Put your business in front of more potential clients.</div>
                   <div style="font-size: 13px; color: #333;">🔗 <strong>Traffic Campaigns</strong> – Drive people to your website, WhatsApp or other destinations.</div>
                 </div>
                 <div style="margin-bottom: 20px; font-size: 13.5px; color: #444; background: rgba(0, 113, 227, 0.05); padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(0, 113, 227, 0.15);">
@@ -3423,7 +5067,7 @@
                 <span class="labs-hud-key">STATUS:</span>
                 <span class="labs-hud-status" id="labsTelemetryInteraction">READY // OPERATIONAL</span>
               </div>
-              <div class="labs-hud-item labs-hud-fps-badge" id="labsHudFpsBadge" title="Real-time requestAnimationFrame engine frame rate">
+              <div class="labs-hud-item labs-hud-fps-badge fps-green" id="labsHudFpsBadge" title="Real-time requestAnimationFrame engine frame rate">
                 <span class="labs-hud-dot" id="labsFpsStatusDot"></span>
                 <span class="labs-hud-key">FPS:</span>
                 <span class="labs-hud-num" id="labsTelemetryFPS">60.0</span>
@@ -3879,7 +5523,7 @@
                     <label style="display: block; font-size: 12.5px; font-weight: 600; color: #ccc; margin-bottom: 6px;">Primary Business Objective *</label>
                     <select id="scanObjective" style="width: 100%; background: #14141b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; padding: 10px 14px; font-size: 13.5px; outline: none;">
                       <option value="investors">Attract High-Stakes Investors &amp; Stakeholders</option>
-                      <option value="traffic">Scale Customer Foot Traffic &amp; Online Orders</option>
+                      <option value="traffic">Scale Client Foot Traffic &amp; Online Orders</option>
                       <option value="rebrand">Modernize Stagnant / Outdated Brand Identity</option>
                       <option value="expansion">Expand into Regional SADC Markets</option>
                     </select>
@@ -4012,7 +5656,7 @@
                   <div style="font-size: 11px; font-weight: 800; color: var(--apple-blue); letter-spacing: 0.08em; margin-bottom: 6px;">PHASE 01 // DAYS 1–3</div>
                   <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px;">Brand Archaeology &amp; Discovery</h3>
                   <p style="font-size: 13px; color: #8e8e93; line-height: 1.5; margin-bottom: 14px;">
-                    We interrogate your market position in Zambia, target customer psychology, competitor blind spots, and institutional objectives.
+                    We interrogate your market position in Zambia, target client psychology, competitor blind spots, and institutional objectives.
                   </p>
                   <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; font-size: 12px; color: #ccc;">
                     <strong style="color: #fff;">Milestones:</strong>
@@ -4785,6 +6429,576 @@
       </div>
     </section>
 
+    <!-- 9. DEDICATED CLIENT FAQ VIEW PAGE -->
+    <section id="view-faq" class="view-page">
+      <div class="apple-section-light" style="padding: 70px 20px 20px 20px; border-bottom: 1px solid rgba(0,0,0,0.06);">
+        <div class="apple-container">
+          <div class="apple-section-header" style="margin-bottom: 24px;">
+            <div class="apple-section-eyebrow">CLIENT KNOWLEDGE &amp; ADVISORY</div>
+            <h1 class="apple-section-title">Client Questions.<br>Direct Answers.</h1>
+            <p class="apple-section-desc">
+              Everything potential clients need to know about partnering with Vigorish Media — from project scopes and transparent pricing to equipment standards and guaranteed turnarounds.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="apple-faq-section" id="page-faq" style="padding-top: 50px;">
+        <div class="apple-faq-container">
+
+          <!-- Apple Segmented Filter Bar -->
+          <div class="apple-faq-filter-bar" role="tablist" aria-label="Filter FAQ by Category">
+            <button type="button" class="apple-faq-filter-btn active" role="tab" aria-selected="true" onclick="filterFaqCategory('all', this, 'page-faq')">All Questions</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('general', this, 'page-faq')">General</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('technical', this, 'page-faq')">Technical</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('services', this, 'page-faq')">Services &amp; Scope</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('pricing', this, 'page-faq')">Pricing &amp; Retainers</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('timelines', this, 'page-faq')">Timelines &amp; Workflow</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('web', this, 'page-faq')">Web &amp; Hosting</button>
+            <button type="button" class="apple-faq-filter-btn" role="tab" aria-selected="false" onclick="filterFaqCategory('standards', this, 'page-faq')">Production Standards</button>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="apple-faq-search-wrapper">
+            <span class="apple-faq-search-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input
+              type="text"
+              class="apple-faq-search-input"
+              placeholder="Search questions (e.g. pricing, timelines, hosting, camera gear, Lusaka)..."
+              oninput="searchFaq(this, 'page-faq')"
+              onkeydown="if(event.key === 'Escape') clearFaqSearch(this.parentElement.querySelector('.apple-faq-search-clear'), 'page-faq')"
+              aria-label="Search frequently asked questions"
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <div class="apple-faq-search-actions">
+              <span class="apple-faq-search-count" aria-live="polite"></span>
+              <button
+                type="button"
+                class="apple-faq-search-clear"
+                onclick="clearFaqSearch(this, 'page-faq')"
+                aria-label="Clear search query"
+                title="Clear search (Esc)"
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="2" y1="2" x2="10" y2="10"></line>
+                  <line x1="10" y1="2" x2="2" y2="10"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- FAQ Accordion Cards Stack -->
+          <div class="apple-faq-list">
+
+            <!-- Q1 -->
+            <div class="apple-faq-card open" data-category="general services">
+              <button type="button" class="apple-faq-trigger" aria-expanded="true" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>01</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Services &amp; Capabilities</span>
+                  </div>
+                  <h3 class="apple-faq-question">What creative and digital marketing services does Vigorish Media provide?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      <strong>Vigorish Media</strong> is an integrated creative studio and digital marketing company headquartered in Lusaka, Zambia. We engineer commercial leverage for enterprises through six core creative pillars:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Social Media Management:</strong> Turnkey multi-channel publishing (Facebook, Instagram, TikTok, LinkedIn), daily audience community moderation, high-converting copy, and viral short-form video scripting.</li>
+                      <li><strong>4K Cinema Videography &amp; Photography:</strong> High-octane commercials, executive brand films, drone aerials, documentary showcases, and studio product photography captured on cinema prime lenses.</li>
+                      <li><strong>Branding &amp; Corporate Identity:</strong> Vector logo marks, stationery dies, comprehensive brand books, typography guidelines, and packaging architecture.</li>
+                      <li><strong>Website Architecture:</strong> High-speed corporate websites, custom CMS portals, mobile-first responsiveness, SEO foundations, and instant WhatsApp lead dispatch.</li>
+                      <li><strong>Graphic Design &amp; Print Collateral:</strong> Press-ready 300 DPI annual reports, company profiles, pull-up banners, and promotional print dies.</li>
+                      <li><strong>Digital Performance Ads:</strong> Precision Meta and Google Ads management calibrated for verified client inquiries and tangible revenue return.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/services" class="apple-link-cta" onclick="navigateTo('/services'); return false;">Explore Detailed Services &gt;</a>
+                      <a href="#/packages" class="apple-link-cta" onclick="navigateTo('/packages'); return false;">View Service Packages &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="apple-faq-card" data-category="general pricing">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>02</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Pricing &amp; Retainers</span>
+                  </div>
+                  <h3 class="apple-faq-question">How much do your services cost, and are there flexible packages?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      We believe in absolute pricing transparency with no hidden fees. We provide both standardized tiers and bespoke scopes:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Paid Digital Ad Campaigns:</strong> Entry campaign execution starting from <strong>K450</strong> for targeted Meta &amp; Instagram ads.</li>
+                      <li><strong>Corporate Website Architecture:</strong> Starting at <strong>K6,500/year</strong> (Starter 3-Page) and <strong>K8,500/year</strong> (Corporate 5-Page), which includes 1 full year of complimentary managed cloud hosting, SSL certificate, and custom .com domain.</li>
+                      <li><strong>Social Media Management Retainers:</strong> Monthly retainers range from <strong>K4,000/mo</strong> (Silver Growth — 12 designs + 2 reels), <strong>K8,500/mo</strong> (Gold Authority — 18 designs + 4 reels + ads), up to <strong>K12,500/mo</strong> (Platinum Domination — full production team).</li>
+                      <li><strong>Corporate Brand Identity:</strong> Complete master vector brand packages with stationery dies starting at <strong>K5,500</strong>.</li>
+                      <li><strong>4K Cinema Commercial Shoots:</strong> Full-day commercial shoot in Lusaka with DaVinci Resolve color grading from <strong>K6,000</strong>.</li>
+                    </ul>
+                    <p>
+                      Need a tailored scope? You can build an interactive quote in our <strong>Vigorish Labs</strong> estimator to adjust team size, shoot days, and ad spend in real time.
+                    </p>
+                    <div class="apple-faq-actions">
+                      <a href="#/pricing" class="apple-link-cta" onclick="navigateTo('/pricing'); return false;">Compare All Pricing Tiers &gt;</a>
+                      <a href="#/labs" class="apple-link-cta" onclick="navigateTo('/labs'); return false;">Open Vigorish Labs Builder &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="apple-faq-card" data-category="general timelines">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>03</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Timelines &amp; Workflow</span>
+                  </div>
+                  <h3 class="apple-faq-question">What is the typical turnaround time from project kickoff to delivery?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Every project is governed by a strict production calendar and milestone delivery dates established during discovery:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Brand Identity Systems:</strong> 5–7 business days for initial vector concepts and complete visual brand guideline documentation.</li>
+                      <li><strong>4K Commercial Video &amp; Social Cutdowns:</strong> 7–10 business days from shoot wrap to master color grade and sound mix delivery.</li>
+                      <li><strong>Corporate Websites &amp; Portals:</strong> 10–14 business days from content approval to staging review and final live DNS launch.</li>
+                      <li><strong>Monthly Social Management Onboarding:</strong> 72 hours from kickoff to initial content calendar approval and publishing schedule.</li>
+                    </ul>
+                    <p>
+                      <strong>Rush Production:</strong> For urgent product launches, tenders, or high-stakes announcements, expedited priority sprints are available upon request.
+                    </p>
+                    <div class="apple-faq-actions">
+                      <a href="#/contact" class="apple-link-cta" onclick="navigateTo('/contact'); return false;">Request Project Timeline &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="apple-faq-card" data-category="general services">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>04</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Location &amp; Reach</span>
+                  </div>
+                  <h3 class="apple-faq-question">Where is Vigorish Media located, and do you work with clients outside Lusaka?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      <strong>Vigorish Media</strong> is headquartered at <strong>Chibuluma Road, New Kasama, Lusaka, Zambia</strong>.
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Throughout Zambia:</strong> While our primary production studios and edit suites are in Lusaka, our camera and drone crews regularly travel across Zambia — delivering commercial video and photographic shoots in Ndola, Kitwe, Livingstone, Solwezi, and remote industrial and agricultural sites.</li>
+                      <li><strong>Regional &amp; International:</strong> For brand strategy, web design, digital advertising, and creative direction, we collaborate seamlessly with clients across Southern Africa and internationally via video conferences and our secure client staging platform.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/about" class="apple-link-cta" onclick="navigateTo('/about'); return false;">About the Studio &gt;</a>
+                      <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="apple-link-cta">Consult with Our Team &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="apple-faq-card" data-category="technical web">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>05</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Technical · Web &amp; Cloud Hosting</span>
+                  </div>
+                  <h3 class="apple-faq-question">Do your website packages include hosting, domain registration, and maintenance?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Yes, completely. Unlike agencies that leave clients with confusing hosting bills and server setups, every corporate web platform built by Vigorish Media is delivered turnkey:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>12 Months Complimentary Managed Cloud Hosting:</strong> High-speed NVMe cloud infrastructure with 99.9% uptime SLA and automatic off-site backups.</li>
+                      <li><strong>Free Domain Name Registration:</strong> 1 year of your custom domain renewal (.com or .co.zm).</li>
+                      <li><strong>Automated SSL Security:</strong> 256-bit SSL encryption certificate with automated HTTPS redirection.</li>
+                      <li><strong>Instant WhatsApp Lead Routing:</strong> When prospects fill out your contact forms or click call-to-action buttons, the inquiry is dispatched instantly to your team's WhatsApp and email.</li>
+                      <li><strong>Mobile-First Performance:</strong> Handcrafted code engineered for fast loading speeds even on standard 3G/4G cellular connections across Zambia.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/pricing" class="apple-link-cta" onclick="navigateTo('/pricing'); return false;">View Web Packages &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="apple-faq-card" data-category="technical standards">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>06</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Technical · Production Standards</span>
+                  </div>
+                  <h3 class="apple-faq-question">What equipment, cinema optics, and technology standards do you use?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      We refuse to compromise on visual precision. Our production equipment matches international cinema standards:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Cinema Camera Systems:</strong> Sony FX-series cinema cameras capturing in 4K 10-bit 4:2:2 with high dynamic range S-Log3 colour profiles.</li>
+                      <li><strong>Optics &amp; Stabilization:</strong> Sony G Master and cinema prime lenses paired with DJI Ronin 3-axis motorized gimbals for smooth cinematic movement.</li>
+                      <li><strong>Aerial Cinematography:</strong> Licensed 4K HDR drone operations for corporate real estate, factory facilities, and grand landscape vistas.</li>
+                      <li><strong>Audio Mastery:</strong> Sennheiser and Rode broadcast wireless microphones and 32-bit float digital audio recording for dialogue with pristine clarity.</li>
+                      <li><strong>Post-Production Suite:</strong> DaVinci Resolve Studio for precision color grading, balanced tonal curves, and commercial broadcast mastering.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/portfolio" class="apple-link-cta" onclick="navigateTo('/portfolio'); return false;">Watch Our Commercial Showreel &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="apple-faq-card" data-category="general timelines">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>07</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Onboarding &amp; Payments</span>
+                  </div>
+                  <h3 class="apple-faq-question">How does client onboarding and your milestone payment structure work?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Our four-phase onboarding framework guarantees transparency and peace of mind at every step:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>1. Strategic Discovery:</strong> We discuss your commercial goals, target audience demographics, competitive positioning, and specific deliverables.</li>
+                      <li><strong>2. Itemized Proposal &amp; Agreement:</strong> You receive an official proposal detailing timelines, deliverables, and payment terms. Standard projects operate on a <strong>50% commencement deposit</strong> with the remaining <strong>50% payable upon final delivery and sign-off</strong>. Monthly retainers are invoiced at the beginning of each cycle.</li>
+                      <li><strong>3. Production &amp; Staging Reviews:</strong> We build prototypes or conduct production shoots, sharing secure staging links for collaborative feedback.</li>
+                      <li><strong>4. Final Sign-off &amp; Full Asset Handoff:</strong> Upon completion, all master vector design files (.AI, .SVG, .EPS, .PDF), 4K ProRes videos, and hosting administrative credentials are transferred completely to your ownership.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/contact" class="apple-link-cta" onclick="navigateTo('/contact'); return false;">Transmit Project Brief &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="apple-faq-card" data-category="general services">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>08</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Revision Policy</span>
+                  </div>
+                  <h3 class="apple-faq-question">What is your revision policy if our team requests adjustments?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      We view creative collaboration as a partnership. Your complete satisfaction with the finished work is guaranteed:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Dedicated Review Rounds:</strong> Every branding, graphic design, and web development package includes <strong>2 to 3 comprehensive revision rounds</strong> within scope.</li>
+                      <li><strong>Structured Feedback Protocol:</strong> We collect feedback using annotated proofs and visual notes, ensuring your team's feedback on typography, framing, or color balance is applied accurately.</li>
+                      <li><strong>Retainer Flexibility:</strong> For monthly retainer clients, creative adjustments, ad copy refinements, and visual refreshes are an ongoing, iterative part of the monthly service.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/about" class="apple-link-cta" onclick="navigateTo('/about'); return false;">Learn Our Creative Philosophy &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q9 -->
+            <div class="apple-faq-card" data-category="general technical pricing">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>09</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General &amp; Technical · ROI &amp; Conversion Impact</span>
+                  </div>
+                  <h3 class="apple-faq-question">How do your campaigns translate into actual leads, inquiries, and revenue?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      The name <em>"Vigorish"</em> signifies the built-in structural advantage that tilts outcomes toward commercial success. We do not chase empty vanity metrics like superficial likes:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Commercial Conversion Pathways:</strong> Every social reel, video cutdown, and web page is built around concrete conversion actions — direct WhatsApp inquiries, incoming phone calls, quote requests, and store footfall.</li>
+                      <li><strong>Precision In-Market Targeting:</strong> We configure Meta and Google Ad Manager audience parameters specifically for the Zambian and regional market, targeting qualified decision-makers rather than untargeted audiences.</li>
+                      <li><strong>Continuous Data Optimization:</strong> We test hooks, headlines, and visual creatives, optimizing ad spend to reduce cost-per-lead and boost sales velocity.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/portfolio" class="apple-link-cta" onclick="navigateTo('/portfolio'); return false;">Explore Client Case Studies &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q10 -->
+            <div class="apple-faq-card" data-category="general services">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>10</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General · Getting Started</span>
+                  </div>
+                  <h3 class="apple-faq-question">How quickly can we get started, and what is the best way to contact you?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Initiating a project takes less than two minutes through whichever channel suits your workflow best:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Start a Project Brief:</strong> Complete our structured online brief form to share your objectives and timeline.</li>
+                      <li><strong>Direct WhatsApp:</strong> Send a quick message to our creative leadership directly at <strong>+260 97 989 4567</strong> for immediate responses.</li>
+                      <li><strong>AI Live Support Assistant:</strong> Click the floating blue studio assistant in the lower right corner for instant answers and guided quote generation 24/7.</li>
+                      <li><strong>Studio Email:</strong> Forward formal tender documents or RFPs to <strong>mediavigorish@gmail.com</strong>.</li>
+                      <li><strong>Studio Hours:</strong> Monday – Friday: 08:30 – 17:30 CAT. Retainer clients receive dedicated emergency weekend coverage.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/contact" class="btn-apple-pill" style="font-size: 13px; padding: 8px 20px;" onclick="navigateTo('/contact'); return false;">Start a Project Brief &gt;</a>
+                      <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="btn-apple-secondary" style="font-size: 13px; padding: 8px 20px;">Direct WhatsApp</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Q11 (Technical) -->
+            <div class="apple-faq-card" data-category="technical web standards">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>11</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Technical · Web Architecture, Performance &amp; Security</span>
+                  </div>
+                  <h3 class="apple-faq-question">What tech stacks, responsive frameworks, and web security protocols do you build with?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      Every digital web platform engineered by Vigorish Media is built to enterprise web standards, prioritizing high-velocity page loads, zero layout shifts, and full-stack security:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Frontend Performance:</strong> Semantic HTML5, TypeScript, and modern responsive components avoiding bloated legacy templates. We achieve sub-second First Contentful Paint (&lt; 1.0s) and near-perfect Google Lighthouse scores.</li>
+                      <li><strong>Mobile-First Fluid Layouts:</strong> Zero Cumulative Layout Shift (CLS &lt; 0.05), dynamic clamp typography, high-DPI retina rendering, and seamless native Dark/Light mode theme switching.</li>
+                      <li><strong>Security &amp; Encryption:</strong> Automated TLS 1.3 / 256-bit SSL encryption, strict Content Security Policy headers, daily off-site cloud snapshots, and DDoS mitigation.</li>
+                      <li><strong>Media Delivery &amp; Compression:</strong> Next-gen WebP/AVIF imagery encoding, Brotli asset compression, and lazy-loaded high-bitrate video embeds.</li>
+                      <li><strong>Technical Conversion Tracking:</strong> Google Analytics 4 (GA4) custom event measurement, Meta Pixel conversion tracking, and real-time lead relay via WhatsApp Business and authenticated email endpoints.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/services" class="apple-link-cta" onclick="navigateTo('/services'); return false;">Explore Web Architecture Services &gt;</a>
+                      <a href="#/contact" class="apple-link-cta" onclick="navigateTo('/contact'); return false;">Consult Our Technical Team &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Q12 (Technical & General) -->
+            <div class="apple-faq-card" data-category="general technical standards">
+              <button type="button" class="apple-faq-trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                <div class="apple-faq-trigger-content">
+                  <div class="apple-faq-meta">
+                    <span>12</span>
+                    <span aria-hidden="true">·</span>
+                    <span>General &amp; Technical · Master Deliverables, File Formats &amp; IP Rights</span>
+                  </div>
+                  <h3 class="apple-faq-question">What master file formats, resolution standards, and source assets do clients receive?</h3>
+                </div>
+                <div class="apple-faq-icon-circle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="7" y1="1" x2="7" y2="13"></line>
+                    <line x1="1" y1="7" x2="13" y2="7"></line>
+                  </svg>
+                </div>
+              </button>
+              <div class="apple-faq-drawer">
+                <div class="apple-faq-inner">
+                  <div class="apple-faq-body">
+                    <p>
+                      We enforce a strict <strong>100% Client Ownership Guarantee</strong>. Upon project sign-off and invoice settlement, you receive unrestricted commercial rights and all master production files:
+                    </p>
+                    <ul class="apple-faq-bullets">
+                      <li><strong>Brand Identity &amp; Print Assets:</strong> Master unflattened vector files (.AI, .EPS, .SVG, .PDF) alongside press-ready 300 DPI CMYK files with bleed marks, digital RGB transparent assets (.PNG), and comprehensive digital brand guidelines.</li>
+                      <li><strong>Cinema Video Deliverables:</strong> Master 4K Apple ProRes 422 HQ archival masters, balanced Rec.709 color grades, web-optimized H.264/H.265 deliveries in 16:9 widescreen, 9:16 vertical reels/TikTok, and 1:1 square feeds, plus uncompressed 24-bit WAV audio tracks.</li>
+                      <li><strong>Web &amp; Digital Assets:</strong> Full repository source code access, DNS delegation, administrative hosting dashboard ownership, and step-by-step handover documentation with zero vendor lock-in.</li>
+                    </ul>
+                    <div class="apple-faq-actions">
+                      <a href="#/contact" class="apple-link-cta" onclick="navigateTo('/contact'); return false;">Start a Project Brief &gt;</a>
+                      <a href="#/pricing" class="apple-link-cta" onclick="navigateTo('/pricing'); return false;">View Tier Specifications &gt;</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Empty search state -->
+          <div class="apple-faq-empty">
+            <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--apple-text-dark);">No questions match your search</h4>
+            <p style="font-size: 14.5px; color: var(--apple-text-secondary); max-width: 480px; margin: 0 auto 18px;">
+              Can't find what you're looking for? Our team and AI Live Support Assistant are available 24/7 to answer your specific project inquiries.
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn-apple-pill" onclick="openLiveSupportChat();" style="font-size: 13px; padding: 8px 20px;">Ask AI Live Support</button>
+              <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="btn-apple-secondary" style="font-size: 13px; padding: 8px 20px;">WhatsApp Studio Direct</a>
+            </div>
+          </div>
+
+          <!-- Apple Still-Have-Questions Support Box -->
+          <div class="apple-faq-support-box">
+            <div class="apple-faq-support-eyebrow">HAVE A SPECIFIC REQUIREMENT?</div>
+            <h3 class="apple-faq-support-title">Still have questions for our creative team?</h3>
+            <p class="apple-faq-support-desc">
+              Whether you need a custom multi-channel scope, urgent commercial video shoot, or a dedicated enterprise retainer, our Lusaka creative directors are ready to consult.
+            </p>
+            <div class="apple-faq-support-actions">
+              <a href="#/contact" class="btn-apple-pill" style="font-size: 14px; padding: 11px 26px;" onclick="navigateTo('/contact'); return false;">Start a Project Brief</a>
+              <button type="button" class="btn-apple-secondary" style="font-size: 14px; padding: 11px 24px;" onclick="openLiveSupportChat();">
+                <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #30d158; margin-right: 6px; box-shadow: 0 0 6px #30d158;"></span>Chat with AI Assistant
+              </button>
+              <a href="https://wa.me/260979894567" target="_blank" rel="noopener" class="apple-link-cta" style="font-size: 14.5px; font-weight: 600;">Direct WhatsApp: +260 97 989 4567 &gt;</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Service Detail Modal -->
@@ -4849,7 +7063,7 @@
           </div>
         </div>
         <div style="display: flex; gap: 12px;">
-          <a href="#/contact" class="btn-apple-pill" style="font-size: 12px; padding: 6px 16px;" onclick="navigateTo('/contact'); return false;">Start a Project</a>
+          <a href="#/contact" class="btn-apple-pill" style="font-size: 12px; padding: 6px 16px;" onclick="trackStartProjectClick('footer_bar'); navigateTo('/contact'); return false;" data-analytics-cta="footer_bar">Start a Project</a>
           <a href="#/playground" class="btn-apple-secondary" style="font-size: 12px; padding: 6px 16px;" onclick="navigateTo('/playground'); return false;">Explore Lab</a>
         </div>
       </div>
@@ -4882,6 +7096,7 @@
           <ul>
             <li><a href="#/about" onclick="navigateTo('/about'); return false;">About <strong class="brand-name-bold" style="color: inherit;">Vigorish Media</strong></a></li>
             <li><a href="#/services" onclick="navigateTo('/services'); return false;">Our Services</a></li>
+            <li><a href="#/faq" onclick="navigateTo('/faq'); return false;">Client FAQs</a></li>
             <li><a href="#/donate" onclick="navigateTo('/donate'); return false;">Tuli Bantu Baluse</a></li>
             <li><a href="#/insights" onclick="navigateTo('/insights'); return false;">Studio Newsroom</a></li>
           </ul>
@@ -4991,6 +7206,203 @@
     });
 
     // =====================================
+    // Global Theme Controller (Dark / Light Mode)
+    // =====================================
+    const THEME_STORAGE_KEY = 'vigorish_theme';
+
+    function getSavedTheme() {
+      try {
+        return localStorage.getItem(THEME_STORAGE_KEY) || 'dark';
+      } catch (e) {
+        return 'dark';
+      }
+    }
+
+    function applyGlobalTheme(theme, triggerHaptic = false) {
+      const isLight = theme === 'light';
+      const root = document.documentElement;
+
+      if (isLight) {
+        root.setAttribute('data-theme', 'light');
+        root.classList.remove('theme-dark');
+        root.classList.add('theme-light');
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        root.classList.remove('theme-light');
+        root.classList.add('theme-dark');
+      }
+
+      // Update meta theme-color for browser chrome
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) {
+        metaTheme.setAttribute('content', isLight ? '#fbfbfd' : '#000000');
+      }
+
+      // Update toggle buttons in desktop header and mobile drawer
+      const toggleButtons = document.querySelectorAll('.apple-theme-toggle-btn');
+      toggleButtons.forEach(btn => {
+        const nextMode = isLight ? 'dark' : 'light';
+        btn.setAttribute('aria-label', `Switch to ${nextMode} mode`);
+        btn.setAttribute('title', `Switch to ${nextMode} mode`);
+        const label = btn.querySelector('.theme-toggle-text');
+        if (label) {
+          label.textContent = isLight ? 'Dark' : 'Light';
+        }
+      });
+
+      // Update mobile drawer status indicator
+      const mobileStatus = document.getElementById('mobileDrawerThemeText');
+      if (mobileStatus) {
+        mobileStatus.textContent = isLight ? 'Light Mode' : 'Dark Mode';
+      }
+
+      // Persist user selection
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+      } catch (e) {
+        // Fallback for sandboxed storage
+      }
+
+      // Dispatch event in case sub-components (canvas, charts, etc.) need notice
+      try {
+        window.dispatchEvent(new CustomEvent('themechange', { detail: { theme, isLight } }));
+      } catch (e) {}
+
+      if (triggerHaptic && typeof playAppleHaptic === 'function') {
+        playAppleHaptic('confirm');
+      }
+    }
+
+    function toggleGlobalTheme() {
+      const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      const target = current === 'light' ? 'dark' : 'light';
+      applyGlobalTheme(target, true);
+    }
+
+    // Sync theme UI state immediately on script execution
+    try {
+      applyGlobalTheme(getSavedTheme(), false);
+    } catch (e) {}
+
+    // Ensure sync once full DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => applyGlobalTheme(getSavedTheme(), false));
+    } else {
+      applyGlobalTheme(getSavedTheme(), false);
+    }
+
+    // =====================================
+    // Google Analytics 4 (GA4) Tracking System
+    // =====================================
+    const GA_MEASUREMENT_ID = 'G-VIGORISH01';
+    let lastCtaClickTimestamp = 0;
+
+    /**
+     * Dispatches custom and standard GA4 tracking events safely
+     * @param {string} eventName
+     * @param {Object} eventParams
+     */
+    function trackGAEvent(eventName, eventParams = {}) {
+      try {
+        const enrichedParams = {
+          ...eventParams,
+          app_name: 'Vigorish Media',
+          app_platform: 'web',
+          page_path: window.location.hash ? window.location.hash.replace('#', '') : window.location.pathname,
+          theme: document.documentElement.getAttribute('data-theme') || 'dark',
+          timestamp: new Date().toISOString()
+        };
+
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, enrichedParams);
+        }
+        // Custom DOM event for developer tools and real-time observability
+        window.dispatchEvent(new CustomEvent('ga4_event', { detail: { eventName, params: enrichedParams } }));
+      } catch (err) {
+        // Fail silently without disrupting user operations
+      }
+    }
+
+    /**
+     * Determines client conversion funnel stage based on target destination
+     */
+    function getConversionStageForRoute(route) {
+      if (!route) return 'awareness';
+      const clean = route.replace('#', '');
+      if (clean === '/contact') return 'direct_intent';
+      if (clean === '/donate') return 'philanthropy_intent';
+      if (clean === '/pricing' || clean === '/packages') return 'pricing_evaluation';
+      if (clean === '/services' || clean === '/portfolio' || clean === '/labs') return 'consideration';
+      if (clean === '/faq' || clean === '/faqs') return 'validation';
+      return 'awareness';
+    }
+
+    /**
+     * Tracks client header navigation interactions
+     * @param {string} navItem - Name of menu link (e.g. 'Overview', 'Services')
+     * @param {string} destination - Target SPA path
+     * @param {string} menuLocation - 'header_nav' or 'mobile_drawer'
+     */
+    function trackHeaderNavClick(navItem, destination, menuLocation = 'header_nav') {
+      trackGAEvent('header_nav_click', {
+        event_category: 'navigation',
+        event_action: 'select_menu_item',
+        event_label: navItem,
+        nav_item: navItem,
+        destination_path: destination,
+        menu_location: menuLocation,
+        funnel_stage: getConversionStageForRoute(destination)
+      });
+    }
+
+    /**
+     * Tracks client 'Start a Project' CTA conversions across touchpoints
+     * @param {string} location - CTA position ('header_nav', 'mobile_drawer', 'hero_section', 'faq_section', 'footer_bar')
+     */
+    function trackStartProjectClick(location = 'header_nav') {
+      const now = Date.now();
+      if (now - lastCtaClickTimestamp < 250) return; // Prevent double firing from capture listener + onclick
+      lastCtaClickTimestamp = now;
+
+      trackGAEvent('start_project_cta_click', {
+        event_category: 'conversion_funnel',
+        event_action: 'cta_click',
+        event_label: 'Start a Project',
+        cta_text: 'Start a Project',
+        cta_location: location,
+        destination_path: '/contact',
+        funnel_step: '1_cta_engagement',
+        conversion_stage: 'direct_intent'
+      });
+
+      // GA4 Recommended Lead Generation Intent Event
+      trackGAEvent('begin_lead_inquiry', {
+        source_location: location,
+        lead_type: 'client_project',
+        method: 'cta_button'
+      });
+    }
+
+    // Global event listener to capture any 'Start a Project' CTA clicks across dynamic content
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('a, button');
+      if (!btn) return;
+      const text = (btn.textContent || '').trim();
+      if (/start a project/i.test(text)) {
+        let loc = btn.getAttribute('data-analytics-cta');
+        if (!loc) {
+          if (btn.closest('.apple-nav-actions')) loc = 'header_nav';
+          else if (btn.closest('.apple-mobile-drawer')) loc = 'mobile_drawer';
+          else if (btn.closest('.apple-hero')) loc = 'hero_section';
+          else if (btn.closest('.apple-faq-section') || btn.closest('#view-faq')) loc = 'faq_section';
+          else if (btn.closest('.apple-footer')) loc = 'footer_bar';
+          else loc = 'page_body';
+        }
+        trackStartProjectClick(loc);
+      }
+    }, { capture: true });
+
+    // =====================================
     // SPA Routing System
     // =====================================
     const routes = {
@@ -5005,8 +7417,209 @@
       '/team': 'view-about',
       '/insights': 'view-insights',
       '/donate': 'view-donate',
-      '/contact': 'view-contact'
+      '/contact': 'view-contact',
+      '/faq': 'view-faq',
+      'faq': 'view-faq',
+      '/faqs': 'view-faq',
+      'faqs': 'view-faq'
     };
+
+    // =====================================
+    // Apple FAQ Accordion Interactive System
+    // =====================================
+    function toggleFaq(triggerEl) {
+      if (!triggerEl) return;
+      const card = triggerEl.closest('.apple-faq-card');
+      if (!card) return;
+      const isCurrentlyOpen = card.classList.contains('open');
+
+      if (isCurrentlyOpen) {
+        card.classList.remove('open');
+        triggerEl.setAttribute('aria-expanded', 'false');
+      } else {
+        card.classList.add('open');
+        triggerEl.setAttribute('aria-expanded', 'true');
+      }
+
+      if (typeof playAppleHaptic === 'function') {
+        playAppleHaptic('click');
+      }
+    }
+
+    function filterFaqCategory(category, btn, containerId) {
+      const section = containerId ? document.getElementById(containerId) : (btn ? btn.closest('.apple-faq-section') : document);
+      if (!section) return;
+
+      const filterBtns = section.querySelectorAll('.apple-faq-filter-btn');
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      if (btn) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+      }
+
+      const targetCat = (category || 'all').trim().toLowerCase();
+
+      // Reset any active search filter so category filter takes dynamic precedence
+      const searchInput = section.querySelector('.apple-faq-search-input');
+      if (searchInput && searchInput.value) {
+        searchInput.value = '';
+        const clearBtn = section.querySelector('.apple-faq-search-clear');
+        if (clearBtn) clearBtn.style.display = 'none';
+        const countBadge = section.querySelector('.apple-faq-search-count');
+        if (countBadge) countBadge.style.display = 'none';
+      }
+
+      const cards = section.querySelectorAll('.apple-faq-card');
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const cardCat = (card.getAttribute('data-category') || '').trim().toLowerCase();
+        const catTokens = cardCat.split(/\s+/);
+        if (targetCat === 'all' || catTokens.includes(targetCat) || cardCat.includes(targetCat)) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      const emptyEl = section.querySelector('.apple-faq-empty');
+      if (emptyEl) {
+        emptyEl.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+
+      // Track FAQ Category interaction in GA4
+      if (typeof trackGAEvent === 'function') {
+        trackGAEvent('faq_filter_category', {
+          event_category: 'engagement',
+          event_action: 'filter_faq',
+          event_label: category,
+          faq_category: category,
+          section_id: containerId || 'faq_section',
+          results_count: visibleCount
+        });
+      }
+
+      if (typeof playAppleHaptic === 'function') {
+        playAppleHaptic('click');
+      }
+    }
+
+    function searchFaq(inputEl, containerId) {
+      if (!inputEl) return;
+      const rawQuery = inputEl.value || '';
+      const query = rawQuery.trim().toLowerCase();
+      const section = containerId ? document.getElementById(containerId) : inputEl.closest('.apple-faq-section');
+      if (!section) return;
+
+      const wrapper = inputEl.closest('.apple-faq-search-wrapper') || section.querySelector('.apple-faq-search-wrapper');
+      const clearBtn = wrapper ? wrapper.querySelector('.apple-faq-search-clear') : section.querySelector('.apple-faq-search-clear');
+      const countBadge = wrapper ? wrapper.querySelector('.apple-faq-search-count') : section.querySelector('.apple-faq-search-count');
+
+      // Instantly toggle clear button visibility
+      if (clearBtn) {
+        clearBtn.style.display = rawQuery.length > 0 ? 'inline-flex' : 'none';
+      }
+
+      // Multi-keyword token matching (supports multiple words like "web security" or "pricing retainers")
+      const terms = query.split(/\s+/).filter(Boolean);
+      const cards = section.querySelectorAll('.apple-faq-card');
+      let visibleCount = 0;
+      let singleMatchingCard = null;
+
+      cards.forEach(card => {
+        if (terms.length === 0) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          const cardCat = (card.getAttribute('data-category') || '').toLowerCase();
+          const qText = (card.querySelector('.apple-faq-question')?.textContent || '').toLowerCase();
+          const bodyText = (card.querySelector('.apple-faq-body')?.textContent || '').toLowerCase();
+          const metaText = (card.querySelector('.apple-faq-meta')?.textContent || '').toLowerCase();
+          const combined = `${cardCat} ${qText} ${metaText} ${bodyText}`;
+
+          const matchesAllTerms = terms.every(term => combined.includes(term));
+          if (matchesAllTerms) {
+            card.style.display = '';
+            visibleCount++;
+            singleMatchingCard = card;
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+
+      // Update interactive search match badge
+      if (countBadge) {
+        if (terms.length > 0) {
+          countBadge.textContent = visibleCount === 1 ? '1 match' : `${visibleCount} matches`;
+          countBadge.style.display = 'inline-block';
+        } else {
+          countBadge.style.display = 'none';
+        }
+      }
+
+      // If user searched for a specific topic with exactly 1 match, auto-expand for instant convenience
+      if (terms.length > 0 && visibleCount === 1 && singleMatchingCard) {
+        if (!singleMatchingCard.classList.contains('open')) {
+          singleMatchingCard.classList.add('open');
+          const trigger = singleMatchingCard.querySelector('.apple-faq-trigger');
+          if (trigger) trigger.setAttribute('aria-expanded', 'true');
+        }
+      }
+
+      // Empty search state
+      const emptyEl = section.querySelector('.apple-faq-empty');
+      if (emptyEl) {
+        emptyEl.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+
+      // GA4 debounced telemetry event for user search engagement
+      if (query.length >= 3 && typeof trackGAEvent === 'function') {
+        clearTimeout(inputEl._faqGaTimeout);
+        inputEl._faqGaTimeout = setTimeout(() => {
+          trackGAEvent('faq_search', {
+            event_category: 'engagement',
+            event_action: 'search_faq',
+            search_term: query,
+            results_count: visibleCount,
+            section_id: containerId || 'faq'
+          });
+        }, 500);
+      }
+    }
+
+    function clearFaqSearch(clearBtn, containerId) {
+      if (!clearBtn) return;
+      const section = containerId ? document.getElementById(containerId) : clearBtn.closest('.apple-faq-section');
+      const wrapper = clearBtn.closest('.apple-faq-search-wrapper') || (section ? section.querySelector('.apple-faq-search-wrapper') : null);
+      const input = wrapper ? wrapper.querySelector('.apple-faq-search-input') : (section ? section.querySelector('.apple-faq-search-input') : null);
+      const countBadge = wrapper ? wrapper.querySelector('.apple-faq-search-count') : (section ? section.querySelector('.apple-faq-search-count') : null);
+
+      if (input) {
+        input.value = '';
+        clearBtn.style.display = 'none';
+        if (countBadge) countBadge.style.display = 'none';
+
+        // Re-apply currently active category filter
+        const activeCategoryBtn = section ? section.querySelector('.apple-faq-filter-btn.active') : null;
+        if (activeCategoryBtn) {
+          const catMatch = activeCategoryBtn.getAttribute('onclick')?.match(/filterFaqCategory\('([^']+)'/);
+          const currentCategory = catMatch ? catMatch[1] : 'all';
+          filterFaqCategory(currentCategory, activeCategoryBtn, containerId);
+        } else {
+          searchFaq(input, containerId);
+        }
+
+        if (typeof playAppleHaptic === 'function') {
+          playAppleHaptic('click');
+        }
+
+        input.focus();
+      }
+    }
 
     function triggerPageProgressBar() {
       const bar = document.getElementById('pageProgressBar');
@@ -5046,6 +7659,14 @@
       const targetViewId = routes[targetPath];
       const targetEl = document.getElementById(targetViewId);
       const currentActive = document.querySelector('.view-page.active');
+
+      // Google Analytics 4 - Track SPA View Transition & Conversion Funnel
+      trackGAEvent('page_view', {
+        page_path: targetPath,
+        page_title: 'Vigorish Media — ' + (targetPath === '/' ? 'Overview' : targetPath.replace('/', '').toUpperCase()),
+        page_location: window.location.origin + window.location.pathname + '#' + targetPath,
+        funnel_stage: getConversionStageForRoute(targetPath)
+      });
 
       document.querySelectorAll('.apple-nav-link').forEach(el => {
         el.classList.toggle('active', el.getAttribute('data-route') === targetPath);
@@ -5555,7 +8176,7 @@
       let stage = 0;
       const stages = [
         { pct: 28, text: `Analyzing brand stature and typography vectors for "${brandName}"...` },
-        { pct: 58, text: `Evaluating digital footprint and customer conversion channels...` },
+        { pct: 58, text: `Evaluating digital footprint and client conversion channels...` },
         { pct: 86, text: `Benchmarking ${industry.toUpperCase()} sector competitors in Lusaka...` },
         { pct: 100, text: `Diagnostic complete! Synthesizing strategic prescription...` }
       ];
@@ -5795,7 +8416,7 @@
           '💳 Business Cards — Professional designs that make a lasting impression.',
           '👕 Branded Apparel — T-shirts, uniforms, jackets and promotional clothing.',
           '☕ Corporate Merchandise — Mugs, pens, notebooks, calendars and promotional items.',
-          '🛍️ Packaging & Branded Bags — Bags, boxes, labels and customer-facing packaging.',
+          '🛍️ Packaging & Branded Bags — Bags, boxes, labels and client-facing packaging.',
           '📱 Digital Brand Assets — Social media graphics, presentations, email signatures & digital materials.',
           '🏢 Corporate & Environmental Branding — Signage, office branding, reception areas and event branding.'
         ],
@@ -5804,7 +8425,7 @@
       'web-design': {
         title: 'Website Design & Management',
         category: 'DIGITAL ARCHITECTURE',
-        desc: '🌐 Your website is often the first impression customers have of your business. Make it count.<br><br>Whether you\'re a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract customers, and grow online.',
+        desc: '🌐 Your website is often the first impression clients have of your business. Make it count.<br><br>Whether you\'re a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract clients, and grow online.',
         points: [
           'Free Domain for 1 Year',
           'Professional Design tailored for high trust & conversion',
@@ -5838,13 +8459,13 @@
         title: 'Paid Facebook & Instagram Advertising',
         category: 'PERFORMANCE ADVERTISING // CAMPAIGNS FROM K450',
         image: '/assets/digital-marketing-campaigns.jpg',
-        desc: '<strong>Put your brand in front of the right people.</strong><br><br>Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media.<br><br>Whether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.<br><br><span style="color: var(--apple-blue); font-weight: 700; font-size: 16px;">Campaigns from just K450</span>',
+        desc: '<strong>Put your brand in front of the right people.</strong><br><br>Reach more potential clients, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media.<br><br>Whether your goal is to generate leads, grow your page, increase video views or drive engagement, we create and manage campaigns designed around your objective.<br><br><span style="color: var(--apple-blue); font-weight: 700; font-size: 16px;">Campaigns from just K450</span>',
         points: [
-          '🎯 <strong>Lead Generation</strong> – Reach potential customers and generate enquiries.',
+          '🎯 <strong>Lead Generation</strong> – Reach potential clients and generate enquiries.',
           '👍 <strong>Page Likes &amp; Followers</strong> – Build your social media audience.',
           '▶️ <strong>Video Views</strong> – Get more people watching your brand videos.',
           '💬 <strong>Post Engagement</strong> – Increase likes, comments, shares and interactions.',
-          '📢 <strong>Brand Awareness</strong> – Put your business in front of more potential customers.',
+          '📢 <strong>Brand Awareness</strong> – Put your business in front of more potential clients.',
           '🔗 <strong>Traffic Campaigns</strong> – Drive people to your website, WhatsApp or other online destinations.',
           '⚙️ <strong>Full Execution</strong> – From campaign setup and audience targeting to monitoring and optimisation, Vigorish Media helps you get more from your advertising budget.'
         ],
@@ -6275,7 +8896,7 @@
         <div style="font-size: 11.5px; font-weight: 700; color: var(--apple-blue); text-transform: uppercase; margin-bottom: 8px;">Studio Insight</div>
         <h2 style="font-size: 28px; font-weight: 700; margin-bottom: 16px;">The Strategic Advantage of World-Class Design in Zambia</h2>
         <p style="font-size: 15.5px; color: #444; line-height: 1.7; margin-bottom: 16px;">
-          In emerging markets, businesses frequently underestimate visual presentation. Yet data repeatedly proves that customers judge business trustworthiness within the first 50 milliseconds of viewing a brand's collateral or website.
+          In emerging markets, businesses frequently underestimate visual presentation. Yet data repeatedly proves that clients judge business trustworthiness within the first 50 milliseconds of viewing a brand's collateral or website.
         </p>
         <p style="font-size: 15.5px; color: #444; line-height: 1.7; margin-bottom: 24px;">
           At <strong class="brand-name-bold" style="color: #1d1d1f;">Vigorish Media</strong>, we treat brand identity as enterprise infrastructure — laying the groundwork for sustainable pricing power, consumer confidence, and regional brand equity.
@@ -6300,6 +8921,17 @@
       const service = document.getElementById('contactServiceSelect')?.value || '';
       const statusEl = document.getElementById('contactFormStatus');
 
+      // Google Analytics 4 - Lead Generation Conversion Event
+      trackGAEvent('generate_lead', {
+        event_category: 'conversion',
+        event_action: 'submit_brief',
+        event_label: service,
+        form_name: 'project_brief_form',
+        service_selected: service,
+        client_name: name,
+        currency: 'ZMW'
+      });
+
       if (statusEl) {
         statusEl.style.display = 'block';
         statusEl.style.padding = '18px';
@@ -6318,6 +8950,14 @@
       const phone = document.getElementById('contactPhone')?.value || '';
       const service = document.getElementById('contactServiceSelect')?.value || 'General Inquiry';
       const msg = document.getElementById('contactMessage')?.value || '';
+
+      // Google Analytics 4 - Direct WhatsApp Inquiry
+      trackGAEvent('contact_whatsapp_click', {
+        event_category: 'conversion',
+        event_action: 'whatsapp_direct',
+        event_label: service,
+        service_selected: service
+      });
 
       const text = `*NEW STUDIO INQUIRY - VIGORISH MEDIA*\n\n*Name:* ${name}\n*Company:* ${company}\n*Phone:* ${phone}\n*Service:* ${service}\n\n*Brief:*\n${msg}`;
       const url = `https://wa.me/260979894567?text=${encodeURIComponent(text)}`;
@@ -6439,7 +9079,7 @@
       {
         title: 'Website Design & Management',
         category: 'DIGITAL ARCHITECTURE // PACKAGES FROM K6,500/YR',
-        desc: '🌐 Your website is often the first impression customers have of your business. Make it count. Whether you\'re a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract customers, and grow online.',
+        desc: '🌐 Your website is often the first impression clients have of your business. Make it count. Whether you\'re a startup, growing business, or established company, Vigorish Media has a website solution designed to help you build credibility, attract clients, and grow online.',
         deliverables: [
           '✅ Free Domain for 1 Year & Cloud Hosting included',
           '✅ Professional Design crafted for credibility and conversions',
@@ -6472,13 +9112,13 @@
       {
         title: 'Paid Facebook & Instagram Advertising',
         category: 'PERFORMANCE ADVERTISING // CAMPAIGNS FROM K450',
-        desc: 'Put your brand in front of the right people. Reach more potential customers, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media. Campaigns from just K450.',
+        desc: 'Put your brand in front of the right people. Reach more potential clients, grow your audience and generate meaningful results with targeted Facebook &amp; Instagram advertising from Vigorish Media. Campaigns from just K450.',
         deliverables: [
-          '🎯 Lead Generation – Reach potential customers and generate enquiries.',
+          '🎯 Lead Generation – Reach potential clients and generate enquiries.',
           '👍 Page Likes & Followers – Build your social media audience.',
           '▶️ Video Views – Get more people watching your brand videos.',
           '💬 Post Engagement – Increase likes, comments, shares and interactions.',
-          '📢 Brand Awareness – Put your business in front of more potential customers.',
+          '📢 Brand Awareness – Put your business in front of more potential clients.',
           '🔗 Traffic Campaigns – Drive people to your website, WhatsApp or other destinations.',
           'From campaign setup and targeting to monitoring and optimisation from K450'
         ],
@@ -6857,7 +9497,7 @@
     </button>
   </nav>
 
-  <!-- Vigorish Media AI Live Customer Support Widget -->
+  <!-- Vigorish Media AI Live Client Support Widget -->
   <script src="chat/ai-support.js" id="aiSupportScript"></script>
   <script>
     // Automatic fallback loader ensuring AI Support loads on GitHub Pages and custom domains

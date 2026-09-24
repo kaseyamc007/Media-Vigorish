@@ -2,7 +2,7 @@ export type ConversationStatus = 'AI_ACTIVE' | 'HUMAN_REQUESTED' | 'HUMAN_ACTIVE
 
 export interface ChatMessage {
   id: string;
-  sender: 'ai' | 'customer' | 'agent' | 'system';
+  sender: 'ai' | 'client' | 'customer' | 'agent' | 'system';
   senderName?: string;
   text: string;
   timestamp: string; // ISO string
@@ -11,7 +11,9 @@ export interface ChatMessage {
 
 export interface ConversationSession {
   conversationId: string;
-  customerName: string;
+  clientName: string;
+  clientContact?: string;
+  customerName?: string;
   customerContact?: string;
   pageUrl: string;
   startedAt: string;
@@ -37,7 +39,9 @@ export interface OutboundAlertRecord {
 }
 
 export interface StartChatRequest {
-  customerName: string;
+  clientName?: string;
+  clientContact?: string;
+  customerName?: string;
   customerContact?: string;
   pageUrl?: string;
 }
